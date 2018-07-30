@@ -601,6 +601,7 @@ type CheckboxProps =
     | OnChange of (React.FormEvent*bool -> unit)
     | Type of string
     | Value of string
+    interface IHTMLProp
     
 let Checkbox = importDefault<ComponentClass<IHTMLProp>> "@materail-ui/core/Checkbox"
 let checkbox b = materialEl Checkbox b []
@@ -619,6 +620,7 @@ type ChipProp =
     | DeleteIcon of ReactElement
     | Label of ChipLabel
     | OnDelete of (React.FormEvent->unit)
+    interface IHTMLProp
 
 let Chip = importDefault<ComponentClass<IHTMLProp>> "@materail-ui/core/Chip"
 let chip b = materialEl Chip b []
@@ -641,6 +643,7 @@ type CircularProgressProp =
     | Thickness of float
     | Value of int // TODO validate for 0 to 100
     | Variant of CircularProgressVariant
+    interface IHTMLProp
 
 let CircularProgress = importDefault<ComponentClass<IHTMLProp>> "@materail-ui/core/CircularProgress"
 let circularProgress b = materialEl CircularProgress b []

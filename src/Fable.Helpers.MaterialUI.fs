@@ -357,12 +357,14 @@ module Props =
         | Flip of bool
     
     [<StringEnum>]
+    [<RequireQualifiedAccess>]
     type MouseEvent =
         | [<CompiledName("onClick")>] OnClick
         | [<CompiledName("onMouseDown")>] OnMouseDown
         | [<CompiledName("onMouseUp")>] OnMouseUp
 
     [<StringEnum>]
+    [<RequireQualifiedAccess>]
     type TouchEvent =
         | [<CompiledName("onTouchStart")>] OnTouchStart
         | [<CompiledName("onTouchEnd")>] OnTouchEnd
@@ -665,17 +667,18 @@ let inline circularProgress b = materialEl CircularProgress b []
 [<Erase>]
 type ClickAwayListenerMouseEvent =
     | Event of MouseEvent
-    | False of bool
+    | False
 
 [<Erase>]
 type ClickAwayListenerTouchEvent =
     | Event of TouchEvent
-    | False of bool
+    | False
 
 type ClickAwayListenerProp =
-    | OnClickEvent of (unit->unit)
+    | OnClickAway of (unit->unit)
     | MouseEvent of ClickAwayListenerMouseEvent
     | TouchEvent of ClickAwayListenerTouchEvent
+    interface IHTMLProp
 
 let ClickAwayListener =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ClickAwayListener"

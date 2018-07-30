@@ -28,7 +28,7 @@ paket add Fable.Helpers.MaterialUI
 * Checkbox - ✓
 * Chip - ✓
 * CircularProgress - ✓
-* ClickAwayListener
+* ClickAwayListener - ✓
 * Collapse
 * CssBaseline
 * Dialog

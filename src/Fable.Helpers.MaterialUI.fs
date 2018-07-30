@@ -355,6 +355,17 @@ module Props =
         | WithTheme of bool
         | Name of string
         | Flip of bool
+    
+    [<StringEnum>]
+    type MouseEvent =
+        | [<CompiledName("onClick")>] OnClick
+        | [<CompiledName("onMouseDown")>] OnMouseDown
+        | [<CompiledName("onMouseUp")>] OnMouseUp
+
+    [<StringEnum>]
+    type TouchEvent =
+        | [<CompiledName("onTouchStart")>] OnTouchStart
+        | [<CompiledName("onTouchEnd")>] OnTouchEnd
 
 module Colors =
     let red = importDefault<Props.Color> "@material-ui/core/colors/red";
@@ -647,6 +658,28 @@ type CircularProgressProp =
 
 let CircularProgress = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CircularProgress"
 let circularProgress b = materialEl CircularProgress b []
+// #endregion
+
+// #region ClickAwayListener
+
+[<Erase>]
+type ClickAwayListenerMouseEvent =
+    | Event of MouseEvent
+    | False of bool
+
+[<Erase>]
+type ClickAwayListenerTouchEvent =
+    | Event of TouchEvent
+    | False of bool
+
+type ClickAwayListenerProp =
+    | OnClickEvent of (unit->unit)
+    | MouseEvent of ClickAwayListenerMouseEvent
+    | TouchEvent of ClickAwayListenerTouchEvent
+
+let ClickAwayListener =
+    importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ClickAwayListener"
+let inline clickAwayListener b c = materialEl ClickAwayListener b c
 // #endregion
 
 // #region Paper

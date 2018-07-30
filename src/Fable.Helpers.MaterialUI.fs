@@ -586,7 +586,7 @@ type CardMediaProp =
     | Src of string
     interface IHTMLProp
 
-let CardMedia = importDefault<ComponentClass<IHTMLProp>> "@materail-ui/core/CardMedia"
+let CardMedia = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardMedia"
 let cardMedia b = materialEl CardMedia b []
 // #endregion
 
@@ -603,7 +603,7 @@ type CheckboxProps =
     | Value of string
     interface IHTMLProp
     
-let Checkbox = importDefault<ComponentClass<IHTMLProp>> "@materail-ui/core/Checkbox"
+let Checkbox = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Checkbox"
 let checkbox b = materialEl Checkbox b []
 
 // #endregion
@@ -622,7 +622,7 @@ type ChipProp =
     | OnDelete of (React.FormEvent->unit)
     interface IHTMLProp
 
-let Chip = importDefault<ComponentClass<IHTMLProp>> "@materail-ui/core/Chip"
+let Chip = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Chip"
 let chip b = materialEl Chip b []
 // #endregion
 
@@ -645,7 +645,7 @@ type CircularProgressProp =
     | Variant of CircularProgressVariant
     interface IHTMLProp
 
-let CircularProgress = importDefault<ComponentClass<IHTMLProp>> "@materail-ui/core/CircularProgress"
+let CircularProgress = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CircularProgress"
 let circularProgress b = materialEl CircularProgress b []
 // #endregion
 

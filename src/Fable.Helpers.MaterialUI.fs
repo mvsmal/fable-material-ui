@@ -223,7 +223,6 @@ module Props =
         | Clickable of CSSProp list
         | Deletable of CSSProp list
         | AvatarChildren of CSSProp list
-        | Label of CSSProp list
         | DeleteIcon of CSSProp list
         | Static of CSSProp list
         | Indeterminate of CSSProp list
@@ -276,7 +275,6 @@ module Props =
         | ColorPrimary of string
         | ColorSecondary of string
         | ColorError of string
-        | Label of string
         | Text of string
         | TextPrimary of string
         | TextSecondary of string

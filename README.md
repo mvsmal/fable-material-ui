@@ -1,6 +1,6 @@
 # Fable.Helpers.MaterialUI
 
-Fable binding for [Material-UI](https://material-ui.com)
+Fable bindings for [Material-UI](https://material-ui.com)
 
 install with DotNet:
 ```
@@ -27,7 +27,7 @@ paket add Fable.Helpers.MaterialUI
   * CardMedia - ✓
 * Checkbox - ✓
 * Chip - ✓
-* CircularProgress
+* CircularProgress - ✓
 * ClickAwayListener
 * Collapse
 * CssBaseline

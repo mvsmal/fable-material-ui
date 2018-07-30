@@ -225,6 +225,12 @@ module Props =
         | AvatarChildren of CSSProp list
         | Label of CSSProp list
         | DeleteIcon of CSSProp list
+        | Static of CSSProp list
+        | Indeterminate of CSSProp list
+        | Svg of CSSProp list
+        | Circle of CSSProp list
+        | CircleStatic of CSSProp list
+        | CircleIndeterminate of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -311,6 +317,13 @@ module Props =
         | AvatarChildren of string
         | Label of string
         | DeleteIcon of string
+        | Static of string
+        | Indeterminate of string
+        | Svg of string
+        | Circle of string
+        | CircleStatic of string
+        | CircleIndeterminate of string
+
         interface IClassNames
 
     type ClassesProp =
@@ -613,6 +626,28 @@ let Chip = importDefault<ComponentClass<IHTMLProp>> "@materail-ui/core/Chip"
 let chip b = materialEl Chip b []
 // #endregion
 
+// #region CircularProgress
+[<Erase>]
+type CircularProgressSize =
+    | Px of int
+    | Str of string
+
+[<StringEnum>]
+type CircularProgressVariant =
+    | [<CompiledName("determinate")>] Determinate
+    | [<CompiledName("indeterminate")>] Indeterminate
+    | [<CompiledName("static")>] Static
+
+type CircularProgressProp =
+    | Size of CircularProgressSize
+    | Thickness of float
+    | Value of int // TODO validate for 0 to 100
+    | Variant of CircularProgressVariant
+
+let CircularProgress = importDefault<ComponentClass<IHTMLProp>> "@materail-ui/core/CircularProgress"
+let circularProgress b = materialEl CircularProgress b []
+// #endregion
+
 // #region Paper
 
 type PaperProp =
@@ -763,6 +798,7 @@ type OverridesProp =
     | MuiCardMedia of IStyles list
     | MuiCheckbox of IStyles list
     | MuiChip of IStyles list
+    | MuiCircularProgress of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

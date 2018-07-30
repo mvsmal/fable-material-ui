@@ -409,7 +409,7 @@ type AppBarProps =
     interface IHTMLProp
 
 let AppBar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/AppBar"
-let appBar b c = materialEl AppBar b c
+let inline appBar b c = materialEl AppBar b c
 
 // #endregion
 
@@ -477,7 +477,7 @@ type BottomNavigationProp =
     interface IHTMLProp
 
 let BottomNavigation = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/BottomNavigation"
-let bottomNavigation b c = materialEl BottomNavigation b c
+let inline bottomNavigation b c = materialEl BottomNavigation b c
 // #endregion
 
 // #region BottomNavigationAction
@@ -489,7 +489,7 @@ type BottomNavigationActionProp =
 
 let BottomNavigationAction =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/BottomNavigationAction"
-let bottomNavigationAction b = materialEl BottomNavigationAction b []
+let inline bottomNavigationAction b = materialEl BottomNavigationAction b []
 
 // #endregion
 
@@ -556,7 +556,7 @@ type CardProp =
     interface IHTMLProp
 
 let Card = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Card"
-let card b c = materialEl Card b c
+let inline card b c = materialEl Card b c
 
 // #endregion
 
@@ -566,7 +566,7 @@ type CardActionsProp =
     interface IHTMLProp
 
 let CardActions = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardActions"
-let cardActions b c = materialEl CardActions b c
+let inline cardActions b c = materialEl CardActions b c
 
 // #endregion
 
@@ -587,7 +587,7 @@ type CardHeaderProp =
     interface IHTMLProp
 
 let CardHeader = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardHeader"
-let cardHeader b c = materialEl CardHeader b c
+let inline cardHeader b c = materialEl CardHeader b c
 // #endregion
 
 // #region CardMedia
@@ -598,7 +598,7 @@ type CardMediaProp =
     interface IHTMLProp
 
 let CardMedia = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardMedia"
-let cardMedia b = materialEl CardMedia b []
+let inline cardMedia b = materialEl CardMedia b []
 // #endregion
 
 // #region Checkbox
@@ -615,7 +615,7 @@ type CheckboxProps =
     interface IHTMLProp
     
 let Checkbox = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Checkbox"
-let checkbox b = materialEl Checkbox b []
+let inline checkbox b = materialEl Checkbox b []
 
 // #endregion
 
@@ -634,7 +634,7 @@ type ChipProp =
     interface IHTMLProp
 
 let Chip = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Chip"
-let chip b = materialEl Chip b []
+let inline chip b = materialEl Chip b []
 // #endregion
 
 // #region CircularProgress
@@ -657,7 +657,7 @@ type CircularProgressProp =
     interface IHTMLProp
 
 let CircularProgress = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CircularProgress"
-let circularProgress b = materialEl CircularProgress b []
+let inline circularProgress b = materialEl CircularProgress b []
 // #endregion
 
 // #region ClickAwayListener

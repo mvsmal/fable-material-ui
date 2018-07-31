@@ -759,6 +759,7 @@ let inline dialog b c = materialEl Dialog b c
 // #region DialogActions
 type DialogActionsProp =
     | DisableActionSpacing of bool
+    interface IHTMLProp
 
 let DialogActions = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogActions"
 let inline dialogActions b c = materialEl DialogActions b c

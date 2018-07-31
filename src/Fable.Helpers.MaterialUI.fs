@@ -146,8 +146,7 @@ module Props =
     }
     //#endregion
 
-    type IStyles =
-        interface end
+    type IStyles = interface end
 
     type Styles =
         | Root of CSSProp list
@@ -237,8 +236,7 @@ module Props =
         | Styles of IStyles list
         | Func of (Theme->IStyles list)
 
-    type IClassNames =
-        interface end
+    type IClassNames = interface end
 
     type ClassNames =
         | Root of string
@@ -390,15 +388,12 @@ module Colors =
     let grey = importDefault<Props.Color> "@material-ui/core/colors/grey";
     let blueGrey = importDefault<Props.Color> "@material-ui/core/colors/blueGrey";
 
-
 open Props
 
 let materialEl<[<Pojo>]'P when 'P :> IHTMLProp> (a:ComponentClass<'P>) (b: IHTMLProp list) c =
     Fable.Helpers.React.from a (keyValueList CaseRules.LowerFirst b |> unbox) c
 
-
 // #region AppBar
-
 [<StringEnum>]
 type AppBarPosition =
     | [<CompiledName("fixed")>] Fixed
@@ -412,11 +407,9 @@ type AppBarProps =
 
 let AppBar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/AppBar"
 let inline appBar b c = materialEl AppBar b c
-
 // #endregion
 
 // #region Avatar
-
 type AvatarProp =
     | Alt of string
     | ImgProps of IHTMLProp list
@@ -427,11 +420,9 @@ type AvatarProp =
 
 let Avatar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Avatar"
 let inline avatar b c = materialEl Avatar b c
-
 // #endregion
 
 // #region Backdrop
-
 type TransitionDuration = 
     | Enter of float
     | Exit of float
@@ -449,11 +440,9 @@ type BackdropProp =
 
 let Backdrop = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Backdrop"
 let inline backdrop b = materialEl Backdrop b []
-
 // #endregion
 
 // #region Badge
-
 [<StringEnum>]
 type BadgeColor =
     | [<CompiledName("default")>]Default
@@ -468,7 +457,6 @@ type BadgeProp =
 
 let Badge = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Badge"
 let inline badge b c = materialEl Badge b c
-
 // #endregion
 
 // #region BottomNavigation
@@ -492,11 +480,9 @@ type BottomNavigationActionProp =
 let BottomNavigationAction =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/BottomNavigationAction"
 let inline bottomNavigationAction b = materialEl BottomNavigationAction b []
-
 // #endregion
 
 // #region Button
-
 [<StringEnum>]
 type ButtonSize =
     | [<CompiledName("small")>] Small
@@ -527,7 +513,6 @@ let inline button b c = materialEl Button b c
 // #endregion
 
 // #region ButtonBase
-
 [<StringEnum>]
 type ButtonBaseType =
     | [<CompiledName("button")>] Button
@@ -548,18 +533,15 @@ type ButtonBaseProp =
 
 let ButtonBase = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ButtonBase"
 let inline buttonBase b c = materialEl ButtonBase b c
-
 // #endregion
 
 // #region Card
-
 type CardProp =
     | Raised of bool
     interface IHTMLProp
 
 let Card = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Card"
 let inline card b c = materialEl Card b c
-
 // #endregion
 
 // #region CardActions
@@ -569,7 +551,6 @@ type CardActionsProp =
 
 let CardActions = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardActions"
 let inline cardActions b c = materialEl CardActions b c
-
 // #endregion
 
 // #region CardContent
@@ -593,7 +574,6 @@ let inline cardHeader b c = materialEl CardHeader b c
 // #endregion
 
 // #region CardMedia
-
 type CardMediaProp =
     | Image of string
     | Src of string
@@ -618,7 +598,6 @@ type CheckboxProps =
     
 let Checkbox = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Checkbox"
 let inline checkbox b = materialEl Checkbox b []
-
 // #endregion
 
 // #region Chip
@@ -663,7 +642,6 @@ let inline circularProgress b = materialEl CircularProgress b []
 // #endregion
 
 // #region ClickAwayListener
-
 [<Erase>]
 type ClickAwayListenerMouseEvent =
     | Event of MouseEvent
@@ -686,14 +664,12 @@ let inline clickAwayListener b c = materialEl ClickAwayListener b c
 // #endregion
 
 // #region Paper
-
 type PaperProp =
     | Elevation of int
     | Square of bool
     interface IHTMLProp
 let Paper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Paper"
 let inline paper b c = materialEl Paper b c
-
 // #endregion
 
 // #region withStyles
@@ -869,7 +845,6 @@ let createMuiTheme (options: ThemeProp list) =
     let op = (keyValueList CaseRules.LowerFirst options |> unbox)
     let result = createMuiTheme' op
     result
-
 // #endregion
 
 

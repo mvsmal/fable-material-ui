@@ -357,7 +357,8 @@ module Props =
     type ComponentProp<'a> =
         | Str of string
         | Func of ('a -> ReactElement)
-        | El of ReactElement
+        // ? Doesn't work with for example with Chip
+        // | El of ReactElement 
     
     [<StringEnum>]
     type ComponentColor =

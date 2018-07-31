@@ -237,6 +237,7 @@ module Props =
         interface IStyles
 
     [<Erase>]
+    [<RequireQualifiedAccess>]
     type StyleType =
         | Styles of IStyles list
         | Func of (Theme->IStyles list)
@@ -336,11 +337,10 @@ module Props =
         interface IHTMLProp
         
     [<Erase>]
-    type ComponentProp =
+    type ComponentProp<'a> =
         | Str of string
-        // TODO More possibilities for Component initialization
-        // | Func of ('a -> ReactElement)
-        // | Object of obj
+        | Func of ('a -> ReactElement)
+        | El of ReactElement
     
     [<StringEnum>]
     type ComponentColor =
@@ -349,8 +349,8 @@ module Props =
         | Primary
         | Secondary
 
-    type MaterialProp =
-        | Component of ComponentProp
+    type MaterialProp<'a> =
+        | Component of ComponentProp<'a>
         | Color of ComponentColor
         | Disabled of bool
         | DisableRipple of bool
@@ -721,8 +721,8 @@ let withStyles<[<Pojo>]'P, 'S>
     children =
     let styles' =
         match styles with
-        | Styles styles -> (keyValueList CaseRules.LowerFirst styles |> unbox)
-        | Func func -> func >> keyValueList CaseRules.LowerFirst
+        | StyleType.Styles styles -> (keyValueList CaseRules.LowerFirst styles |> unbox)
+        | StyleType.Func func -> func >> keyValueList CaseRules.LowerFirst
     Fable.Helpers.React.from 
         (withStyles' styles' (keyValueList CaseRules.LowerFirst options |> unbox) fn)
         (keyValueList CaseRules.LowerFirst props |> unbox)

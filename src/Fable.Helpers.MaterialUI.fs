@@ -776,6 +776,11 @@ let DialogContentText =
 let inline dialogContentText b c = materialEl DialogContentText b c
 // #endregion
 
+// #region DialogTitle
+let DialogTitle = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogTitle"
+let inline dialogTitle b c = materialEl DialogTitle b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int

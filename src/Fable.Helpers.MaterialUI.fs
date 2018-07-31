@@ -370,10 +370,9 @@ module Props =
     type MaterialProp<'a> =
         | Component of ComponentProp<'a>
         | Color of ComponentColor
-        | Disabled of bool
         | DisableRipple of bool
         | Icon of ReactElement
-        | Id of string
+        | DisableTypography of bool
         interface IHTMLProp
 
     type StyleOption =
@@ -597,7 +596,6 @@ let cardContent b c = materialEl CardContent b c
 type CardHeaderProp =
     | Action of ReactElement
     | Avatar of ReactElement
-    | DisableTypography of bool
     | Subheader of ReactElement
     | SubheaderTypographyProps of IHTMLProp list
     | Title of ReactElement

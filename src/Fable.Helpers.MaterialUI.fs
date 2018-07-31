@@ -234,6 +234,14 @@ module Props =
         | Entered of CSSProp list
         | Wrapper of CSSProp list
         | WrapperInner of CSSProp list
+        | Paper of CSSProp list
+        | PaperScrollPaper of CSSProp list
+        | PaperScrollBody of CSSProp list
+        | PaperWidthXs of CSSProp list
+        | PaperWidthSm of CSSProp list
+        | PaperWidthMd of CSSProp list
+        | PaperFullWidth of CSSProp list
+        | PaperFullScreen of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -329,7 +337,16 @@ module Props =
         | Entered of string
         | Wrapper of string
         | WrapperInner of string
-
+        | ScrollPaper of string
+        | ScrollBody of string
+        | Paper of string
+        | PaperScrollPaper of string
+        | PaperScrollBody of string
+        | PaperWidthXs of string
+        | PaperWidthSm of string
+        | PaperWidthMd of string
+        | PaperFullWidth of string
+        | PaperFullScreen of string
         interface IClassNames
 
     type ClassesProp =
@@ -704,7 +721,40 @@ let inline collapse b c = materialEl Collapse b c
 
 // #region CssBaseline
 let CssBaseline = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CssBaseline"
-let cssBaseline b = materialEl CssBaseline b []
+let inline cssBaseline b = materialEl CssBaseline b []
+// #endregion
+
+// #region Dialog
+[<StringEnum>]
+type DialogScroll =
+    | Body
+    | Paper
+
+type DialogProp<'a> =
+    | DisableBackdropClick of bool
+    | DisableEscapeKeyDown of bool
+    | FullScreen of bool
+    | FullWidth of bool
+    | MaxWidth of MaterialSize
+    | OnBackdropClick of (obj->unit)
+    | OnClose of (obj->unit)
+    | OnEnter of (obj->unit)
+    | OnEntered of (obj->unit)
+    | OnEntering of (obj->unit)
+    | OnEscapeKeyDown of (obj->unit)
+    | OnExit of (obj->unit)
+    | OnExited of (obj->unit)
+    | OnExiting of (obj->unit)
+    | Open of bool
+    | PaperProps of IHTMLProp list
+    | Scroll of DialogScroll
+    | TransitionComponent of ComponentProp<'a>
+    | TransitionDuration of TransitionDuration
+    | TransitionProps of IHTMLProp list
+    interface IHTMLProp
+
+let Dialog = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Dialog"
+let inline dialog b c = materialEl Dialog b c
 // #endregion
 
 // #region Paper
@@ -857,6 +907,7 @@ type OverridesProp =
     | MuiChip of IStyles list
     | MuiCircularProgress of IStyles list
     | MuiCollapse of IStyles list
+    | MuiDialog of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

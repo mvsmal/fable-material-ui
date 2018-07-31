@@ -694,6 +694,11 @@ let Collapse = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Colla
 let inline collapse b c = materialEl Collapse b c
 // #endregion
 
+// #region CssBaseline
+let CssBaseline = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CssBaseline"
+let cssBaseline b = materialEl CssBaseline b []
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int

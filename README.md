@@ -30,7 +30,7 @@ paket add Fable.Helpers.MaterialUI
 * CircularProgress - ✓
 * ClickAwayListener - ✓
 * Collapse - ✓
-* CssBaseline
+* CssBaseline - ✓
 * Dialog
   * DialogActions
   * DialogContent

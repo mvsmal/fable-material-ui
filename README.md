@@ -33,7 +33,7 @@ paket add Fable.Helpers.MaterialUI
 * CssBaseline - ✓
 * Dialog - ✓
   * DialogActions - ✓
-  * DialogContent
+  * DialogContent - ✓
   * DialogContentText
   * DialogTitle
 * Divider

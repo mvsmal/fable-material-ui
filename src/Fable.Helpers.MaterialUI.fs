@@ -765,6 +765,12 @@ type DialogActionsProp =
 let DialogActions = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogActions"
 let inline dialogActions b c = materialEl DialogActions b c
 // #endregion
+
+// #region DialogContent
+let DialogContent = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogContent"
+let inline dialogContent b c = materialEl DialogContent b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -917,6 +923,7 @@ type OverridesProp =
     | MuiCollapse of IStyles list
     | MuiDialog of IStyles list
     | MuiDialogActions of IStyles list
+    | MuiDialogContent of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

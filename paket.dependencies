@@ -5,3 +5,20 @@ storage: none
 nuget FSharp.Core
 nuget Fable.Core
 nuget Fable.React
+
+// [ FAKE GROUP ]
+group Build
+    source https://api.nuget.org/v3/index.json
+
+    framework: netstandard2.0
+
+    storage: none
+    clitool dotnet-fable
+
+    nuget Fake.DotNet.Cli
+    nuget Fake.IO.FileSystem
+    nuget Fake.Core.Target
+    nuget Fake.DotNet.Paket
+    nuget Fake.DotNet.AssemblyInfoFile
+    nuget Fake.Core.ReleaseNotes
+    nuget Fake.Api.GitHub

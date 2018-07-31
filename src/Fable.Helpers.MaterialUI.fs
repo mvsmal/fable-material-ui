@@ -242,6 +242,9 @@ module Props =
         | PaperWidthMd of CSSProp list
         | PaperFullWidth of CSSProp list
         | PaperFullScreen of CSSProp list
+        | Absolute of CSSProp list
+        | Inset of CSSProp list
+        | Light of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -347,10 +350,13 @@ module Props =
         | PaperWidthMd of string
         | PaperFullWidth of string
         | PaperFullScreen of string
+        | Absolute of string
+        | Inset of string
+        | Light of string
         interface IClassNames
 
     type ClassesProp =
-        | Classes of IClassNames list
+    | Classes of IClassNames list
         interface IHTMLProp
         
     [<Erase>]
@@ -781,6 +787,17 @@ let DialogTitle = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Di
 let inline dialogTitle b c = materialEl DialogTitle b c
 // #endregion
 
+// #region Divider
+type DividerProp =
+    | Absolute of bool
+    | Inset of bool
+    | Light of bool
+    interface IHTMLProp
+
+let Divider = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Divider"
+let inline divider b = materialEl Divider b []
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -935,6 +952,7 @@ type OverridesProp =
     | MuiDialogActions of IStyles list
     | MuiDialogContent of IStyles list
     | MuiDialogContentText of IStyles list
+    | MuiDivider of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

@@ -245,6 +245,16 @@ module Props =
         | Absolute of CSSProp list
         | Inset of CSSProp list
         | Light of CSSProp list
+        | Docked of CSSProp list
+        | PaperAnchorLeft of CSSProp list
+        | PaperAnchorRight of CSSProp list
+        | PaperAnchorTop of CSSProp list
+        | PaperAnchorBottom of CSSProp list
+        | PaperAnchorDockedLeft of CSSProp list
+        | PaperAnchorDockedRight of CSSProp list
+        | PaperAnchorDockedTop of CSSProp list
+        | PaperAnchorDockedBottom of CSSProp list
+        | Modal of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -353,6 +363,16 @@ module Props =
         | Absolute of string
         | Inset of string
         | Light of string
+        | Docked of string
+        | PaperAnchorLeft of string
+        | PaperAnchorRight of string
+        | PaperAnchorTop of string
+        | PaperAnchorBottom of string
+        | PaperAnchorDockedLeft of string
+        | PaperAnchorDockedRight of string
+        | PaperAnchorDockedTop of string
+        | PaperAnchorDockedBottom of string
+        | Modal of string
         interface IClassNames
 
     type ClassesProp =
@@ -373,12 +393,24 @@ module Props =
         | Primary
         | Secondary
 
+    type TransitionDurationProp = 
+        | Enter of float
+        | Exit of float
+
+    [<Erase>]
+    type TransitionDuration =
+        | Num of float
+        | Custom of TransitionDurationProp list
+    
     type MaterialProp<'a> =
         | Component of ComponentProp<'a>
         | Color of ComponentColor
         | DisableRipple of bool
         | Icon of ReactElement
         | DisableTypography of bool
+        | PaperProps of IHTMLProp list
+        | Open of bool
+        | TransitionDuration of TransitionDuration
         interface IHTMLProp
 
     type StyleOption =
@@ -399,15 +431,6 @@ module Props =
         | OnTouchStart
         | OnTouchEnd
 
-    type TransitionDurationProp = 
-        | Enter of float
-        | Exit of float
-
-    [<Erase>]
-    type TransitionDuration =
-        | Num of float
-        | Custom of TransitionDurationProp list
-    
     [<StringEnum>]
     [<RequireQualifiedAccess>]
     type MaterialSize =
@@ -415,6 +438,14 @@ module Props =
         | Sm
         | Md
         | [<CompiledName("")>] False
+
+    [<StringEnum>]
+    [<RequireQualifiedAccess>]
+    type Anchor =
+        | Left
+        | Top
+        | Right
+        | Bottom
 
 module Colors =
     let red = importDefault<Props.Color> "@material-ui/core/colors/red";
@@ -474,8 +505,6 @@ let inline avatar b c = materialEl Avatar b c
 // #region Backdrop
 type BackdropProp =
     | Invisible of bool
-    | Open of bool
-    | TransitionDuration of TransitionDuration
     interface IHTMLProp
 
 let Backdrop = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Backdrop"
@@ -750,11 +779,8 @@ type DialogProp<'a> =
     | OnExit of (obj->unit)
     | OnExited of (obj->unit)
     | OnExiting of (obj->unit)
-    | Open of bool
-    | PaperProps of IHTMLProp list
     | Scroll of DialogScroll
     | TransitionComponent of ComponentProp<'a>
-    | TransitionDuration of TransitionDuration
     | TransitionProps of IHTMLProp list
     interface IHTMLProp
 
@@ -796,6 +822,25 @@ type DividerProp =
 
 let Divider = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Divider"
 let inline divider b = materialEl Divider b []
+// #endregion
+
+// #region Drawer
+[<StringEnum>]
+type DrawerVariant =
+    | Permanent
+    | Persistent
+    | Temporary
+
+type DrawerProp =
+    | Anchor of Anchor
+    | ModalProps of IHTMLProp list
+    | OnClose of (obj->unit)
+    | SlideProps of IHTMLProp list
+    | Variant of DrawerVariant
+    interface IHTMLProp
+
+let Drawer = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Drawer"
+let drawer b c = materialEl Drawer b c
 // #endregion
 
 // #region Paper
@@ -953,6 +998,7 @@ type OverridesProp =
     | MuiDialogContent of IStyles list
     | MuiDialogContentText of IStyles list
     | MuiDivider of IStyles list
+    | MuiDrawer of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

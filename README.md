@@ -34,7 +34,7 @@ paket add Fable.Helpers.MaterialUI
 * Dialog - ✓
   * DialogActions - ✓
   * DialogContent - ✓
-  * DialogContentText
+  * DialogContentText - ✓
   * DialogTitle
 * Divider
 * Drawer

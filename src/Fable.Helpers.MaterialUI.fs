@@ -6,6 +6,7 @@ open Fable.Import.React
 open Fable.Core.JsInterop
 open React.Props
 
+[<AutoOpen>]
 module Props =
     //#region Themes
     type PaletteIntention = {
@@ -17,8 +18,8 @@ module Props =
 
     [<StringEnum>]
     type PaletteType =
-        | [<CompiledName("dark")>] Dark
-        | [<CompiledName("light")>] Light
+        | Dark
+        | Light
 
     type PaletteCommon = {
         black: string
@@ -82,8 +83,8 @@ module Props =
 
     [<StringEnum>]
     type TextDirection =
-        | [<CompiledName("ltr")>] Ltr
-        | [<CompiledName("rtl")>] Rtl
+        | Ltr
+        | Rtl
 
     type Shape = {
         borderRadius: int
@@ -328,17 +329,17 @@ module Props =
         
     [<Erase>]
     type ComponentProp =
-        | String of string
+        | Str of string
         // TODO More possibilities for Component initialization
         // | Func of ('a -> ReactElement)
         // | Object of obj
     
     [<StringEnum>]
     type ComponentColor =
-        | [<CompiledName("default")>] Default
-        | [<CompiledName("inherit")>] Inherit
-        | [<CompiledName("primary")>] Primary
-        | [<CompiledName("secondary")>] Secondary
+        | Default
+        | Inherit
+        | Primary
+        | Secondary
 
     type MaterialProp =
         | Component of ComponentProp
@@ -357,15 +358,19 @@ module Props =
     [<StringEnum>]
     [<RequireQualifiedAccess>]
     type MouseEvent =
-        | [<CompiledName("onClick")>] OnClick
-        | [<CompiledName("onMouseDown")>] OnMouseDown
-        | [<CompiledName("onMouseUp")>] OnMouseUp
+        | OnClick
+        | OnMouseDown
+        | OnMouseUp
 
     [<StringEnum>]
     [<RequireQualifiedAccess>]
     type TouchEvent =
-        | [<CompiledName("onTouchStart")>] OnTouchStart
-        | [<CompiledName("onTouchEnd")>] OnTouchEnd
+        | OnTouchStart
+        | OnTouchEnd
+
+    type TransitionDuration = 
+        | Enter of float
+        | Exit of float
 
 module Colors =
     let red = importDefault<Props.Color> "@material-ui/core/colors/red";
@@ -396,10 +401,10 @@ let materialEl<[<Pojo>]'P when 'P :> IHTMLProp> (a:ComponentClass<'P>) (b: IHTML
 // #region AppBar
 [<StringEnum>]
 type AppBarPosition =
-    | [<CompiledName("fixed")>] Fixed
-    | [<CompiledName("absolute")>] Absolute
-    | [<CompiledName("sticky")>] Sticky
-    | [<CompiledName("static")>] Static
+    | Fixed
+    | Absolute
+    | Sticky
+    | Static
 
 type AppBarProps = 
     | Position of AppBarPosition
@@ -423,14 +428,10 @@ let inline avatar b c = materialEl Avatar b c
 // #endregion
 
 // #region Backdrop
-type TransitionDuration = 
-    | Enter of float
-    | Exit of float
-
+[<Erase>]
 type BackdropTransitionDuration =
-    | Number of float
+    | Num of float
     | Both of TransitionDuration list
-
 
 type BackdropProp =
     | Invisible of bool
@@ -485,19 +486,19 @@ let inline bottomNavigationAction b = materialEl BottomNavigationAction b []
 // #region Button
 [<StringEnum>]
 type ButtonSize =
-    | [<CompiledName("small")>] Small
-    | [<CompiledName("medium")>] Medium
-    | [<CompiledName("large")>] Large
+    | Small
+    | Medium
+    | Large
 
 [<StringEnum>]
 type ButtonVariant =
-    | [<CompiledName("text")>] Text
-    | [<CompiledName("flat")>] Flat
-    | [<CompiledName("outlined")>] Outlined
-    | [<CompiledName("contained")>] Contained
-    | [<CompiledName("raised")>] Raised
-    | [<CompiledName("fab")>] Fab
-    | [<CompiledName("extendedFab")>] ExtendedFab
+    | Text
+    | Flat
+    | Outlined
+    | Contained
+    | Raised
+    | Fab
+    | ExtendedFab
 
 type ButtonProp =
     | DisableFocusRipple of bool
@@ -515,9 +516,9 @@ let inline button b c = materialEl Button b c
 // #region ButtonBase
 [<StringEnum>]
 type ButtonBaseType =
-    | [<CompiledName("button")>] Button
-    | [<CompiledName("submit")>] Submit
-    | [<CompiledName("reset")>] Reset
+    | Button
+    | Submit
+    | Reset
 
 type ButtonBaseProp =
     | Action of (obj->unit) // TODO add static typing
@@ -626,9 +627,9 @@ type CircularProgressSize =
 
 [<StringEnum>]
 type CircularProgressVariant =
-    | [<CompiledName("determinate")>] Determinate
-    | [<CompiledName("indeterminate")>] Indeterminate
-    | [<CompiledName("static")>] Static
+    | Determinate
+    | Indeterminate
+    | Static
 
 type CircularProgressProp =
     | Size of CircularProgressSize

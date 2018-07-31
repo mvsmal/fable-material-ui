@@ -29,7 +29,7 @@ paket add Fable.Helpers.MaterialUI
 * Chip - ✓
 * CircularProgress - ✓
 * ClickAwayListener - ✓
-* Collapse
+* Collapse - ✓
 * CssBaseline
 * Dialog
   * DialogActions

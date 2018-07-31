@@ -230,6 +230,10 @@ module Props =
         | Circle of CSSProp list
         | CircleStatic of CSSProp list
         | CircleIndeterminate of CSSProp list
+        | Container of CSSProp list
+        | Entered of CSSProp list
+        | Wrapper of CSSProp list
+        | WrapperInner of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -320,6 +324,10 @@ module Props =
         | Circle of string
         | CircleStatic of string
         | CircleIndeterminate of string
+        | Container of string
+        | Entered of string
+        | Wrapper of string
+        | WrapperInner of string
 
         interface IClassNames
 
@@ -664,6 +672,28 @@ let ClickAwayListener =
 let inline clickAwayListener b c = materialEl ClickAwayListener b c
 // #endregion
 
+// #region Collapse
+[<StringEnum>]
+type CollapseTimeoutEnum =
+    | Auto
+
+[<Erase>]
+type CollapseTransition =
+    | Num of float
+    | Custom of TransitionDuration list
+    | Enum of CollapseTimeoutEnum
+
+type CollapseProp = 
+    | CollapseHeight of string
+    | In of bool
+    | Timeout of CollapseTransition
+    interface IHTMLProp
+
+let Collapse = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Collapse"
+
+let inline collapse b c = materialEl Collapse b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -813,6 +843,7 @@ type OverridesProp =
     | MuiCheckbox of IStyles list
     | MuiChip of IStyles list
     | MuiCircularProgress of IStyles list
+    | MuiCollapse of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

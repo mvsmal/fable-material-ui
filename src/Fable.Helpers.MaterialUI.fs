@@ -376,9 +376,22 @@ module Props =
         | OnTouchStart
         | OnTouchEnd
 
-    type TransitionDuration = 
+    type TransitionDurationProp = 
         | Enter of float
         | Exit of float
+
+    [<Erase>]
+    type TransitionDuration =
+        | Num of float
+        | Custom of TransitionDurationProp list
+    
+    [<StringEnum>]
+    [<RequireQualifiedAccess>]
+    type MaterialSize =
+        | Xs
+        | Sm
+        | Md
+        | [<CompiledName("")>] False
 
 module Colors =
     let red = importDefault<Props.Color> "@material-ui/core/colors/red";
@@ -436,15 +449,10 @@ let inline avatar b c = materialEl Avatar b c
 // #endregion
 
 // #region Backdrop
-[<Erase>]
-type BackdropTransitionDuration =
-    | Num of float
-    | Both of TransitionDuration list
-
 type BackdropProp =
     | Invisible of bool
     | Open of bool
-    | TransitionDuration of BackdropTransitionDuration // TODO Check for same transitions in other components and merge in needed
+    | TransitionDuration of TransitionDuration
     interface IHTMLProp
 
 let Backdrop = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Backdrop"
@@ -678,15 +686,15 @@ type CollapseTimeoutEnum =
     | Auto
 
 [<Erase>]
-type CollapseTransition =
+type CollapseTransitionDuration =
     | Num of float
-    | Custom of TransitionDuration list
+    | Custom of TransitionDurationProp list
     | Enum of CollapseTimeoutEnum
 
 type CollapseProp = 
     | CollapseHeight of string
     | In of bool
-    | Timeout of CollapseTransition
+    | Timeout of CollapseTransitionDuration
     interface IHTMLProp
 
 let Collapse = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Collapse"

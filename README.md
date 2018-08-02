@@ -52,7 +52,7 @@ paket add Fable.Helpers.MaterialUI
   * GridList - ✓
   * GridListTile - ✓
   * GridListTileBar - ✓
-* Grow
+* Grow - ✓
 * Hidden
 * Icon
 * IconButton

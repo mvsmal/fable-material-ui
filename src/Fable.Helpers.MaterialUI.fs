@@ -574,6 +574,8 @@ module Props =
     type AutoEnum =
         | Auto
 
+    type AutoTimeout = U3<float, TransitionDuration list, AutoEnum>
+
 module Colors =
     let red = importDefault<Props.IColor> "@material-ui/core/colors/red";
     let pink = importDefault<Props.IColor> "@material-ui/core/colors/pink";
@@ -877,15 +879,9 @@ let inline clickAwayListener b c = materialElPropsList ClickAwayListener b c
 // #endregion
 
 // #region Collapse
-[<Erase>]
-type CollapseTransitionDuration =
-    | Num of float
-    | Custom of TransitionDurationProp list
-    | Enum of AutoEnum
-
 type CollapseProp = 
     | CollapseHeight of string
-    | Timeout of CollapseTransitionDuration
+    | Timeout of AutoTimeout
     interface IHTMLProp
 
 let Collapse = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Collapse"
@@ -1227,6 +1223,15 @@ type GridListTileBarProp =
 
 let GridListTileBar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/GridListTileBar"
 let inline gridListTileBar b c = materialElPropsList GridListTileBar b c 
+// #endregion
+
+// #region Grow
+type GrowProp =
+    | Timeout of AutoTimeout
+    interface IHTMLProp
+
+let Grow = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Grow"
+let inline grow b c = materialElPropsList Grow b c
 // #endregion
 
 // #region Paper

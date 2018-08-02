@@ -307,6 +307,14 @@ module Props =
         | ActionIcon of CSSProp list
         | ActionIconActionPosLeft of CSSProp list
         | FontSizeInherit of CSSProp list
+        | FormControl of CSSProp list
+        | Underline of CSSProp list
+        | Multiline of CSSProp list
+        | Input of CSSProp list
+        | InputMarginDense of CSSProp list
+        | InputMultiline of CSSProp list
+        | InputType of CSSProp list
+        | InputTypeSearch of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -489,6 +497,14 @@ module Props =
         | ActionIcon of string
         | ActionIconActionPosLeft of string
         | FontSizeInherit of string
+        | FormControl of string
+        | Underline of string
+        | Multiline of string
+        | Input of string
+        | InputMarginDense of string
+        | InputMultiline of string
+        | InputType of string
+        | InputTypeSearch of string
         interface IClassNames
 
     type ClassesProp =
@@ -1309,6 +1325,27 @@ let IconButton = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Ico
 let inline iconButton b c = materialElPropsList IconButton b c
 // #endregion
 
+// #region Input
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type InputMargin =
+    | None
+    | Dense
+
+type InputProp<'a> =
+    | DisableUnderline of bool
+    | EndAdornment of ReactElement
+    | InputComponent of ComponentProp<'a>
+    | InputProps of IHTMLProp list
+    // TODO | InputRef
+    | Multiline of bool
+    | RowsMax of int
+    | StartAdornment of ReactElement
+
+let Input = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Input"
+let inline input b = materialElPropsList Input b []
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1480,6 +1517,7 @@ type OverridesProp =
     | MuiGridListTileBar of IStyles list
     | MuiIcon of IStyles list
     | MuiIconButton of IStyles list
+    | MuiInput of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

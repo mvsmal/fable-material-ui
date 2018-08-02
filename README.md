@@ -56,7 +56,7 @@ paket add Fable.Helpers.MaterialUI
 * Hidden - ✓
 * Icon - ✓
 * IconButton - ✓
-* Input
+* Input - ✓
  * InputAdornment
  * InputLabel
 * LinearProgress

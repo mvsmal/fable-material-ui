@@ -317,6 +317,8 @@ module Props =
         | InputTypeSearch of CSSProp list
         | PositionStart of CSSProp list
         | PositionEnd of CSSProp list
+        | Shrink of CSSProp list
+        | Animated of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -509,6 +511,8 @@ module Props =
         | InputTypeSearch of string
         | PositionStart of string
         | PositionEnd of string
+        | Shrink of string
+        | Animated of string
         interface IClassNames
 
     type ClassesProp =
@@ -1366,6 +1370,27 @@ let InputAdornment = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core
 let inline inputAdornment b c = materialElPropsList InputAdornment b c
 // #endregion
 
+// #region InputLabel
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type InputLabelMargin =
+    | Dense
+
+type InputLabelProp =
+    | DisableAnimation of bool
+    | FormLabelClasses of IStyles list
+    | Margin of InputLabelMargin
+    | Shrink of bool
+    interface IHTMLProp
+
+let InputLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/InputLabel"
+let inputLabel (b: IHTMLProp list) c =
+    let props = keyValueList CaseRules.LowerFirst b
+    let newProps =
+        props |> propertyToPascalCase "formLabelClasses" |> unbox
+    materialElPropsObj InputLabel newProps c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1539,6 +1564,7 @@ type OverridesProp =
     | MuiIconButton of IStyles list
     | MuiInput of IStyles list
     | MuiInputAdornment of IStyles list
+    | MuiInputLabel of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

@@ -470,8 +470,25 @@ module Colors =
 
 open Props
 
-let materialEl<[<Pojo>]'P when 'P :> IHTMLProp> (a:ComponentClass<'P>) (b: IHTMLProp list) c =
+let firstCharUpper s =
+    s |> String.mapi
+        (fun i c -> match i with
+                    | 0 -> c |> System.Char.ToUpper
+                    | _ -> c)
+
+let propertyToPascalCase (prop : string) o =
+    let newProp = prop |> firstCharUpper
+    o?(newProp) <- o?(prop)
+    JS.Reflect.deleteProperty (o, U3.Case1 prop) |> ignore
+    o
+
+let materialElPropsList<[<Pojo>]'P when 'P :> IHTMLProp>
+    (a:ComponentClass<'P>) (b: IHTMLProp list) c =
     Fable.Helpers.React.from a (keyValueList CaseRules.LowerFirst b |> unbox) c
+
+let materialElPropsObj<[<Pojo>]'P when 'P :> IHTMLProp>
+    (a:ComponentClass<'P>) b c =
+    Fable.Helpers.React.from a b c
 
 // #region AppBar
 [<StringEnum>]
@@ -486,7 +503,7 @@ type AppBarProps =
     interface IHTMLProp
 
 let AppBar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/AppBar"
-let inline appBar b c = materialEl AppBar b c
+let inline appBar b c = materialElPropsList AppBar b c
 // #endregion
 
 // #region Avatar
@@ -499,7 +516,7 @@ type AvatarProp =
     interface IHTMLProp
 
 let Avatar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Avatar"
-let inline avatar b c = materialEl Avatar b c
+let inline avatar b c = materialElPropsList Avatar b c
 // #endregion
 
 // #region Backdrop
@@ -508,7 +525,7 @@ type BackdropProp =
     interface IHTMLProp
 
 let Backdrop = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Backdrop"
-let inline backdrop b = materialEl Backdrop b []
+let inline backdrop b = materialElPropsList Backdrop b []
 // #endregion
 
 // #region Badge
@@ -525,7 +542,7 @@ type BadgeProp =
     interface IHTMLProp
 
 let Badge = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Badge"
-let inline badge b c = materialEl Badge b c
+let inline badge b c = materialElPropsList Badge b c
 // #endregion
 
 // #region BottomNavigation
@@ -536,7 +553,7 @@ type BottomNavigationProp =
     interface IHTMLProp
 
 let BottomNavigation = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/BottomNavigation"
-let inline bottomNavigation b c = materialEl BottomNavigation b c
+let inline bottomNavigation b c = materialElPropsList BottomNavigation b c
 // #endregion
 
 // #region BottomNavigationAction
@@ -548,7 +565,7 @@ type BottomNavigationActionProp =
 
 let BottomNavigationAction =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/BottomNavigationAction"
-let inline bottomNavigationAction b = materialEl BottomNavigationAction b []
+let inline bottomNavigationAction b = materialElPropsList BottomNavigationAction b []
 // #endregion
 
 // #region Button
@@ -578,7 +595,7 @@ type ButtonProp =
     interface IHTMLProp
 
 let Button = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Button"
-let inline button b c = materialEl Button b c
+let inline button b c = materialElPropsList Button b c
 // #endregion
 
 // #region ButtonBase
@@ -601,7 +618,10 @@ type ButtonBaseProp =
     interface IHTMLProp
 
 let ButtonBase = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ButtonBase"
-let inline buttonBase b c = materialEl ButtonBase b c
+let inline buttonBase (b: IHTMLProp list) c =
+    let props = keyValueList CaseRules.LowerFirst b
+    let newProps = props |> propertyToPascalCase "touchRippleProps" |> unbox
+    materialElPropsObj ButtonBase newProps c
 // #endregion
 
 // #region Card
@@ -610,7 +630,7 @@ type CardProp =
     interface IHTMLProp
 
 let Card = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Card"
-let inline card b c = materialEl Card b c
+let inline card b c = materialElPropsList Card b c
 // #endregion
 
 // #region CardActions
@@ -619,12 +639,12 @@ type CardActionsProp =
     interface IHTMLProp
 
 let CardActions = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardActions"
-let inline cardActions b c = materialEl CardActions b c
+let inline cardActions b c = materialElPropsList CardActions b c
 // #endregion
 
 // #region CardContent
 let CardContent = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardContent"
-let cardContent b c = materialEl CardContent b c
+let cardContent b c = materialElPropsList CardContent b c
 // #endregion
 
 // #region CardHeader
@@ -638,7 +658,7 @@ type CardHeaderProp =
     interface IHTMLProp
 
 let CardHeader = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardHeader"
-let inline cardHeader b c = materialEl CardHeader b c
+let inline cardHeader b c = materialElPropsList CardHeader b c
 // #endregion
 
 // #region CardMedia
@@ -648,7 +668,7 @@ type CardMediaProp =
     interface IHTMLProp
 
 let CardMedia = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardMedia"
-let inline cardMedia b = materialEl CardMedia b []
+let inline cardMedia b = materialElPropsList CardMedia b []
 // #endregion
 
 // #region Checkbox
@@ -665,7 +685,7 @@ type CheckboxProps =
     interface IHTMLProp
     
 let Checkbox = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Checkbox"
-let inline checkbox b = materialEl Checkbox b []
+let inline checkbox b = materialElPropsList Checkbox b []
 // #endregion
 
 // #region Chip
@@ -683,7 +703,7 @@ type ChipProp =
     interface IHTMLProp
 
 let Chip = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Chip"
-let inline chip b = materialEl Chip b []
+let inline chip b = materialElPropsList Chip b []
 // #endregion
 
 // #region CircularProgress
@@ -706,7 +726,7 @@ type CircularProgressProp =
     interface IHTMLProp
 
 let CircularProgress = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CircularProgress"
-let inline circularProgress b = materialEl CircularProgress b []
+let inline circularProgress b = materialElPropsList CircularProgress b []
 // #endregion
 
 // #region ClickAwayListener
@@ -728,7 +748,7 @@ type ClickAwayListenerProp =
 
 let ClickAwayListener =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ClickAwayListener"
-let inline clickAwayListener b c = materialEl ClickAwayListener b c
+let inline clickAwayListener b c = materialElPropsList ClickAwayListener b c
 // #endregion
 
 // #region Collapse
@@ -750,12 +770,12 @@ type CollapseProp =
 
 let Collapse = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Collapse"
 
-let inline collapse b c = materialEl Collapse b c
+let inline collapse b c = materialElPropsList Collapse b c
 // #endregion
 
 // #region CssBaseline
 let CssBaseline = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CssBaseline"
-let inline cssBaseline b = materialEl CssBaseline b []
+let inline cssBaseline b = materialElPropsList CssBaseline b []
 // #endregion
 
 // #region Dialog
@@ -785,7 +805,14 @@ type DialogProp<'a> =
     interface IHTMLProp
 
 let Dialog = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Dialog"
-let inline dialog b c = materialEl Dialog b c
+let inline dialog (b: IHTMLProp list) c =
+    let props = keyValueList CaseRules.LowerFirst b
+    let newProps =
+        props
+        |> propertyToPascalCase "paperProps"
+        |> propertyToPascalCase "transitionProps"
+        |> unbox
+    materialElPropsObj Dialog newProps c
 // #endregion
 
 // #region DialogActions
@@ -794,23 +821,23 @@ type DialogActionsProp =
     interface IHTMLProp
 
 let DialogActions = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogActions"
-let inline dialogActions b c = materialEl DialogActions b c
+let inline dialogActions b c = materialElPropsList DialogActions b c
 // #endregion
 
 // #region DialogContent
 let DialogContent = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogContent"
-let inline dialogContent b c = materialEl DialogContent b c
+let inline dialogContent b c = materialElPropsList DialogContent b c
 // #endregion
 
 // #region DialogContentText
 let DialogContentText =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogContentText"
-let inline dialogContentText b c = materialEl DialogContentText b c
+let inline dialogContentText b c = materialElPropsList DialogContentText b c
 // #endregion
 
 // #region DialogTitle
 let DialogTitle = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogTitle"
-let inline dialogTitle b c = materialEl DialogTitle b c
+let inline dialogTitle b c = materialElPropsList DialogTitle b c
 // #endregion
 
 // #region Divider
@@ -821,7 +848,7 @@ type DividerProp =
     interface IHTMLProp
 
 let Divider = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Divider"
-let inline divider b = materialEl Divider b []
+let inline divider b = materialElPropsList Divider b []
 // #endregion
 
 // #region Drawer
@@ -840,7 +867,15 @@ type DrawerProp =
     interface IHTMLProp
 
 let Drawer = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Drawer"
-let drawer b c = materialEl Drawer b c
+let drawer (b: IHTMLProp list) c =
+    let props = keyValueList CaseRules.LowerFirst b
+    let newProps =
+        props
+        |> propertyToPascalCase "paperProps"
+        |> propertyToPascalCase "slideProps"
+        |> propertyToPascalCase "modalProps"
+        |> unbox
+    materialElPropsObj Drawer newProps c
 // #endregion
 
 // #region Paper
@@ -849,7 +884,7 @@ type PaperProp =
     | Square of bool
     interface IHTMLProp
 let Paper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Paper"
-let inline paper b c = materialEl Paper b c
+let inline paper b c = materialElPropsList Paper b c
 // #endregion
 
 // #region withStyles
@@ -1023,7 +1058,7 @@ type MuiThemeProviderProp =
     interface IHTMLProp
 
 let MuiThemeProvider = importMember<ComponentClass<IHTMLProp>> "@material-ui/core/styles"
-let inline muiThemeProvider b c = materialEl MuiThemeProvider b c
+let inline muiThemeProvider b c = materialElPropsList MuiThemeProvider b c
 
 [<Import("createMuiTheme", "@material-ui/core/styles")>]
 let private createMuiTheme'<[<Pojo>]'O> (options: 'O) : Theme = jsNative
@@ -1033,10 +1068,6 @@ let createMuiTheme (options: ThemeProp list) =
     let result = createMuiTheme' op
     result
 // #endregion
-
-
-
-
 
 
 

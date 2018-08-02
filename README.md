@@ -55,7 +55,7 @@ paket add Fable.Helpers.MaterialUI
 * Grow - ✓
 * Hidden - ✓
 * Icon - ✓
-* IconButton
+* IconButton - ✓
 * Input
  * InputAdornment
  * InputLabel

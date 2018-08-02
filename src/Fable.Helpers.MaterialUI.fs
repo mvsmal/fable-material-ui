@@ -169,6 +169,7 @@ module Props =
         | Elevation24 of CSSProp list
         | Invisible of CSSProp list
         | Badge of CSSProp list
+        | ColorInherit of CSSProp list
         | ColorPrimary of CSSProp list
         | ColorSecondary of CSSProp list
         | ColorAction of CSSProp list
@@ -194,7 +195,6 @@ module Props =
         | ExtendedFab of CSSProp list
         | FocusVisible of CSSProp list
         | Disabled of CSSProp list
-        | ColorInherit of CSSProp list
         | Mini of CSSProp list
         | SizeSmall of CSSProp list
         | SizeLarge of CSSProp list
@@ -349,6 +349,7 @@ module Props =
         | Elevation24 of string
         | Invisible of string
         | Badge of string
+        | ColorInherit of string
         | ColorPrimary of string
         | ColorSecondary of string
         | ColorAction of string
@@ -373,7 +374,6 @@ module Props =
         | ExtendedFab of string
         | FocusVisible of string
         | Disabled of string
-        | ColorInherit of string
         | Mini of string
         | SizeSmall of string
         | SizeLarge of string
@@ -1304,6 +1304,11 @@ let Icon = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Icon"
 let inline icon b c = materialElPropsList Icon b c
 // #endregion
 
+// #region IconButton
+let IconButton = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/IconButton"
+let inline iconButton b c = materialElPropsList IconButton b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1474,6 +1479,7 @@ type OverridesProp =
     | MuiGridListTile of IStyles list
     | MuiGridListTileBar of IStyles list
     | MuiIcon of IStyles list
+    | MuiIconButton of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

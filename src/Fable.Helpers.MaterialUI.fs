@@ -252,6 +252,46 @@ module Props =
         | Row of CSSProp list
         | Error of CSSProp list
         | Asterisk of CSSProp list
+        | Item of CSSProp list
+        | ZeroMinWidth of CSSProp list
+        | ``Direction-xs-column`` of CSSProp list
+        | ``Direction-xs-column-reverse`` of CSSProp list
+        | ``Direction-xs-row-reverse`` of CSSProp list
+        | ``Wrap-xs-nowrap`` of CSSProp list
+        | ``Wrap-xs-wrap-reverse`` of CSSProp list
+        | ``Align-items-xs-center`` of CSSProp list
+        | ``Align-items-xs-flex-start`` of CSSProp list
+        | ``Align-items-xs-flex-end`` of CSSProp list
+        | ``Align-items-xs-baseline`` of CSSProp list
+        | ``Align-content-xs-center`` of CSSProp list
+        | ``Align-content-xs-flex-start`` of CSSProp list
+        | ``Align-content-xs-flex-end`` of CSSProp list
+        | ``Align-content-xs-space-between`` of CSSProp list
+        | ``Align-content-xs-space-around`` of CSSProp list
+        | ``Justify-xs-center`` of CSSProp list
+        | ``Justify-xs-flex-end`` of CSSProp list
+        | ``Justify-xs-space-between`` of CSSProp list
+        | ``Justify-xs-space-around`` of CSSProp list
+        | ``Justify-xs-space-evenly`` of CSSProp list
+        | ``Spacing-xs-8`` of CSSProp list
+        | ``Spacing-xs-16`` of CSSProp list
+        | ``Spacing-xs-24`` of CSSProp list
+        | ``Spacing-xs-32`` of CSSProp list
+        | ``Spacing-xs-40`` of CSSProp list
+        | ``Grid-xs-auto`` of CSSProp list
+        | ``Grid-xs-true`` of CSSProp list
+        | ``Grid-xs-1`` of CSSProp list
+        | ``Grid-xs-2`` of CSSProp list
+        | ``Grid-xs-3`` of CSSProp list
+        | ``Grid-xs-4`` of CSSProp list
+        | ``Grid-xs-5`` of CSSProp list
+        | ``Grid-xs-6`` of CSSProp list
+        | ``Grid-xs-7`` of CSSProp list
+        | ``Grid-xs-8`` of CSSProp list
+        | ``Grid-xs-9`` of CSSProp list
+        | ``Grid-xs-10`` of CSSProp list
+        | ``Grid-xs-11`` of CSSProp list
+        | ``Grid-xs-12`` of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -379,6 +419,48 @@ module Props =
         | Row of string
         | Error of string
         | Asterisk of string
+        | Item of string
+        | ZeroMinWidth of string
+        | ``Direction-xs-column`` of string
+        | ``Direction-xs-column-reverse`` of string
+        | ``Direction-xs-row-reverse`` of string
+        | ``Wrap-xs-nowrap`` of string
+        | ``Wrap-xs-wrap-reverse`` of string
+        | ``Align-items-xs-center`` of string
+        | ``Align-items-xs-flex-start`` of string
+        | ``Align-items-xs-flex-end`` of string
+        | ``Align-items-xs-baseline`` of string
+        | ``Align-content-xs-center`` of string
+        | ``Align-content-xs-flex-start`` of string
+        | ``Align-content-xs-flex-end`` of string
+        | ``Align-content-xs-space-between`` of string
+        | ``Align-content-xs-space-around`` of string
+        | ``Justify-xs-center`` of string
+        | ``Justify-xs-flex-end`` of string
+        | ``Justify-xs-space-between`` of string
+        | ``Justify-xs-space-around`` of string
+        | ``Justify-xs-space-evenly`` of string
+        | ``Spacing-xs-8`` of string
+        | ``Spacing-xs-16`` of string
+        | ``Spacing-xs-24`` of string
+        | ``Spacing-xs-32`` of string
+        | ``Spacing-xs-40`` of string
+        | ``Grid-xs-auto`` of string
+        | ``Grid-xs-true`` of string
+        | ``Grid-xs-1`` of string
+        | ``Grid-xs-2`` of string
+        | ``Grid-xs-3`` of string
+        | ``Grid-xs-4`` of string
+        | ``Grid-xs-5`` of string
+        | ``Grid-xs-6`` of string
+        | ``Grid-xs-7`` of string
+        | ``Grid-xs-8`` of string
+        | ``Grid-xs-9`` of string
+        | ``Grid-xs-10`` of string
+        | ``Grid-xs-11`` of string
+        | ``Grid-xs-12`` of string
+        
+
         interface IClassNames
 
     type ClassesProp =
@@ -978,7 +1060,7 @@ let inline formGroup b c = materialElPropsList FormGroup b c
 // #endregion
 
 // #region FormHelperText
-let FormHelperText = importDefault<ComponentClass<IHTMLProp>> "@materil-ui/core/FormHelperText"
+let FormHelperText = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormHelperText"
 let inline formHelperText b c = materialElPropsList FormHelperText b c
 // #endregion
 
@@ -989,6 +1071,103 @@ type FormLabelProp =
 
 let FormLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormLabel"
 let inline formLabel b c = materialElPropsList FormLabel b c
+// #endregion
+
+// #region Grid
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type AlignContent =
+    | Stretch
+    | Center
+    | [<CompiledName("flex-start")>] FlexStart
+    | [<CompiledName("flex-end")>] FlexEnd
+    | [<CompiledName("space-between")>] SpaceBetween
+    | [<CompiledName("space-around")>] SpaceAround
+
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type Justify =
+    | Center
+    | [<CompiledName("flex-start")>] FlexStart
+    | [<CompiledName("flex-end")>] FlexEnd
+    | [<CompiledName("space-between")>] SpaceBetween
+    | [<CompiledName("space-around")>] SpaceAround
+    | [<CompiledName("space-evenly")>] SpaceEvenly
+
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type AlignItems =
+    | Stretch
+    | Center
+    | BaseLine
+    | [<CompiledName("flex-start")>] FlexStart
+    | [<CompiledName("flex-end")>] FlexEnd
+
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type Direction =
+    | Row
+    | Column
+    | [<CompiledName("row-reverse")>] RowReverse
+    | [<CompiledName("column-reverse")>] ColumnReverse
+
+[<RequireQualifiedAccess>]
+type Spacing =
+    | ``0`` = 0
+    | ``8`` = 8
+    | ``16`` = 16
+    | ``24`` = 24
+    | ``32`` = 32
+    | ``40`` = 40
+
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type Wrap =
+    | Nowrap
+    | Wrap
+    | [<CompiledName("wrap-reverse")>] WrapReverse
+
+[<RequireQualifiedAccess>]
+type GridSizeNum =
+    | ``1`` = 1
+    | ``2`` = 2
+    | ``3`` = 3
+    | ``4`` = 4
+    | ``5`` = 5
+    | ``6`` = 6
+    | ``7`` = 7
+    | ``8`` = 8
+    | ``9`` = 9
+    | ``10`` = 10
+    | ``11`` = 11
+    | ``12`` = 12
+
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type GridSizeEnum =
+    | Auto
+
+type GridSize = U3<bool, GridSizeEnum, GridSizeNum>
+
+type GridProp =
+    | AlignContent of AlignContent
+    | AlignItems of AlignItems
+    | Container of bool
+    | Direction of Direction
+    | Item of bool
+    | Justify of Justify
+    | Lg of GridSize
+    | Md of GridSize
+    | Sm of GridSize
+    | Xl of GridSize
+    | Xs of GridSize
+    | Spacing of Spacing
+    | Wrap of Wrap
+    | ZeroMinWidth of bool
+    interface IHTMLProp
+
+let Grid = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Grid"
+let inline grid b c = materialElPropsList Grid b c
 // #endregion
 
 // #region Paper
@@ -1156,6 +1335,7 @@ type OverridesProp =
     | MuiFormGroup of IStyles list
     | MuiFormHelperText of IStyles list
     | MuiFormLabel of IStyles list
+    | MuiGrid of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

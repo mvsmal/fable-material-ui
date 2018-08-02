@@ -48,7 +48,7 @@ paket add Fable.Helpers.MaterialUI
 * FormGroup - ✓
 * FormHelperText - ✓
 * FormLabel - ✓
-* Grid
+* Grid - ✓
   * GridList
   * GridListTile
   * GridListTileBar

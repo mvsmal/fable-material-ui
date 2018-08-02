@@ -246,6 +246,8 @@ module Props =
         | Expanded of CSSProp list
         | Focused of CSSProp list
         | ExpandIcon of CSSProp list
+        | MarginNormal of CSSProp list
+        | MarginDense of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -367,6 +369,8 @@ module Props =
         | Expanded of string
         | Focused of string
         | ExpandIcon of string
+        | MarginNormal of string
+        | MarginDense of string
         interface IClassNames
 
     type ClassesProp =
@@ -406,6 +410,7 @@ module Props =
         | Open of bool
         | TransitionDuration of TransitionDuration
         | In of bool
+        | FullWidth of bool
         interface IHTMLProp
 
     type StyleOption =
@@ -582,7 +587,6 @@ type ButtonVariant =
 
 type ButtonProp =
     | DisableFocusRipple of bool
-    | FullWidth of bool
     | Href of string
     | Mini of bool
     | Size of ButtonSize // TODO make generic
@@ -782,7 +786,6 @@ type DialogProp<'a> =
     | DisableBackdropClick of bool
     | DisableEscapeKeyDown of bool
     | FullScreen of bool
-    | FullWidth of bool
     | MaxWidth of MaterialSize
     | OnBackdropClick of (obj->unit)
     | OnClose of (obj->unit)
@@ -922,6 +925,22 @@ type FadeProp =
 
 let Fade = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Fade"
 let inline fade b c = materialElPropsList Fade b c
+// #endregion
+
+// #region FormControl
+[<StringEnum>]
+type FormControlMargin =
+    | None
+    | Dense
+    | Normal
+
+type FormControlProp =
+    | Error of bool
+    | Margin of FormControlMargin
+    interface IHTMLProp
+
+let FormControl = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormControl"
+let inline formControl b c = materialElPropsList FormControl b c
 // #endregion
 
 // #region Paper
@@ -1084,6 +1103,7 @@ type OverridesProp =
     | MuiExpansionPanelActions of IStyles list
     | MuiExpansionPanelDetails of IStyles list
     | MuiExpansionPanelSummary of IStyles list
+    | MuiFormControl of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

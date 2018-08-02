@@ -245,7 +245,6 @@ module Props =
         | Modal of CSSProp list
         | Expanded of CSSProp list
         | Focused of CSSProp list
-        | Content of CSSProp list
         | ExpandIcon of CSSProp list
         interface IStyles
 
@@ -367,7 +366,6 @@ module Props =
         | Modal of string
         | Expanded of string
         | Focused of string
-        | Content of string
         | ExpandIcon of string
         interface IClassNames
 
@@ -896,7 +894,7 @@ let ExpansionPanelActions =
 let inline expansionPanelActions b c = materialElPropsList ExpansionPanelActions b c
 // #endregion
 
-// #region ExpansionPanelActions
+// #region ExpansionPanelDetails
 let ExpansionPanelDetails =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanelDetails"
 let inline expansionPanelDetails b c = materialElPropsList ExpansionPanelDetails b c

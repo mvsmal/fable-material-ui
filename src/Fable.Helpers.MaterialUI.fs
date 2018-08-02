@@ -9,142 +9,130 @@ open React.Props
 [<AutoOpen>]
 module Props =
     //#region Themes
-    type PaletteIntention = {
-        light: string
-        main: string
-        dark: string
-        contrastText: string
-    }
+    type IPaletteIntention =
+        abstract member light: string
+        abstract member main: string
+        abstract member dark: string
+        abstract member contrastText: string
 
     [<StringEnum>]
     type PaletteType =
         | Dark
         | Light
 
-    type PaletteCommon = {
-        black: string
-        white: string
-    }
+    type IPaletteCommon =
+        abstract member black: string
+        abstract member white: string
 
-    type PaletteAction = {
-        active: string
-        hover: string
-        hoverOpacity: float
-        selected: string
-        disabled: string
-        disabledBackground: string
-    }
+    type IPaletteAction =
+        abstract member active: string
+        abstract member hover: string
+        abstract member hoverOpacity: float
+        abstract member selected: string
+        abstract member disabled: string
+        abstract member disabledBackground: string
 
-    type PaletteBackground = {
-        paper: string
-        ``default``: string
-    }
+    type IPaletteBackground =
+        abstract member paper: string
+        abstract member ``default``: string
 
-    type PaletteText = {
-        primary: string
-        secondary: string
-        disabled: string
-        hint: string
-    }
+    type IPaletteText =
+        abstract member primary: string
+        abstract member secondary: string
+        abstract member disabled: string
+        abstract member hint: string
 
-    type Color = {
-        ``50``: string
-        ``100``: string
-        ``200``: string
-        ``300``: string
-        ``400``: string
-        ``500``: string
-        ``600``: string
-        ``700``: string
-        ``800``: string
-        ``900``: string
-        A100: string
-        A200: string
-        A400: string
-        A700: string
-    }
+    type IColor =
+        abstract member ``50``: string
+        abstract member ``100``: string
+        abstract member ``200``: string
+        abstract member ``300``: string
+        abstract member ``400``: string
+        abstract member ``500``: string
+        abstract member ``600``: string
+        abstract member ``700``: string
+        abstract member ``800``: string
+        abstract member ``900``: string
+        abstract member A100: string
+        abstract member A200: string
+        abstract member A400: string
+        abstract member A700: string
 
-    type Palette = {
-        common: PaletteCommon
-        ``type``: PaletteType
-        primary: PaletteIntention
-        secondary: PaletteIntention
-        error: PaletteIntention
-        grey: Color
-        contrastThreshold: int
-        getContrastText: (string->string)
-        augmentColor: (PaletteIntention->unit)
-        tonalOffset: float
-        text: PaletteText
-        divider: string
-        background: PaletteBackground
-        action: PaletteAction
-    }
+    type IPalette =
+        abstract member common: IPaletteCommon
+        abstract member ``type``: PaletteType
+        abstract member primary: IPaletteIntention
+        abstract member secondary: IPaletteIntention
+        abstract member error: IPaletteIntention
+        abstract member grey: IColor
+        abstract member contrastThreshold: int
+        abstract member getContrastText: (string->string)
+        abstract member augmentColor: (IPaletteIntention->unit)
+        abstract member tonalOffset: float
+        abstract member text: IPaletteText
+        abstract member divider: string
+        abstract member background: IPaletteBackground
+        abstract member action: IPaletteAction
 
     [<StringEnum>]
     type TextDirection =
         | Ltr
         | Rtl
 
-    type Shape = {
-        borderRadius: int
-    }
+    type IShape =
+        abstract member borderRadius: int
 
-    type Spacing = {
-        ``unit``: int
-    }
+    type ISpacing =
+        abstract member ``unit``: int
 
-    type ZIndex = {
-        mobileStepper: int
-        appBar: int
-        drawer: int
-        modal: int
-        snackbar: int
-        tooltip: int
-    }
-    type Typography = {
-        fontSize: string
-        fontWeight: int
-        fontFamily: string
-        letterSpacing: string
-        lineHeight: string
-        marginLeft: string
-        color: string
-        textTransform: string
-    }
+    type ZIndex =
+        abstract member mobileStepper: int
+        abstract member appBar: int
+        abstract member drawer: int
+        abstract member modal: int
+        abstract member snackbar: int
+        abstract member tooltip: int
 
-    type ThemeTypography = {
-        round: (float->float)
-        pxToRem: (float->string)
-        fontFamily: string
-        fontSize: string
-        fontWeightLight: int
-        fontWeightRegular: int
-        fontWeightMedium: int
-        display4: Typography
-        dispaly3: Typography
-        display2: Typography
-        display1: Typography
-        headline: Typography
-        title: Typography
-        subheading: Typography
-        body2: Typography
-        body1: Typography
-        caption: Typography
-        button: Typography
-    }
+    type ITypography =
+        abstract member fontSize: string
+        abstract member fontWeight: int
+        abstract member fontFamily: string
+        abstract member letterSpacing: string
+        abstract member lineHeight: string
+        abstract member marginLeft: string
+        abstract member color: string
+        abstract member textTransform: string
 
-    type Theme = {
-        direction: TextDirection
-        overrides: obj
-        palette: Palette
-        props: obj
-        shadows: string list
-        typography: Typography
-        shape: Shape
-        spacing: Spacing
-        zIndex: ZIndex
-    }
+    type IThemeTypography =
+        abstract member round: (float->float)
+        abstract member pxToRem: (float->string)
+        abstract member fontFamily: string
+        abstract member fontSize: string
+        abstract member fontWeightLight: int
+        abstract member fontWeightRegular: int
+        abstract member fontWeightMedium: int
+        abstract member display4: ITypography
+        abstract member dispaly3: ITypography
+        abstract member display2: ITypography
+        abstract member display1: ITypography
+        abstract member headline: ITypography
+        abstract member title: ITypography
+        abstract member subheading: ITypography
+        abstract member body2: ITypography
+        abstract member body1: ITypography
+        abstract member caption: ITypography
+        abstract member button: ITypography
+
+    type ITheme =
+        abstract member direction: TextDirection
+        abstract member overrides: obj
+        abstract member palette: IPalette
+        abstract member props: obj
+        abstract member shadows: string list
+        abstract member typography: ITypography
+        abstract member shape: IShape
+        abstract member spacing: ISpacing
+        abstract member zIndex: ZIndex
     //#endregion
 
     type IStyles = interface end
@@ -261,7 +249,7 @@ module Props =
     [<RequireQualifiedAccess>]
     type StyleType =
         | Styles of IStyles list
-        | Func of (Theme->IStyles list)
+        | Func of (ITheme->IStyles list)
 
     type IClassNames = interface end
 
@@ -448,25 +436,25 @@ module Props =
         | Bottom
 
 module Colors =
-    let red = importDefault<Props.Color> "@material-ui/core/colors/red";
-    let pink = importDefault<Props.Color> "@material-ui/core/colors/pink";
-    let purple = importDefault<Props.Color> "@material-ui/core/colors/purple";
-    let deepPurple = importDefault<Props.Color> "@material-ui/core/colors/deepPurple";
-    let indigo = importDefault<Props.Color> "@material-ui/core/colors/indigo";
-    let blue = importDefault<Props.Color> "@material-ui/core/colors/blue";
-    let lightBlue = importDefault<Props.Color> "@material-ui/core/colors/lightBlue";
-    let cyan = importDefault<Props.Color> "@material-ui/core/colors/cyan";
-    let teal = importDefault<Props.Color> "@material-ui/core/colors/teal";
-    let green = importDefault<Props.Color> "@material-ui/core/colors/green";
-    let lightGreen = importDefault<Props.Color> "@material-ui/core/colors/lightGreen";
-    let lime = importDefault<Props.Color> "@material-ui/core/colors/lime";
-    let yellow = importDefault<Props.Color> "@material-ui/core/colors/yellow";
-    let amber = importDefault<Props.Color> "@material-ui/core/colors/amber";
-    let orange = importDefault<Props.Color> "@material-ui/core/colors/orange";
-    let deepOrange = importDefault<Props.Color> "@material-ui/core/colors/deepOrange";
-    let brown = importDefault<Props.Color> "@material-ui/core/colors/brown";
-    let grey = importDefault<Props.Color> "@material-ui/core/colors/grey";
-    let blueGrey = importDefault<Props.Color> "@material-ui/core/colors/blueGrey";
+    let red = importDefault<Props.IColor> "@material-ui/core/colors/red";
+    let pink = importDefault<Props.IColor> "@material-ui/core/colors/pink";
+    let purple = importDefault<Props.IColor> "@material-ui/core/colors/purple";
+    let deepPurple = importDefault<Props.IColor> "@material-ui/core/colors/deepPurple";
+    let indigo = importDefault<Props.IColor> "@material-ui/core/colors/indigo";
+    let blue = importDefault<Props.IColor> "@material-ui/core/colors/blue";
+    let lightBlue = importDefault<Props.IColor> "@material-ui/core/colors/lightBlue";
+    let cyan = importDefault<Props.IColor> "@material-ui/core/colors/cyan";
+    let teal = importDefault<Props.IColor> "@material-ui/core/colors/teal";
+    let green = importDefault<Props.IColor> "@material-ui/core/colors/green";
+    let lightGreen = importDefault<Props.IColor> "@material-ui/core/colors/lightGreen";
+    let lime = importDefault<Props.IColor> "@material-ui/core/colors/lime";
+    let yellow = importDefault<Props.IColor> "@material-ui/core/colors/yellow";
+    let amber = importDefault<Props.IColor> "@material-ui/core/colors/amber";
+    let orange = importDefault<Props.IColor> "@material-ui/core/colors/orange";
+    let deepOrange = importDefault<Props.IColor> "@material-ui/core/colors/deepOrange";
+    let brown = importDefault<Props.IColor> "@material-ui/core/colors/brown";
+    let grey = importDefault<Props.IColor> "@material-ui/core/colors/grey";
+    let blueGrey = importDefault<Props.IColor> "@material-ui/core/colors/blueGrey";
 
 open Props
 
@@ -1049,8 +1037,8 @@ type ThemeProp =
 
 [<Erase>]
 type ProviderTheme =
-    | Theme of Theme
-    | Func of (Theme->ThemeProp list)
+    | Theme of ITheme
+    | Func of (ITheme->ThemeProp list)
 
 type MuiThemeProviderProp =
     | Theme of ProviderTheme
@@ -1061,7 +1049,7 @@ let MuiThemeProvider = importMember<ComponentClass<IHTMLProp>> "@material-ui/cor
 let inline muiThemeProvider b c = materialElPropsList MuiThemeProvider b c
 
 [<Import("createMuiTheme", "@material-ui/core/styles")>]
-let private createMuiTheme'<[<Pojo>]'O> (options: 'O) : Theme = jsNative
+let private createMuiTheme'<[<Pojo>]'O> (options: 'O) : ITheme = jsNative
 
 let createMuiTheme (options: ThemeProp list) =
     let op = (keyValueList CaseRules.LowerFirst options |> unbox)

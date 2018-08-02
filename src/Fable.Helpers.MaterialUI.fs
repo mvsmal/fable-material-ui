@@ -171,7 +171,9 @@ module Props =
         | Badge of CSSProp list
         | ColorPrimary of CSSProp list
         | ColorSecondary of CSSProp list
+        | ColorAction of CSSProp list
         | ColorError of CSSProp list
+        | ColorDisabled of CSSProp list
         | Label of CSSProp list
         | Text of CSSProp list
         | TextPrimary of CSSProp list
@@ -304,6 +306,7 @@ module Props =
         | Subtitle of CSSProp list
         | ActionIcon of CSSProp list
         | ActionIconActionPosLeft of CSSProp list
+        | FontSizeInherit of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -348,7 +351,9 @@ module Props =
         | Badge of string
         | ColorPrimary of string
         | ColorSecondary of string
+        | ColorAction of string
         | ColorError of string
+        | ColorDisabled of string
         | Text of string
         | TextPrimary of string
         | TextSecondary of string
@@ -483,6 +488,7 @@ module Props =
         | Subtitle of string
         | ActionIcon of string
         | ActionIconActionPosLeft of string
+        | FontSizeInherit of string
         interface IClassNames
 
     type ClassesProp =
@@ -1272,6 +1278,32 @@ let Hidden = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Hidden"
 let inline hidden b c = materialElPropsList Hidden b c
 // #endregion
 
+// #region Icon
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type IconColor =
+    | Inherit
+    | Primary
+    | Secondary
+    | Action
+    | Error
+    | Disabled
+
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type IconFontSize =
+    | Inherit
+    | Default
+
+type IconProp =
+    | Color of IconColor
+    | FontSize of IconFontSize
+    interface IHTMLProp
+
+let Icon = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Icon"
+let inline icon b c = materialElPropsList Icon b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1441,6 +1473,7 @@ type OverridesProp =
     | MuiGridList of IStyles list
     | MuiGridListTile of IStyles list
     | MuiGridListTileBar of IStyles list
+    | MuiIcon of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

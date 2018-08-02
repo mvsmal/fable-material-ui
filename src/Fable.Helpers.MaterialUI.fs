@@ -405,6 +405,7 @@ module Props =
         | PaperProps of IHTMLProp list
         | Open of bool
         | TransitionDuration of TransitionDuration
+        | In of bool
         interface IHTMLProp
 
     type StyleOption =
@@ -758,7 +759,6 @@ type CollapseTransitionDuration =
 
 type CollapseProp = 
     | CollapseHeight of string
-    | In of bool
     | Timeout of CollapseTransitionDuration
     interface IHTMLProp
 
@@ -913,6 +913,15 @@ let inline expansionPanelSummary (b: IHTMLProp list) c =
     let newProps =
         props |> propertyToPascalCase "iconButtonProps" |> unbox
     materialElPropsObj ExpansionPanelSummary newProps c
+// #endregion
+
+// #region Fade
+type FadeProp =
+    | Timeout of TransitionDuration
+    interface IHTMLProp
+
+let Fade = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Fade"
+let inline fade b c = materialElPropsList Fade b c
 // #endregion
 
 // #region Paper

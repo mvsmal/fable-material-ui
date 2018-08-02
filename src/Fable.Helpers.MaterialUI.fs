@@ -251,6 +251,7 @@ module Props =
         | LabelPlacementStart of CSSProp list
         | Row of CSSProp list
         | Error of CSSProp list
+        | Asterisk of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -377,6 +378,7 @@ module Props =
         | LabelPlacementStart of string
         | Row of string
         | Error of string
+        | Asterisk of string
         interface IClassNames
 
     type ClassesProp =
@@ -980,6 +982,15 @@ let FormHelperText = importDefault<ComponentClass<IHTMLProp>> "@materil-ui/core/
 let inline formHelperText b c = materialElPropsList FormHelperText b c
 // #endregion
 
+// #region FormLabel
+type FormLabelProp =
+    | Focused of bool
+    interface IHTMLProp
+
+let FormLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormLabel"
+let inline formLabel b c = materialElPropsList FormLabel b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1144,6 +1155,7 @@ type OverridesProp =
     | MuiFormControlLabel of IStyles list
     | MuiFormGroup of IStyles list
     | MuiFormHelperText of IStyles list
+    | MuiFormLabel of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

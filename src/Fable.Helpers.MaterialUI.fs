@@ -243,6 +243,7 @@ module Props =
         | PaperAnchorDockedTop of CSSProp list
         | PaperAnchorDockedBottom of CSSProp list
         | Modal of CSSProp list
+        | Expanded of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -361,6 +362,7 @@ module Props =
         | PaperAnchorDockedTop of string
         | PaperAnchorDockedBottom of string
         | Modal of string
+        | Expanded of string
         interface IClassNames
 
     type ClassesProp =
@@ -866,6 +868,22 @@ let drawer (b: IHTMLProp list) c =
     materialElPropsObj Drawer newProps c
 // #endregion
 
+// #region ExpansionPanel
+type ExpansionPanelProp =
+    | Expanded of bool
+    | DefaultExpanded of bool
+    | OnChange of (obj*bool->unit)
+    | CollapseProps of IHTMLProp list
+    interface IHTMLProp
+
+let ExpansionPanel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanel"
+let expansionPanel b c =
+    let props = keyValueList CaseRules.LowerFirst b
+    let newProps =
+        props |> propertyToPascalCase "collapseProps" |> unbox
+    materialElPropsObj ExpansionPanel newProps c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1022,6 +1040,7 @@ type OverridesProp =
     | MuiDialogContentText of IStyles list
     | MuiDivider of IStyles list
     | MuiDrawer of IStyles list
+    | MuiExpansionPanel of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

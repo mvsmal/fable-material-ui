@@ -315,6 +315,8 @@ module Props =
         | InputMultiline of CSSProp list
         | InputType of CSSProp list
         | InputTypeSearch of CSSProp list
+        | PositionStart of CSSProp list
+        | PositionEnd of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -505,6 +507,8 @@ module Props =
         | InputMultiline of string
         | InputType of string
         | InputTypeSearch of string
+        | PositionStart of string
+        | PositionEnd of string
         interface IClassNames
 
     type ClassesProp =
@@ -1341,9 +1345,25 @@ type InputProp<'a> =
     | Multiline of bool
     | RowsMax of int
     | StartAdornment of ReactElement
+    interface IHTMLProp
 
 let Input = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Input"
 let inline input b = materialElPropsList Input b []
+// #endregion
+
+// #region InputAdornment
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type InputAdornmentPosition =
+    | Start
+    | End
+
+type InputAdornmentProp =
+    | Position of InputAdornmentPosition
+    interface IHTMLProp
+
+let InputAdornment = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/InputAdornment"
+let inline inputAdornment b c = materialElPropsList InputAdornment b c
 // #endregion
 
 // #region Paper
@@ -1518,6 +1538,7 @@ type OverridesProp =
     | MuiIcon of IStyles list
     | MuiIconButton of IStyles list
     | MuiInput of IStyles list
+    | MuiInputAdornment of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

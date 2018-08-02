@@ -890,6 +890,12 @@ let ExpansionPanelActions =
 let inline expansionPanelActions b c = materialElPropsList ExpansionPanelActions b c
 // #endregion
 
+// #region ExpansionPanelActions
+let ExpansionPanelDetails =
+    importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanelDetails"
+let inline expansionPanelDetails b c = materialElPropsList ExpansionPanelDetails b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1048,6 +1054,7 @@ type OverridesProp =
     | MuiDrawer of IStyles list
     | MuiExpansionPanel of IStyles list
     | MuiExpansionPanelActions of IStyles list
+    | MuiExpansionPanelDetails of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

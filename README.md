@@ -44,7 +44,7 @@ paket add Fable.Helpers.MaterialUI
   * ExpansionPanelSummary - ✓
 * Fade - ✓
 * FormControl - ✓
-  * FromControlLabel
+  * FromControlLabel - ✓
 * FormGroup
 * FormHelperText
 * FormLabel

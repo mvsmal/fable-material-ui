@@ -248,6 +248,7 @@ module Props =
         | ExpandIcon of CSSProp list
         | MarginNormal of CSSProp list
         | MarginDense of CSSProp list
+        | LabelPlacementStart of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -371,6 +372,7 @@ module Props =
         | ExpandIcon of string
         | MarginNormal of string
         | MarginDense of string
+        | LabelPlacementStart of string
         interface IClassNames
 
     type ClassesProp =
@@ -411,6 +413,7 @@ module Props =
         | TransitionDuration of TransitionDuration
         | In of bool
         | FullWidth of bool
+        | Label of ReactElement
         interface IHTMLProp
 
     type StyleOption =
@@ -492,6 +495,7 @@ let materialElPropsObj<[<Pojo>]'P when 'P :> IHTMLProp>
 
 // #region AppBar
 [<StringEnum>]
+[<RequireQualifiedAccess>]
 type AppBarPosition =
     | Fixed
     | Absolute
@@ -530,11 +534,12 @@ let inline backdrop b = materialElPropsList Backdrop b []
 
 // #region Badge
 [<StringEnum>]
+[<RequireQualifiedAccess>]
 type BadgeColor =
-    | [<CompiledName("default")>]Default
-    | [<CompiledName("primary")>]Primary
-    | [<CompiledName("secondary")>]Secondary
-    | [<CompiledName("error")>]Error
+    | Default
+    | Primary
+    | Secondary
+    | Error
 
 type BadgeProp =
     | Color of BadgeColor
@@ -558,7 +563,6 @@ let inline bottomNavigation b c = materialElPropsList BottomNavigation b c
 
 // #region BottomNavigationAction
 type BottomNavigationActionProp =
-    | Label of ReactElement
     | ShowLabel of bool
     | Value of obj
     interface IHTMLProp
@@ -570,12 +574,14 @@ let inline bottomNavigationAction b = materialElPropsList BottomNavigationAction
 
 // #region Button
 [<StringEnum>]
+[<RequireQualifiedAccess>]
 type ButtonSize =
     | Small
     | Medium
     | Large
 
 [<StringEnum>]
+[<RequireQualifiedAccess>]
 type ButtonVariant =
     | Text
     | Flat
@@ -599,6 +605,7 @@ let inline button b c = materialElPropsList Button b c
 
 // #region ButtonBase
 [<StringEnum>]
+[<RequireQualifiedAccess>]
 type ButtonBaseType =
     | Button
     | Submit
@@ -671,7 +678,7 @@ let inline cardMedia b = materialElPropsList CardMedia b []
 // #endregion
 
 // #region Checkbox
-type CheckboxProps =
+type CheckboxProp =
     | Checked of bool
     | CheckedIcon of ReactElement
     | Indeterminate of bool
@@ -688,16 +695,10 @@ let inline checkbox b = materialElPropsList Checkbox b []
 // #endregion
 
 // #region Chip
-[<Erase>]
-type ChipLabel =
-    | El of ReactElement
-    | Str of string
-
 type ChipProp =
     | Avatar of ReactElement
     | Clickable of bool
     | DeleteIcon of ReactElement
-    | Label of ChipLabel
     | OnDelete of (React.FormEvent->unit)
     interface IHTMLProp
 
@@ -712,6 +713,7 @@ type CircularProgressSize =
     | Str of string
 
 [<StringEnum>]
+[<RequireQualifiedAccess>]
 type CircularProgressVariant =
     | Determinate
     | Indeterminate
@@ -778,6 +780,7 @@ let inline cssBaseline b = materialElPropsList CssBaseline b []
 
 // #region Dialog
 [<StringEnum>]
+[<RequireQualifiedAccess>]
 type DialogScroll =
     | Body
     | Paper
@@ -850,6 +853,7 @@ let inline divider b = materialElPropsList Divider b []
 
 // #region Drawer
 [<StringEnum>]
+[<RequireQualifiedAccess>]
 type DrawerVariant =
     | Permanent
     | Persistent
@@ -929,6 +933,7 @@ let inline fade b c = materialElPropsList Fade b c
 
 // #region FormControl
 [<StringEnum>]
+[<RequireQualifiedAccess>]
 type FormControlMargin =
     | None
     | Dense
@@ -941,6 +946,23 @@ type FormControlProp =
 
 let FormControl = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormControl"
 let inline formControl b c = materialElPropsList FormControl b c
+// #endregion
+
+// #region FormControlLabel
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type FormControlLabelPlacement =
+    | End
+    | Start
+
+type FormControlLabelProp =
+    | Control of ReactElement
+    | LabelPlacement of FormControlLabelPlacement
+    | OnChange of (obj*bool->unit)
+    interface IHTMLProp
+
+let FormControlLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormControlLabel"
+let inline formControlLabel b c = materialElPropsList FormControlLabel b c
 // #endregion
 
 // #region Paper
@@ -1104,6 +1126,7 @@ type OverridesProp =
     | MuiExpansionPanelDetails of IStyles list
     | MuiExpansionPanelSummary of IStyles list
     | MuiFormControl of IStyles list
+    | MuiFormControlLabel of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

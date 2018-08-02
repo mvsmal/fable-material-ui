@@ -244,6 +244,9 @@ module Props =
         | PaperAnchorDockedBottom of CSSProp list
         | Modal of CSSProp list
         | Expanded of CSSProp list
+        | Focused of CSSProp list
+        | Content of CSSProp list
+        | ExpandIcon of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -363,6 +366,9 @@ module Props =
         | PaperAnchorDockedBottom of string
         | Modal of string
         | Expanded of string
+        | Focused of string
+        | Content of string
+        | ExpandIcon of string
         interface IClassNames
 
     type ClassesProp =
@@ -896,6 +902,21 @@ let ExpansionPanelDetails =
 let inline expansionPanelDetails b c = materialElPropsList ExpansionPanelDetails b c
 // #endregion
 
+// #region ExpansionPanelSummary
+type ExpansionPanelSummaryProp =
+    | ExpandIcon of ReactElement
+    | IconButtonProps of IHTMLProp list
+    interface IHTMLProp
+
+let ExpansionPanelSummary =
+    importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanelSummary"
+let inline expansionPanelSummary (b: IHTMLProp list) c =
+    let props = keyValueList CaseRules.LowerFirst b
+    let newProps =
+        props |> propertyToPascalCase "iconButtonProps" |> unbox
+    materialElPropsObj ExpansionPanelSummary newProps c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1055,6 +1076,7 @@ type OverridesProp =
     | MuiExpansionPanel of IStyles list
     | MuiExpansionPanelActions of IStyles list
     | MuiExpansionPanelDetails of IStyles list
+    | MuiExpansionPanelSummary of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

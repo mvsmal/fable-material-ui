@@ -559,7 +559,8 @@ module Props =
         | Xs
         | Sm
         | Md
-        | [<CompiledName("")>] False
+        | Lg
+        | Xl
 
     [<StringEnum>]
     [<RequireQualifiedAccess>]
@@ -901,11 +902,19 @@ type DialogScroll =
     | Body
     | Paper
 
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type DialogMaxWidth =
+    | Xs
+    | Sm
+    | Md
+    | [<CompiledName("")>] False
+
 type DialogProp<'a> =
     | DisableBackdropClick of bool
     | DisableEscapeKeyDown of bool
     | FullScreen of bool
-    | MaxWidth of MaterialSize
+    | MaxWidth of DialogMaxWidth
     | OnBackdropClick of (obj->unit)
     | OnClose of (obj->unit)
     | OnEnter of (obj->unit)
@@ -1232,6 +1241,35 @@ type GrowProp =
 
 let Grow = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Grow"
 let inline grow b c = materialElPropsList Grow b c
+// #endregion
+
+// #region Hidden
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type HiddenImplementation =
+    | Js
+    | Css
+
+type HiddenOnly = U2<MaterialSize, MaterialSize list>
+
+type HiddenProp =
+    | Implementation of HiddenImplementation
+    | InitialWidth of MaterialSize
+    | LgDown of bool
+    | LgUp of bool
+    | MdDown of bool
+    | MdUp of bool
+    | Only of HiddenOnly
+    | SmDown of bool
+    | SmUp of bool
+    | XlDown of bool
+    | XlUp of bool
+    | XsDown of bool
+    | XsUp of bool
+    interface IHTMLProp
+
+let Hidden = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Hidden"
+let inline hidden b c = materialElPropsList Hidden b c
 // #endregion
 
 // #region Paper

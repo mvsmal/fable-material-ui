@@ -292,6 +292,18 @@ module Props =
         | ``Grid-xs-10`` of CSSProp list
         | ``Grid-xs-11`` of CSSProp list
         | ``Grid-xs-12`` of CSSProp list
+        | Tile of CSSProp list
+        | ImgFullHeight of CSSProp list
+        | ImgFullWidth of CSSProp list
+        | TitlePositionBottom of CSSProp list
+        | TitlePositionTop of CSSProp list
+        | RootSubtitle of CSSProp list
+        | TitleWrap of CSSProp list
+        | TitleWrapActionPosLeft of CSSProp list
+        | TitleWrapActionPosRight of CSSProp list
+        | Subtitle of CSSProp list
+        | ActionIcon of CSSProp list
+        | ActionIconActionPosLeft of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -459,8 +471,18 @@ module Props =
         | ``Grid-xs-10`` of string
         | ``Grid-xs-11`` of string
         | ``Grid-xs-12`` of string
-        
-
+        | Tile of string
+        | ImgFullHeight of string
+        | ImgFullWidth of string
+        | TitlePositionBottom of string
+        | TitlePositionTop of string
+        | RootSubtitle of string
+        | TitleWrap of string
+        | TitleWrapActionPosLeft of string
+        | TitleWrapActionPosRight of string
+        | Subtitle of string
+        | ActionIcon of string
+        | ActionIconActionPosLeft of string
         interface IClassNames
 
     type ClassesProp =
@@ -546,6 +568,11 @@ module Props =
         | Top
         | Right
         | Bottom
+    
+    [<StringEnum>]
+    [<RequireQualifiedAccess>]
+    type AutoEnum =
+        | Auto
 
 module Colors =
     let red = importDefault<Props.IColor> "@material-ui/core/colors/red";
@@ -850,15 +877,11 @@ let inline clickAwayListener b c = materialElPropsList ClickAwayListener b c
 // #endregion
 
 // #region Collapse
-[<StringEnum>]
-type CollapseTimeoutEnum =
-    | Auto
-
 [<Erase>]
 type CollapseTransitionDuration =
     | Num of float
     | Custom of TransitionDurationProp list
-    | Enum of CollapseTimeoutEnum
+    | Enum of AutoEnum
 
 type CollapseProp = 
     | CollapseHeight of string
@@ -1142,12 +1165,7 @@ type GridSizeNum =
     | ``11`` = 11
     | ``12`` = 12
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
-type GridSizeEnum =
-    | Auto
-
-type GridSize = U3<bool, GridSizeEnum, GridSizeNum>
+type GridSize = U3<bool, AutoEnum, GridSizeNum>
 
 type GridProp =
     | AlignContent of AlignContent
@@ -1168,6 +1186,47 @@ type GridProp =
 
 let Grid = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Grid"
 let inline grid b c = materialElPropsList Grid b c
+// #endregion
+
+// #region GridList
+type GridListCellHeight = U2<int, AutoEnum>
+type GridListProp =
+    | CellHeight of GridListCellHeight
+    | Spacing of int
+    interface IHTMLProp
+
+let GridList = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/GridList"
+let inline gridList b c = materialElPropsList GridList b c
+// #endregion
+
+// #region GridListTile
+let GridListTile = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/GridListTile"
+let inline gridListTile b c = materialElPropsList GridListTile b c
+// #endregion
+
+// #region GridListTileBar
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type ActionPosition =
+    | Left
+    | Right
+
+[<StringEnum>]
+[<RequireQualifiedAccess>]
+type TitlePosition =
+    | Top
+    | Bottom
+
+type GridListTileBarProp =
+    | ActionIcon of ReactElement
+    | ActionPosition of ActionPosition
+    | Subtitle of ReactElement
+    | Title of ReactElement
+    | TitlePosition of TitlePosition
+    interface IHTMLProp
+
+let GridListTileBar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/GridListTileBar"
+let inline gridListTileBar b c = materialElPropsList GridListTileBar b c 
 // #endregion
 
 // #region Paper
@@ -1336,6 +1395,9 @@ type OverridesProp =
     | MuiFormHelperText of IStyles list
     | MuiFormLabel of IStyles list
     | MuiGrid of IStyles list
+    | MuiGridList of IStyles list
+    | MuiGridListTile of IStyles list
+    | MuiGridListTileBar of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

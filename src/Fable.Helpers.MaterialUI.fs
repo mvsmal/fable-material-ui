@@ -249,6 +249,7 @@ module Props =
         | MarginNormal of CSSProp list
         | MarginDense of CSSProp list
         | LabelPlacementStart of CSSProp list
+        | Row of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -373,6 +374,7 @@ module Props =
         | MarginNormal of string
         | MarginDense of string
         | LabelPlacementStart of string
+        | Row of string
         interface IClassNames
 
     type ClassesProp =
@@ -502,7 +504,7 @@ type AppBarPosition =
     | Sticky
     | Static
 
-type AppBarProps = 
+type AppBarProp = 
     | Position of AppBarPosition
     interface IHTMLProp
 
@@ -965,6 +967,15 @@ let FormControlLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/co
 let inline formControlLabel b c = materialElPropsList FormControlLabel b c
 // #endregion
 
+// #region FormGroup
+type FormGroupProp =
+    | Row of bool
+    interface IHTMLProp
+
+let FormGroup = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormGroup"
+let inline formGroup b c = materialElPropsList FormGroup b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1127,6 +1138,7 @@ type OverridesProp =
     | MuiExpansionPanelSummary of IStyles list
     | MuiFormControl of IStyles list
     | MuiFormControlLabel of IStyles list
+    | MuiFormGroup of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

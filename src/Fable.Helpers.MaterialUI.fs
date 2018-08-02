@@ -857,7 +857,7 @@ type DrawerProp =
     interface IHTMLProp
 
 let Drawer = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Drawer"
-let drawer (b: IHTMLProp list) c =
+let inline drawer (b: IHTMLProp list) c =
     let props = keyValueList CaseRules.LowerFirst b
     let newProps =
         props
@@ -877,11 +877,17 @@ type ExpansionPanelProp =
     interface IHTMLProp
 
 let ExpansionPanel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanel"
-let expansionPanel b c =
+let inline expansionPanel (b: IHTMLProp list) c =
     let props = keyValueList CaseRules.LowerFirst b
     let newProps =
         props |> propertyToPascalCase "collapseProps" |> unbox
     materialElPropsObj ExpansionPanel newProps c
+// #endregion
+
+// #region ExpansionPanelActions
+let ExpansionPanelActions =
+    importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanelActions"
+let inline expansionPanelActions b c = materialElPropsList ExpansionPanelActions b c
 // #endregion
 
 // #region Paper
@@ -1041,6 +1047,7 @@ type OverridesProp =
     | MuiDivider of IStyles list
     | MuiDrawer of IStyles list
     | MuiExpansionPanel of IStyles list
+    | MuiExpansionPanelActions of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

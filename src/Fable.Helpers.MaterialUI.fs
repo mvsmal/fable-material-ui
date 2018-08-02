@@ -250,6 +250,7 @@ module Props =
         | MarginDense of CSSProp list
         | LabelPlacementStart of CSSProp list
         | Row of CSSProp list
+        | Error of CSSProp list
         interface IStyles
 
     [<Erase>]
@@ -375,6 +376,7 @@ module Props =
         | MarginDense of string
         | LabelPlacementStart of string
         | Row of string
+        | Error of string
         interface IClassNames
 
     type ClassesProp =
@@ -404,6 +406,13 @@ module Props =
         | Num of float
         | Custom of TransitionDurationProp list
     
+    [<StringEnum>]
+    [<RequireQualifiedAccess>]
+    type FormControlMargin =
+        | None
+        | Dense
+        | Normal
+
     type MaterialProp<'a> =
         | Component of ComponentProp<'a>
         | Color of ComponentColor
@@ -416,6 +425,8 @@ module Props =
         | In of bool
         | FullWidth of bool
         | Label of ReactElement
+        | Error of bool
+        | Margin of FormControlMargin
         interface IHTMLProp
 
     type StyleOption =
@@ -934,18 +945,6 @@ let inline fade b c = materialElPropsList Fade b c
 // #endregion
 
 // #region FormControl
-[<StringEnum>]
-[<RequireQualifiedAccess>]
-type FormControlMargin =
-    | None
-    | Dense
-    | Normal
-
-type FormControlProp =
-    | Error of bool
-    | Margin of FormControlMargin
-    interface IHTMLProp
-
 let FormControl = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormControl"
 let inline formControl b c = materialElPropsList FormControl b c
 // #endregion
@@ -974,6 +973,11 @@ type FormGroupProp =
 
 let FormGroup = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormGroup"
 let inline formGroup b c = materialElPropsList FormGroup b c
+// #endregion
+
+// #region FormHelperText
+let FormHelperText = importDefault<ComponentClass<IHTMLProp>> "@materil-ui/core/FormHelperText"
+let inline formHelperText b c = materialElPropsList FormHelperText b c
 // #endregion
 
 // #region Paper
@@ -1139,6 +1143,7 @@ type OverridesProp =
     | MuiFormControl of IStyles list
     | MuiFormControlLabel of IStyles list
     | MuiFormGroup of IStyles list
+    | MuiFormHelperText of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

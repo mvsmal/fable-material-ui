@@ -328,6 +328,8 @@ module Props =
         | Bar2Indeterminate of CSSProp list
         | Bar2Determinate of CSSProp list
         | Bar2Buffer of CSSProp list
+        | Padding of CSSProp list
+        | Dense of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -535,6 +537,8 @@ module Props =
         | Bar2Indeterminate of string
         | Bar2Determinate of string
         | Bar2Buffer of string
+        | Padding of string
+        | Dense of string
         interface IClassNames
 
     type ClassesProp =
@@ -1362,6 +1366,17 @@ let LinearProgress = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core
 let inline linearProgress b = materialEl LinearProgress b []
 // #endregion
 
+// #region List
+type ListProp =
+    | Dense of bool
+    | DisablePadding of bool
+    | Subheader of ReactElement
+    interface IHTMLProp
+
+let List = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/List"
+let inline list b c = materialEl List b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1537,6 +1552,7 @@ type OverridesProp =
     | MuiInputAdornment of IStyles list
     | MuiInputLabel of IStyles list
     | MuiLinearProgress of IStyles list
+    | MuiList of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

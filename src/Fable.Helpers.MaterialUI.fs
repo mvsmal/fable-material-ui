@@ -339,6 +339,7 @@ module Props =
         | Primary of CSSProp list
         | Secondary of CSSProp list
         | TextDense of CSSProp list
+        | Sticky of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -557,6 +558,7 @@ module Props =
         | Primary of string
         | Secondary of string
         | TextDense of string
+        | Sticky of string
         interface IClassNames
 
     type ClassesProp =
@@ -1436,6 +1438,22 @@ let ListItemText = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/L
 let inline listItemText b c = materialEl ListItemText b c
 // #endregion
 
+// #region ListSubheader
+[<StringEnum; RequireQualifiedAccess>]
+type ListSubheaderColor =
+    | Default
+    | Primary
+    | Inherit
+
+type ListSubheaderProp =
+    | Color of ListSubheaderColor
+    | DisableSticky of bool
+    interface IHTMLProp
+
+let ListSubheader = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ListSubheader"
+let inline listSubheader b c = materialEl ListSubheader b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1617,6 +1635,7 @@ type OverridesProp =
     | MuiListItemIcon of IStyles list
     | MuiListItemSecondaryAction of IStyles list
     | MuiListItemText of IStyles list
+    | MuiListSubheader of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

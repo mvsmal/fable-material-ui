@@ -341,6 +341,12 @@ module Props =
         | TextDense of CSSProp list
         | Sticky of CSSProp list
         | Selected of CSSProp list
+        | PositionBottom of CSSProp list
+        | PositionTop of CSSProp list
+        | Dots of CSSProp list
+        | Dot of CSSProp list
+        | DotActive of CSSProp list
+        | Progress of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -561,6 +567,12 @@ module Props =
         | TextDense of string
         | Sticky of string
         | Selected of string
+        | PositionBottom of string
+        | PositionTop of string
+        | Dots of string
+        | Dot of string
+        | DotActive of string
+        | Progress of string
         interface IClassNames
 
     type ClassesProp =
@@ -1482,6 +1494,32 @@ let MenuList = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/MenuL
 let inline menuList b c = materialEl MenuList b c
 // #endregion
 
+// #region MenuStepper
+[<StringEnum; RequireQualifiedAccess>]
+type MobileStepperPosition =
+    | Bottom
+    | Top
+    | Static
+
+[<StringEnum; RequireQualifiedAccess>]
+type MobileStepperVariant =
+    | Text
+    | Dots
+    | Progress
+
+type MobileStepperProp =
+    | ActiveStep of int
+    | BackButton of ReactElement
+    | NextButton of ReactElement
+    | Position of MobileStepperPosition
+    | Steps of int
+    | Variant of MobileStepperVariant
+    interface IHTMLProp
+
+let MobileStepper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/MobileStepper"
+let inline mobileStepper b = materialEl MobileStepper b []
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1666,6 +1704,7 @@ type OverridesProp =
     | MuiListSubheader of IStyles list
     | MuiMenu of IStyles list
     | MuiMenuItem of IStyles list
+    | MuiMobileStepper of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

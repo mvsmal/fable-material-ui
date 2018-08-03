@@ -65,7 +65,7 @@ paket add Fable.Helpers.MaterialUI
   * ListItemAvatar - ✓
   * ListItemIcon - ✓
   * ListItemSecondaryAction - ✓
-  * ListItemText
+  * ListItemText - ✓
   * ListSubheader
 * Menu
   * MenuItem

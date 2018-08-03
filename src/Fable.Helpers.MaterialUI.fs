@@ -336,6 +336,9 @@ module Props =
         | Button of CSSProp list
         | SecondaryAction of CSSProp list
         | Icon of CSSProp list
+        | Primary of CSSProp list
+        | Secondary of CSSProp list
+        | TextDense of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -551,6 +554,9 @@ module Props =
         | Button of string
         | SecondaryAction of string
         | Icon of string
+        | Primary of string
+        | Secondary of string
+        | TextDense of string
         interface IClassNames
 
     type ClassesProp =
@@ -601,6 +607,7 @@ module Props =
         | Error of bool
         | Margin of FormControlMargin
         | Dense of bool
+        | Inset of bool
         interface IHTMLProp
 
     type StyleOption =
@@ -998,7 +1005,6 @@ let inline dialogTitle b c = materialEl DialogTitle b c
 // #region Divider
 type DividerProp =
     | Absolute of bool
-    | Inset of bool
     | Light of bool
     interface IHTMLProp
 
@@ -1413,8 +1419,21 @@ let inline listItemIcon b c = materialEl ListItemIcon b c
 // #endregion
 
 // #region ListItemSecondaryAction
-let ListItemSecondaryAction = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ListItemSecondaryAction"
+let ListItemSecondaryAction =
+    importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ListItemSecondaryAction"
 let inline listItemSecondaryAction b c = materialEl ListItemSecondaryAction b c
+// #endregion
+
+// #region ListItemText
+type ListItemTextProp =
+    | Primary of ReactElement
+    | PrimaryTypographyProps of IHTMLProp list
+    | Secondary of ReactElement
+    | SecondaryTypographyProps of IHTMLProp list
+    interface IHTMLProp
+
+let ListItemText = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ListItemText"
+let inline listItemText b c = materialEl ListItemText b c
 // #endregion
 
 // #region Paper
@@ -1597,6 +1616,7 @@ type OverridesProp =
     | MuiListItemAvatar of IStyles list
     | MuiListItemIcon of IStyles list
     | MuiListItemSecondaryAction of IStyles list
+    | MuiListItemText of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

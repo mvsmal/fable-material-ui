@@ -335,6 +335,7 @@ module Props =
         | Gutters of CSSProp list
         | Button of CSSProp list
         | SecondaryAction of CSSProp list
+        | Icon of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -549,6 +550,7 @@ module Props =
         | Gutters of string
         | Button of string
         | SecondaryAction of string
+        | Icon of string
         interface IClassNames
 
     type ClassesProp =
@@ -1400,6 +1402,11 @@ let ListItem = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ListI
 let inline listItem b c = materialEl ListItem b c
 // #endregion
 
+// #region ListItemAvatar
+let ListItemAvatar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ListItemAvatar"
+let inline listItemAvatar b c = materialEl ListItemAvatar b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1577,6 +1584,7 @@ type OverridesProp =
     | MuiLinearProgress of IStyles list
     | MuiList of IStyles list
     | MuiListItem of IStyles list
+    | MuiListItemAvatar of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

@@ -15,7 +15,7 @@ module Props =
         abstract member dark: string
         abstract member contrastText: string
 
-    [<StringEnum>]
+    [<StringEnum; RequireQualifiedAccess>]
     type PaletteType =
         | Dark
         | Light
@@ -74,7 +74,7 @@ module Props =
         abstract member background: IPaletteBackground
         abstract member action: IPaletteAction
 
-    [<StringEnum>]
+    [<StringEnum; RequireQualifiedAccess>]
     type TextDirection =
         | Ltr
         | Rtl
@@ -321,8 +321,7 @@ module Props =
         | Animated of CSSProp list
         interface IStyles
 
-    [<Erase>]
-    [<RequireQualifiedAccess>]
+    [<Erase; RequireQualifiedAccess>]
     type StyleType =
         | Styles of IStyles list
         | Func of (ITheme->IStyles list)
@@ -526,7 +525,7 @@ module Props =
         // ? Doesn't work with for example with Chip
         // | El of ReactElement 
     
-    [<StringEnum>]
+    [<StringEnum; RequireQualifiedAccess>]
     type ComponentColor =
         | Default
         | Inherit
@@ -542,8 +541,7 @@ module Props =
         | Num of float
         | Custom of TransitionDurationProp list
     
-    [<StringEnum>]
-    [<RequireQualifiedAccess>]
+    [<StringEnum; RequireQualifiedAccess>]
     type FormControlMargin =
         | None
         | Dense
@@ -570,21 +568,18 @@ module Props =
         | Name of string
         | Flip of bool
     
-    [<StringEnum>]
-    [<RequireQualifiedAccess>]
+    [<StringEnum; RequireQualifiedAccess>]
     type MouseEvent =
         | OnClick
         | OnMouseDown
         | OnMouseUp
 
-    [<StringEnum>]
-    [<RequireQualifiedAccess>]
+    [<StringEnum; RequireQualifiedAccess>]
     type TouchEvent =
         | OnTouchStart
         | OnTouchEnd
 
-    [<StringEnum>]
-    [<RequireQualifiedAccess>]
+    [<StringEnum; RequireQualifiedAccess>]
     type MaterialSize =
         | Xs
         | Sm
@@ -592,16 +587,14 @@ module Props =
         | Lg
         | Xl
 
-    [<StringEnum>]
-    [<RequireQualifiedAccess>]
+    [<StringEnum; RequireQualifiedAccess>]
     type Anchor =
         | Left
         | Top
         | Right
         | Bottom
     
-    [<StringEnum>]
-    [<RequireQualifiedAccess>]
+    [<StringEnum; RequireQualifiedAccess>]
     type AutoEnum =
         | Auto
 
@@ -651,8 +644,7 @@ let materialElPropsObj<[<Pojo>]'P when 'P :> IHTMLProp>
     Fable.Helpers.React.from a b c
 
 // #region AppBar
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type AppBarPosition =
     | Fixed
     | Absolute
@@ -690,8 +682,7 @@ let inline backdrop b = materialElPropsList Backdrop b []
 // #endregion
 
 // #region Badge
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type BadgeColor =
     | Default
     | Primary
@@ -730,15 +721,13 @@ let inline bottomNavigationAction b = materialElPropsList BottomNavigationAction
 // #endregion
 
 // #region Button
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type ButtonSize =
     | Small
     | Medium
     | Large
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type ButtonVariant =
     | Text
     | Flat
@@ -761,8 +750,7 @@ let inline button b c = materialElPropsList Button b c
 // #endregion
 
 // #region ButtonBase
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type ButtonBaseType =
     | Button
     | Submit
@@ -869,8 +857,7 @@ type CircularProgressSize =
     | Px of int
     | Str of string
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type CircularProgressVariant =
     | Determinate
     | Indeterminate
@@ -926,14 +913,12 @@ let inline cssBaseline b = materialElPropsList CssBaseline b []
 // #endregion
 
 // #region Dialog
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type DialogScroll =
     | Body
     | Paper
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type DialogMaxWidth =
     | Xs
     | Sm
@@ -1007,8 +992,7 @@ let inline divider b = materialElPropsList Divider b []
 // #endregion
 
 // #region Drawer
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type DrawerVariant =
     | Permanent
     | Persistent
@@ -1092,8 +1076,7 @@ let inline formControl b c = materialElPropsList FormControl b c
 // #endregion
 
 // #region FormControlLabel
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type FormControlLabelPlacement =
     | End
     | Start
@@ -1132,8 +1115,7 @@ let inline formLabel b c = materialElPropsList FormLabel b c
 // #endregion
 
 // #region Grid
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type AlignContent =
     | Stretch
     | Center
@@ -1142,8 +1124,7 @@ type AlignContent =
     | [<CompiledName("space-between")>] SpaceBetween
     | [<CompiledName("space-around")>] SpaceAround
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type Justify =
     | Center
     | [<CompiledName("flex-start")>] FlexStart
@@ -1152,8 +1133,7 @@ type Justify =
     | [<CompiledName("space-around")>] SpaceAround
     | [<CompiledName("space-evenly")>] SpaceEvenly
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type AlignItems =
     | Stretch
     | Center
@@ -1161,8 +1141,7 @@ type AlignItems =
     | [<CompiledName("flex-start")>] FlexStart
     | [<CompiledName("flex-end")>] FlexEnd
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type Direction =
     | Row
     | Column
@@ -1178,8 +1157,7 @@ type Spacing =
     | ``32`` = 32
     | ``40`` = 40
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type Wrap =
     | Nowrap
     | Wrap
@@ -1240,14 +1218,12 @@ let inline gridListTile b c = materialElPropsList GridListTile b c
 // #endregion
 
 // #region GridListTileBar
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type ActionPosition =
     | Left
     | Right
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type TitlePosition =
     | Top
     | Bottom
@@ -1274,8 +1250,7 @@ let inline grow b c = materialElPropsList Grow b c
 // #endregion
 
 // #region Hidden
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type HiddenImplementation =
     | Js
     | Css
@@ -1303,8 +1278,7 @@ let inline hidden b c = materialElPropsList Hidden b c
 // #endregion
 
 // #region Icon
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type IconColor =
     | Inherit
     | Primary
@@ -1313,8 +1287,7 @@ type IconColor =
     | Error
     | Disabled
 
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type IconFontSize =
     | Inherit
     | Default
@@ -1334,8 +1307,7 @@ let inline iconButton b c = materialElPropsList IconButton b c
 // #endregion
 
 // #region Input
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type InputMargin =
     | None
     | Dense
@@ -1356,8 +1328,7 @@ let inline input b = materialElPropsList Input b []
 // #endregion
 
 // #region InputAdornment
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type InputAdornmentPosition =
     | Start
     | End
@@ -1371,8 +1342,7 @@ let inline inputAdornment b c = materialElPropsList InputAdornment b c
 // #endregion
 
 // #region InputLabel
-[<StringEnum>]
-[<RequireQualifiedAccess>]
+[<StringEnum; RequireQualifiedAccess>]
 type InputLabelMargin =
     | Dense
 

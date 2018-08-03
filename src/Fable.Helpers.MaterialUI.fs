@@ -319,6 +319,15 @@ module Props =
         | PositionEnd of CSSProp list
         | Shrink of CSSProp list
         | Animated of CSSProp list
+        | Bar of CSSProp list
+        | BarColorPrimary of CSSProp list
+        | BarColorSecondary of CSSProp list
+        | Bar1Indeterminate of CSSProp list
+        | Bar1Determinate of CSSProp list
+        | Bar1Buffer of CSSProp list
+        | Bar2Indeterminate of CSSProp list
+        | Bar2Determinate of CSSProp list
+        | Bar2Buffer of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -512,6 +521,20 @@ module Props =
         | PositionEnd of string
         | Shrink of string
         | Animated of string
+        | Buffer of string
+        | Query of string
+        | Dashed of string
+        | DashedColorPrimary of string
+        | DashedColorSecondary of string
+        | Bar of string
+        | BarColorPrimary of string
+        | BarColorSecondary of string
+        | Bar1Indeterminate of string
+        | Bar1Determinate of string
+        | Bar1Buffer of string
+        | Bar2Indeterminate of string
+        | Bar2Determinate of string
+        | Bar2Buffer of string
         interface IClassNames
 
     type ClassesProp =
@@ -622,6 +645,7 @@ module Colors =
     let blueGrey = importDefault<Props.IColor> "@material-ui/core/colors/blueGrey";
 
 open Props
+open System.Runtime.InteropServices
 
 let materialEl<[<Pojo>]'P when 'P :> IHTMLProp>
     (a:ComponentClass<'P>) (b: IHTMLProp list) c =
@@ -1315,6 +1339,29 @@ let InputLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Inp
 let inline inputLabel b c = materialEl InputLabel b c
 // #endregion
 
+// #region LinearProgress
+[<StringEnum; RequireQualifiedAccess>]
+type LinearProgressColor =
+    | Primary
+    | Secondary
+
+[<StringEnum; RequireQualifiedAccess>]
+type LinearProgressVariant =
+    | Determinate
+    | Indeterminate
+    | Buffer
+    | Query
+
+type LinearProgressProp =
+    | Color of LinearProgressColor
+    | ValueBuffer of int
+    | Variant of LinearProgressVariant
+    interface IHTMLProp
+
+let LinearProgress = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/LinearProgress"
+let inline linearProgress b = materialEl LinearProgress b []
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1489,6 +1536,7 @@ type OverridesProp =
     | MuiInput of IStyles list
     | MuiInputAdornment of IStyles list
     | MuiInputLabel of IStyles list
+    | MuiLinearProgress of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

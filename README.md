@@ -68,7 +68,7 @@ paket add Fable.Helpers.MaterialUI
   * ListItemText - ✓
   * ListSubheader - ✓
 * Menu - ✓
-  * MenuItem
+  * MenuItem - ✓
   * MenuList
 * MobileStepper
 * Modal

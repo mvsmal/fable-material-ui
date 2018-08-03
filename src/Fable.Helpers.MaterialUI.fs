@@ -340,6 +340,7 @@ module Props =
         | Secondary of CSSProp list
         | TextDense of CSSProp list
         | Sticky of CSSProp list
+        | Selected of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -559,6 +560,7 @@ module Props =
         | Secondary of string
         | TextDense of string
         | Sticky of string
+        | Selected of string
         interface IClassNames
 
     type ClassesProp =
@@ -799,7 +801,7 @@ type ButtonBaseType =
 
 type ButtonBaseProp =
     | Action of (obj->unit) // TODO add static typing
-    // ? | ButtonRef of object|func DO WE NEED REFS AT ALL?
+    | ButtonRef of (obj->unit)
     | CenterRipple of bool
     | DisableTouchRipple of bool
     | FocusRipple of bool
@@ -1466,6 +1468,15 @@ let Menu = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Menu"
 let inline menu b c = materialEl Menu b c
 // #endregion
 
+// #region MenuItem
+type MenuItemProp =
+    | Selected of bool
+    interface IHTMLProp
+
+let MenuItem = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/MenuItem"
+let inline menuItem b c = materialEl MenuItem b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1649,6 +1660,7 @@ type OverridesProp =
     | MuiListItemText of IStyles list
     | MuiListSubheader of IStyles list
     | MuiMenu of IStyles list
+    | MuiMenuItem of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

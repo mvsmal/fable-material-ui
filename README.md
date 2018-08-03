@@ -71,7 +71,7 @@ paket add Fable.Helpers.MaterialUI
   * MenuItem - ✓
   * MenuList - ✓
 * MobileStepper - ✓
-* Modal
+* Modal - ✓
 * MuiThemeProvider - ✓
   * createMuiTheme - ✓
 * NativeSelect

@@ -347,6 +347,7 @@ module Props =
         | Dot of CSSProp list
         | DotActive of CSSProp list
         | Progress of CSSProp list
+        | Hidden of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -573,6 +574,7 @@ module Props =
         | Dot of string
         | DotActive of string
         | Progress of string
+        | Hidden of string
         interface IClassNames
 
     type ClassesProp =
@@ -978,12 +980,8 @@ type DialogMaxWidth =
     | [<CompiledName("")>] False
 
 type DialogProp<'a> =
-    | DisableBackdropClick of bool
-    | DisableEscapeKeyDown of bool
     | FullScreen of bool
     | MaxWidth of DialogMaxWidth
-    | OnBackdropClick of (obj->unit)
-    | OnEscapeKeyDown of (obj->unit)
     | Scroll of DialogScroll
     | [<CompiledName("TransitionComponent")>] TransitionComponent of ComponentProp<'a>
     | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
@@ -1494,7 +1492,7 @@ let MenuList = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/MenuL
 let inline menuList b c = materialEl MenuList b c
 // #endregion
 
-// #region MenuStepper
+// #region MobileStepper
 [<StringEnum; RequireQualifiedAccess>]
 type MobileStepperPosition =
     | Bottom
@@ -1518,6 +1516,34 @@ type MobileStepperProp =
 
 let MobileStepper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/MobileStepper"
 let inline mobileStepper b = materialEl MobileStepper b []
+// #endregion
+
+// #region Modal
+[<StringEnum; RequireQualifiedAccess>]
+type ModalCloseReason =
+    | EscapeKeyDown
+    | BackdropClick
+
+type ModalProp =
+    | [<CompiledName("BackdropComponent")>] BackdropComponent
+    | [<CompiledName("BackdropProps")>] BackdropProps
+    | DisableAutoFocus of bool
+    | DisableBackdropClick of bool
+    | DisableEnforceFocus of bool
+    | DisableEscapeKeyDown of bool
+    | DisablePortal of bool
+    | DisableRestoreFocus of bool
+    | HideBackdrop of bool
+    | KeepMounted of bool
+    | Manager of obj // TODO check static type for ModalManager
+    | OnBackdropClick of (obj->unit)
+    | OnEscapeKeyDown of (obj->unit)
+    | OnClose of (obj*ModalCloseReason->unit)
+    | OnRendered of (obj->unit)
+    interface IHTMLProp
+
+let Modal = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Modal"
+let inline modal b c = materialEl Modal b c
 // #endregion
 
 // #region Paper
@@ -1705,6 +1731,7 @@ type OverridesProp =
     | MuiMenu of IStyles list
     | MuiMenuItem of IStyles list
     | MuiMobileStepper of IStyles list
+    | MuiModel of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

@@ -553,7 +553,7 @@ module Props =
         | DisableRipple of bool
         | Icon of ReactElement
         | DisableTypography of bool
-        | PaperProps of IHTMLProp list
+        | [<CompiledName("PaperProps")>] PaperProps of IHTMLProp list
         | Open of bool
         | TransitionDuration of TransitionDuration
         | In of bool
@@ -623,25 +623,9 @@ module Colors =
 
 open Props
 
-let firstCharUpper s =
-    s |> String.mapi
-        (fun i c -> match i with
-                    | 0 -> c |> System.Char.ToUpper
-                    | _ -> c)
-
-let propertyToPascalCase (prop : string) o =
-    let newProp = prop |> firstCharUpper
-    o?(newProp) <- o?(prop)
-    JS.Reflect.deleteProperty (o, U3.Case1 prop) |> ignore
-    o
-
-let materialElPropsList<[<Pojo>]'P when 'P :> IHTMLProp>
+let materialEl<[<Pojo>]'P when 'P :> IHTMLProp>
     (a:ComponentClass<'P>) (b: IHTMLProp list) c =
     Fable.Helpers.React.from a (keyValueList CaseRules.LowerFirst b |> unbox) c
-
-let materialElPropsObj<[<Pojo>]'P when 'P :> IHTMLProp>
-    (a:ComponentClass<'P>) b c =
-    Fable.Helpers.React.from a b c
 
 // #region AppBar
 [<StringEnum; RequireQualifiedAccess>]
@@ -656,7 +640,7 @@ type AppBarProp =
     interface IHTMLProp
 
 let AppBar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/AppBar"
-let inline appBar b c = materialElPropsList AppBar b c
+let inline appBar b c = materialEl AppBar b c
 // #endregion
 
 // #region Avatar
@@ -669,7 +653,7 @@ type AvatarProp =
     interface IHTMLProp
 
 let Avatar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Avatar"
-let inline avatar b c = materialElPropsList Avatar b c
+let inline avatar b c = materialEl Avatar b c
 // #endregion
 
 // #region Backdrop
@@ -678,7 +662,7 @@ type BackdropProp =
     interface IHTMLProp
 
 let Backdrop = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Backdrop"
-let inline backdrop b = materialElPropsList Backdrop b []
+let inline backdrop b = materialEl Backdrop b []
 // #endregion
 
 // #region Badge
@@ -695,7 +679,7 @@ type BadgeProp =
     interface IHTMLProp
 
 let Badge = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Badge"
-let inline badge b c = materialElPropsList Badge b c
+let inline badge b c = materialEl Badge b c
 // #endregion
 
 // #region BottomNavigation
@@ -706,7 +690,7 @@ type BottomNavigationProp =
     interface IHTMLProp
 
 let BottomNavigation = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/BottomNavigation"
-let inline bottomNavigation b c = materialElPropsList BottomNavigation b c
+let inline bottomNavigation b c = materialEl BottomNavigation b c
 // #endregion
 
 // #region BottomNavigationAction
@@ -717,7 +701,7 @@ type BottomNavigationActionProp =
 
 let BottomNavigationAction =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/BottomNavigationAction"
-let inline bottomNavigationAction b = materialElPropsList BottomNavigationAction b []
+let inline bottomNavigationAction b = materialEl BottomNavigationAction b []
 // #endregion
 
 // #region Button
@@ -746,7 +730,7 @@ type ButtonProp =
     interface IHTMLProp
 
 let Button = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Button"
-let inline button b c = materialElPropsList Button b c
+let inline button b c = materialEl Button b c
 // #endregion
 
 // #region ButtonBase
@@ -764,15 +748,12 @@ type ButtonBaseProp =
     | FocusRipple of bool
     | FocusVisibleClassName of string
     | OnFocusVisible of (obj->unit) // TODO add static typing
-    | TouchRippleProps of IHTMLProp list
+    | [<CompiledName("TouchRippleProps")>] TouchRippleProps of IHTMLProp list
     | Type of ButtonBaseType
     interface IHTMLProp
 
 let ButtonBase = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ButtonBase"
-let inline buttonBase (b: IHTMLProp list) c =
-    let props = keyValueList CaseRules.LowerFirst b
-    let newProps = props |> propertyToPascalCase "touchRippleProps" |> unbox
-    materialElPropsObj ButtonBase newProps c
+let inline buttonBase b c = materialEl ButtonBase b c
 // #endregion
 
 // #region Card
@@ -781,7 +762,7 @@ type CardProp =
     interface IHTMLProp
 
 let Card = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Card"
-let inline card b c = materialElPropsList Card b c
+let inline card b c = materialEl Card b c
 // #endregion
 
 // #region CardActions
@@ -790,12 +771,12 @@ type CardActionsProp =
     interface IHTMLProp
 
 let CardActions = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardActions"
-let inline cardActions b c = materialElPropsList CardActions b c
+let inline cardActions b c = materialEl CardActions b c
 // #endregion
 
 // #region CardContent
 let CardContent = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardContent"
-let cardContent b c = materialElPropsList CardContent b c
+let cardContent b c = materialEl CardContent b c
 // #endregion
 
 // #region CardHeader
@@ -809,7 +790,7 @@ type CardHeaderProp =
     interface IHTMLProp
 
 let CardHeader = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardHeader"
-let inline cardHeader b c = materialElPropsList CardHeader b c
+let inline cardHeader b c = materialEl CardHeader b c
 // #endregion
 
 // #region CardMedia
@@ -819,7 +800,7 @@ type CardMediaProp =
     interface IHTMLProp
 
 let CardMedia = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardMedia"
-let inline cardMedia b = materialElPropsList CardMedia b []
+let inline cardMedia b = materialEl CardMedia b []
 // #endregion
 
 // #region Checkbox
@@ -836,7 +817,7 @@ type CheckboxProp =
     interface IHTMLProp
     
 let Checkbox = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Checkbox"
-let inline checkbox b = materialElPropsList Checkbox b []
+let inline checkbox b = materialEl Checkbox b []
 // #endregion
 
 // #region Chip
@@ -848,7 +829,7 @@ type ChipProp =
     interface IHTMLProp
 
 let Chip = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Chip"
-let inline chip b = materialElPropsList Chip b []
+let inline chip b = materialEl Chip b []
 // #endregion
 
 // #region CircularProgress
@@ -871,7 +852,7 @@ type CircularProgressProp =
     interface IHTMLProp
 
 let CircularProgress = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CircularProgress"
-let inline circularProgress b = materialElPropsList CircularProgress b []
+let inline circularProgress b = materialEl CircularProgress b []
 // #endregion
 
 // #region ClickAwayListener
@@ -893,7 +874,7 @@ type ClickAwayListenerProp =
 
 let ClickAwayListener =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ClickAwayListener"
-let inline clickAwayListener b c = materialElPropsList ClickAwayListener b c
+let inline clickAwayListener b c = materialEl ClickAwayListener b c
 // #endregion
 
 // #region Collapse
@@ -904,12 +885,12 @@ type CollapseProp =
 
 let Collapse = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Collapse"
 
-let inline collapse b c = materialElPropsList Collapse b c
+let inline collapse b c = materialEl Collapse b c
 // #endregion
 
 // #region CssBaseline
 let CssBaseline = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CssBaseline"
-let inline cssBaseline b = materialElPropsList CssBaseline b []
+let inline cssBaseline b = materialEl CssBaseline b []
 // #endregion
 
 // #region Dialog
@@ -940,19 +921,12 @@ type DialogProp<'a> =
     | OnExited of (obj->unit)
     | OnExiting of (obj->unit)
     | Scroll of DialogScroll
-    | TransitionComponent of ComponentProp<'a>
-    | TransitionProps of IHTMLProp list
+    | [<CompiledName("TransitionComponent")>] TransitionComponent of ComponentProp<'a>
+    | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
     interface IHTMLProp
 
 let Dialog = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Dialog"
-let inline dialog (b: IHTMLProp list) c =
-    let props = keyValueList CaseRules.LowerFirst b
-    let newProps =
-        props
-        |> propertyToPascalCase "paperProps"
-        |> propertyToPascalCase "transitionProps"
-        |> unbox
-    materialElPropsObj Dialog newProps c
+let inline dialog b c = materialEl Dialog b c
 // #endregion
 
 // #region DialogActions
@@ -961,23 +935,23 @@ type DialogActionsProp =
     interface IHTMLProp
 
 let DialogActions = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogActions"
-let inline dialogActions b c = materialElPropsList DialogActions b c
+let inline dialogActions b c = materialEl DialogActions b c
 // #endregion
 
 // #region DialogContent
 let DialogContent = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogContent"
-let inline dialogContent b c = materialElPropsList DialogContent b c
+let inline dialogContent b c = materialEl DialogContent b c
 // #endregion
 
 // #region DialogContentText
 let DialogContentText =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogContentText"
-let inline dialogContentText b c = materialElPropsList DialogContentText b c
+let inline dialogContentText b c = materialEl DialogContentText b c
 // #endregion
 
 // #region DialogTitle
 let DialogTitle = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/DialogTitle"
-let inline dialogTitle b c = materialElPropsList DialogTitle b c
+let inline dialogTitle b c = materialEl DialogTitle b c
 // #endregion
 
 // #region Divider
@@ -988,7 +962,7 @@ type DividerProp =
     interface IHTMLProp
 
 let Divider = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Divider"
-let inline divider b = materialElPropsList Divider b []
+let inline divider b = materialEl Divider b []
 // #endregion
 
 // #region Drawer
@@ -1000,22 +974,14 @@ type DrawerVariant =
 
 type DrawerProp =
     | Anchor of Anchor
-    | ModalProps of IHTMLProp list
+    | [<CompiledName("ModalProps")>] ModalProps of IHTMLProp list
     | OnClose of (obj->unit)
-    | SlideProps of IHTMLProp list
+    | [<CompiledName("SlideProps")>] SlideProps of IHTMLProp list
     | Variant of DrawerVariant
     interface IHTMLProp
 
 let Drawer = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Drawer"
-let inline drawer (b: IHTMLProp list) c =
-    let props = keyValueList CaseRules.LowerFirst b
-    let newProps =
-        props
-        |> propertyToPascalCase "paperProps"
-        |> propertyToPascalCase "slideProps"
-        |> propertyToPascalCase "modalProps"
-        |> unbox
-    materialElPropsObj Drawer newProps c
+let inline drawer b c = materialEl Drawer b c
 // #endregion
 
 // #region ExpansionPanel
@@ -1023,42 +989,34 @@ type ExpansionPanelProp =
     | Expanded of bool
     | DefaultExpanded of bool
     | OnChange of (obj*bool->unit)
-    | CollapseProps of IHTMLProp list
+    | [<CompiledName("CollapseProps")>] CollapseProps of IHTMLProp list
     interface IHTMLProp
 
 let ExpansionPanel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanel"
-let inline expansionPanel (b: IHTMLProp list) c =
-    let props = keyValueList CaseRules.LowerFirst b
-    let newProps =
-        props |> propertyToPascalCase "collapseProps" |> unbox
-    materialElPropsObj ExpansionPanel newProps c
+let inline expansionPanel b c = materialEl b c
 // #endregion
 
 // #region ExpansionPanelActions
 let ExpansionPanelActions =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanelActions"
-let inline expansionPanelActions b c = materialElPropsList ExpansionPanelActions b c
+let inline expansionPanelActions b c = materialEl ExpansionPanelActions b c
 // #endregion
 
 // #region ExpansionPanelDetails
 let ExpansionPanelDetails =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanelDetails"
-let inline expansionPanelDetails b c = materialElPropsList ExpansionPanelDetails b c
+let inline expansionPanelDetails b c = materialEl ExpansionPanelDetails b c
 // #endregion
 
 // #region ExpansionPanelSummary
 type ExpansionPanelSummaryProp =
     | ExpandIcon of ReactElement
-    | IconButtonProps of IHTMLProp list
+    | [<CompiledName("IconButtonProps")>] IconButtonProps of IHTMLProp list
     interface IHTMLProp
 
 let ExpansionPanelSummary =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanelSummary"
-let inline expansionPanelSummary (b: IHTMLProp list) c =
-    let props = keyValueList CaseRules.LowerFirst b
-    let newProps =
-        props |> propertyToPascalCase "iconButtonProps" |> unbox
-    materialElPropsObj ExpansionPanelSummary newProps c
+let inline expansionPanelSummary b c = materialEl ExpansionPanelSummary b c
 // #endregion
 
 // #region Fade
@@ -1067,12 +1025,12 @@ type FadeProp =
     interface IHTMLProp
 
 let Fade = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Fade"
-let inline fade b c = materialElPropsList Fade b c
+let inline fade b c = materialEl Fade b c
 // #endregion
 
 // #region FormControl
 let FormControl = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormControl"
-let inline formControl b c = materialElPropsList FormControl b c
+let inline formControl b c = materialEl FormControl b c
 // #endregion
 
 // #region FormControlLabel
@@ -1088,7 +1046,7 @@ type FormControlLabelProp =
     interface IHTMLProp
 
 let FormControlLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormControlLabel"
-let inline formControlLabel b c = materialElPropsList FormControlLabel b c
+let inline formControlLabel b c = materialEl FormControlLabel b c
 // #endregion
 
 // #region FormGroup
@@ -1097,12 +1055,12 @@ type FormGroupProp =
     interface IHTMLProp
 
 let FormGroup = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormGroup"
-let inline formGroup b c = materialElPropsList FormGroup b c
+let inline formGroup b c = materialEl FormGroup b c
 // #endregion
 
 // #region FormHelperText
 let FormHelperText = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormHelperText"
-let inline formHelperText b c = materialElPropsList FormHelperText b c
+let inline formHelperText b c = materialEl FormHelperText b c
 // #endregion
 
 // #region FormLabel
@@ -1111,7 +1069,7 @@ type FormLabelProp =
     interface IHTMLProp
 
 let FormLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/FormLabel"
-let inline formLabel b c = materialElPropsList FormLabel b c
+let inline formLabel b c = materialEl FormLabel b c
 // #endregion
 
 // #region Grid
@@ -1198,7 +1156,7 @@ type GridProp =
     interface IHTMLProp
 
 let Grid = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Grid"
-let inline grid b c = materialElPropsList Grid b c
+let inline grid b c = materialEl Grid b c
 // #endregion
 
 // #region GridList
@@ -1209,12 +1167,12 @@ type GridListProp =
     interface IHTMLProp
 
 let GridList = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/GridList"
-let inline gridList b c = materialElPropsList GridList b c
+let inline gridList b c = materialEl GridList b c
 // #endregion
 
 // #region GridListTile
 let GridListTile = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/GridListTile"
-let inline gridListTile b c = materialElPropsList GridListTile b c
+let inline gridListTile b c = materialEl GridListTile b c
 // #endregion
 
 // #region GridListTileBar
@@ -1237,7 +1195,7 @@ type GridListTileBarProp =
     interface IHTMLProp
 
 let GridListTileBar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/GridListTileBar"
-let inline gridListTileBar b c = materialElPropsList GridListTileBar b c 
+let inline gridListTileBar b c = materialEl GridListTileBar b c 
 // #endregion
 
 // #region Grow
@@ -1246,7 +1204,7 @@ type GrowProp =
     interface IHTMLProp
 
 let Grow = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Grow"
-let inline grow b c = materialElPropsList Grow b c
+let inline grow b c = materialEl Grow b c
 // #endregion
 
 // #region Hidden
@@ -1274,7 +1232,7 @@ type HiddenProp =
     interface IHTMLProp
 
 let Hidden = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Hidden"
-let inline hidden b c = materialElPropsList Hidden b c
+let inline hidden b c = materialEl Hidden b c
 // #endregion
 
 // #region Icon
@@ -1298,12 +1256,12 @@ type IconProp =
     interface IHTMLProp
 
 let Icon = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Icon"
-let inline icon b c = materialElPropsList Icon b c
+let inline icon b c = materialEl Icon b c
 // #endregion
 
 // #region IconButton
 let IconButton = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/IconButton"
-let inline iconButton b c = materialElPropsList IconButton b c
+let inline iconButton b c = materialEl IconButton b c
 // #endregion
 
 // #region Input
@@ -1324,7 +1282,7 @@ type InputProp<'a> =
     interface IHTMLProp
 
 let Input = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Input"
-let inline input b = materialElPropsList Input b []
+let inline input b = materialEl Input b []
 // #endregion
 
 // #region InputAdornment
@@ -1338,7 +1296,7 @@ type InputAdornmentProp =
     interface IHTMLProp
 
 let InputAdornment = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/InputAdornment"
-let inline inputAdornment b c = materialElPropsList InputAdornment b c
+let inline inputAdornment b c = materialEl InputAdornment b c
 // #endregion
 
 // #region InputLabel
@@ -1348,17 +1306,13 @@ type InputLabelMargin =
 
 type InputLabelProp =
     | DisableAnimation of bool
-    | FormLabelClasses of IStyles list
+    | [<CompiledName("FormLabelClasses")>] FormLabelClasses of IStyles list
     | Margin of InputLabelMargin
     | Shrink of bool
     interface IHTMLProp
 
 let InputLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/InputLabel"
-let inputLabel (b: IHTMLProp list) c =
-    let props = keyValueList CaseRules.LowerFirst b
-    let newProps =
-        props |> propertyToPascalCase "formLabelClasses" |> unbox
-    materialElPropsObj InputLabel newProps c
+let inline inputLabel b c = materialEl InputLabel b c
 // #endregion
 
 // #region Paper
@@ -1367,7 +1321,7 @@ type PaperProp =
     | Square of bool
     interface IHTMLProp
 let Paper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Paper"
-let inline paper b c = materialElPropsList Paper b c
+let inline paper b c = materialEl Paper b c
 // #endregion
 
 // #region withStyles
@@ -1559,7 +1513,7 @@ type MuiThemeProviderProp =
     interface IHTMLProp
 
 let MuiThemeProvider = importMember<ComponentClass<IHTMLProp>> "@material-ui/core/styles"
-let inline muiThemeProvider b c = materialElPropsList MuiThemeProvider b c
+let inline muiThemeProvider b c = materialEl MuiThemeProvider b c
 
 [<Import("createMuiTheme", "@material-ui/core/styles")>]
 let private createMuiTheme'<[<Pojo>]'O> (options: 'O) : ITheme = jsNative

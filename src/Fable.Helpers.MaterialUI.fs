@@ -330,6 +330,11 @@ module Props =
         | Bar2Buffer of CSSProp list
         | Padding of CSSProp list
         | Dense of CSSProp list
+        | Default of CSSProp list
+        | Divider of CSSProp list
+        | Gutters of CSSProp list
+        | Button of CSSProp list
+        | SecondaryAction of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -539,6 +544,11 @@ module Props =
         | Bar2Buffer of string
         | Padding of string
         | Dense of string
+        | Default of string
+        | Divider of string
+        | Gutters of string
+        | Button of string
+        | SecondaryAction of string
         interface IClassNames
 
     type ClassesProp =
@@ -588,6 +598,7 @@ module Props =
         | Label of ReactElement
         | Error of bool
         | Margin of FormControlMargin
+        | Dense of bool
         interface IHTMLProp
 
     type StyleOption =
@@ -1368,13 +1379,25 @@ let inline linearProgress b = materialEl LinearProgress b []
 
 // #region List
 type ListProp =
-    | Dense of bool
     | DisablePadding of bool
     | Subheader of ReactElement
     interface IHTMLProp
 
 let List = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/List"
 let inline list b c = materialEl List b c
+// #endregion
+
+// #region ListItem
+type ListItemProp<'a> = 
+    | Button of bool
+    | [<CompiledName("ContainerComponent")>] ContainerComponent of ComponentProp<'a>
+    | [<CompiledName("ContainerProps")>] ContainerProps of IHTMLProp list
+    | DisableGutters of bool
+    | Divider of bool
+    interface IHTMLProp
+
+let ListItem = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ListItem"
+let inline listItem b c = materialEl ListItem b c
 // #endregion
 
 // #region Paper
@@ -1553,6 +1576,7 @@ type OverridesProp =
     | MuiInputLabel of IStyles list
     | MuiLinearProgress of IStyles list
     | MuiList of IStyles list
+    | MuiListItem of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

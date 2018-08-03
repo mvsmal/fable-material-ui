@@ -61,7 +61,7 @@ paket add Fable.Helpers.MaterialUI
  * InputLabel - ✓
 * LinearProgress - ✓
 * List - ✓
-  * ListItem
+  * ListItem - ✓
   * ListItemAvatar
   * ListItemIcon
   * ListItemSecondaryAction

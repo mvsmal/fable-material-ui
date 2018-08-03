@@ -610,6 +610,13 @@ module Props =
         | Margin of FormControlMargin
         | Dense of bool
         | Inset of bool
+        | OnClose of (obj->unit)
+        | OnEnter of (obj->unit)
+        | OnEntered of (obj->unit)
+        | OnEntering of (obj->unit)
+        | OnExit of (obj->unit)
+        | OnExited of (obj->unit)
+        | OnExiting of (obj->unit)
         interface IHTMLProp
 
     type StyleOption =
@@ -647,7 +654,7 @@ module Props =
     type AutoEnum =
         | Auto
 
-    type AutoTimeout = U3<float, TransitionDuration list, AutoEnum>
+    type AutoTransitionDuration = U3<float, TransitionDuration list, AutoEnum>
 
 module Colors =
     let red = importDefault<Props.IColor> "@material-ui/core/colors/red";
@@ -930,7 +937,7 @@ let inline clickAwayListener b c = materialEl ClickAwayListener b c
 // #region Collapse
 type CollapseProp = 
     | CollapseHeight of string
-    | Timeout of AutoTimeout
+    | Timeout of AutoTransitionDuration
     interface IHTMLProp
 
 let Collapse = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Collapse"
@@ -962,14 +969,7 @@ type DialogProp<'a> =
     | FullScreen of bool
     | MaxWidth of DialogMaxWidth
     | OnBackdropClick of (obj->unit)
-    | OnClose of (obj->unit)
-    | OnEnter of (obj->unit)
-    | OnEntered of (obj->unit)
-    | OnEntering of (obj->unit)
     | OnEscapeKeyDown of (obj->unit)
-    | OnExit of (obj->unit)
-    | OnExited of (obj->unit)
-    | OnExiting of (obj->unit)
     | Scroll of DialogScroll
     | [<CompiledName("TransitionComponent")>] TransitionComponent of ComponentProp<'a>
     | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
@@ -1024,7 +1024,6 @@ type DrawerVariant =
 type DrawerProp =
     | Anchor of Anchor
     | [<CompiledName("ModalProps")>] ModalProps of IHTMLProp list
-    | OnClose of (obj->unit)
     | [<CompiledName("SlideProps")>] SlideProps of IHTMLProp list
     | Variant of DrawerVariant
     interface IHTMLProp
@@ -1249,7 +1248,7 @@ let inline gridListTileBar b c = materialEl GridListTileBar b c
 
 // #region Grow
 type GrowProp =
-    | Timeout of AutoTimeout
+    | Timeout of AutoTransitionDuration
     interface IHTMLProp
 
 let Grow = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Grow"
@@ -1454,6 +1453,19 @@ let ListSubheader = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/
 let inline listSubheader b c = materialEl ListSubheader b c
 // #endregion
 
+// #region Menu
+type MenuProp =
+    | AnchorEl of obj
+    | DisableAutoFocusItem of bool
+    | [<CompiledName("MenuListProps")>] MenuListProps of IHTMLProp list
+    | [<CompiledName("PopoverClasses")>] PopoperClasses of IClassNames list
+    | TransitionDuration of AutoTransitionDuration
+    interface IHTMLProp
+
+let Menu = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Menu"
+let inline menu b c = materialEl Menu b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1636,6 +1648,7 @@ type OverridesProp =
     | MuiListItemSecondaryAction of IStyles list
     | MuiListItemText of IStyles list
     | MuiListSubheader of IStyles list
+    | MuiMenu of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

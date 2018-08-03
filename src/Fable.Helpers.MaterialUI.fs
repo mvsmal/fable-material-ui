@@ -1477,6 +1477,11 @@ let MenuItem = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/MenuI
 let inline menuItem b c = materialEl MenuItem b c
 // #endregion
 
+// #region MenuList
+let MenuList = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/MenuList"
+let inline menuList b c = materialEl MenuList b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int

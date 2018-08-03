@@ -1412,6 +1412,11 @@ let ListItemIcon = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/L
 let inline listItemIcon b c = materialEl ListItemIcon b c
 // #endregion
 
+// #region ListItemSecondaryAction
+let ListItemSecondaryAction = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ListItemSecondaryAction"
+let inline listItemSecondaryAction b c = materialEl ListItemSecondaryAction b c
+// #endregion
+
 // #region Paper
 type PaperProp =
     | Elevation of int
@@ -1591,6 +1596,7 @@ type OverridesProp =
     | MuiListItem of IStyles list
     | MuiListItemAvatar of IStyles list
     | MuiListItemIcon of IStyles list
+    | MuiListItemSecondaryAction of IStyles list
     | MuiPaper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

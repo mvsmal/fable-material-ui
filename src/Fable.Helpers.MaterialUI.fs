@@ -348,6 +348,8 @@ module Props =
         | DotActive of CSSProp list
         | Progress of CSSProp list
         | Hidden of CSSProp list
+        | Select of CSSProp list
+        | SelectMenu of CSSProp list
         interface IStyles
 
     [<Erase; RequireQualifiedAccess>]
@@ -575,6 +577,8 @@ module Props =
         | DotActive of string
         | Progress of string
         | Hidden of string
+        | Select of string
+        | SelectMenu of string
         interface IClassNames
 
     type ClassesProp =
@@ -633,6 +637,10 @@ module Props =
         | OnExit of (obj->unit)
         | OnExited of (obj->unit)
         | OnExiting of (obj->unit)
+        | Container of ComponentProp<'a>
+        | Elevation of int
+        | [<CompiledName("TransitionComponent")>] TransitionComponent of ComponentProp<'a>
+        | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
         interface IHTMLProp
 
     type StyleOption =
@@ -983,8 +991,6 @@ type DialogProp<'a> =
     | FullScreen of bool
     | MaxWidth of DialogMaxWidth
     | Scroll of DialogScroll
-    | [<CompiledName("TransitionComponent")>] TransitionComponent of ComponentProp<'a>
-    | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
     interface IHTMLProp
 
 let Dialog = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Dialog"
@@ -1467,7 +1473,6 @@ let inline listSubheader b c = materialEl ListSubheader b c
 
 // #region Menu
 type MenuProp =
-    | AnchorEl of obj
     | DisableAutoFocusItem of bool
     | [<CompiledName("MenuListProps")>] MenuListProps of IHTMLProp list
     | [<CompiledName("PopoverClasses")>] PopoperClasses of IClassNames list
@@ -1524,9 +1529,9 @@ type ModalCloseReason =
     | EscapeKeyDown
     | BackdropClick
 
-type ModalProp =
-    | [<CompiledName("BackdropComponent")>] BackdropComponent
-    | [<CompiledName("BackdropProps")>] BackdropProps
+type ModalProp<'a> =
+    | [<CompiledName("BackdropComponent")>] BackdropComponent of ComponentProp<'a>
+    | [<CompiledName("BackdropProps")>] BackdropProps of IHTMLProp list
     | DisableAutoFocus of bool
     | DisableBackdropClick of bool
     | DisableEnforceFocus of bool
@@ -1546,13 +1551,93 @@ let Modal = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Modal"
 let inline modal b c = materialEl Modal b c
 // #endregion
 
+// #region NativeSelect
+type NativeSelectValue = U2<string, int>
+type NativeSelectProp =
+    | Value of NativeSelectValue
+    interface IHTMLProp
+
+let NativeSelect = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/NativeSelect"
+let inline nativeSelect b c = materialEl NativeSelect b c
+// #endregion
+
 // #region Paper
 type PaperProp =
-    | Elevation of int
     | Square of bool
     interface IHTMLProp
 let Paper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Paper"
 let inline paper b c = materialEl Paper b c
+// #endregion
+
+// #region Popover
+[<StringEnum; RequireQualifiedAccess>]
+type PopoverHorizontalPosition =
+    | Left
+    | Center
+    | Right
+
+[<StringEnum; RequireQualifiedAccess>]
+type PopoverVerticalPosition =
+    | Top
+    | Center
+    | Bottom
+
+type PopoverHorizontalOrigin = U2<int,PopoverHorizontalPosition>
+type PopoverVerticalOrigin = U2<int,PopoverVerticalPosition>
+
+[<Pojo>]
+type PopoverOrigin = {
+    horizontal: PopoverHorizontalOrigin
+    vertical: PopoverVerticalOrigin
+}
+
+[<Pojo>]
+type AnchorPosition = {
+    left: int
+    top: int
+}
+
+[<StringEnum; RequireQualifiedAccess>]
+type AnchorReference =
+    | AnchorEl
+    | AnchorPosition
+    | None
+
+type PopoverProp =
+    | Action of (obj->unit)
+    | AnchorEl of obj
+    | AnchorOrigin of PopoverOrigin
+    | AnchorPosition of AnchorPosition
+    | AnchorReference of AnchorReference
+    | GetContentAnchorEl of (unit->obj)
+    | MarginThreshold of int
+    | TransformOrigin of PopoverOrigin
+    | TransitionDuration of AutoTransitionDuration
+    interface IHTMLProp
+
+let Popover = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Popover"
+let inline popover b c = materialEl Popover b c
+// #endregion
+
+// #region Select
+type SelectValue = U4<string, int, string list, int list>
+type SelectProp<'a> =
+    | AutoWidth of bool
+    | DisplayEmpty of bool
+    | [<CompiledName("IconComponent")>] IconComponent of ComponentProp<'a>
+    | Input of ReactElement
+    | InputProps of IHTMLProp list
+    | [<CompiledName("MenuProps")>] MenuProps of IHTMLProp list
+    | Native of bool
+    | OnChange of (obj*obj->unit)
+    | OnOpen of (obj->unit)
+    | RenderValue of (obj->ReactElement)
+    | [<CompiledName("SelectDisplayProps")>] SelectDisplayProps of IHTMLProp list
+    | Value of SelectValue
+    interface IHTMLProp
+
+let Select = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Select"
+let inline select b c = materialEl Select b c
 // #endregion
 
 // #region withStyles
@@ -1732,7 +1817,10 @@ type OverridesProp =
     | MuiMenuItem of IStyles list
     | MuiMobileStepper of IStyles list
     | MuiModel of IStyles list
+    | MuiNativeSelect of IStyles list
     | MuiPaper of IStyles list
+    | MuiPopover of IStyles list
+    | MuiSelect of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

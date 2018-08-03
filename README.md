@@ -74,15 +74,15 @@ paket add Fable.Helpers.MaterialUI
 * Modal - ✓
 * MuiThemeProvider - ✓
   * createMuiTheme - ✓
-* NativeSelect
+* NativeSelect - ✓
 * NoSsr
 * Paper - ✓
-* Popover
+* Popover - ✓
 * Portal
 * Radio
   * RadioGroup
 * RootRef
-* Select
+* Select - ✓
 * Slide
 * Snackbar
   * SnackbarContent

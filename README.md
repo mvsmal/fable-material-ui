@@ -78,6 +78,7 @@ paket add Fable.Helpers.MaterialUI
 * NoSsr
 * Paper - ✓
 * Popover - ✓
+* Popper - ✓
 * Portal
 * Radio
   * RadioGroup

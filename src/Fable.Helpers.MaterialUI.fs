@@ -634,6 +634,9 @@ module Props =
         | Elevation of int
         | [<CompiledName("TransitionComponent")>] TransitionComponent of ComponentProp<'a>
         | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
+        | AnchorEl of obj
+        | DisablePortal of bool
+        | KeepMounted of bool
         interface IHTMLProp
 
     type StyleOption =
@@ -1490,10 +1493,8 @@ type ModalProp<'a> =
     | DisableBackdropClick of bool
     | DisableEnforceFocus of bool
     | DisableEscapeKeyDown of bool
-    | DisablePortal of bool
     | DisableRestoreFocus of bool
     | HideBackdrop of bool
-    | KeepMounted of bool
     | Manager of obj // TODO check static type for ModalManager
     | OnBackdropClick of (obj->unit)
     | OnEscapeKeyDown of (obj->unit)
@@ -1554,7 +1555,6 @@ type [<StringEnum; RequireQualifiedAccess>] AnchorReference =
 
 type PopoverProp =
     | Action of (obj->unit)
-    | AnchorEl of obj
     | AnchorOrigin of PopoverOrigin
     | AnchorPosition of AnchorPosition
     | AnchorReference of AnchorReference
@@ -1566,6 +1566,32 @@ type PopoverProp =
 
 let Popover = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Popover"
 let inline popover b c = materialEl Popover b c
+// #endregion
+
+// #region Popper
+type [<StringEnum; RequireQualifiedAccess>] PopperPlacementType =
+    | [<CompiledName "bottom-end">] BottomEnd
+    | [<CompiledName "bottom-start">] BottomStart
+    | Bottom
+    | [<CompiledName "left-end">] LeftEnd
+    | [<CompiledName "left-start">] LeftStart
+    | Left
+    | [<CompiledName "right-end">] RightEnd
+    | [<CompiledName "right-start">] RightStart
+    | Right
+    | [<CompiledName "top-end">] TopEnd
+    | [<CompiledName "top-start">] TopStart
+    | Top
+
+type PopperProp =
+    | Modifies of obj
+    | Placement of PopperPlacementType
+    | PopperOptions of obj
+    | Transition of bool
+    interface IHTMLProp
+
+let Popper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Popper"
+let inline popper b c = materialEl Popper b c
 // #endregion
 
 // #region Select

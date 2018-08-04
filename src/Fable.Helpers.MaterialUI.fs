@@ -637,6 +637,7 @@ module Props =
         | AnchorEl of React.ReactInstance
         | DisablePortal of bool
         | KeepMounted of bool
+        | OnRendered of (obj->unit)
         interface IHTMLProp
 
     type StyleOption =
@@ -1498,7 +1499,6 @@ type ModalProp<'a> =
     | OnBackdropClick of (obj->unit)
     | OnEscapeKeyDown of (obj->unit)
     | OnClose of (obj*ModalCloseReason->unit)
-    | OnRendered of (obj->unit)
     interface IHTMLProp
 
 let Modal = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Modal"
@@ -1591,6 +1591,11 @@ type PopperProp =
 
 let Popper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Popper"
 let inline popper b c = materialEl Popper b c
+// #endregion
+
+// #region Portal
+let Portal = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Portal"
+let inline portal b c = materialEl Portal b c
 // #endregion
 
 // #region Select

@@ -1611,6 +1611,14 @@ let Radio = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Radio"
 let inline radio b = materialEl Radio b []
 // #endregion
 
+// #region RadioGroup
+type RadioGroupProp =
+    | OnChange of (obj*string->unit)
+
+let RadioGroup = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/RadioGroup"
+let inline radioGroup b c = materialEl RadioGroup b c
+// #endregion
+
 // #region Select
 type SelectValue = U4<string, int, string list, int list>
 type SelectProp<'a> =

@@ -630,11 +630,11 @@ module Props =
         | OnExit of (obj->unit)
         | OnExited of (obj->unit)
         | OnExiting of (obj->unit)
-        | Container of ComponentProp<'a>
+        | Container of React.ReactInstance
         | Elevation of int
         | [<CompiledName("TransitionComponent")>] TransitionComponent of ComponentProp<'a>
         | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
-        | AnchorEl of obj
+        | AnchorEl of React.ReactInstance
         | DisablePortal of bool
         | KeepMounted of bool
         interface IHTMLProp
@@ -693,7 +693,6 @@ module Colors =
     let blueGrey = importDefault<Props.IColor> "@material-ui/core/colors/blueGrey";
 
 open Props
-open System.Runtime.InteropServices
 
 let materialEl<[<Pojo>]'P when 'P :> IHTMLProp>
     (a:ComponentClass<'P>) (b: IHTMLProp list) c =

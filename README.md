@@ -80,7 +80,7 @@ paket add Fable.Helpers.MaterialUI
 * Popover - ✓
 * Popper - ✓
 * Portal - ✓
-* Radio
+* Radio - ✓
   * RadioGroup
 * RootRef
 * Select - ✓

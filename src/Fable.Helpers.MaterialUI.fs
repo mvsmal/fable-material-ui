@@ -607,6 +607,8 @@ module Props =
         | Dense
         | Normal
 
+    type RefProp = U2<obj,(ReactInstance->unit)>
+
     type MaterialProp<'a> =
         | Component of ComponentProp<'a>
         | Color of ComponentColor
@@ -638,6 +640,9 @@ module Props =
         | DisablePortal of bool
         | KeepMounted of bool
         | OnRendered of (obj->unit)
+        | InputRef of RefProp
+        | CheckedIcon of ReactElement
+        | InputProps of IHTMLProp list
         interface IHTMLProp
 
     type StyleOption =
@@ -809,7 +814,7 @@ type [<StringEnum; RequireQualifiedAccess>] ButtonBaseType =
 
 type ButtonBaseProp =
     | Action of (obj->unit) // TODO add static typing
-    | ButtonRef of (obj->unit)
+    | ButtonRef of RefProp
     | CenterRipple of bool
     | DisableTouchRipple of bool
     | FocusRipple of bool
@@ -872,15 +877,9 @@ let inline cardMedia b = materialEl CardMedia b []
 
 // #region Checkbox
 type CheckboxProp =
-    | Checked of bool
-    | CheckedIcon of ReactElement
     | Indeterminate of bool
     | IndeterminateIcon of ReactElement
-    | InputProps of IHTMLProp list
-    // | InputRef of Func|Object
     | OnChange of (React.FormEvent*bool -> unit)
-    | Type of string
-    | Value of string
     interface IHTMLProp
     
 let Checkbox = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Checkbox"
@@ -1598,6 +1597,20 @@ let Portal = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Portal"
 let inline portal b c = materialEl Portal b c
 // #endregion
 
+// #region Radio
+type [<StringEnum; RequireQualifiedAccess>] RadioColor =
+    | Primary
+    | Secondary
+    | Default
+
+type RadioProp =
+    | Color of RadioColor
+    | OnChange of (React.FormEvent*bool -> unit)
+
+let Radio = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Radio"
+let inline radio b = materialEl Radio b []
+// #endregion
+
 // #region Select
 type SelectValue = U4<string, int, string list, int list>
 type SelectProp<'a> =
@@ -1799,6 +1812,7 @@ type OverridesProp =
     | MuiNativeSelect of IStyles list
     | MuiPaper of IStyles list
     | MuiPopover of IStyles list
+    | MuiRadio of IStyles list
     | MuiSelect of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?

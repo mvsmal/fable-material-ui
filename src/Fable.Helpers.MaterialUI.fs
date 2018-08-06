@@ -1684,6 +1684,21 @@ let StepLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Step
 let inline stepLabel b c = materialEl StepLabel b c
 // #endregion
 
+// #region Stepper
+type [<StringEnum; RequireQualifiedAccess>] StepperOrientation = Vertical | Horizontal
+
+type StepperProp =
+    | ActiveStep of int
+    | AlternativeLabel of bool
+    | Connector of ReactElement
+    | NonLinear of bool
+    | Orientation of StepperOrientation
+    interface IHTMLProp
+
+let Stepper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Stepper"
+let inline stepper b c = materialEl Stepper b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -1874,6 +1889,7 @@ type OverridesProp =
     | MuiStepContent of IStyles list
     | MuiStepIcon of IStyles list
     | MuiStepLabel of IStyles list
+    | MuiStepper of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

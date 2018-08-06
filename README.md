@@ -97,8 +97,8 @@ paket add Fable.Helpers.MaterialUI
 * SvgIcon - ✓
 * SwipableDrawer - ✓
 * Switch - ✓
-* Tab
-  * Tabs
+* Tab - ✓
+  * Tabs - ✓
 * Table
   * TableBody
   * TableCell

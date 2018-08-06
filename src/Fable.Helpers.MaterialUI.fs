@@ -136,20 +136,62 @@ module Props =
     type IStyles = interface end
 
     type Styles =
-        | Root of CSSProp list
+        | Absolute of CSSProp list
+        | Action of CSSProp list
+        | ActionIcon of CSSProp list
+        | ActionIconActionPosLeft of CSSProp list
+        | AlternativeLabel of CSSProp list
+        | AnchorOriginBottomCenter of CSSProp list
+        | AnchorOriginBottomLeft of CSSProp list
+        | AnchorOriginBottomRight of CSSProp list
+        | AnchorOriginTopCenter of CSSProp list
+        | AnchorOriginTopLeft of CSSProp list
+        | AnchorOriginTopRight of CSSProp list
+        | Animated of CSSProp list
+        | Asterisk of CSSProp list
+        | Avatar of CSSProp list
+        | AvatarChildren of CSSProp list
+        | Badge of CSSProp list
+        | Bar of CSSProp list
+        | Bar1Buffer of CSSProp list
+        | Bar1Determinate of CSSProp list
+        | Bar1Indeterminate of CSSProp list
+        | Bar2Buffer of CSSProp list
+        | Bar2Determinate of CSSProp list
+        | Bar2Indeterminate of CSSProp list
+        | BarColorPrimary of CSSProp list
+        | BarColorSecondary of CSSProp list
+        | Button of CSSProp list
+        | Checked of CSSProp list
+        | Circle of CSSProp list
+        | CircleIndeterminate of CSSProp list
+        | CircleStatic of CSSProp list
+        | Clickable of CSSProp list
+        | ColorAction of CSSProp list
         | ColorDefault of CSSProp list
-        | Img of CSSProp list
-        | Rounded of CSSProp list
+        | ColorDisabled of CSSProp list
+        | ColorError of CSSProp list
+        | ColorInherit of CSSProp list
+        | ColorPrimary of CSSProp list
+        | ColorSecondary of CSSProp list
+        | Completed of CSSProp list
+        | Contained of CSSProp list
+        | ContainedPrimary of CSSProp list
+        | ContainedSecondary of CSSProp list
+        | Container of CSSProp list
+        | Content of CSSProp list
+        | Default of CSSProp list
+        | Deletable of CSSProp list
+        | DeleteIcon of CSSProp list
+        | Dense of CSSProp list
+        | Disabled of CSSProp list
+        | Divider of CSSProp list
+        | Docked of CSSProp list
+        | Dot of CSSProp list
+        | DotActive of CSSProp list
+        | Dots of CSSProp list
         | Elevation0 of CSSProp list
         | Elevation1 of CSSProp list
-        | Elevation2 of CSSProp list
-        | Elevation3 of CSSProp list
-        | Elevation4 of CSSProp list
-        | Elevation5 of CSSProp list
-        | Elevation6 of CSSProp list
-        | Elevation7 of CSSProp list
-        | Elevation8 of CSSProp list
-        | Elevation9 of CSSProp list
         | Elevation10 of CSSProp list
         | Elevation11 of CSSProp list
         | Elevation12 of CSSProp list
@@ -160,126 +202,154 @@ module Props =
         | Elevation17 of CSSProp list
         | Elevation18 of CSSProp list
         | Elevation19 of CSSProp list
+        | Elevation2 of CSSProp list
         | Elevation20 of CSSProp list
         | Elevation21 of CSSProp list
         | Elevation22 of CSSProp list
         | Elevation23 of CSSProp list
         | Elevation24 of CSSProp list
-        | Invisible of CSSProp list
-        | Badge of CSSProp list
-        | ColorInherit of CSSProp list
-        | ColorPrimary of CSSProp list
-        | ColorSecondary of CSSProp list
-        | ColorAction of CSSProp list
-        | ColorError of CSSProp list
-        | ColorDisabled of CSSProp list
-        | Label of CSSProp list
-        | Text of CSSProp list
-        | TextPrimary of CSSProp list
-        | TextSecondary of CSSProp list
+        | Elevation3 of CSSProp list
+        | Elevation4 of CSSProp list
+        | Elevation5 of CSSProp list
+        | Elevation6 of CSSProp list
+        | Elevation7 of CSSProp list
+        | Elevation8 of CSSProp list
+        | Elevation9 of CSSProp list
+        | Entered of CSSProp list
+        | Error of CSSProp list
+        | ExpandIcon of CSSProp list
+        | Expanded of CSSProp list
+        | ExtendedFab of CSSProp list
+        | Fab of CSSProp list
         | Flat of CSSProp list
         | FlatPrimary of CSSProp list
         | FlatSecondary of CSSProp list
+        | FocusVisible of CSSProp list
+        | Focused of CSSProp list
+        | FontSizeInherit of CSSProp list
+        | FormControl of CSSProp list
+        | FullWidth of CSSProp list
+        | Gutters of CSSProp list
+        | Hidden of CSSProp list
+        | Horizontal of CSSProp list
+        | Icon of CSSProp list
+        | IconContainer of CSSProp list
+        | Img of CSSProp list
+        | ImgFullHeight of CSSProp list
+        | ImgFullWidth of CSSProp list
+        | Indeterminate of CSSProp list
+        | Input of CSSProp list
+        | InputMarginDense of CSSProp list
+        | InputMultiline of CSSProp list
+        | InputType of CSSProp list
+        | InputTypeSearch of CSSProp list
+        | Inset of CSSProp list
+        | Invisible of CSSProp list
+        | Item of CSSProp list
+        | Label of CSSProp list
+        | LabelContainer of CSSProp list
+        | LabelIcon of CSSProp list
+        | LabelPlacementStart of CSSProp list
+        | LabelWrapped of CSSProp list
+        | Last of CSSProp list
+        | Light of CSSProp list
+        | Line of CSSProp list
+        | LineHorizontal of CSSProp list
+        | LineVertical of CSSProp list
+        | MarginDense of CSSProp list
+        | MarginNormal of CSSProp list
+        | Media of CSSProp list
+        | Message of CSSProp list
+        | Mini of CSSProp list
+        | Modal of CSSProp list
+        | Multiline of CSSProp list
         | Outlined of CSSProp list
         | OutlinedPrimary of CSSProp list
         | OutlinedSecondary of CSSProp list
-        | Contained of CSSProp list
-        | ContainedPrimary of CSSProp list
-        | ContainedSecondary of CSSProp list
-        | Raised of CSSProp list
-        | RaisedPrimary of CSSProp list
-        | RaisedSecondary of CSSProp list
-        | Fab of CSSProp list
-        | ExtendedFab of CSSProp list
-        | FocusVisible of CSSProp list
-        | Disabled of CSSProp list
-        | Mini of CSSProp list
-        | SizeSmall of CSSProp list
-        | SizeLarge of CSSProp list
-        | FullWidth of CSSProp list
-        | PositionFixed of CSSProp list
-        | PositionAbsolute of CSSProp list
-        | PositionSticky of CSSProp list
-        | PositionStatic of CSSProp list
-        | Action of CSSProp list
-        | Avatar of CSSProp list
-        | Content of CSSProp list
-        | Title of CSSProp list
-        | Subheader of CSSProp list
-        | Media of CSSProp list
-        | Checked of CSSProp list
-        | Clickable of CSSProp list
-        | Deletable of CSSProp list
-        | AvatarChildren of CSSProp list
-        | DeleteIcon of CSSProp list
-        | Static of CSSProp list
-        | Indeterminate of CSSProp list
-        | Svg of CSSProp list
-        | Circle of CSSProp list
-        | CircleStatic of CSSProp list
-        | CircleIndeterminate of CSSProp list
-        | Container of CSSProp list
-        | Entered of CSSProp list
-        | Wrapper of CSSProp list
-        | WrapperInner of CSSProp list
+        | Padding of CSSProp list
         | Paper of CSSProp list
-        | PaperScrollPaper of CSSProp list
-        | PaperScrollBody of CSSProp list
-        | PaperWidthXs of CSSProp list
-        | PaperWidthSm of CSSProp list
-        | PaperWidthMd of CSSProp list
-        | PaperFullWidth of CSSProp list
-        | PaperFullScreen of CSSProp list
-        | Absolute of CSSProp list
-        | Inset of CSSProp list
-        | Light of CSSProp list
-        | Docked of CSSProp list
-        | PaperAnchorLeft of CSSProp list
-        | PaperAnchorRight of CSSProp list
-        | PaperAnchorTop of CSSProp list
         | PaperAnchorBottom of CSSProp list
+        | PaperAnchorDockedBottom of CSSProp list
         | PaperAnchorDockedLeft of CSSProp list
         | PaperAnchorDockedRight of CSSProp list
         | PaperAnchorDockedTop of CSSProp list
-        | PaperAnchorDockedBottom of CSSProp list
-        | Modal of CSSProp list
-        | Expanded of CSSProp list
-        | Focused of CSSProp list
-        | ExpandIcon of CSSProp list
-        | MarginNormal of CSSProp list
-        | MarginDense of CSSProp list
-        | LabelPlacementStart of CSSProp list
+        | PaperAnchorLeft of CSSProp list
+        | PaperAnchorRight of CSSProp list
+        | PaperAnchorTop of CSSProp list
+        | PaperFullScreen of CSSProp list
+        | PaperFullWidth of CSSProp list
+        | PaperScrollBody of CSSProp list
+        | PaperScrollPaper of CSSProp list
+        | PaperWidthMd of CSSProp list
+        | PaperWidthSm of CSSProp list
+        | PaperWidthXs of CSSProp list
+        | PositionAbsolute of CSSProp list
+        | PositionBottom of CSSProp list
+        | PositionEnd of CSSProp list
+        | PositionFixed of CSSProp list
+        | PositionStart of CSSProp list
+        | PositionStatic of CSSProp list
+        | PositionSticky of CSSProp list
+        | PositionTop of CSSProp list
+        | Primary of CSSProp list
+        | Progress of CSSProp list
+        | Raised of CSSProp list
+        | RaisedPrimary of CSSProp list
+        | RaisedSecondary of CSSProp list
+        | Root of CSSProp list
+        | RootSubtitle of CSSProp list
+        | Rounded of CSSProp list
         | Row of CSSProp list
-        | Error of CSSProp list
-        | Asterisk of CSSProp list
-        | Item of CSSProp list
+        | Secondary of CSSProp list
+        | SecondaryAction of CSSProp list
+        | Select of CSSProp list
+        | SelectMenu of CSSProp list
+        | Selected of CSSProp list
+        | Shrink of CSSProp list
+        | SizeLarge of CSSProp list
+        | SizeSmall of CSSProp list
+        | Static of CSSProp list
+        | Sticky of CSSProp list
+        | Subheader of CSSProp list
+        | Subtitle of CSSProp list
+        | Svg of CSSProp list
+        | SwitchBase of CSSProp list
+        | Text of CSSProp list
+        | TextColorInherit of CSSProp list
+        | TextColorPrimary of CSSProp list
+        | TextColorSecondary of CSSProp list
+        | TextDense of CSSProp list
+        | TextPrimary of CSSProp list
+        | TextSecondary of CSSProp list
+        | Tile of CSSProp list
+        | Title of CSSProp list
+        | TitlePositionBottom of CSSProp list
+        | TitlePositionTop of CSSProp list
+        | TitleWrap of CSSProp list
+        | TitleWrapActionPosLeft of CSSProp list
+        | TitleWrapActionPosRight of CSSProp list
+        | TouchRipple of CSSProp list
+        | Transition of CSSProp list
+        | Underline of CSSProp list
+        | Vertical of CSSProp list
+        | Wrapper of CSSProp list
+        | WrapperInner of CSSProp list
         | ZeroMinWidth of CSSProp list
-        | ``Direction-xs-column`` of CSSProp list
-        | ``Direction-xs-column-reverse`` of CSSProp list
-        | ``Direction-xs-row-reverse`` of CSSProp list
-        | ``Wrap-xs-nowrap`` of CSSProp list
-        | ``Wrap-xs-wrap-reverse`` of CSSProp list
-        | ``Align-items-xs-center`` of CSSProp list
-        | ``Align-items-xs-flex-start`` of CSSProp list
-        | ``Align-items-xs-flex-end`` of CSSProp list
-        | ``Align-items-xs-baseline`` of CSSProp list
         | ``Align-content-xs-center`` of CSSProp list
-        | ``Align-content-xs-flex-start`` of CSSProp list
         | ``Align-content-xs-flex-end`` of CSSProp list
-        | ``Align-content-xs-space-between`` of CSSProp list
+        | ``Align-content-xs-flex-start`` of CSSProp list
         | ``Align-content-xs-space-around`` of CSSProp list
-        | ``Justify-xs-center`` of CSSProp list
-        | ``Justify-xs-flex-end`` of CSSProp list
-        | ``Justify-xs-space-between`` of CSSProp list
-        | ``Justify-xs-space-around`` of CSSProp list
-        | ``Justify-xs-space-evenly`` of CSSProp list
-        | ``Spacing-xs-8`` of CSSProp list
-        | ``Spacing-xs-16`` of CSSProp list
-        | ``Spacing-xs-24`` of CSSProp list
-        | ``Spacing-xs-32`` of CSSProp list
-        | ``Spacing-xs-40`` of CSSProp list
-        | ``Grid-xs-auto`` of CSSProp list
-        | ``Grid-xs-true`` of CSSProp list
+        | ``Align-content-xs-space-between`` of CSSProp list
+        | ``Align-items-xs-baseline`` of CSSProp list
+        | ``Align-items-xs-center`` of CSSProp list
+        | ``Align-items-xs-flex-end`` of CSSProp list
+        | ``Align-items-xs-flex-start`` of CSSProp list
+        | ``Direction-xs-column-reverse`` of CSSProp list
+        | ``Direction-xs-column`` of CSSProp list
+        | ``Direction-xs-row-reverse`` of CSSProp list
+        | ``Grid-xs-10`` of CSSProp list
+        | ``Grid-xs-11`` of CSSProp list
+        | ``Grid-xs-12`` of CSSProp list
         | ``Grid-xs-1`` of CSSProp list
         | ``Grid-xs-2`` of CSSProp list
         | ``Grid-xs-3`` of CSSProp list
@@ -289,85 +359,20 @@ module Props =
         | ``Grid-xs-7`` of CSSProp list
         | ``Grid-xs-8`` of CSSProp list
         | ``Grid-xs-9`` of CSSProp list
-        | ``Grid-xs-10`` of CSSProp list
-        | ``Grid-xs-11`` of CSSProp list
-        | ``Grid-xs-12`` of CSSProp list
-        | Tile of CSSProp list
-        | ImgFullHeight of CSSProp list
-        | ImgFullWidth of CSSProp list
-        | TitlePositionBottom of CSSProp list
-        | TitlePositionTop of CSSProp list
-        | RootSubtitle of CSSProp list
-        | TitleWrap of CSSProp list
-        | TitleWrapActionPosLeft of CSSProp list
-        | TitleWrapActionPosRight of CSSProp list
-        | Subtitle of CSSProp list
-        | ActionIcon of CSSProp list
-        | ActionIconActionPosLeft of CSSProp list
-        | FontSizeInherit of CSSProp list
-        | FormControl of CSSProp list
-        | Underline of CSSProp list
-        | Multiline of CSSProp list
-        | Input of CSSProp list
-        | InputMarginDense of CSSProp list
-        | InputMultiline of CSSProp list
-        | InputType of CSSProp list
-        | InputTypeSearch of CSSProp list
-        | PositionStart of CSSProp list
-        | PositionEnd of CSSProp list
-        | Shrink of CSSProp list
-        | Animated of CSSProp list
-        | Bar of CSSProp list
-        | BarColorPrimary of CSSProp list
-        | BarColorSecondary of CSSProp list
-        | Bar1Indeterminate of CSSProp list
-        | Bar1Determinate of CSSProp list
-        | Bar1Buffer of CSSProp list
-        | Bar2Indeterminate of CSSProp list
-        | Bar2Determinate of CSSProp list
-        | Bar2Buffer of CSSProp list
-        | Padding of CSSProp list
-        | Dense of CSSProp list
-        | Default of CSSProp list
-        | Divider of CSSProp list
-        | Gutters of CSSProp list
-        | Button of CSSProp list
-        | SecondaryAction of CSSProp list
-        | Icon of CSSProp list
-        | Primary of CSSProp list
-        | Secondary of CSSProp list
-        | TextDense of CSSProp list
-        | Sticky of CSSProp list
-        | Selected of CSSProp list
-        | PositionBottom of CSSProp list
-        | PositionTop of CSSProp list
-        | Dots of CSSProp list
-        | Dot of CSSProp list
-        | DotActive of CSSProp list
-        | Progress of CSSProp list
-        | Hidden of CSSProp list
-        | Select of CSSProp list
-        | SelectMenu of CSSProp list
-        | AnchorOriginTopCenter of CSSProp list
-        | AnchorOriginBottomCenter of CSSProp list
-        | AnchorOriginTopRight of CSSProp list
-        | AnchorOriginBottomRight of CSSProp list
-        | AnchorOriginTopLeft of CSSProp list
-        | AnchorOriginBottomLeft of CSSProp list
-        | Message of CSSProp list
-        | Horizontal of CSSProp list
-        | Vertical of CSSProp list
-        | AlternativeLabel of CSSProp list
-        | Completed of CSSProp list
-        | TouchRipple of CSSProp list
-        | Line of CSSProp list
-        | LineHorizontal of CSSProp list
-        | LineVertical of CSSProp list
-        | Last of CSSProp list
-        | Transition of CSSProp list
-        | IconContainer of CSSProp list
-        | LabelContainer of CSSProp list
-        | SwitchBase of CSSProp list
+        | ``Grid-xs-auto`` of CSSProp list
+        | ``Grid-xs-true`` of CSSProp list
+        | ``Justify-xs-center`` of CSSProp list
+        | ``Justify-xs-flex-end`` of CSSProp list
+        | ``Justify-xs-space-around`` of CSSProp list
+        | ``Justify-xs-space-between`` of CSSProp list
+        | ``Justify-xs-space-evenly`` of CSSProp list
+        | ``Spacing-xs-16`` of CSSProp list
+        | ``Spacing-xs-24`` of CSSProp list
+        | ``Spacing-xs-32`` of CSSProp list
+        | ``Spacing-xs-40`` of CSSProp list
+        | ``Spacing-xs-8`` of CSSProp list
+        | ``Wrap-xs-nowrap`` of CSSProp list
+        | ``Wrap-xs-wrap-reverse`` of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -377,20 +382,66 @@ module Props =
     type IClassNames = interface end
 
     type ClassNames =
-        | Root of string
+        | Absolute of string
+        | Action of string
+        | ActionIcon of string
+        | ActionIconActionPosLeft of string
+        | AlternativeLabel of string
+        | AnchorOriginBottomCenter of string
+        | AnchorOriginBottomLeft of string
+        | AnchorOriginBottomRight of string
+        | AnchorOriginTopCenter of string
+        | AnchorOriginTopLeft of string
+        | AnchorOriginTopRight of string
+        | Animated of string
+        | Asterisk of string
+        | Avatar of string
+        | AvatarChildren of string
+        | Badge of string
+        | Bar of string
+        | Bar1Buffer of string
+        | Bar1Determinate of string
+        | Bar1Indeterminate of string
+        | Bar2Buffer of string
+        | Bar2Determinate of string
+        | Bar2Indeterminate of string
+        | BarColorPrimary of string
+        | BarColorSecondary of string
+        | Buffer of string
+        | Button of string
+        | Checked of string
+        | Circle of string
+        | CircleIndeterminate of string
+        | CircleStatic of string
+        | Clickable of string
+        | ColorAction of string
         | ColorDefault of string
-        | Img of string
-        | Rounded of string
+        | ColorDisabled of string
+        | ColorError of string
+        | ColorInherit of string
+        | ColorPrimary of string
+        | ColorSecondary of string
+        | Completed of string
+        | Contained of string
+        | ContainedPrimary of string
+        | ContainedSecondary of string
+        | Container of string
+        | Content of string
+        | Dashed of string
+        | DashedColorPrimary of string
+        | DashedColorSecondary of string
+        | Default of string
+        | Deletable of string
+        | DeleteIcon of string
+        | Dense of string
+        | Disabled of string
+        | Divider of string
+        | Docked of string
+        | Dot of string
+        | DotActive of string
+        | Dots of string
         | Elevation0 of string
         | Elevation1 of string
-        | Elevation2 of string
-        | Elevation3 of string
-        | Elevation4 of string
-        | Elevation5 of string
-        | Elevation6 of string
-        | Elevation7 of string
-        | Elevation8 of string
-        | Elevation9 of string
         | Elevation10 of string
         | Elevation11 of string
         | Elevation12 of string
@@ -401,128 +452,157 @@ module Props =
         | Elevation17 of string
         | Elevation18 of string
         | Elevation19 of string
+        | Elevation2 of string
         | Elevation20 of string
         | Elevation21 of string
         | Elevation22 of string
         | Elevation23 of string
         | Elevation24 of string
-        | Invisible of string
-        | Badge of string
-        | ColorInherit of string
-        | ColorPrimary of string
-        | ColorSecondary of string
-        | ColorAction of string
-        | ColorError of string
-        | ColorDisabled of string
-        | Text of string
-        | TextPrimary of string
-        | TextSecondary of string
+        | Elevation3 of string
+        | Elevation4 of string
+        | Elevation5 of string
+        | Elevation6 of string
+        | Elevation7 of string
+        | Elevation8 of string
+        | Elevation9 of string
+        | Entered of string
+        | Error of string
+        | ExpandIcon of string
+        | Expanded of string
+        | ExtendedFab of string
+        | Fab of string
         | Flat of string
         | FlatPrimary of string
         | FlatSecondary of string
+        | FocusVisible of string
+        | Focused of string
+        | FontSizeInherit of string
+        | FormControl of string
+        | FullWidth of string
+        | Gutters of string
+        | Hidden of string
+        | Horizontal of string
+        | Icon of string
+        | IconContainer of string
+        | Img of string
+        | ImgFullHeight of string
+        | ImgFullWidth of string
+        | Indeterminate of string
+        | Input of string
+        | InputMarginDense of string
+        | InputMultiline of string
+        | InputType of string
+        | InputTypeSearch of string
+        | Inset of string
+        | Invisible of string
+        | Item of string
+        | Label of string
+        | LabelContainer of string
+        | LabelIcon of string
+        | LabelPlacementStart of string
+        | LabelWrapped of string
+        | Last of string
+        | Light of string
+        | Line of string
+        | LineHorizontal of string
+        | LineVertical of string
+        | MarginDense of string
+        | MarginNormal of string
+        | Media of string
+        | Message of string
+        | Mini of string
+        | Modal of string
+        | Multiline of string
         | Outlined of string
         | OutlinedPrimary of string
         | OutlinedSecondary of string
-        | Contained of string
-        | ContainedPrimary of string
-        | ContainedSecondary of string
-        | Raised of string
-        | RaisedPrimary of string
-        | RaisedSecondary of string
-        | Fab of string
-        | ExtendedFab of string
-        | FocusVisible of string
-        | Disabled of string
-        | Mini of string
-        | SizeSmall of string
-        | SizeLarge of string
-        | FullWidth of string
-        | PositionFixed of string
-        | PositionAbsolute of string
-        | PositionSticky of string
-        | PositionStatic of string
-        | Action of string
-        | Avatar of string
-        | Content of string
-        | Title of string
-        | Subheader of string
-        | Media of string
-        | Checked of string
-        | Clickable of string
-        | Deletable of string
-        | AvatarChildren of string
-        | Label of string
-        | DeleteIcon of string
-        | Static of string
-        | Indeterminate of string
-        | Svg of string
-        | Circle of string
-        | CircleStatic of string
-        | CircleIndeterminate of string
-        | Container of string
-        | Entered of string
-        | Wrapper of string
-        | WrapperInner of string
-        | ScrollPaper of string
-        | ScrollBody of string
+        | Padding of string
         | Paper of string
-        | PaperScrollPaper of string
-        | PaperScrollBody of string
-        | PaperWidthXs of string
-        | PaperWidthSm of string
-        | PaperWidthMd of string
-        | PaperFullWidth of string
-        | PaperFullScreen of string
-        | Absolute of string
-        | Inset of string
-        | Light of string
-        | Docked of string
-        | PaperAnchorLeft of string
-        | PaperAnchorRight of string
-        | PaperAnchorTop of string
         | PaperAnchorBottom of string
+        | PaperAnchorDockedBottom of string
         | PaperAnchorDockedLeft of string
         | PaperAnchorDockedRight of string
         | PaperAnchorDockedTop of string
-        | PaperAnchorDockedBottom of string
-        | Modal of string
-        | Expanded of string
-        | Focused of string
-        | ExpandIcon of string
-        | MarginNormal of string
-        | MarginDense of string
-        | LabelPlacementStart of string
+        | PaperAnchorLeft of string
+        | PaperAnchorRight of string
+        | PaperAnchorTop of string
+        | PaperFullScreen of string
+        | PaperFullWidth of string
+        | PaperScrollBody of string
+        | PaperScrollPaper of string
+        | PaperWidthMd of string
+        | PaperWidthSm of string
+        | PaperWidthXs of string
+        | PositionAbsolute of string
+        | PositionBottom of string
+        | PositionEnd of string
+        | PositionFixed of string
+        | PositionStart of string
+        | PositionStatic of string
+        | PositionSticky of string
+        | PositionTop of string
+        | Primary of string
+        | Progress of string
+        | Query of string
+        | Raised of string
+        | RaisedPrimary of string
+        | RaisedSecondary of string
+        | Root of string
+        | RootSubtitle of string
+        | Rounded of string
         | Row of string
-        | Error of string
-        | Asterisk of string
-        | Item of string
+        | ScrollBody of string
+        | ScrollPaper of string
+        | Secondary of string
+        | SecondaryAction of string
+        | Select of string
+        | SelectMenu of string
+        | Selected of string
+        | Shrink of string
+        | SizeLarge of string
+        | SizeSmall of string
+        | Static of string
+        | Sticky of string
+        | Subheader of string
+        | Subtitle of string
+        | Svg of string
+        | SwitchBase of string
+        | Text of string
+        | TextColorInherit of string
+        | TextColorPrimary of string
+        | TextColorSecondary of string
+        | TextDense of string
+        | TextPrimary of string
+        | TextSecondary of string
+        | Tile of string
+        | Title of string
+        | TitlePositionBottom of string
+        | TitlePositionTop of string
+        | TitleWrap of string
+        | TitleWrapActionPosLeft of string
+        | TitleWrapActionPosRight of string
+        | TouchRipple of string
+        | Transition of string
+        | Underline of string
+        | Vertical of string
+        | Wrapper of string
+        | WrapperInner of string
         | ZeroMinWidth of string
-        | ``Direction-xs-column`` of string
-        | ``Direction-xs-column-reverse`` of string
-        | ``Direction-xs-row-reverse`` of string
-        | ``Wrap-xs-nowrap`` of string
-        | ``Wrap-xs-wrap-reverse`` of string
-        | ``Align-items-xs-center`` of string
-        | ``Align-items-xs-flex-start`` of string
-        | ``Align-items-xs-flex-end`` of string
-        | ``Align-items-xs-baseline`` of string
         | ``Align-content-xs-center`` of string
-        | ``Align-content-xs-flex-start`` of string
         | ``Align-content-xs-flex-end`` of string
-        | ``Align-content-xs-space-between`` of string
+        | ``Align-content-xs-flex-start`` of string
         | ``Align-content-xs-space-around`` of string
-        | ``Justify-xs-center`` of string
-        | ``Justify-xs-flex-end`` of string
-        | ``Justify-xs-space-between`` of string
-        | ``Justify-xs-space-around`` of string
-        | ``Justify-xs-space-evenly`` of string
-        | ``Spacing-xs-8`` of string
-        | ``Spacing-xs-16`` of string
-        | ``Spacing-xs-24`` of string
-        | ``Spacing-xs-32`` of string
-        | ``Spacing-xs-40`` of string
-        | ``Grid-xs-auto`` of string
-        | ``Grid-xs-true`` of string
+        | ``Align-content-xs-space-between`` of string
+        | ``Align-items-xs-baseline`` of string
+        | ``Align-items-xs-center`` of string
+        | ``Align-items-xs-flex-end`` of string
+        | ``Align-items-xs-flex-start`` of string
+        | ``Direction-xs-column-reverse`` of string
+        | ``Direction-xs-column`` of string
+        | ``Direction-xs-row-reverse`` of string
+        | ``Grid-xs-10`` of string
+        | ``Grid-xs-11`` of string
+        | ``Grid-xs-12`` of string
         | ``Grid-xs-1`` of string
         | ``Grid-xs-2`` of string
         | ``Grid-xs-3`` of string
@@ -532,90 +612,20 @@ module Props =
         | ``Grid-xs-7`` of string
         | ``Grid-xs-8`` of string
         | ``Grid-xs-9`` of string
-        | ``Grid-xs-10`` of string
-        | ``Grid-xs-11`` of string
-        | ``Grid-xs-12`` of string
-        | Tile of string
-        | ImgFullHeight of string
-        | ImgFullWidth of string
-        | TitlePositionBottom of string
-        | TitlePositionTop of string
-        | RootSubtitle of string
-        | TitleWrap of string
-        | TitleWrapActionPosLeft of string
-        | TitleWrapActionPosRight of string
-        | Subtitle of string
-        | ActionIcon of string
-        | ActionIconActionPosLeft of string
-        | FontSizeInherit of string
-        | FormControl of string
-        | Underline of string
-        | Multiline of string
-        | Input of string
-        | InputMarginDense of string
-        | InputMultiline of string
-        | InputType of string
-        | InputTypeSearch of string
-        | PositionStart of string
-        | PositionEnd of string
-        | Shrink of string
-        | Animated of string
-        | Buffer of string
-        | Query of string
-        | Dashed of string
-        | DashedColorPrimary of string
-        | DashedColorSecondary of string
-        | Bar of string
-        | BarColorPrimary of string
-        | BarColorSecondary of string
-        | Bar1Indeterminate of string
-        | Bar1Determinate of string
-        | Bar1Buffer of string
-        | Bar2Indeterminate of string
-        | Bar2Determinate of string
-        | Bar2Buffer of string
-        | Padding of string
-        | Dense of string
-        | Default of string
-        | Divider of string
-        | Gutters of string
-        | Button of string
-        | SecondaryAction of string
-        | Icon of string
-        | Primary of string
-        | Secondary of string
-        | TextDense of string
-        | Sticky of string
-        | Selected of string
-        | PositionBottom of string
-        | PositionTop of string
-        | Dots of string
-        | Dot of string
-        | DotActive of string
-        | Progress of string
-        | Hidden of string
-        | Select of string
-        | SelectMenu of string
-        | AnchorOriginTopCenter of string
-        | AnchorOriginBottomCenter of string
-        | AnchorOriginTopRight of string
-        | AnchorOriginBottomRight of string
-        | AnchorOriginTopLeft of string
-        | AnchorOriginBottomLeft of string
-        | Message of string
-        | Horizontal of string
-        | Vertical of string
-        | AlternativeLabel of string
-        | Completed of string
-        | TouchRipple of string
-        | Line of string
-        | LineHorizontal of string
-        | LineVertical of string
-        | Last of string
-        | Transition of string
-        | IconContainer of string
-        | LabelContainer of string
-        | SwitchBase of string
+        | ``Grid-xs-auto`` of string
+        | ``Grid-xs-true`` of string
+        | ``Justify-xs-center`` of string
+        | ``Justify-xs-flex-end`` of string
+        | ``Justify-xs-space-around`` of string
+        | ``Justify-xs-space-between`` of string
+        | ``Justify-xs-space-evenly`` of string
+        | ``Spacing-xs-16`` of string
+        | ``Spacing-xs-24`` of string
+        | ``Spacing-xs-32`` of string
+        | ``Spacing-xs-40`` of string
+        | ``Spacing-xs-8`` of string
+        | ``Wrap-xs-nowrap`` of string
+        | ``Wrap-xs-wrap-reverse`` of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -755,11 +765,7 @@ let inline backdrop b = materialEl Backdrop b []
 // #endregion
 
 // #region Badge
-type [<StringEnum; RequireQualifiedAccess>] BadgeColor =
-    | Default
-    | Primary
-    | Secondary
-    | Error
+type [<StringEnum; RequireQualifiedAccess>] BadgeColor = Default | Primary | Secondary | Error
 
 type BadgeProp =
     | Color of BadgeColor
@@ -1726,6 +1732,35 @@ let Switch = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Switch"
 let inline switch b = materialEl Switch b []
 // #endregion
 
+// #region Tab
+let Tab = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Tab"
+let inline tab b = materialEl Tab b []
+// #endregion
+
+// #region Tabs
+type [<StringEnum; RequireQualifiedAccess>] TabsIndicatorColor = Primary | Secondary
+type [<StringEnum; RequireQualifiedAccess>] TabsTextColor = Primary | Secondary | Inherit
+type [<StringEnum; RequireQualifiedAccess>] ScrollButtonsType = Auto | On | Off
+
+type ITabsActions =
+    abstract member updateIndicator: unit -> unit
+
+type TabsProp =
+    | Action of (ITabsActions->unit)
+    | Centered of bool
+    | IndicatorColor of TabsIndicatorColor
+    | OnChange of (obj*int->unit)
+    | Scrollabel of bool
+    | [<CompiledName("ScrollButtonComponent")>] ScrollButtonComponent of ReactType
+    | ScrollButtons of ScrollButtonsType
+    | [<CompiledName("TabIndicatorProps")>] TabIndicatorProps of IHTMLProp list
+    | TextColor of TabsTextColor
+    interface IHTMLProp
+
+let Tabs = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Tabs"
+let inline tabs b c = materialEl Tabs b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -1919,6 +1954,7 @@ type OverridesProp =
     | MuiStepper of IStyles list
     | MuiSvgIcon of IStyles list
     | MuiSwitch of IStyles list
+    | MuiTab of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

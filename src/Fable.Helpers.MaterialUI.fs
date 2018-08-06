@@ -1669,6 +1669,11 @@ let StepContent = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/St
 let inline stepContent b c = materialEl StepContent b c
 // #endregion
 
+// #region StepIcon
+let StepIcon = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/StepIcon"
+let inline stepIcon b c = materialEl StepIcon b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -1857,6 +1862,7 @@ type OverridesProp =
     | MuiStepButton of IStyles list
     | MuiStepConnector of IStyles list
     | MuiStepContent of IStyles list
+    | MuiStepIcon of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

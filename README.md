@@ -99,13 +99,13 @@ paket add Fable.Helpers.MaterialUI
 * Switch - ✓
 * Tab - ✓
   * Tabs - ✓
-* Table
-  * TableBody
-  * TableCell
-  * TableFooter
-  * TableHead
-  * TablePagination
-  * TableRow
+* Table - ✓
+  * TableBody - ✓
+  * TableCell - ✓
+  * TableFooter - ✓
+  * TableHead - ✓
+  * TablePagination - ✓
+  * TableRow - ✓
   * TableSortLabel
 * TextField
 * Toolbar

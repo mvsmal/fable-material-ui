@@ -381,6 +381,23 @@ module Props =
         | ``Spacing-xs-8`` of CSSProp list
         | ``Wrap-xs-nowrap`` of CSSProp list
         | ``Wrap-xs-wrap-reverse`` of CSSProp list
+        | Head of CSSProp list
+        | Body of CSSProp list
+        | Footer of CSSProp list
+        | Numeric of CSSProp list
+        | PaddingDense of CSSProp list
+        | PaddingCheckbox of CSSProp list
+        | PaddingNone of CSSProp list
+        | Toolbar of CSSProp list
+        | Spacer of CSSProp list
+        | Caption of CSSProp list
+        | SelectRoot of CSSProp list
+        | SelectIcon of CSSProp list
+        | MenuItem of CSSProp list
+        | Actions of CSSProp list
+        | Hover of CSSProp list
+        | IconDirectionAsc of CSSProp list
+        | IconDirectionDesc of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -642,6 +659,23 @@ module Props =
         | ``Spacing-xs-8`` of string
         | ``Wrap-xs-nowrap`` of string
         | ``Wrap-xs-wrap-reverse`` of string
+        | Head of string
+        | Body of string
+        | Footer of string
+        | Numeric of string
+        | PaddingDense of string
+        | PaddingCheckbox of string
+        | PaddingNone of string
+        | Toolbar of string
+        | Spacer of string
+        | Caption of string
+        | SelectRoot of string
+        | SelectIcon of string
+        | MenuItem of string
+        | Actions of string
+        | Hover of string
+        | IconDirectionAsc of string
+        | IconDirectionDesc of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -674,6 +708,7 @@ module Props =
     type RefProp = U2<obj,(ReactInstance->unit)>
 
     type MaterialProp =
+        | Active of bool
         | AnchorEl of ReactInstance
         | CheckedIcon of ReactNode
         | Classes of IClassNames list
@@ -1664,7 +1699,6 @@ let inline snackbarContent b c = materialEl SnackbarContent b c
 
 // #region Step
 type StepProp =
-    | Active of bool
     | Completed of bool
     interface IHTMLProp
 
@@ -1775,6 +1809,91 @@ type TabsProp =
 
 let Tabs = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Tabs"
 let inline tabs b c = materialEl Tabs b c
+// #endregion
+
+// #region Table
+let Table = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Table"
+let inline table b c = materialEl Table b c
+// #endregion
+
+// #region TableBody
+let TableBody = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TableBody"
+let inline tableBody b c = materialEl TableBody b c
+// #endregion
+
+// #region TableCell
+type [<StringEnum; RequireQualifiedAccess>] TableCellPadding = Default | Checkbox | Dense | None
+type [<StringEnum; RequireQualifiedAccess>] TableCellVariant = Head | Body | Footer
+type [<StringEnum; RequireQualifiedAccess>] TableCellSortDirection =
+    | Asc
+    | Desc
+    | [<CompiledName("")>] False
+
+type TableCellProp =
+    | Numeric of bool
+    | Padding of TableCellPadding
+    | Scope of string
+    | SortDirection of TableCellSortDirection
+    | Variant of TableCellVariant
+    interface IHTMLProp
+
+let TableCell = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TableCell"
+let inline tableCell b c = materialEl TableCell b c
+// #endregion
+
+// #region TableFooter
+let TableFooter = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TableFooter"
+let inline tableFooter b c = materialEl TableFooter b c
+// #endregion
+
+// #region TableHead
+let TableHead = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TableHead"
+let inline tableHead b c = materialEl TableHead b c
+// #endregion
+
+// #region TablePagination
+type ILabelDisplayedRowsArgs =
+    abstract member from: int
+    abstract member ``to``: int
+    abstract member count: int
+    abstract member page: int
+
+type TablePaginationProp =
+    | [<CompiledName("ActionsComponent")>] ActionsComponent of ReactType
+    | BackIconButtonProps of IHTMLProp list
+    | Count of int
+    | LabelDisplayedRows of (ILabelDisplayedRowsArgs->ReactNode)
+    | LabelRowsPerPage of ReactNode
+    | NextIconButtonPropss of IHTMLProp list
+    | OnChangePage of (obj*int->unit)
+    | OnChangeRowsPerPage of (obj->unit)
+    | Page of int
+    | RowsPerPage of int
+    | RowsPerPageOptions of int list
+    | [<CompiledName("SelectProps")>] SelectProps of IHTMLProp list
+    interface IHTMLProp
+
+let TablePagination = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TablePagination"
+let inline tablePagination b c = materialEl TablePagination b c
+// #endregion
+
+// #region TableRow
+type TableRowProp =
+    | Hover of bool
+    interface IHTMLProp
+
+let TableRow = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TableRow"
+let inline tableRow b c = materialEl TableRow b c
+// #endregion
+
+// #region TableSortLabel
+type [<StringEnum; RequireQualifiedAccess>] TableSortDirection = Acs | Desc
+type TableSortLabelProp =
+    | Direction of TableSortDirection
+    interface IHTMLProp
+
+let TableSortLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TableSortLabel"
+let inline tableSortLabel b c = materialEl TableSortLabel b c
 // #endregion
 
 // #region withStyles
@@ -1972,6 +2091,12 @@ type OverridesProp =
     | MuiSwitch of IStyles list
     | MuiTab of IStyles list
     | MuiTabs of IStyles list
+    | MuiTable of IStyles list
+    | MuiTableCell of IStyles list
+    | MuiTableFooter of IStyles list
+    | MuiTablePagination of IStyles list
+    | MuiTableRow of IStyles list
+    | MuiTableSortLabel of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

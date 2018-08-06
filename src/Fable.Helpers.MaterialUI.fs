@@ -365,6 +365,8 @@ module Props =
         | LineVertical of CSSProp list
         | Last of CSSProp list
         | Transition of CSSProp list
+        | IconContainer of CSSProp list
+        | LabelContainer of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -610,6 +612,8 @@ module Props =
         | LineVertical of string
         | Last of string
         | Transition of string
+        | IconContainer of string
+        | LabelContainer of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -672,6 +676,7 @@ module Props =
         | InputRef of RefProp
         | CheckedIcon of ReactNode
         | InputProps of IHTMLProp list
+        | Optional of ReactNode
         interface IHTMLProp
 
 
@@ -1647,10 +1652,6 @@ let inline step b c = materialEl Step b c
 // #endregion
 
 // #region StepButton
-type StepButtonProp =
-    | Optional of ReactNode
-    interface IHTMLProp
-
 let StepButton = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/StepButton"
 let inline stepButton b c = materialEl StepButton b c
 // #endregion
@@ -1672,6 +1673,15 @@ let inline stepContent b c = materialEl StepContent b c
 // #region StepIcon
 let StepIcon = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/StepIcon"
 let inline stepIcon b c = materialEl StepIcon b c
+// #endregion
+
+// #region StepLabel
+type StepLabelProp =
+    | [<CompiledName("StepIconProps")>] StepIconProps of IHTMLProp list
+    interface IHTMLProp
+
+let StepLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/StepLabel"
+let inline stepLabel b c = materialEl StepLabel b c
 // #endregion
 
 // #region withStyles
@@ -1863,6 +1873,7 @@ type OverridesProp =
     | MuiStepConnector of IStyles list
     | MuiStepContent of IStyles list
     | MuiStepIcon of IStyles list
+    | MuiStepLabel of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

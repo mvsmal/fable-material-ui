@@ -82,7 +82,7 @@ paket add Fable.Helpers.MaterialUI
 * Portal - ✓
 * Radio - ✓
   * RadioGroup - ✓
-* RootRef
+* RootRef - ✓
 * Select - ✓
 * Slide
 * Snackbar

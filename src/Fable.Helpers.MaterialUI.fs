@@ -1619,6 +1619,15 @@ let RadioGroup = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Rad
 let inline radioGroup b c = materialEl RadioGroup b c
 // #endregion
 
+// #region RootRef
+type RootRefProp =
+    | RootRef of RefProp
+    interface IHTMLProp
+
+let RootRef = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/RootRef"
+let inline rootRef b c = materialEl RootRef b c
+// #endregion
+
 // #region Select
 type SelectValue = U4<string, int, string list, int list>
 type SelectProp<'a> =

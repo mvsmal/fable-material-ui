@@ -84,7 +84,7 @@ paket add Fable.Helpers.MaterialUI
   * RadioGroup - ✓
 * RootRef - ✓
 * Select - ✓
-* Slide
+* Slide - ✓
 * Snackbar
   * SnackbarContent
 * Step

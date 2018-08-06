@@ -598,9 +598,7 @@ module Props =
         | Enter of float
         | Exit of float
 
-    type [<Erase>] TransitionDuration =
-        | Num of float
-        | Custom of TransitionDurationProp list
+    type TransitionDuration = U2<float, TransitionDurationProp list>
     
     type [<StringEnum; RequireQualifiedAccess>] FormControlMargin =
         | None
@@ -1647,6 +1645,22 @@ type SelectProp<'a> =
 
 let Select = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Select"
 let inline select b c = materialEl Select b c
+// #endregion
+
+// #region Slide
+type [<StringEnum; RequireQualifiedAccess>] SlideDirection =
+    | Bottom
+    | Up
+    | Left
+    | Right
+
+type SlideProp = 
+    | Timeout of TransitionDuration
+    | Direction of SlideDirection
+    interface IHTMLProp
+
+let Slide = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Slide"
+let inline slide b c = materialEl Slide b c
 // #endregion
 
 // #region withStyles

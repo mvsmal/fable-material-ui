@@ -90,7 +90,7 @@ paket add Fable.Helpers.MaterialUI
 * Step - ✓
   * StepButton - ✓
   * StepConnector - ✓
-  * StepContent
+  * StepContent - ✓
   * StepIcon
   * Stepper
 * SvgIcon

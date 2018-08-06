@@ -363,6 +363,8 @@ module Props =
         | Line of CSSProp list
         | LineHorizontal of CSSProp list
         | LineVertical of CSSProp list
+        | Last of CSSProp list
+        | Transition of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -606,6 +608,8 @@ module Props =
         | Line of string
         | LineHorizontal of string
         | LineVertical of string
+        | Last of string
+        | Transition of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -1656,6 +1660,15 @@ let StepConnector = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/
 let inline stepConnector b c = materialEl StepConnector b c
 // #endregion
 
+// #region StepContent
+type StepContentProp =
+    | TransitionDuration of AutoTransitionDuration
+    interface IHTMLProp
+
+let StepContent = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/StepContent"
+let inline stepContent b c = materialEl StepContent b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -1843,6 +1856,7 @@ type OverridesProp =
     | MuiStep of IStyles list
     | MuiStepButton of IStyles list
     | MuiStepConnector of IStyles list
+    | MuiStepContent of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

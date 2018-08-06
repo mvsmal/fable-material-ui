@@ -162,6 +162,7 @@ module Props =
         | BarColorPrimary of CSSProp list
         | BarColorSecondary of CSSProp list
         | Button of CSSProp list
+        | Centered of string
         | Checked of CSSProp list
         | Circle of CSSProp list
         | CircleIndeterminate of CSSProp list
@@ -221,9 +222,11 @@ module Props =
         | Expanded of CSSProp list
         | ExtendedFab of CSSProp list
         | Fab of CSSProp list
+        | Fixed of string
         | Flat of CSSProp list
         | FlatPrimary of CSSProp list
         | FlatSecondary of CSSProp list
+        | FlexContainer of string
         | FocusVisible of CSSProp list
         | Focused of CSSProp list
         | FontSizeInherit of CSSProp list
@@ -238,6 +241,7 @@ module Props =
         | ImgFullHeight of CSSProp list
         | ImgFullWidth of CSSProp list
         | Indeterminate of CSSProp list
+        | Indicator of string
         | Input of CSSProp list
         | InputMarginDense of CSSProp list
         | InputMultiline of CSSProp list
@@ -300,6 +304,10 @@ module Props =
         | RootSubtitle of CSSProp list
         | Rounded of CSSProp list
         | Row of CSSProp list
+        | ScrollButtons of string
+        | ScrollButtonsAuto of string
+        | Scrollable of string
+        | Scroller of string
         | Secondary of CSSProp list
         | SecondaryAction of CSSProp list
         | Select of CSSProp list
@@ -409,6 +417,7 @@ module Props =
         | BarColorSecondary of string
         | Buffer of string
         | Button of string
+        | Centered of string
         | Checked of string
         | Circle of string
         | CircleIndeterminate of string
@@ -471,9 +480,11 @@ module Props =
         | Expanded of string
         | ExtendedFab of string
         | Fab of string
+        | Fixed of string
         | Flat of string
         | FlatPrimary of string
         | FlatSecondary of string
+        | FlexContainer of string
         | FocusVisible of string
         | Focused of string
         | FontSizeInherit of string
@@ -488,6 +499,7 @@ module Props =
         | ImgFullHeight of string
         | ImgFullWidth of string
         | Indeterminate of string
+        | Indicator of string
         | Input of string
         | InputMarginDense of string
         | InputMultiline of string
@@ -551,7 +563,11 @@ module Props =
         | RootSubtitle of string
         | Rounded of string
         | Row of string
+        | Scrollable of string
         | ScrollBody of string
+        | ScrollButtons of string
+        | ScrollButtonsAuto of string
+        | Scroller of string
         | ScrollPaper of string
         | Secondary of string
         | SecondaryAction of string
@@ -1955,6 +1971,7 @@ type OverridesProp =
     | MuiSvgIcon of IStyles list
     | MuiSwitch of IStyles list
     | MuiTab of IStyles list
+    | MuiTabs of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

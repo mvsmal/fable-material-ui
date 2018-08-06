@@ -86,7 +86,7 @@ paket add Fable.Helpers.MaterialUI
 * Select - ✓
 * Slide - ✓
 * Snackbar - ✓
-  * SnackbarContent
+  * SnackbarContent - ✓
 * Step
   * StepButton
   * StepConnector

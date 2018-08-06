@@ -354,6 +354,7 @@ module Props =
         | AnchorOriginBottomRight of CSSProp list
         | AnchorOriginTopLeft of CSSProp list
         | AnchorOriginBottomLeft of CSSProp list
+        | Message of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -588,6 +589,7 @@ module Props =
         | AnchorOriginBottomRight of string
         | AnchorOriginTopLeft of string
         | AnchorOriginBottomLeft of string
+        | Message of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -1609,6 +1611,11 @@ let Snackbar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Snack
 let inline snackbar b c = materialEl Snackbar b c
 // #endregion
 
+// #region SnackbarContent
+let SnackbarContent = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/SnackbarContent"
+let inline snackbarContent b c = materialEl SnackbarContent b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -1792,6 +1799,7 @@ type OverridesProp =
     | MuiRadio of IStyles list
     | MuiSelect of IStyles list
     | MuiSnackbar of IStyles list
+    | MuiSnackbarContent of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

@@ -359,6 +359,7 @@ module Props =
         | Vertical of CSSProp list
         | AlternativeLabel of CSSProp list
         | Completed of CSSProp list
+        | TouchRipple of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -598,6 +599,7 @@ module Props =
         | Vertical of string
         | AlternativeLabel of string
         | Completed of string
+        | TouchRipple of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -1634,6 +1636,15 @@ let Step = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Step"
 let inline step b c = materialEl Step b c
 // #endregion
 
+// #region StepButton
+type StepButtonProp =
+    | Optional of ReactNode
+    interface IHTMLProp
+
+let StepButton = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/StepButton"
+let inline stepButton b c = materialEl StepButton b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -1819,6 +1830,7 @@ type OverridesProp =
     | MuiSnackbar of IStyles list
     | MuiSnackbarContent of IStyles list
     | MuiStep of IStyles list
+    | MuiStepButton of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

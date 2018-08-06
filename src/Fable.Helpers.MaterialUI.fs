@@ -590,47 +590,44 @@ module Props =
         | AnchorOriginBottomLeft of string
         interface IClassNames
 
-    type ClassesProp =
-    | Classes of IClassNames list
-        interface IHTMLProp
-        
-    type [<Erase>] ComponentProp<'a> =
-        | Str of string
-        | Func of ('a -> ReactElement)
-        // ? Doesn't work with for example with Chip
-        // | El of ReactElement 
-    
+    type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
+    type [<StringEnum; RequireQualifiedAccess>] TouchEvent = OnTouchStart | OnTouchEnd
+    type [<StringEnum; RequireQualifiedAccess>] MaterialSize = Xs | Sm | Md | Lg | Xl
+    type [<StringEnum; RequireQualifiedAccess>] Anchor = Left | Top | Right | Bottom
+    type [<StringEnum; RequireQualifiedAccess>] AutoEnum = Auto
+    type [<StringEnum; RequireQualifiedAccess>] FormControlMargin = None | Dense | Normal
     type [<StringEnum; RequireQualifiedAccess>] ComponentColor =
         | Default
         | Inherit
         | Primary
         | Secondary
 
+    type StyleOption =
+        | WithTheme of bool
+        | Name of string
+        | Flip of bool
+    
     type TransitionDurationProp = 
         | Enter of float
         | Exit of float
 
     type TransitionDuration = U2<float, TransitionDurationProp list>
-    
-    type [<StringEnum; RequireQualifiedAccess>] FormControlMargin =
-        | None
-        | Dense
-        | Normal
-
+    type AutoTransitionDuration = U3<float, TransitionDuration list, AutoEnum>
     type RefProp = U2<obj,(ReactInstance->unit)>
 
-    type MaterialProp<'a> =
-        | Component of ComponentProp<'a>
+    type MaterialProp =
+        | Component of ReactType
+        | Classes of IClassNames list
         | Color of ComponentColor
         | DisableRipple of bool
-        | Icon of ReactElement
+        | Icon of ReactNode
         | DisableTypography of bool
         | [<CompiledName("PaperProps")>] PaperProps of IHTMLProp list
         | Open of bool
         | TransitionDuration of TransitionDuration
         | In of bool
         | FullWidth of bool
-        | Label of ReactElement
+        | Label of ReactNode
         | Error of bool
         | Margin of FormControlMargin
         | Dense of bool
@@ -644,48 +641,17 @@ module Props =
         | OnExiting of (obj->unit)
         | Container of React.ReactInstance
         | Elevation of int
-        | [<CompiledName("TransitionComponent")>] TransitionComponent of ComponentProp<'a>
+        | [<CompiledName("TransitionComponent")>] TransitionComponent of ReactType
         | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
         | AnchorEl of React.ReactInstance
         | DisablePortal of bool
         | KeepMounted of bool
         | OnRendered of (obj->unit)
         | InputRef of RefProp
-        | CheckedIcon of ReactElement
+        | CheckedIcon of ReactNode
         | InputProps of IHTMLProp list
         interface IHTMLProp
 
-    type StyleOption =
-        | WithTheme of bool
-        | Name of string
-        | Flip of bool
-    
-    type [<StringEnum; RequireQualifiedAccess>] MouseEvent =
-        | OnClick
-        | OnMouseDown
-        | OnMouseUp
-
-    type [<StringEnum; RequireQualifiedAccess>] TouchEvent =
-        | OnTouchStart
-        | OnTouchEnd
-
-    type [<StringEnum; RequireQualifiedAccess>] MaterialSize =
-        | Xs
-        | Sm
-        | Md
-        | Lg
-        | Xl
-
-    type [<StringEnum; RequireQualifiedAccess>] Anchor =
-        | Left
-        | Top
-        | Right
-        | Bottom
-    
-    type [<StringEnum; RequireQualifiedAccess>] AutoEnum =
-        | Auto
-
-    type AutoTransitionDuration = U3<float, TransitionDuration list, AutoEnum>
 
 module Colors =
     let red = importDefault<Props.IColor> "@material-ui/core/colors/red";
@@ -731,11 +697,8 @@ let inline appBar b c = materialEl AppBar b c
 
 // #region Avatar
 type AvatarProp =
-    | Alt of string
     | ImgProps of IHTMLProp list
     | Sizes of string
-    | Src of string
-    | SrcSet of string
     interface IHTMLProp
 
 let Avatar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Avatar"
@@ -760,7 +723,7 @@ type [<StringEnum; RequireQualifiedAccess>] BadgeColor =
 
 type BadgeProp =
     | Color of BadgeColor
-    | BadgeContent of ReactElement
+    | BadgeContent of ReactNode
     interface IHTMLProp
 
 let Badge = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Badge"
@@ -808,7 +771,7 @@ type ButtonProp =
     | DisableFocusRipple of bool
     | Href of string
     | Mini of bool
-    | Size of ButtonSize // TODO make generic
+    | Size of ButtonSize
     | Variant of ButtonVariant
     interface IHTMLProp
 
@@ -817,19 +780,22 @@ let inline button b c = materialEl Button b c
 // #endregion
 
 // #region ButtonBase
+type IButtonBaseActions =
+    abstract member focusVisible: unit -> bool
+
 type [<StringEnum; RequireQualifiedAccess>] ButtonBaseType =
     | Button
     | Submit
     | Reset
 
 type ButtonBaseProp =
-    | Action of (obj->unit) // TODO add static typing
+    | Action of (IButtonBaseActions->unit)
     | ButtonRef of RefProp
     | CenterRipple of bool
     | DisableTouchRipple of bool
     | FocusRipple of bool
     | FocusVisibleClassName of string
-    | OnFocusVisible of (obj->unit) // TODO add static typing
+    | OnFocusVisible of (React.FocusEvent->unit)
     | [<CompiledName("TouchRippleProps")>] TouchRippleProps of IHTMLProp list
     | Type of ButtonBaseType
     interface IHTMLProp
@@ -863,11 +829,11 @@ let cardContent b c = materialEl CardContent b c
 
 // #region CardHeader
 type CardHeaderProp =
-    | Action of ReactElement
-    | Avatar of ReactElement
-    | Subheader of ReactElement
+    | Action of ReactNode
+    | Avatar of ReactNode
+    | Subheader of ReactNode
     | SubheaderTypographyProps of IHTMLProp list
-    | Title of ReactElement
+    | Title of ReactNode
     | TitleTypographyProps of IHTMLProp list
     interface IHTMLProp
 
@@ -878,7 +844,6 @@ let inline cardHeader b c = materialEl CardHeader b c
 // #region CardMedia
 type CardMediaProp =
     | Image of string
-    | Src of string
     interface IHTMLProp
 
 let CardMedia = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/CardMedia"
@@ -888,7 +853,7 @@ let inline cardMedia b = materialEl CardMedia b []
 // #region Checkbox
 type CheckboxProp =
     | Indeterminate of bool
-    | IndeterminateIcon of ReactElement
+    | IndeterminateIcon of ReactNode
     | OnChange of (React.FormEvent*bool -> unit)
     interface IHTMLProp
     
@@ -909,9 +874,7 @@ let inline chip b = materialEl Chip b []
 // #endregion
 
 // #region CircularProgress
-type [<Erase>] CircularProgressSize =
-    | Px of int
-    | Str of string
+type CircularProgressSize = U2<int, string>
 
 type [<StringEnum; RequireQualifiedAccess>] CircularProgressVariant =
     | Determinate
@@ -939,7 +902,7 @@ type [<Erase>] ClickAwayListenerTouchEvent =
     | False
 
 type ClickAwayListenerProp =
-    | OnClickAway of (unit->unit)
+    | OnClickAway of (obj->unit)
     | MouseEvent of ClickAwayListenerMouseEvent
     | TouchEvent of ClickAwayListenerTouchEvent
     interface IHTMLProp
@@ -966,17 +929,14 @@ let inline cssBaseline b = materialEl CssBaseline b []
 // #endregion
 
 // #region Dialog
-type [<StringEnum; RequireQualifiedAccess>] DialogScroll =
-    | Body
-    | Paper
-
+type [<StringEnum; RequireQualifiedAccess>] DialogScroll = Body | Paper
 type [<StringEnum; RequireQualifiedAccess>] DialogMaxWidth =
     | Xs
     | Sm
     | Md
     | [<CompiledName("")>] False
 
-type DialogProp<'a> =
+type DialogProp =
     | FullScreen of bool
     | MaxWidth of DialogMaxWidth
     | Scroll of DialogScroll
@@ -1064,7 +1024,7 @@ let inline expansionPanelDetails b c = materialEl ExpansionPanelDetails b c
 
 // #region ExpansionPanelSummary
 type ExpansionPanelSummaryProp =
-    | ExpandIcon of ReactElement
+    | ExpandIcon of ReactNode
     | [<CompiledName("IconButtonProps")>] IconButtonProps of IHTMLProp list
     interface IHTMLProp
 
@@ -1088,9 +1048,7 @@ let inline formControl b c = materialEl FormControl b c
 // #endregion
 
 // #region FormControlLabel
-type [<StringEnum; RequireQualifiedAccess>] FormControlLabelPlacement =
-    | End
-    | Start
+type [<StringEnum; RequireQualifiedAccess>] FormControlLabelPlacement = End | Start
 
 type FormControlLabelProp =
     | Control of ReactElement
@@ -1222,19 +1180,14 @@ let inline gridListTile b c = materialEl GridListTile b c
 // #endregion
 
 // #region GridListTileBar
-type [<StringEnum; RequireQualifiedAccess>] ActionPosition =
-    | Left
-    | Right
-
-type [<StringEnum; RequireQualifiedAccess>] TitlePosition =
-    | Top
-    | Bottom
+type [<StringEnum; RequireQualifiedAccess>] ActionPosition = Left | Right
+type [<StringEnum; RequireQualifiedAccess>] TitlePosition = Top | Bottom
 
 type GridListTileBarProp =
-    | ActionIcon of ReactElement
+    | ActionIcon of ReactNode
     | ActionPosition of ActionPosition
-    | Subtitle of ReactElement
-    | Title of ReactElement
+    | Subtitle of ReactNode
+    | Title of ReactNode
     | TitlePosition of TitlePosition
     interface IHTMLProp
 
@@ -1252,10 +1205,7 @@ let inline grow b c = materialEl Grow b c
 // #endregion
 
 // #region Hidden
-type [<StringEnum; RequireQualifiedAccess>] HiddenImplementation =
-    | Js
-    | Css
-
+type [<StringEnum; RequireQualifiedAccess>] HiddenImplementation = Js | Css
 type HiddenOnly = U2<MaterialSize, MaterialSize list>
 
 type HiddenProp =
@@ -1306,19 +1256,17 @@ let inline iconButton b c = materialEl IconButton b c
 // #endregion
 
 // #region Input
-type [<StringEnum; RequireQualifiedAccess>] InputMargin =
-    | None
-    | Dense
+type [<StringEnum; RequireQualifiedAccess>] InputMargin = None | Dense
+type InputValue = U4<float, string, float list, string list>
 
-type InputProp<'a> =
+type InputProp =
     | DisableUnderline of bool
-    | EndAdornment of ReactElement
-    | InputComponent of ComponentProp<'a>
-    | InputProps of IHTMLProp list
-    // TODO | InputRef
+    | EndAdornment of ReactNode
+    | InputComponent of ReactType
     | Multiline of bool
     | RowsMax of int
-    | StartAdornment of ReactElement
+    | StartAdornment of ReactNode
+    | Value of InputValue
     interface IHTMLProp
 
 let Input = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Input"
@@ -1326,9 +1274,7 @@ let inline input b = materialEl Input b []
 // #endregion
 
 // #region InputAdornment
-type [<StringEnum; RequireQualifiedAccess>] InputAdornmentPosition =
-    | Start
-    | End
+type [<StringEnum; RequireQualifiedAccess>] InputAdornmentPosition = Start | End
 
 type InputAdornmentProp =
     | Position of InputAdornmentPosition
@@ -1339,8 +1285,7 @@ let inline inputAdornment b c = materialEl InputAdornment b c
 // #endregion
 
 // #region InputLabel
-type [<StringEnum; RequireQualifiedAccess>] InputLabelMargin =
-    | Dense
+type [<StringEnum; RequireQualifiedAccess>] InputLabelMargin = Dense
 
 type InputLabelProp =
     | DisableAnimation of bool
@@ -1354,10 +1299,7 @@ let inline inputLabel b c = materialEl InputLabel b c
 // #endregion
 
 // #region LinearProgress
-type [<StringEnum; RequireQualifiedAccess>] LinearProgressColor =
-    | Primary
-    | Secondary
-
+type [<StringEnum; RequireQualifiedAccess>] LinearProgressColor = Primary | Secondary
 type [<StringEnum; RequireQualifiedAccess>] LinearProgressVariant =
     | Determinate
     | Indeterminate
@@ -1385,9 +1327,9 @@ let inline list b c = materialEl List b c
 // #endregion
 
 // #region ListItem
-type ListItemProp<'a> = 
+type ListItemProp = 
     | Button of bool
-    | [<CompiledName("ContainerComponent")>] ContainerComponent of ComponentProp<'a>
+    | [<CompiledName("ContainerComponent")>] ContainerComponent of ReactType
     | [<CompiledName("ContainerProps")>] ContainerProps of IHTMLProp list
     | DisableGutters of bool
     | Divider of bool
@@ -1415,9 +1357,9 @@ let inline listItemSecondaryAction b c = materialEl ListItemSecondaryAction b c
 
 // #region ListItemText
 type ListItemTextProp =
-    | Primary of ReactElement
+    | Primary of ReactNode
     | PrimaryTypographyProps of IHTMLProp list
-    | Secondary of ReactElement
+    | Secondary of ReactNode
     | SecondaryTypographyProps of IHTMLProp list
     interface IHTMLProp
 
@@ -1426,10 +1368,7 @@ let inline listItemText b c = materialEl ListItemText b c
 // #endregion
 
 // #region ListSubheader
-type [<StringEnum; RequireQualifiedAccess>] ListSubheaderColor =
-    | Default
-    | Primary
-    | Inherit
+type [<StringEnum; RequireQualifiedAccess>] ListSubheaderColor = Default | Primary | Inherit
 
 type ListSubheaderProp =
     | Color of ListSubheaderColor
@@ -1453,10 +1392,6 @@ let inline menu b c = materialEl Menu b c
 // #endregion
 
 // #region MenuItem
-type MenuItemProp =
-    | Selected of bool
-    interface IHTMLProp
-
 let MenuItem = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/MenuItem"
 let inline menuItem b c = materialEl MenuItem b c
 // #endregion
@@ -1467,15 +1402,8 @@ let inline menuList b c = materialEl MenuList b c
 // #endregion
 
 // #region MobileStepper
-type [<StringEnum; RequireQualifiedAccess>] MobileStepperPosition =
-    | Bottom
-    | Top
-    | Static
-
-type [<StringEnum; RequireQualifiedAccess>] MobileStepperVariant =
-    | Text
-    | Dots
-    | Progress
+type [<StringEnum; RequireQualifiedAccess>] MobileStepperPosition = Bottom | Top | Static
+type [<StringEnum; RequireQualifiedAccess>] MobileStepperVariant = Text | Dots | Progress
 
 type MobileStepperProp =
     | ActiveStep of int
@@ -1491,12 +1419,10 @@ let inline mobileStepper b = materialEl MobileStepper b []
 // #endregion
 
 // #region Modal
-type [<StringEnum; RequireQualifiedAccess>] ModalCloseReason =
-    | EscapeKeyDown
-    | BackdropClick
+type [<StringEnum; RequireQualifiedAccess>] ModalCloseReason = EscapeKeyDown | BackdropClick
 
-type ModalProp<'a> =
-    | [<CompiledName("BackdropComponent")>] BackdropComponent of ComponentProp<'a>
+type ModalProp =
+    | [<CompiledName("BackdropComponent")>] BackdropComponent of ReactType
     | [<CompiledName("BackdropProps")>] BackdropProps of IHTMLProp list
     | DisableAutoFocus of bool
     | DisableBackdropClick of bool
@@ -1533,40 +1459,30 @@ let inline paper b c = materialEl Paper b c
 // #endregion
 
 // #region Popover
-type [<StringEnum; RequireQualifiedAccess>] PopoverHorizontalPosition =
-    | Left
-    | Center
-    | Right
-
-type [<StringEnum; RequireQualifiedAccess>] PopoverVerticalPosition =
-    | Top
-    | Center
-    | Bottom
+type [<StringEnum; RequireQualifiedAccess>] PopoverHorizontalPosition = Left | Center | Right
+type [<StringEnum; RequireQualifiedAccess>] PopoverVerticalPosition = Top | Center | Bottom
+type [<StringEnum; RequireQualifiedAccess>] AnchorReference = AnchorEl | AnchorPosition | None
+and [<Pojo>] AnchorPosition = {
+    left: int
+    top: int
+}
 
 type PopoverHorizontalOrigin = U2<int,PopoverHorizontalPosition>
 type PopoverVerticalOrigin = U2<int,PopoverVerticalPosition>
-
 type [<Pojo>] PopoverOrigin = {
     horizontal: PopoverHorizontalOrigin
     vertical: PopoverVerticalOrigin
 }
 
-type [<Pojo>] AnchorPosition = {
-    left: int
-    top: int
-}
-
-type [<StringEnum; RequireQualifiedAccess>] AnchorReference =
-    | AnchorEl
-    | AnchorPosition
-    | None
+type IPopoverActions =
+    abstract member updatePosition: unit -> unit
 
 type PopoverProp =
-    | Action of (obj->unit)
+    | Action of (IPopoverActions->unit)
     | AnchorOrigin of PopoverOrigin
     | AnchorPosition of AnchorPosition
     | AnchorReference of AnchorReference
-    | GetContentAnchorEl of (unit->obj)
+    | GetContentAnchorEl of (obj->obj)
     | MarginThreshold of int
     | TransformOrigin of PopoverOrigin
     | TransitionDuration of AutoTransitionDuration
@@ -1608,10 +1524,7 @@ let inline portal b c = materialEl Portal b c
 // #endregion
 
 // #region Radio
-type [<StringEnum; RequireQualifiedAccess>] RadioColor =
-    | Primary
-    | Secondary
-    | Default
+type [<StringEnum; RequireQualifiedAccess>] RadioColor = Primary | Secondary | Default
 
 type RadioProp =
     | Color of RadioColor
@@ -1624,6 +1537,7 @@ let inline radio b = materialEl Radio b []
 // #region RadioGroup
 type RadioGroupProp =
     | OnChange of (obj*string->unit)
+    interface IHTMLProp
 
 let RadioGroup = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/RadioGroup"
 let inline radioGroup b c = materialEl RadioGroup b c
@@ -1639,18 +1553,17 @@ let inline rootRef b c = materialEl RootRef b c
 // #endregion
 
 // #region Select
-type SelectValue = U4<string, int, string list, int list>
-type SelectProp<'a> =
+type SelectValue = U4<int, string, int list, string list>
+type SelectProp =
     | AutoWidth of bool
     | DisplayEmpty of bool
-    | [<CompiledName("IconComponent")>] IconComponent of ComponentProp<'a>
-    | Input of ReactElement
-    | InputProps of IHTMLProp list
+    | [<CompiledName("IconComponent")>] IconComponent of ReactType
+    | Input of ReactNode
     | [<CompiledName("MenuProps")>] MenuProps of IHTMLProp list
     | Native of bool
     | OnChange of (obj*obj->unit)
     | OnOpen of (obj->unit)
-    | RenderValue of (obj->ReactElement)
+    | RenderValue of (obj->ReactNode)
     | [<CompiledName("SelectDisplayProps")>] SelectDisplayProps of IHTMLProp list
     | Value of SelectValue
     interface IHTMLProp
@@ -1660,11 +1573,7 @@ let inline select b c = materialEl Select b c
 // #endregion
 
 // #region Slide
-type [<StringEnum; RequireQualifiedAccess>] SlideDirection =
-    | Bottom
-    | Up
-    | Left
-    | Right
+type [<StringEnum; RequireQualifiedAccess>] SlideDirection = Bottom | Up | Left | Right
 
 type SlideProp = 
     | Timeout of TransitionDuration
@@ -1676,22 +1585,14 @@ let inline slide b c = materialEl Slide b c
 // #endregion
 
 // #region Snackbar
-type [<StringEnum; RequireQualifiedAccess>] SnackbarHorizontalOrigin =
-    | Left
-    | Center
-    | Right
-
-type [<StringEnum; RequireQualifiedAccess>] SnackbarVerticalOrigin =
-    | Top
-    | Center
-    | Bottom
+type [<StringEnum; RequireQualifiedAccess>] SnackbarHorizontalOrigin = Left | Center | Right
+type [<StringEnum; RequireQualifiedAccess>] SnackbarVerticalOrigin = Top | Center | Bottom
+type [<StringEnum; RequireQualifiedAccess>] SnackbarCloseReason = Timeout | Clickaway
 
 type [<Pojo>] SnackbarOrigin = {
     vertical: SnackbarVerticalOrigin
     horizontal: SnackbarHorizontalOrigin
 }
-
-type [<StringEnum; RequireQualifiedAccess>] SnackbarCloseReason = Timeout | Clickaway
 
 type SnackbarProp =
     | Action of ReactElement
@@ -1919,9 +1820,10 @@ let inline muiThemeProvider b c = materialEl MuiThemeProvider b c
 let private createMuiTheme'<[<Pojo>]'O> (options: 'O) : ITheme = jsNative
 
 let createMuiTheme (options: ThemeProp list) =
-    let op = (keyValueList CaseRules.LowerFirst options |> unbox)
-    let result = createMuiTheme' op
-    result
+    options
+    |> keyValueList CaseRules.LowerFirst
+    |> unbox
+    |> createMuiTheme'
 // #endregion
 
 

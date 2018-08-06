@@ -367,6 +367,7 @@ module Props =
         | Transition of CSSProp list
         | IconContainer of CSSProp list
         | LabelContainer of CSSProp list
+        | SwitchBase of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -614,6 +615,7 @@ module Props =
         | Transition of string
         | IconContainer of string
         | LabelContainer of string
+        | SwitchBase of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -622,6 +624,10 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] Anchor = Left | Top | Right | Bottom
     type [<StringEnum; RequireQualifiedAccess>] AutoEnum = Auto
     type [<StringEnum; RequireQualifiedAccess>] FormControlMargin = None | Dense | Normal
+    type [<StringEnum; RequireQualifiedAccess>] SelectionControlColor =
+        | Primary
+        | Secondary
+        | Default
     type [<StringEnum; RequireQualifiedAccess>] ComponentColor =
         | Default
         | Inherit
@@ -679,6 +685,11 @@ module Props =
         | OnExiting of (obj->unit)
         | OnOpen of (obj->unit)
         | OnRendered of (obj->unit)
+        interface IHTMLProp
+
+    type SelectionControlProp =
+        | Color of SelectionControlColor
+        | OnChange of (FormEvent*bool->unit)
         interface IHTMLProp
 
 
@@ -883,7 +894,6 @@ let inline cardMedia b = materialEl CardMedia b []
 type CheckboxProp =
     | Indeterminate of bool
     | IndeterminateIcon of ReactNode
-    | OnChange of (React.FormEvent*bool -> unit)
     interface IHTMLProp
     
 let Checkbox = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Checkbox"
@@ -1547,12 +1557,6 @@ let inline portal b c = materialEl Portal b c
 // #endregion
 
 // #region Radio
-type [<StringEnum; RequireQualifiedAccess>] RadioColor = Primary | Secondary | Default
-
-type RadioProp =
-    | Color of RadioColor
-    | OnChange of (React.FormEvent*bool -> unit)
-
 let Radio = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Radio"
 let inline radio b = materialEl Radio b []
 // #endregion
@@ -1715,6 +1719,11 @@ type SwipeableDrawerProp =
 let SwipeableDrawer =
     importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/SwipeableDrawerProp"
 let inline swipeableDrawer b c = materialEl SwipeableDrawer b c
+// #endregion
+
+// #region Switch
+let Switch = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Switch"
+let inline switch b = materialEl Switch b []
 // #endregion
 
 // #region withStyles
@@ -1909,6 +1918,7 @@ type OverridesProp =
     | MuiStepLabel of IStyles list
     | MuiStepper of IStyles list
     | MuiSvgIcon of IStyles list
+    | MuiSwitch of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

@@ -642,22 +642,34 @@ module Props =
     type RefProp = U2<obj,(ReactInstance->unit)>
 
     type MaterialProp =
-        | Component of ReactType
+        | AnchorEl of ReactInstance
+        | CheckedIcon of ReactNode
         | Classes of IClassNames list
         | Color of ComponentColor
-        | DisableRipple of bool
-        | Icon of ReactNode
-        | DisableTypography of bool
-        | [<CompiledName("PaperProps")>] PaperProps of IHTMLProp list
-        | Open of bool
-        | TransitionDuration of TransitionDuration
-        | In of bool
-        | FullWidth of bool
-        | Label of ReactNode
-        | Error of bool
-        | Margin of FormControlMargin
+        | Component of ReactType
+        | Container of ReactInstance
         | Dense of bool
+        | DisablePortal of bool
+        | DisableRipple of bool
+        | DisableTypography of bool
+        | Elevation of int
+        | Error of bool
+        | FullWidth of bool
+        | Icon of ReactNode
+        | In of bool
+        | InputProps of IHTMLProp list
+        | InputRef of RefProp
         | Inset of bool
+        | KeepMounted of bool
+        | Label of ReactNode
+        | Margin of FormControlMargin
+        | Open of bool
+        | Optional of ReactNode
+        | [<CompiledName("PaperProps")>] PaperProps of IHTMLProp list
+        | [<CompiledName("TransitionComponent")>] TransitionComponent of ReactType
+        | TransitionDuration of TransitionDuration
+        | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
+
         | OnClose of (obj->unit)
         | OnEnter of (obj->unit)
         | OnEntered of (obj->unit)
@@ -665,18 +677,8 @@ module Props =
         | OnExit of (obj->unit)
         | OnExited of (obj->unit)
         | OnExiting of (obj->unit)
-        | Container of React.ReactInstance
-        | Elevation of int
-        | [<CompiledName("TransitionComponent")>] TransitionComponent of ReactType
-        | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
-        | AnchorEl of React.ReactInstance
-        | DisablePortal of bool
-        | KeepMounted of bool
+        | OnOpen of (obj->unit)
         | OnRendered of (obj->unit)
-        | InputRef of RefProp
-        | CheckedIcon of ReactNode
-        | InputProps of IHTMLProp list
-        | Optional of ReactNode
         interface IHTMLProp
 
 
@@ -1009,10 +1011,7 @@ let inline divider b = materialEl Divider b []
 // #endregion
 
 // #region Drawer
-type [<StringEnum; RequireQualifiedAccess>] DrawerVariant =
-    | Permanent
-    | Persistent
-    | Temporary
+type [<StringEnum; RequireQualifiedAccess>] DrawerVariant = Permanent | Persistent | Temporary
 
 type DrawerProp =
     | Anchor of Anchor
@@ -1586,7 +1585,6 @@ type SelectProp =
     | [<CompiledName("MenuProps")>] MenuProps of IHTMLProp list
     | Native of bool
     | OnChange of (obj*obj->unit)
-    | OnOpen of (obj->unit)
     | RenderValue of (obj->ReactNode)
     | [<CompiledName("SelectDisplayProps")>] SelectDisplayProps of IHTMLProp list
     | Value of SelectValue
@@ -1704,6 +1702,19 @@ type SvgIconProp =
 
 let SvgIcon = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/SvgIcon"
 let inline svgIcon b c = materialEl SvgIcon b c
+// #endregion
+
+// #region SwipeableDrawer
+type SwipeableDrawerProp =
+    | DisableBackdropTransition of bool
+    | DisableDiscovery of bool
+    | DisableSwipeToOpen of bool
+    | SwipeAreaWidth of int
+    interface IHTMLProp
+
+let SwipeableDrawer =
+    importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/SwipeableDrawerProp"
+let inline swipeableDrawer b c = materialEl SwipeableDrawer b c
 // #endregion
 
 // #region withStyles

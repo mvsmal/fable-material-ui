@@ -348,6 +348,12 @@ module Props =
         | Hidden of CSSProp list
         | Select of CSSProp list
         | SelectMenu of CSSProp list
+        | AnchorOriginTopCenter of CSSProp list
+        | AnchorOriginBottomCenter of CSSProp list
+        | AnchorOriginTopRight of CSSProp list
+        | AnchorOriginBottomRight of CSSProp list
+        | AnchorOriginTopLeft of CSSProp list
+        | AnchorOriginBottomLeft of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -576,6 +582,12 @@ module Props =
         | Hidden of string
         | Select of string
         | SelectMenu of string
+        | AnchorOriginTopCenter of string
+        | AnchorOriginBottomCenter of string
+        | AnchorOriginTopRight of string
+        | AnchorOriginBottomRight of string
+        | AnchorOriginTopLeft of string
+        | AnchorOriginBottomLeft of string
         interface IClassNames
 
     type ClassesProp =
@@ -1663,6 +1675,39 @@ let Slide = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Slide"
 let inline slide b c = materialEl Slide b c
 // #endregion
 
+// #region Snackbar
+type [<StringEnum; RequireQualifiedAccess>] SnackbarHorizontalOrigin =
+    | Left
+    | Center
+    | Right
+
+type [<StringEnum; RequireQualifiedAccess>] SnackbarVerticalOrigin =
+    | Top
+    | Center
+    | Bottom
+
+type [<Pojo>] SnackbarOrigin = {
+    vertical: SnackbarVerticalOrigin
+    horizontal: SnackbarHorizontalOrigin
+}
+
+type [<StringEnum; RequireQualifiedAccess>] SnackbarCloseReason = Timeout | Clickaway
+
+type SnackbarProp =
+    | Action of ReactElement
+    | AnchorOrigin of SnackbarOrigin
+    | AutoHideDuration of int
+    | [<CompiledName("ContentProps")>] ContentProps of IHTMLProp list
+    | DisableWidnowBlurListener of bool
+    | Message of ReactElement
+    | OnClose of (SyntheticEvent*SnackbarCloseReason->unit)
+    | ResumeHideDuration of int
+    interface IHTMLProp
+
+let Snackbar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Snackbar"
+let inline snackbar b c = materialEl Snackbar b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -1845,6 +1890,7 @@ type OverridesProp =
     | MuiPopover of IStyles list
     | MuiRadio of IStyles list
     | MuiSelect of IStyles list
+    | MuiSnackbar of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

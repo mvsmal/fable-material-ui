@@ -1256,6 +1256,7 @@ let inline hidden b c = materialEl Hidden b c
 // #endregion
 
 // #region Icon
+type [<StringEnum; RequireQualifiedAccess>] IconFontSize = Inherit | Default
 type [<StringEnum; RequireQualifiedAccess>] IconColor =
     | Inherit
     | Primary
@@ -1263,10 +1264,6 @@ type [<StringEnum; RequireQualifiedAccess>] IconColor =
     | Action
     | Error
     | Disabled
-
-type [<StringEnum; RequireQualifiedAccess>] IconFontSize =
-    | Inherit
-    | Default
 
 type IconProp =
     | Color of IconColor
@@ -1699,6 +1696,16 @@ let Stepper = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Steppe
 let inline stepper b c = materialEl Stepper b c
 // #endregion
 
+// #region SvgIcon
+type SvgIconProp =
+    | NativeColor of string
+    | TitleAccess of string
+    interface IHTMLProp
+
+let SvgIcon = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/SvgIcon"
+let inline svgIcon b c = materialEl SvgIcon b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -1890,6 +1897,7 @@ type OverridesProp =
     | MuiStepIcon of IStyles list
     | MuiStepLabel of IStyles list
     | MuiStepper of IStyles list
+    | MuiSvgIcon of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

@@ -111,7 +111,7 @@ paket add Fable.Helpers.MaterialUI
 * Toolbar - ✓
 * Tooltip - ✓
 * TouchRipple - ✓
-* Typography
+* Typography - ✓
 * Zoom
 
 # 

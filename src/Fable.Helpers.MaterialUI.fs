@@ -15,9 +15,7 @@ module Props =
         abstract member dark: string
         abstract member contrastText: string
 
-    type [<StringEnum; RequireQualifiedAccess>] PaletteType =
-        | Dark
-        | Light
+    type [<StringEnum; RequireQualifiedAccess>] PaletteType = Dark | Light
 
     type IPaletteCommon =
         abstract member black: string
@@ -73,9 +71,7 @@ module Props =
         abstract member background: IPaletteBackground
         abstract member action: IPaletteAction
 
-    type [<StringEnum; RequireQualifiedAccess>] TextDirection =
-        | Ltr
-        | Rtl
+    type [<StringEnum; RequireQualifiedAccess>] TextDirection = Ltr | Rtl
 
     type IShape =
         abstract member borderRadius: int
@@ -412,6 +408,23 @@ module Props =
         | Child of CSSProp list
         | ChildLeaving of CSSProp list
         | ChildPulsate of CSSProp list
+        | Display1 of CSSProp list
+        | Display2 of CSSProp list
+        | Display3 of CSSProp list
+        | Display4 of CSSProp list
+        | Headline of CSSProp list
+        | Subheading of CSSProp list
+        | Body1 of CSSProp list
+        | Body2 of CSSProp list
+        | AlignLeft of CSSProp list
+        | AlignRight of CSSProp list
+        | AlignCenter of CSSProp list
+        | AlignJistify of CSSProp list
+        | NoWrap of CSSProp list
+        | GutterBottom of CSSProp list
+        | Paragraph of CSSProp list
+        | ColorTextPrimary of CSSProp list
+        | ColorTextSecondary of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -704,6 +717,23 @@ module Props =
         | Child of string
         | ChildLeaving of string
         | ChildPulsate of string
+        | Display1 of string
+        | Display2 of string
+        | Display3 of string
+        | Display4 of string
+        | Headline of string
+        | Subheading of string
+        | Body1 of string
+        | Body2 of string
+        | AlignLeft of string
+        | AlignRight of string
+        | AlignCenter of string
+        | AlignJistify of string
+        | NoWrap of string
+        | GutterBottom of string
+        | Paragraph of string
+        | ColorTextPrimary of string
+        | ColorTextSecondary of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -823,6 +853,7 @@ module Colors =
     let blueGrey = importDefault<Props.IColor> "@material-ui/core/colors/blueGrey";
 
 open Props
+open System.ComponentModel
 
 let materialEl<[<Pojo>]'P when 'P :> IHTMLProp>
     (a:ComponentClass<'P>) (b: IHTMLProp list) c =
@@ -1964,6 +1995,50 @@ let TouchRipple = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/To
 let inline touchRipple b c = materialEl TouchRipple b c
 // #endregion
 
+// #region Typography
+type [<StringEnum; RequireQualifiedAccess>] TypographyAlign =
+    | Inherit
+    | Left
+    | Center
+    | Right
+    | Justify
+
+type [<StringEnum; RequireQualifiedAccess>] TypographyColor =
+    | Default
+    | Error
+    | Inherit
+    | Primary
+    | Secondary
+    | TextPrimary
+    | TextSecondary
+
+type [<StringEnum; RequireQualifiedAccess>] TypographyVariant =
+    | Display1
+    | Display2
+    | Display3
+    | Display4
+    | Headline
+    | Title
+    | Subheading
+    | Body1
+    | Body2
+    | Caption
+    | Button
+
+type TypographyProp =
+    | Align of TypographyAlign
+    | Color of TypographyColor
+    | GutterBottom of bool
+    | HeadlineMapping of obj // TODO strong type
+    | NoWrap of bool
+    | Paragraph of bool
+    | Variant of TypographyVariant
+    interface IHTMLProp
+
+let Typography = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Typography"
+let inline typography b c = materialEl Typography b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -2053,7 +2128,7 @@ type TextStyleProp =
     | LineHeight of string
     | TextTransform of string
 
-type TypographyProp =
+type ThemeTypographyProp =
     | FontFamily of string
     | HtmlFontSize of string
     | FontSize of string
@@ -2086,7 +2161,6 @@ type ZIndexProp =
     | Snackbar of int
     | Tooltip of int
 
-// TODO keep the list up to date with the implemented components
 type OverridesProp =
     | MuiAppBar of IStyles list
     | MuiAvatar of IStyles list
@@ -2170,6 +2244,7 @@ type OverridesProp =
     | MuiToolbar of IStyles list
     | MuiTooltip of IStyles list
     | MuiTouchRipple of IStyles list
+    | MuiTypography of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =
@@ -2178,7 +2253,7 @@ type ThemeProp =
     | Shadows of string list
     | Shape of ShapeProp list
     | Spacing of SpacingProp list
-    | Typography of TypographyProp list
+    | Typography of ThemeTypographyProp list
     | ZIndex of ZIndexProp list
     | Overrides of OverridesProp list
 

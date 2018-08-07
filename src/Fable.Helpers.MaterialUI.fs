@@ -399,6 +399,13 @@ module Props =
         | IconDirectionAsc of CSSProp list
         | IconDirectionDesc of CSSProp list
         | Regular of CSSProp list
+        | Popper of CSSProp list
+        | Tooltip of CSSProp list
+        | Touch of CSSProp list
+        | TooltipPlacementLeft of CSSProp list
+        | TooltipPlacementRight of CSSProp list
+        | TooltipPlacementTop of CSSProp list
+        | TooltipPlacementBottom of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -678,6 +685,13 @@ module Props =
         | IconDirectionAsc of string
         | IconDirectionDesc of string
         | Regular of string
+        | Popper of string
+        | Tooltip of string
+        | Touch of string
+        | TooltipPlacementLeft of string
+        | TooltipPlacementRight of string
+        | TooltipPlacementTop of string
+        | TooltipPlacementBottom of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -695,6 +709,20 @@ module Props =
         | Inherit
         | Primary
         | Secondary
+
+    type [<StringEnum; RequireQualifiedAccess>] PlacementType =
+        | [<CompiledName "bottom-end">] BottomEnd
+        | [<CompiledName "bottom-start">] BottomStart
+        | Bottom
+        | [<CompiledName "left-end">] LeftEnd
+        | [<CompiledName "left-start">] LeftStart
+        | Left
+        | [<CompiledName "right-end">] RightEnd
+        | [<CompiledName "right-start">] RightStart
+        | Right
+        | [<CompiledName "top-end">] TopEnd
+        | [<CompiledName "top-start">] TopStart
+        | Top
 
     type StyleOption =
         | WithTheme of bool
@@ -737,6 +765,7 @@ module Props =
         | Open of bool
         | Optional of ReactNode
         | [<CompiledName("PaperProps")>] PaperProps of IHTMLProp list
+        | Placement of PlacementType
         | RowsMax of int
         | [<CompiledName("SelectProps")>] SelectProps of IHTMLProp list
         | [<CompiledName("TransitionComponent")>] TransitionComponent of ReactType
@@ -1579,23 +1608,8 @@ let inline popover b c = materialEl Popover b c
 // #endregion
 
 // #region Popper
-type [<StringEnum; RequireQualifiedAccess>] PopperPlacementType =
-    | [<CompiledName "bottom-end">] BottomEnd
-    | [<CompiledName "bottom-start">] BottomStart
-    | Bottom
-    | [<CompiledName "left-end">] LeftEnd
-    | [<CompiledName "left-start">] LeftStart
-    | Left
-    | [<CompiledName "right-end">] RightEnd
-    | [<CompiledName "right-start">] RightStart
-    | Right
-    | [<CompiledName "top-end">] TopEnd
-    | [<CompiledName "top-start">] TopStart
-    | Top
-
 type PopperProp =
     | Modifies of obj
-    | Placement of PopperPlacementType
     | PopperOptions of obj
     | Transition of bool
     interface IHTMLProp
@@ -1912,6 +1926,23 @@ let Toolbar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Toolba
 let inline toolbar b c = materialEl Toolbar b c
 // #endregion
 
+// #region Tooltip
+type TooltipProp =
+    | DisableFocusListener of bool
+    | DisableHoverListener of bool
+    | DisableTouchListener of bool
+    | EnterDelay of int
+    | EnterTouchDelay of int
+    | LeaveDelay of int
+    | LeaveTouchDelay of int
+    | [<CompiledName("PopperProps")>] PopperProps of IHTMLProp list
+    | Title of ReactNode
+    interface IHTMLProp
+
+let Tooltip = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Tooltip"
+let inline tooltip b c = materialEl Tooltip b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -2116,6 +2147,7 @@ type OverridesProp =
     | MuiTableSortLabel of IStyles list
     | MuiTabs of IStyles list
     | MuiToolbar of IStyles list
+    | MuiTooltip of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

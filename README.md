@@ -109,7 +109,7 @@ paket add Fable.Helpers.MaterialUI
   * TableSortLabel - ✓
 * TextField - ✓
 * Toolbar - ✓
-* Tooltip
+* Tooltip - ✓
 * TouchRipple
 * Typography
 * Zoom

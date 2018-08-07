@@ -112,9 +112,8 @@ paket add Fable.Helpers.MaterialUI
 * Tooltip - ✓
 * TouchRipple - ✓
 * Typography - ✓
-* Zoom
+* Zoom - ✓
 
 # 
 * withStyles - ✓
 * Colors - ✓
-* Icons

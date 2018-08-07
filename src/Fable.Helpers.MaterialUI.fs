@@ -810,6 +810,7 @@ module Props =
         | Placement of PlacementType
         | RowsMax of int
         | [<CompiledName("SelectProps")>] SelectProps of IHTMLProp list
+        | Timeout of TransitionDuration
         | [<CompiledName("TransitionComponent")>] TransitionComponent of ReactType
         | TransitionDuration of TransitionDuration
         | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
@@ -1205,10 +1206,6 @@ let inline expansionPanelSummary b c = materialEl ExpansionPanelSummary b c
 // #endregion
 
 // #region Fade
-type FadeProp =
-    | Timeout of TransitionDuration
-    interface IHTMLProp
-
 let Fade = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Fade"
 let inline fade b c = materialEl Fade b c
 // #endregion
@@ -1710,7 +1707,6 @@ let inline select b c = materialEl Select b c
 type [<StringEnum; RequireQualifiedAccess>] SlideDirection = Bottom | Up | Left | Right
 
 type SlideProp = 
-    | Timeout of TransitionDuration
     | Direction of SlideDirection
     interface IHTMLProp
 
@@ -2037,6 +2033,11 @@ type TypographyProp =
 
 let Typography = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Typography"
 let inline typography b c = materialEl Typography b c
+// #endregion
+
+// #region Zoom
+let Zoom = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Zoom"
+let inline zoom b c = materialEl Zoom b c
 // #endregion
 
 // #region withStyles

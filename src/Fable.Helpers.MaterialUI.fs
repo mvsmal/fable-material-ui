@@ -398,6 +398,7 @@ module Props =
         | Hover of CSSProp list
         | IconDirectionAsc of CSSProp list
         | IconDirectionDesc of CSSProp list
+        | Regular of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -676,6 +677,7 @@ module Props =
         | Hover of string
         | IconDirectionAsc of string
         | IconDirectionDesc of string
+        | Regular of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -716,6 +718,7 @@ module Props =
         | Component of ReactType
         | Container of ReactInstance
         | Dense of bool
+        | DisableGutters of bool
         | DisablePortal of bool
         | DisableRipple of bool
         | DisableTypography of bool
@@ -1420,7 +1423,6 @@ type ListItemProp =
     | Button of bool
     | [<CompiledName("ContainerComponent")>] ContainerComponent of ReactType
     | [<CompiledName("ContainerProps")>] ContainerProps of IHTMLProp list
-    | DisableGutters of bool
     | Divider of bool
     interface IHTMLProp
 
@@ -1900,6 +1902,16 @@ let TextField = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Text
 let inline textField b c = materialEl TextField b c
 // #endregion
 
+// #region Toolbar
+type [<StringEnum; RequireQualifiedAccess>] ToolbarVariant = Regular | Dense
+type ToolbarProp =
+    | Variant of ToolbarVariant
+    interface IHTMLProp
+
+let Toolbar = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Toolbar"
+let inline toolbar b c = materialEl Toolbar b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -2103,6 +2115,7 @@ type OverridesProp =
     | MuiTableRow of IStyles list
     | MuiTableSortLabel of IStyles list
     | MuiTabs of IStyles list
+    | MuiToolbar of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

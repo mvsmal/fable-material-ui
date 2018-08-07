@@ -107,8 +107,8 @@ paket add Fable.Helpers.MaterialUI
   * TablePagination - ✓
   * TableRow - ✓
   * TableSortLabel - ✓
-* TextField
-* Toolbar
+* TextField - ✓
+* Toolbar - ✓
 * Tooltip
 * TouchRipple
 * Typography

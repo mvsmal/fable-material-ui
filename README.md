@@ -110,7 +110,7 @@ paket add Fable.Helpers.MaterialUI
 * TextField - ✓
 * Toolbar - ✓
 * Tooltip - ✓
-* TouchRipple
+* TouchRipple - ✓
 * Typography
 * Zoom
 

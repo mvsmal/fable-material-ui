@@ -406,6 +406,12 @@ module Props =
         | TooltipPlacementRight of CSSProp list
         | TooltipPlacementTop of CSSProp list
         | TooltipPlacementBottom of CSSProp list
+        | Ripple of CSSProp list
+        | RippleVisible of CSSProp list
+        | RipplePulsate of CSSProp list
+        | Child of CSSProp list
+        | ChildLeaving of CSSProp list
+        | ChildPulsate of CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -692,6 +698,12 @@ module Props =
         | TooltipPlacementRight of string
         | TooltipPlacementTop of string
         | TooltipPlacementBottom of string
+        | Ripple of string
+        | RippleVisible of string
+        | RipplePulsate of string
+        | Child of string
+        | ChildLeaving of string
+        | ChildPulsate of string
         interface IClassNames
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
@@ -1943,6 +1955,15 @@ let Tooltip = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Toolti
 let inline tooltip b c = materialEl Tooltip b c
 // #endregion
 
+// #region TouchRipple
+type TouchRippleProp =
+    | Center of bool
+    interface IHTMLProp
+
+let TouchRipple = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TouchRipple"
+let inline touchRipple b c = materialEl TouchRipple b c
+// #endregion
+
 // #region withStyles
 [<Import("withStyles", "@material-ui/core/styles")>]
 let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
@@ -2148,6 +2169,7 @@ type OverridesProp =
     | MuiTabs of IStyles list
     | MuiToolbar of IStyles list
     | MuiTooltip of IStyles list
+    | MuiTouchRipple of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

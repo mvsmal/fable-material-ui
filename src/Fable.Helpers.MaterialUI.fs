@@ -730,12 +730,16 @@ module Props =
         | KeepMounted of bool
         | Label of ReactNode
         | Margin of FormControlMargin
+        | Multiline of bool
         | Open of bool
         | Optional of ReactNode
         | [<CompiledName("PaperProps")>] PaperProps of IHTMLProp list
+        | RowsMax of int
+        | [<CompiledName("SelectProps")>] SelectProps of IHTMLProp list
         | [<CompiledName("TransitionComponent")>] TransitionComponent of ReactType
         | TransitionDuration of TransitionDuration
         | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
+        | Value of obj // ? Should it be strongly typed? Like U{N}<string, int, float, decimal, arrays...>
 
         | OnClose of (obj->unit)
         | OnEnter of (obj->unit)
@@ -752,7 +756,6 @@ module Props =
         | Color of SelectionControlColor
         | OnChange of (FormEvent*bool->unit)
         interface IHTMLProp
-
 
 module Colors =
     let red = importDefault<Props.IColor> "@material-ui/core/colors/red";
@@ -1347,16 +1350,12 @@ let inline iconButton b c = materialEl IconButton b c
 
 // #region Input
 type [<StringEnum; RequireQualifiedAccess>] InputMargin = None | Dense
-type InputValue = U4<float, string, float list, string list>
 
 type InputProp =
     | DisableUnderline of bool
     | EndAdornment of ReactNode
     | InputComponent of ReactType
-    | Multiline of bool
-    | RowsMax of int
     | StartAdornment of ReactNode
-    | Value of InputValue
     interface IHTMLProp
 
 let Input = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Input"
@@ -1531,11 +1530,6 @@ let inline modal b c = materialEl Modal b c
 // #endregion
 
 // #region NativeSelect
-type NativeSelectValue = U2<string, int>
-type NativeSelectProp =
-    | Value of NativeSelectValue
-    interface IHTMLProp
-
 let NativeSelect = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/NativeSelect"
 let inline nativeSelect b c = materialEl NativeSelect b c
 // #endregion
@@ -1637,7 +1631,6 @@ let inline rootRef b c = materialEl RootRef b c
 // #endregion
 
 // #region Select
-type SelectValue = U4<int, string, int list, string list>
 type SelectProp =
     | AutoWidth of bool
     | DisplayEmpty of bool
@@ -1648,7 +1641,6 @@ type SelectProp =
     | OnChange of (obj*obj->unit)
     | RenderValue of (obj->ReactNode)
     | [<CompiledName("SelectDisplayProps")>] SelectDisplayProps of IHTMLProp list
-    | Value of SelectValue
     interface IHTMLProp
 
 let Select = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Select"
@@ -1870,7 +1862,6 @@ type TablePaginationProp =
     | Page of int
     | RowsPerPage of int
     | RowsPerPageOptions of int list
-    | [<CompiledName("SelectProps")>] SelectProps of IHTMLProp list
     interface IHTMLProp
 
 let TablePagination = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TablePagination"
@@ -1894,6 +1885,19 @@ type TableSortLabelProp =
 
 let TableSortLabel = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TableSortLabel"
 let inline tableSortLabel b c = materialEl TableSortLabel b c
+// #endregion
+
+// #region TextField
+type TextFieldProp =
+    | [<CompiledName("FormHelperTextProps")>] FormHelperTextProps of IHTMLProp list
+    | HelperText of ReactNode
+    | [<CompiledName("InputLabelProps")>] InputLabelProps of IHTMLProp list
+    | [<CompiledName("InputProps")>] InputProps of IHTMLProp list
+    | Select of bool
+    interface IHTMLProp
+
+let TextField = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TextField"
+let inline textField b c = materialEl TextField b c
 // #endregion
 
 // #region withStyles
@@ -2037,10 +2041,12 @@ type OverridesProp =
     | MuiChip of IStyles list
     | MuiCircularProgress of IStyles list
     | MuiCollapse of IStyles list
+    | MuiCssBaseline of IStyles list
     | MuiDialog of IStyles list
     | MuiDialogActions of IStyles list
     | MuiDialogContent of IStyles list
     | MuiDialogContentText of IStyles list
+    | MuiDialogTitle of IStyles list
     | MuiDivider of IStyles list
     | MuiDrawer of IStyles list
     | MuiExpansionPanel of IStyles list
@@ -2072,7 +2078,7 @@ type OverridesProp =
     | MuiMenu of IStyles list
     | MuiMenuItem of IStyles list
     | MuiMobileStepper of IStyles list
-    | MuiModel of IStyles list
+    | MuiModal of IStyles list
     | MuiNativeSelect of IStyles list
     | MuiPaper of IStyles list
     | MuiPopover of IStyles list
@@ -2090,13 +2096,13 @@ type OverridesProp =
     | MuiSvgIcon of IStyles list
     | MuiSwitch of IStyles list
     | MuiTab of IStyles list
-    | MuiTabs of IStyles list
     | MuiTable of IStyles list
     | MuiTableCell of IStyles list
     | MuiTableFooter of IStyles list
     | MuiTablePagination of IStyles list
     | MuiTableRow of IStyles list
     | MuiTableSortLabel of IStyles list
+    | MuiTabs of IStyles list
 
 // TODO implement breakpoints, mixins, transitions?
 type ThemeProp =

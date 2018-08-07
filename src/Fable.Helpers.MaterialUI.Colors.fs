@@ -1,8 +1,8 @@
 [<AutoOpen>]
-module MaterialUI.Colors
+module Fable.MaterialUI.Colors
 
 open Fable.Core.JsInterop
-open MaterialUI.Themes
+open Fable.MaterialUI.Themes
 
 let red = importDefault<IColor> "@material-ui/core/colors/red"
 let pink = importDefault<IColor> "@material-ui/core/colors/pink"

@@ -2,10 +2,10 @@ module Fable.Helpers.MaterialUI
 
 open Fable.Core
 open Fable.Core.JsInterop
-open MaterialUI.Props
-open MaterialUI.Themes
 open Fable.Helpers.React.Props
 open Fable.Import.React
+open Fable.MaterialUI.Props
+open Fable.MaterialUI.Themes
 
 let materialEl<[<Pojo>]'P when 'P :> IHTMLProp>
     (a:ComponentClass<'P>) (b: IHTMLProp list) c =

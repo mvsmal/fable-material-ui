@@ -1,5 +1,5 @@
 [<AutoOpen>]
-module MaterialUI.Themes
+module Fable.MaterialUI.Themes
 
 open Fable.Core
 open Fable.Helpers.React.Props

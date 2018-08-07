@@ -1,10 +1,10 @@
 [<AutoOpen>]
-module MaterialUI.Props
+module Fable.MaterialUI.Props
 
 open Fable.Core
 open Fable.Helpers.React.Props
-open MaterialUI.Themes
 open Fable.Import.React
+open Fable.MaterialUI.Themes
 
 type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
 type [<StringEnum; RequireQualifiedAccess>] TouchEvent = OnTouchStart | OnTouchEnd

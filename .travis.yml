@@ -3,4 +3,4 @@ mono: none
 dotnet: 2.1.300
 sudo: enabled
 script:
-  - ./fake.sh build -t Release
+  - chmod +x fake.sh && ./fake.sh build -t Release

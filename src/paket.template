@@ -1,6 +1,6 @@
 type project
 description
-  Fable bindings for MaterialUI
+  Fable bindings for MaterialUI https://material-ui.com/
 projectUrl https://github.com/mvsmal/fable-material-ui
 licenseUrl https://github.com/mvsmal/fable-material-ui/blob/master/LICENSE
 authors Mikhail Smal

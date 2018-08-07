@@ -259,7 +259,7 @@ let SvgIcon = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/SvgIco
 let inline svgIcon b c = materialEl SvgIcon b c
 
 let SwipeableDrawer =
-    importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/SwipeableDrawerProp"
+    importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/SwipeableDrawer"
 let inline swipeableDrawer b c = materialEl SwipeableDrawer b c
 
 let Switch = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Switch"
@@ -304,7 +304,8 @@ let inline toolbar b c = materialEl Toolbar b c
 let Tooltip = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Tooltip"
 let inline tooltip b c = materialEl Tooltip b c
 
-let TouchRipple = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/TouchRipple"
+let TouchRipple =
+    importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/ButtonBase/TouchRipple"
 let inline touchRipple b c = materialEl TouchRipple b c
 
 let Typography = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Typography"

@@ -3,8 +3,8 @@ source https://www.nuget.org/api/v2
 storage: none
 
 nuget FSharp.Core >= 4.3.4
-nuget Fable.Core ~> 1.3 >= 1.3.11
-nuget Fable.React >= 2.1.0 < 4.0.0
+nuget Fable.Core >= 1.3.11 < 2.0.0
+nuget Fable.React >= 3.0.0 < 4.0.0
 
 // [ FAKE GROUP ]
 group Build

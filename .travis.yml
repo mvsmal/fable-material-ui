@@ -1,5 +1,5 @@
 language: csharp
-dotnet: 2.1.300
-sudo: enabled
+dotnet: 2.1.302
+mono: none
 script:
-  - chmod +x fake.sh && ./fake.sh build -t Release
+  - ./fake.sh build -t Release

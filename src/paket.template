@@ -4,3 +4,7 @@ description
 projectUrl https://github.com/mvsmal/fable-material-ui
 licenseUrl https://github.com/mvsmal/fable-material-ui/blob/master/LICENSE
 authors Mikhail Smal
+files
+  !AssemblyInfo.fs
+  *.fs ==> fable
+  *.fsproj ==> fable

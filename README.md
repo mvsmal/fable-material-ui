@@ -116,4 +116,5 @@ paket add Fable.Helpers.MaterialUI
 
 # 
 * withStyles - ✓
+* withWidth - ✓
 * Colors - ✓

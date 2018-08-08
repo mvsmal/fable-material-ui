@@ -315,10 +315,10 @@ let Zoom = importDefault<ComponentClass<IHTMLProp>> "@material-ui/core/Zoom"
 let inline zoom b c = materialEl Zoom b c
 
 [<Import("withStyles", "@material-ui/core/styles")>]
-let private withStyles'<'S, [<Pojo>]'P, [<Pojo>]'O>
-    (styles: 'S) (options: 'O) : (('P->ReactElement)->ComponentClass<'P>) = jsNative
+let private withStyles'<[<Pojo>]'P, [<Pojo>]'O>
+    styles (options: 'O) : (('P->ReactElement)->ComponentClass<'P>) = jsNative
 
-let withStyles<[<Pojo>]'P, 'S>
+let withStyles<[<Pojo>]'P>
     (styles : StyleType)
     (options: StyleOption list)
     (fn : 'P -> ReactElement)
@@ -344,3 +344,17 @@ let createMuiTheme (options: ThemeProp list) =
     |> keyValueList CaseRules.LowerFirst
     |> unbox
     |> createMuiTheme'
+
+[<Import("default", "@material-ui/core/withWidth")>]
+let private withWidth'<[<Pojo>]'O, [<Pojo>]'P, 'S when 'P :> IWithWidthProps>
+    (options: 'O) : (('P -> ReactElement) -> ComponentClass<'P>) = jsNative
+
+let withWidth<[<Pojo>]'P, 'S when 'P :> IWithWidthProps>
+    (options: WithWidthOption list)
+    (comp: ('P -> ReactElement))
+    (props : IHTMLProp list)
+    children =
+    Fable.Helpers.React.from 
+        (withWidth' (keyValueList CaseRules.LowerFirst options |> unbox) comp)
+        (keyValueList CaseRules.LowerFirst props |> unbox)
+        children

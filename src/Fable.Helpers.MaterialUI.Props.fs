@@ -989,3 +989,12 @@ type MuiThemeProviderProp =
     | Theme of ProviderTheme
     | DisableStylesGeneration of bool
     interface IHTMLProp
+
+type [<StringEnum; RequireQualifiedAccess>] Breakpoint = Xs | Sm | Md | Lg | Xl
+type [<AllowNullLiteral>] IWithWidthProps =
+    abstract member width: Breakpoint
+
+type WithWidthOption =
+    | WithTheme of bool
+    | NoSSR of bool
+    | InitialWidth of Breakpoint

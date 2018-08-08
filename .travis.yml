@@ -1,5 +1,4 @@
 language: csharp
 dotnet: 2.1.302
-mono: none
 script:
-  - ./fake.sh build -t Release
+  - ./fake.sh build

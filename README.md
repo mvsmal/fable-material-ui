@@ -2,15 +2,20 @@
 
 Fable bindings for [Material-UI](https://material-ui.com)
 
-install with DotNet:
+## Install Nuget package
 ```
 dotnet add package Fable.Helpers.MaterialUI
 ```
-or with Paket:
+or
 ```
 paket add Fable.Helpers.MaterialUI
-``` 
-### Supported APIs:
+```
+## Install NPM package ([More info](https://material-ui.com/getting-started/installation/))
+```
+npm install @material-ui/core
+```
+
+## Supported APIs:
 
 * AppBar - ✓
 * Avatar - ✓

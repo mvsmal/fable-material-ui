@@ -334,7 +334,7 @@ type [<StringEnum; RequireQualifiedAccess>] Direction =
     | [<CompiledName("row-reverse")>] RowReverse
     | [<CompiledName("column-reverse")>] ColumnReverse
 
-type [<RequireQualifiedAccess>] Spacing =
+type [<RequireQualifiedAccess>] GridSpacing =
     | ``0`` = 0
     | ``8`` = 8
     | ``16`` = 16
@@ -375,7 +375,7 @@ type GridProp =
     | Sm of GridSize
     | Xl of GridSize
     | Xs of GridSize
-    | Spacing of Spacing
+    | Spacing of GridSpacing
     | Wrap of Wrap
     | ZeroMinWidth of bool
     interface IHTMLProp

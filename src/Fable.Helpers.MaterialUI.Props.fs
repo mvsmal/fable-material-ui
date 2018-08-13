@@ -305,7 +305,7 @@ type FormLabelProp =
     | Focused of bool
     interface IHTMLProp
 
-type [<StringEnum; RequireQualifiedAccess>] AlignContent =
+type [<StringEnum; RequireQualifiedAccess>] GridAlignContent =
     | Stretch
     | Center
     | [<CompiledName("flex-start")>] FlexStart
@@ -313,7 +313,7 @@ type [<StringEnum; RequireQualifiedAccess>] AlignContent =
     | [<CompiledName("space-between")>] SpaceBetween
     | [<CompiledName("space-around")>] SpaceAround
 
-type [<StringEnum; RequireQualifiedAccess>] Justify =
+type [<StringEnum; RequireQualifiedAccess>] GridJustify =
     | Center
     | [<CompiledName("flex-start")>] FlexStart
     | [<CompiledName("flex-end")>] FlexEnd
@@ -321,14 +321,14 @@ type [<StringEnum; RequireQualifiedAccess>] Justify =
     | [<CompiledName("space-around")>] SpaceAround
     | [<CompiledName("space-evenly")>] SpaceEvenly
 
-type [<StringEnum; RequireQualifiedAccess>] AlignItems =
+type [<StringEnum; RequireQualifiedAccess>] GridAlignItems =
     | Stretch
     | Center
     | BaseLine
     | [<CompiledName("flex-start")>] FlexStart
     | [<CompiledName("flex-end")>] FlexEnd
 
-type [<StringEnum; RequireQualifiedAccess>] Direction =
+type [<StringEnum; RequireQualifiedAccess>] GridDirection =
     | Row
     | Column
     | [<CompiledName("row-reverse")>] RowReverse
@@ -342,7 +342,7 @@ type [<RequireQualifiedAccess>] GridSpacing =
     | ``32`` = 32
     | ``40`` = 40
 
-type [<StringEnum; RequireQualifiedAccess>] Wrap =
+type [<StringEnum; RequireQualifiedAccess>] GridWrap =
     | Nowrap
     | Wrap
     | [<CompiledName("wrap-reverse")>] WrapReverse
@@ -364,19 +364,19 @@ type [<RequireQualifiedAccess>] GridSizeNum =
 type GridSize = U3<bool, AutoEnum, GridSizeNum>
 
 type GridProp =
-    | AlignContent of AlignContent
-    | AlignItems of AlignItems
+    | AlignContent of GridAlignContent
+    | AlignItems of GridAlignItems
     | Container of bool
-    | Direction of Direction
+    | Direction of GridDirection
     | Item of bool
-    | Justify of Justify
+    | Justify of GridJustify
     | Lg of GridSize
     | Md of GridSize
     | Sm of GridSize
     | Xl of GridSize
     | Xs of GridSize
     | Spacing of GridSpacing
-    | Wrap of Wrap
+    | Wrap of GridWrap
     | ZeroMinWidth of bool
     interface IHTMLProp
 

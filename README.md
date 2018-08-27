@@ -4,11 +4,11 @@ Fable bindings for [Material-UI](https://material-ui.com)
 
 ## Install Nuget package
 ```
-dotnet add package Fable.Helpers.MaterialUI
+dotnet add package Fable.MaterialUI
 ```
 or
 ```
-paket add Fable.Helpers.MaterialUI
+paket add Fable.MaterialUI
 ```
 ## Install NPM package ([More info](https://material-ui.com/getting-started/installation/))
 ```

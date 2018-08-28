@@ -1,3 +1,6 @@
+## New in 1.0.7
+* Added `Custom` ClassKey to ClassNames
+
 ## New in 1.0.6
 * Added breakpoints to theme
 * Added `Custom` ClassKey

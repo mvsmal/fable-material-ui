@@ -443,7 +443,7 @@ module Themes =
         | ``Wrap-xs-nowrap`` of CSSProp list
         | ``Wrap-xs-wrap-reverse`` of CSSProp list
 
-        | [<Erase>] Custom of string * CSSProp list
+        | [<Erase>] Custom of string * obj
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =

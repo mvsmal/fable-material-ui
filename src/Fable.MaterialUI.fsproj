@@ -3,8 +3,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Fable.Helpers.MaterialUI.Themes.fs" />
-    <Compile Include="Fable.Helpers.MaterialUI.Colors.fs" />
     <Compile Include="Fable.Helpers.MaterialUI.Props.fs" />
     <Compile Include="Fable.Helpers.MaterialUI.fs" />
   </ItemGroup>

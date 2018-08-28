@@ -756,6 +756,7 @@ module Themes =
         | ``Spacing-xs-8`` of string
         | ``Wrap-xs-nowrap`` of string
         | ``Wrap-xs-wrap-reverse`` of string
+        | [<Erase>] Custom of string * string
         interface IClassNames
 
 module Colors =

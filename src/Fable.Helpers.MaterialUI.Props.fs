@@ -59,8 +59,8 @@ module Themes =
         abstract member error: IPaletteIntention
         abstract member grey: IColor
         abstract member contrastThreshold: int
-        abstract getContrastText: string -> string
-        abstract augmentColor: IPaletteIntention -> unit
+        abstract getContrastText: background: string -> string
+        abstract augmentColor: color: IPaletteIntention * mainShade : U2<int, string> * lightShade : U2<int, string> * darkShade : U2<int, string> -> unit
         abstract member tonalOffset: float
         abstract member text: IPaletteText
         abstract member divider: string
@@ -94,8 +94,8 @@ module Themes =
         abstract member textTransform: string
 
     type IThemeTypography =
-        abstract round: float -> float
-        abstract pxToRem: float -> string
+        abstract round: px: float -> float
+        abstract pxToRem: px: float -> string
         abstract member fontFamily: string
         abstract member fontSize: string
         abstract member fontWeightLight: int
@@ -123,9 +123,9 @@ module Themes =
     type IBreakpoints =
         abstract member keys: Props.MaterialSize list
         abstract member values: IBreakpointValues
-        abstract up: U2<Props.MaterialSize, int> -> string
-        abstract down: U2<Props.MaterialSize, int> -> string
-        abstract only: Props.MaterialSize -> string
+        abstract up: key: U2<Props.MaterialSize, int> -> string
+        abstract down: key: U2<Props.MaterialSize, int> -> string
+        abstract only: key: Props.MaterialSize -> string
         abstract between: start: Props.MaterialSize * ``end``: Props.MaterialSize -> string
         abstract width: key: Props.MaterialSize -> int
 

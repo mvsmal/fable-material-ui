@@ -272,6 +272,7 @@ type Styles =
     | LabelPlacementStart of CSSProp list
     | LabelWrapped of CSSProp list
     | Last of CSSProp list
+    | Layout of CSSProp list
     | Light of CSSProp list
     | Line of CSSProp list
     | LineHorizontal of CSSProp list
@@ -580,6 +581,7 @@ type ClassNames =
     | LabelPlacementStart of string
     | LabelWrapped of string
     | Last of string
+    | Layout of string
     | Light of string
     | Line of string
     | LineHorizontal of string

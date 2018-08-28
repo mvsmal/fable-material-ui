@@ -1,3 +1,6 @@
+## New in 1.0.8
+* Fixed `Styles.Custom` case to be `(string * obj)`
+
 ## New in 1.0.7
 * Added `Custom` ClassKey to ClassNames
 

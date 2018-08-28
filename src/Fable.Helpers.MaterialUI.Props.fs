@@ -258,6 +258,7 @@ module Themes =
         | Focused of CSSProp list
         | FontSizeInherit of CSSProp list
         | Footer of CSSProp list
+        | Form of CSSProp list
         | FormControl of CSSProp list
         | FullWidth of CSSProp list
         | GutterBottom of CSSProp list
@@ -440,6 +441,8 @@ module Themes =
         | ``Spacing-xs-8`` of CSSProp list
         | ``Wrap-xs-nowrap`` of CSSProp list
         | ``Wrap-xs-wrap-reverse`` of CSSProp list
+
+        | [<Erase>] Custom of string * CSSProp list
         interface IStyles
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
@@ -567,6 +570,7 @@ module Themes =
         | Focused of string
         | FontSizeInherit of string
         | Footer of string
+        | Form of string
         | FormControl of string
         | FullWidth of string
         | GutterBottom of string

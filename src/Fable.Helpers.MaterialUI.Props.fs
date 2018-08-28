@@ -1,6 +1,7 @@
 [<AutoOpen>]
 module rec Fable.MaterialUI
 
+[<AutoOpen>]
 module Themes =
     open Fable.Core
     open Fable.Helpers.React.Props
@@ -759,6 +760,7 @@ module Themes =
         | [<Erase>] Custom of string * string
         interface IClassNames
 
+[<AutoOpen>]
 module Colors =
     open Fable.Core.JsInterop
     open Themes
@@ -782,6 +784,7 @@ module Colors =
     let grey = importDefault<IColor> "@material-ui/core/colors/grey"
     let blueGrey = importDefault<IColor> "@material-ui/core/colors/blueGrey"
 
+[<AutoOpen>]
 module Props =
 
     open Fable.Core

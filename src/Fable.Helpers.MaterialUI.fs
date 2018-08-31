@@ -92,7 +92,7 @@ let Drawer = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@mater
 let inline drawer b c = materialEl Drawer b c
 
 let ExpansionPanel = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanel"
-let inline expansionPanel b c = materialEl b c
+let inline expansionPanel b c = materialEl ExpansionPanel b c
 
 let ExpansionPanelActions =
     importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanelActions"

@@ -313,24 +313,19 @@ let inline typography b c = materialEl Typography b c
 let Zoom = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/Zoom"
 let inline zoom b c = materialEl Zoom b c
 
-[<Import("withStyles", "@material-ui/core/styles")>]
-let private withStyles'<[<Pojo>]'P, [<Pojo>]'O>
-    styles (options: 'O) : (('P->Fable.Import.React.ReactElement)->Fable.Import.React.ComponentClass<'P>) = jsNative
+let withStyles'<[<Pojo>]'P, [<Pojo>]'O>
+    styles (options: 'O) (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
+    !!((import "withStyles" "@material-ui/core/styles") $ (styles, options) $ fn)
 
 let withStyles<[<Pojo>]'P>
     (styles : StyleType)
     (options: StyleOption list)
-    (fn : 'P -> Fable.Import.React.ReactElement)
-    (props : IHTMLProp list)
-    children =
+    (fn : 'P -> Fable.Import.React.ReactElement) =
     let styles' =
         match styles with
         | StyleType.Styles styles -> (keyValueList CaseRules.LowerFirst styles |> unbox)
         | StyleType.Func func -> func >> keyValueList CaseRules.LowerFirst
-    Fable.Helpers.React.from 
-        (withStyles' styles' (keyValueList CaseRules.LowerFirst options |> unbox) fn)
-        (keyValueList CaseRules.LowerFirst props |> unbox)
-        children
+    withStyles' styles' (keyValueList CaseRules.LowerFirst options) fn
 
 let MuiThemeProvider = importMember<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/styles"
 let inline muiThemeProvider b c = materialEl MuiThemeProvider b c

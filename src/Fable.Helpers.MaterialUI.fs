@@ -339,16 +339,12 @@ let createMuiTheme (options: ThemeProp list) =
     |> unbox
     |> createMuiTheme'
 
-[<Import("default", "@material-ui/core/withWidth")>]
-let private withWidth'<[<Pojo>]'O, [<Pojo>]'P, 'S when 'P :> IWithWidthProps>
-    (options: 'O) : (('P -> Fable.Import.React.ReactElement) -> Fable.Import.React.ComponentClass<'P>) = jsNative
+let withWidth'<[<Pojo>]'O, [<Pojo>]'P>
+    (options: 'O)
+    (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
+    !!((importDefault "@material-ui/core/withWidth") $ options $ fn)
 
-let withWidth<[<Pojo>]'P, 'S when 'P :> IWithWidthProps>
+let withWidth<[<Pojo>]'P>
     (options: WithWidthOption list)
-    (comp: ('P -> Fable.Import.React.ReactElement))
-    (props : IHTMLProp list)
-    children =
-    Fable.Helpers.React.from 
-        (withWidth' (keyValueList CaseRules.LowerFirst options |> unbox) comp)
-        (keyValueList CaseRules.LowerFirst props |> unbox)
-        children
+    (fn: ('P -> Fable.Import.React.ReactElement)) =
+    withWidth' (keyValueList CaseRules.LowerFirst options |> unbox) fn

@@ -1,0 +1,2 @@
+only_commits:
+  message: /\[RELEASE\]/

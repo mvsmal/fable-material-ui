@@ -1,3 +1,6 @@
+## New in 1.0.9
+* Fixed `ExpansionPanel`
+
 ## New in 1.0.8
 * Fixed `Styles.Custom` case to be `(string * obj)`
 

@@ -348,3 +348,42 @@ let withWidth<[<Pojo>]'P>
     (options: WithWidthOption list)
     (fn: ('P -> Fable.Import.React.ReactElement)) =
     withWidth' (keyValueList CaseRules.LowerFirst options |> unbox) fn
+
+module ColorManipulator =
+
+    [<StringEnum; RequireQualifiedAccess>]
+    type ColorFormat = Rgb | Rgba | Hsl | Hsla
+
+    type ColorObject =
+        abstract member ``type``: ColorFormat
+        abstract member values: float array
+
+    let recomposeColor (color: ColorObject): string =
+        import "recomposeColor" "@material-ui/core/styles/colorManipulator"
+    
+    let convertHexToRGB (hex: string): string =
+        import "convertHexToRGB" "@material-ui/core/styles/colorManipulator"
+    
+    let rbgToHex (color: string): string =
+        import "rbgToHex" "@material-ui/core/styles/colorManipulator"
+    
+    let decomposeColor (color: string): ColorObject =
+        import "decomposeColor" "@material-ui/core/styles/colorManipulator"
+
+    let getContrastRatio ((foreground: string), (background: string)): float =
+        import "getContrastRatio" "@material-ui/core/styles/colorManipulator"
+    
+    let getLuminance (color: string) =
+        import "getLuminance" "@material-ui/core/styles/colorManipulator"
+    
+    let emphasize ((color: string), (coefficient: float)): string =
+        import "emphasize" "@material-ui/core/styles/colorManipulator"
+    
+    let fade ((color: string), (value: float)): string =
+        import "fade" "@material-ui/core/styles/colorManipulator"
+    
+    let darken ((color: string), (coefficient: float)): string =
+        import "darken" "@material-ui/core/styles/colorManipulator"
+
+    let lighten ((color: string), (coefficient: float)): string =
+        import "lighten" "@material-ui/core/styles/colorManipulator"

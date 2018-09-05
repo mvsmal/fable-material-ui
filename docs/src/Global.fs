@@ -14,6 +14,7 @@ type NavItem = {
     Children : NavItem list
     Href : Page option
 }
+
 let toPath page =
     match page with
     | Home -> "/home"

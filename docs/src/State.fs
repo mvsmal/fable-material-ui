@@ -10,21 +10,23 @@ open Types
 
 let pageParser: Parser<Page->Page,Page> =
     oneOf [
-        map Home (s "/home")
-        map Installation (s "/getting-started/installation")
-        map Usage (s "/getting-started/usage")
-        map AppBar (s "/demos/app-bar")
-        map Autocomplete (s "/demos/autocomplete")
-        map Avatars (s "/demos/avatars")
+        map Home (s "/")
+        map Home (s "home")
+        map Installation (s "getting-started" </> s "installation")
+        map Usage (s "getting-started" </> s "usage")
+        map AppBar (s "demos" </> s "app-bar")
+        map Autocomplete (s "demos" </> s "autocomplete")
+        map Avatars (s "demos" </> s "avatars")
     ]
 
 let urlUpdate (result: Option<Page>) model =
+    Browser.console.log ("urlUpdate", result, model)
     match result with
     | None ->
         console.error("Error parsing url")
         model,Navigation.modifyUrl (toPath model.currentPage)
     | Some page ->
-        { model with currentPage = page }, []
+        { model with currentPage = page; isLanding = (page = Home) }, []
 
 let init result =
     let (model, cmd) =
@@ -32,10 +34,11 @@ let init result =
            { currentPage = Home
              isLanding = true
              menuOpen = false
-             menuSections = Map.ofList [] }
+           }
     model, Cmd.batch [ cmd ]
 
 let update msg model =
+    Browser.console.log ("udpate", msg, model)
     let result =
         match msg with
         | Navigate page ->
@@ -45,11 +48,4 @@ let update msg model =
             }, Navigation.newUrl (toPath page)
         | ToggleMenu ->
             { model with menuOpen = not model.menuOpen }, Cmd.Empty
-        | ToggleMenuItem title ->
-            let newMap =
-                model.menuSections |>
-                match model.menuSections.TryFind title with
-                | Some i -> Map.add title (not i)
-                | None -> Map.add title true
-            { model with menuSections = newMap }, Cmd.Empty
     result

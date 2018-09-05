@@ -313,11 +313,15 @@ let inline typography b c = materialEl Typography b c
 let Zoom = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/Zoom"
 let inline zoom b c = materialEl Zoom b c
 
-let withStyles'<[<Pojo>]'P, [<Pojo>]'O>
+type IClasses = interface end
+type IClassesProps =
+    abstract member classes: IClasses
+
+let withStyles'<[<Pojo>]'P, [<Pojo>]'O when 'P :> IClassesProps>
     styles (options: 'O) (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
     !!((import "withStyles" "@material-ui/core/styles") $ (styles, options) $ fn)
 
-let withStyles<[<Pojo>]'P>
+let withStyles<[<Pojo>]'P when 'P :> IClassesProps>
     (styles : StyleType)
     (options: StyleOption list)
     (fn : 'P -> Fable.Import.React.ReactElement) =

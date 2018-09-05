@@ -3,12 +3,13 @@ module App.Types
 open Global
 
 type Msg =
-  | CounterMsg of Counter.Types.Msg
-  | HomeMsg of Home.Types.Msg
-  | Navigate of Page
+    | Navigate of Page
+    | ToggleMenu
+    | ToggleMenuItem of string
 
 type Model = {
     currentPage: Page
-    counter: Counter.Types.Model
-    home: Home.Types.Model
-  }
+    isLanding: bool
+    menuOpen: bool
+    menuSections: Map<string, bool>
+}

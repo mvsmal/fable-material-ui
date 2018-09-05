@@ -1,3 +1,6 @@
+## New in 1.2.0
+* Bindings for ColorManipulator
+
 ## New in 1.1.0
 * Breaking Change: `withStyles` doesn't accept `props` and `children` anymore, you have to create a ReactElement with `from` helper
 * Breaking Change: `withWidth` doesn't accept `props` and `children` anymore, you have to create a ReactElement with `from` helper

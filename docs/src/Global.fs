@@ -1,12 +1,24 @@
 module Global
 
 type Page =
-  | Home
-  | Counter
-  | About
+    | Home
+    | Installation
+    | Usage
+    | AppBar
+    | Autocomplete
+    | Avatars
+    // TODO Add other demos
 
-let toHash page =
-  match page with
-  | About -> "about"
-  | Counter -> "counter"
-  | Home -> "home"
+type NavItem = {
+    Title : string
+    Children : NavItem list
+    Href : Page option
+}
+let toPath page =
+    match page with
+    | Home -> "/home"
+    | Installation -> "/getting-started/installation"
+    | Usage -> "/getting-started/usage"
+    | AppBar -> "/demos/app-bar"
+    | Autocomplete -> "/demos/autocomplete"
+    | Avatars -> "/demos/avatars"

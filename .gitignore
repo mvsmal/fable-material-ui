@@ -1,5 +1,6 @@
 public/bundle.js*
-
+docs/demos/
+dist
 # Node
 node_modules/
 

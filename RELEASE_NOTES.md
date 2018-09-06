@@ -1,3 +1,6 @@
+## New in 1.2.1
+* Fixed `typography` property in Theme
+
 ## New in 1.2.0
 * Bindings for ColorManipulator
 

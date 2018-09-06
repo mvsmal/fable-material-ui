@@ -8,6 +8,7 @@ open Fake.IO.Globbing.Operators
 open Fake.Core.TargetOperators
 open Fake.Api
 open Fake.JavaScript
+open Fake.Tools.Git
 
 let outputDir = "nuget"
 let summary = "Fable bindings for MaterialUI"
@@ -99,6 +100,32 @@ let inline withWorkDir wd =
 
 Target.create "DocsRun" (fun _ -> DotNet.exec (withWorkDir "./docs/src") "fable" "yarn-run start" |> ignore)
 
+Target.create "DocsPackage" (fun _ ->
+    DotNet.exec
+        (withWorkDir "./docs/src")
+        "fable"
+        "yarn-run build"
+        |> ignore)
+
+// Where to push generated documentation
+let githubLink = "git@github.com:mvsmal/fable-material-ui.git"
+let publishBranch = "gh-pages"
+let temp        = "docs/temp"
+let docsOuput = "docs/dist"
+
+// --------------------------------------------------------------------------------------
+// Release Scripts
+
+Target.create "DocsPublish" (fun _ ->
+  Shell.cleanDir temp
+  Repository.cloneSingleBranch "" githubLink publishBranch temp
+
+  Shell.copyRecursive docsOuput temp true |> Trace.tracefn "%A"
+  Staging.stageAll temp
+  Commit.exec temp (sprintf "Update site (%s)" (System.DateTime.Now.ToShortDateString()))
+  Branches.push temp
+)
+
 Target.create "All" ignore
 Target.create "BuildPackage" ignore
 Target.create "BuildSamples" ignore
@@ -110,6 +137,14 @@ Target.create "Release" ignore
     ==> "DemosCopy"
     ==> "DocsYarnInstall"
     ==> "DocsRun"
+
+"Clean"
+    ==> "DocsClean"
+    ==> "DocsBuild"
+    ==> "DemosCopy"
+    ==> "DocsYarnInstall"
+    ==> "DocsPackage"
+    ==> "DocsPublish"
 
 "Clean"
     ==> "AssemblyInfo"

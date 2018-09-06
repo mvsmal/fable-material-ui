@@ -29,3 +29,4 @@ group Build
     nuget Fake.Core.ReleaseNotes
     nuget Fake.Api.GitHub
     nuget Fake.JavaScript.Yarn
+    nuget Fake.Tools.Git

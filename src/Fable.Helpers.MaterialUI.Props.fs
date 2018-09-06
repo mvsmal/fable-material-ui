@@ -137,7 +137,7 @@ module Themes =
         abstract member palette: IPalette
         abstract member props: obj
         abstract member shadows: string list
-        abstract member typography: ITypography
+        abstract member typography: IThemeTypography
         abstract member shape: IShape
         abstract member spacing: ISpacing
         abstract member zIndex: IZIndex

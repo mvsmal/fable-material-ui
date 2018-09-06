@@ -1,6 +1,7 @@
 const webpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
@@ -21,7 +22,10 @@ module.exports = webpackMerge(commonConfig, {
         new ExtractTextPlugin('[name].css'),
         new HtmlWebpackPlugin({
             template: 'public/index.html'
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: 'demos/**/*', to: 'demos/'}
+        ])
     ],
 
     devServer: {

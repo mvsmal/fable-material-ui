@@ -24,7 +24,7 @@ let urlUpdate (result: Option<Page>) model =
     match result with
     | None ->
         console.error("Error parsing url")
-        model,Navigation.modifyUrl (toPath model.currentPage)
+        model,Navigation.modifyUrl (toHash model.currentPage)
     | Some page ->
         { model with currentPage = page; isLanding = (page = Home) }, []
 
@@ -45,7 +45,7 @@ let update msg model =
             { model with
                 currentPage = page
                 isLanding = (page = Home)
-            }, Navigation.newUrl (toPath page)
+            }, Navigation.newUrl (toHash page)
         | ToggleMenu ->
             { model with menuOpen = not model.menuOpen }, Cmd.Empty
     result

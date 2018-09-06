@@ -24,6 +24,11 @@ const babelOptions = fableUtils.resolveBabelOptions({
             // cdn.polyfill.io/v2/polyfill.js in index.html
             "polyfill": false,
             "regenerator": false
+        }],
+        ["prismjs", {
+            "languages": ["fsharp"],
+            "theme": "default",
+            "css": true
         }]
     ]
 });
@@ -41,12 +46,26 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.fs(x|proj)?$/,
+                exclude: [ helpers.root("demos") ],
                 use: {
                     loader: "fable-loader",
                     options: {
                         babel: babelOptions,
                         define: isProduction ? [] : ["DEBUG"]
                     }
+                }
+            },
+            {
+                test: /\.(fs|html)$/,
+                include: [ helpers.root("demos") ],
+                use: {
+                    loader: "raw-loader"
+                }
+            },
+            {
+                test: /\.html$/,
+                use: {
+                    loader: 'raw-loader'
                 }
             },
             {
@@ -63,7 +82,15 @@ module.exports = {
                     fallback: 'style-loader',
                     use: ["css-loader", "sass-loader"]
                 })
+            },
+            {
+                test: /.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader' ]
+                })
             }
+
         ]
     },
 };

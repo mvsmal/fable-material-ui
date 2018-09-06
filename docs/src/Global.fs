@@ -15,11 +15,11 @@ type NavItem = {
     Href : Page option
 }
 
-let toPath page =
+let toHash page =
     match page with
-    | Home -> "/home"
-    | Installation -> "/getting-started/installation"
-    | Usage -> "/getting-started/usage"
-    | AppBar -> "/demos/app-bar"
-    | Autocomplete -> "/demos/autocomplete"
-    | Avatars -> "/demos/avatars"
+    | Home -> "#/home"
+    | Installation -> "#/getting-started/installation"
+    | Usage -> "#/getting-started/usage"
+    | AppBar -> "#/demos/app-bar"
+    | Autocomplete -> "#/demos/autocomplete"
+    | Avatars -> "#/demos/avatars"

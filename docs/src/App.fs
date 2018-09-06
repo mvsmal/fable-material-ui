@@ -84,7 +84,7 @@ let drawerMenuStyles (theme : ITheme) : IStyles list =
 let drawerMenuWithStyles<'a> = Mui.withStyles (StyleType.Func drawerMenuStyles) []
 let drawerMenu model dispatch (props : Mui.IClassesProps) =
     let classes = props.classes :?> DrawerMenuClasses
-    div [ Class classes.drawerRoot ] [
+    nav [ Class classes.drawerRoot ] [
         Mui.toolbar [ Class classes.drawerToolbar ] [
             a [
                 Class classes.title
@@ -163,20 +163,33 @@ let appBar model dispatch props =
         ]
     ]
 
-let drawer model dispatch =
+let drawerStyles : IStyles list =
+    [
+        Styles.Root [
+            Width 250
+        ]
+    ]
+
+let drawerWithStyles<'a> = Mui.withStyles (StyleType.Styles drawerStyles) []
+
+let drawer model dispatch props =
     Mui.drawer [
         MProps.DrawerProp.Variant
             (if model.isLanding then MProps.DrawerVariant.Temporary else MProps.DrawerVariant.Permanent)
         MProps.MaterialProp.Open model.menuOpen
         MProps.MaterialProp.OnClose (fun _ -> ToggleMenu |> dispatch)
+        Class !!props?classes?root
     ] [
         from (drawerMenu model dispatch |> drawerMenuWithStyles) createEmpty []
     ]
 
 let layoutStyles (theme : ITheme) : IStyles list=
-    let mdBreakpoint = theme.breakpoints.up(MProps.MaterialSize.Md |> U2.Case1)
     let lgBreakpoint = theme.breakpoints.up(MProps.MaterialSize.Lg |> U2.Case1)
+    let smBreakpoint = theme.breakpoints.up(MProps.MaterialSize.Sm |> U2.Case1)
     [
+        Styles.Root [
+            Display "flex"
+        ]
         Styles.Custom
             ("menuButton", [
                 MarginLeft -12
@@ -184,14 +197,22 @@ let layoutStyles (theme : ITheme) : IStyles list=
             ] |> toObj)
         Styles.Custom
             ("main", [
-                MarginTop 55
-                CSSProp.Padding 20
-                MinHeight "calc(100vh - 55px)"
+                PaddingTop 80
+                Flex "1 1 100%"
+                CSSProp.MaxWidth "100%"
+                CSSProp.Margin "0 auto"
+                CSSProp.PaddingLeft (theme.spacing.unit * 2)
+                CSSProp.PaddingRight (theme.spacing.unit * 2)
                 CSSProp.Custom
-                    (mdBreakpoint, [
-                        MarginTop 64
-                        MinHeight "calc(100vh - 64px)"
-                        MarginLeft 250
+                    (smBreakpoint, [
+                        PaddingLeft (theme.spacing.unit * 4)
+                        PaddingRight (theme.spacing.unit * 4)
+                    ] |> toObj)
+                CSSProp.Custom
+                    (lgBreakpoint, [
+                        PaddingLeft (theme.spacing.unit * 5)
+                        PaddingRight (theme.spacing.unit * 9)
+                        CSSProp.MaxWidth "calc(100% - 250px)"
                     ] |> toObj)
             ] |> toObj)
         Styles.Custom
@@ -230,12 +251,11 @@ let layout (model : Model) dispatch props =
             (!!classes?landingMain, model.isLanding)
         ] |> classNames
     Mui.muiThemeProvider [MProps.MuiThemeProviderProp.Theme (MProps.ProviderTheme.Theme theme) ] [
-        from (appBar model dispatch |> appBarWithStyles) createEmpty []
-        drawer model dispatch
-
-        main
-            [ Class mainClasses ]
-            [ div [ Class contentClasses ] [ content model.currentPage ] ]
+        div [ Class !!classes?root ] [
+            from (appBar model dispatch |> appBarWithStyles) createEmpty []
+            from (drawer model dispatch |> drawerWithStyles) createEmpty []
+            main [ Class mainClasses ] [ content model.currentPage ]
+        ]
     ]
 
 let root (model: Model) dispatch : ReactElement =
@@ -247,7 +267,7 @@ open Elmish.HMR
 
 // App
 Program.mkProgram init update root
-|> Program.toNavigable (parsePath pageParser) urlUpdate
+|> Program.toNavigable (parseHash pageParser) urlUpdate
 #if DEBUG
 |> Program.withDebugger
 |> Program.withHMR

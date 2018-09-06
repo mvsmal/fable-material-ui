@@ -105,7 +105,7 @@ let drawerMenu model dispatch (props : Mui.IClassesProps) =
                 Mui.typography
                     [ MProps.TypographyProp.Variant MProps.TypographyVariant.Caption
                       Class classes.headerLink ]
-                    [ str "v1.2.0" ]
+                    [ str "v1.2.1" ]
             ]
         ]
         Mui.divider []
@@ -148,6 +148,10 @@ let appBar model dispatch props =
     ] [
         Mui.toolbar [] [
             menuButton model dispatch
+            Mui.typography [
+                MProps.TypographyProp.Variant MProps.TypographyVariant.Title
+                MProps.MaterialProp.Color MProps.ComponentColor.Inherit
+            ] [ model.currentPage |> toTitle |> str ]
             div [ Class "flex" ] []
             Mui.tooltip [
                 MProps.TooltipProp.Title ((str "Github") |> U2.Case1 |> U3.Case1)
@@ -203,6 +207,48 @@ let layoutStyles (theme : ITheme) : IStyles list=
                 CSSProp.Margin "0 auto"
                 CSSProp.PaddingLeft (theme.spacing.unit * 2)
                 CSSProp.PaddingRight (theme.spacing.unit * 2)
+
+                CSSProp.FontFamily theme.typography.fontFamily
+                CSSProp.FontSize 16
+                CSSProp.Color theme.palette.text.primary
+                CSSProp.Custom
+                    ("& p, & ul, & ol", [
+                        CSSProp.LineHeight 1.6
+                        CSSProp.Custom
+                            ("&.low", [
+                                CSSProp.LineHeight 1
+                                CSSProp.MarginTop ".5em"
+                                CSSProp.MarginBottom ".5em"
+                            ] |> toObj)
+                    ] |> toObj)
+                CSSProp.Custom
+                    ("& pre", [
+                        CSSProp.Margin "24px 0"
+                        CSSProp.Padding "12px 18px"
+                        CSSProp.BackgroundColor theme.palette.background.paper
+                        CSSProp.BorderRadius theme.shape.borderRadius
+                        CSSProp.Overflow "auto"
+                    ])
+                CSSProp.Custom
+                    ("& code:not([class*=language])", [
+                        CSSProp.LineHeight 1.6
+                        CSSProp.Color theme.palette.secondary.main
+                        CSSProp.BackgroundColor theme.palette.background.paper
+                        CSSProp.Display "inline-block"
+                        CSSProp.FontFamily "Consolas, 'Liberation Mono', Menlo, Courier, monospace"
+                        CSSProp.Padding "3px 6px"
+                        CSSProp.FontSize 14
+                    ] |> toObj)
+                CSSProp.Custom
+                    ("& a", [
+                        CSSProp.Color theme.palette.secondary.main
+                        CSSProp.TextDecoration "none"
+                        CSSProp.Custom
+                            ("&:hover", [
+                                CSSProp.TextDecoration "underline"
+                            ])
+                    ] |> toObj)
+
                 CSSProp.Custom
                     (smBreakpoint, [
                         PaddingLeft (theme.spacing.unit * 4)
@@ -221,33 +267,21 @@ let layoutStyles (theme : ITheme) : IStyles list=
                 CSSProp.MaxWidth "100vw"
                 MarginLeft 0
             ] |> toObj)
-        Styles.Content [
-            CSSProp.Custom
-                (lgBreakpoint, [
-                    CSSProp.MaxWidth 960
-                    CSSProp.Margin "0 auto"
-                ] |> toObj)
-        ]
     ]
+
 let layoutWithStyles<'a> = Mui.withStyles (StyleType.Func layoutStyles) []
 let layout (model : Model) dispatch props =
     let content = function
-        | Page.Home -> Home.View.root model dispatch
-        | Page.Installation -> GettingStarted.Installation.View.root model dispatch
-        | Page.AppBar -> AppBar.View.root model dispatch
-        | Page.Autocomplete -> Autocomplete.View.root model dispatch
-        | Page.Avatars -> Avatars.View.root model dispatch
-        | Page.Usage -> GettingStarted.Usage.View.root model dispatch
+        | Page.Home -> Home.View.root dispatch
+        | Page.Installation -> GettingStarted.Installation.View.root ()
+        | Page.Usage -> GettingStarted.Usage.View.root ()
+        | Page.AppBar -> AppBar.View.root ()
+        | Page.Avatars -> Avatars.View.root ()
 
     let classes = props?classes
     let mainClasses =
         [
             (!!classes?main, true)
-            (!!classes?landingMain, model.isLanding)
-        ] |> classNames
-    let contentClasses =
-        [
-            (!!classes?content, true)
             (!!classes?landingMain, model.isLanding)
         ] |> classNames
     Mui.muiThemeProvider [MProps.MuiThemeProviderProp.Theme (MProps.ProviderTheme.Theme theme) ] [

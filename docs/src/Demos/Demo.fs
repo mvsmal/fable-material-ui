@@ -5,39 +5,19 @@ open Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Themes
 open Fable.Core
 open Fable.Core.JsInterop
+open Components.Code
 open Utils
 open Fable.Import.React
 open Fable.Helpers.React.Props
+open Components.Typography
 
 [<Emit("require.context($0)")>]
 let inline requireContext (dir: string) = jsNative
 
 let demosContext: obj = requireContext "../../demos"
 
-type Prism =
-    abstract highlight: text: string * grammar: obj -> string
-    abstract member languages: obj
-
-let prism : Prism = importDefault "prismjs"
-
-let code text =
-    let markedCode = prism.highlight (text, prism.languages?("fsharp"))
-    div [ Class "code-block"] [
-        pre [] [
-            code [
-                Class "language-fsharp"
-                DangerouslySetInnerHTML { __html = markedCode } ] []
-        ]
-    ]
-
-
 let demoStyles (theme : ITheme) : IStyles list =
     [
-        Styles.Custom
-            ("h2", [
-                CSSProp.Color theme.palette.text.secondary
-                CSSProp.Margin "32px 0 24px"
-            ] |> toObj)
         Styles.Custom
             ("sourceButton", [
                 CSSProp.Position "absolute"
@@ -90,10 +70,7 @@ type DemoComponent(p) as this =
              ((!!this.props.classes?content + "-below"), this.state.expanded)]
             |> classNames
         fragment [] [
-            typography [
-                TypographyProp.Variant TypographyVariant.Display1
-                Class !!this.props.classes?h2
-            ] [ str this.props.title ]
+            display1 this.props.title
             div [ Class !!this.props.classes?wrapper ] [
                 tooltip [
                     Placement PlacementType.Top
@@ -109,7 +86,7 @@ type DemoComponent(p) as this =
                 ]
                 collapse [
                     MaterialProp.In this.state.expanded
-                ] [ code d ]
+                ] [ code d "fsharp" ]
                 div [
                     Class contentClassNames
                 ] [

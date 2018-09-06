@@ -1,11 +1,9 @@
 module Global
-
 type Page =
     | Home
     | Installation
     | Usage
     | AppBar
-    | Autocomplete
     | Avatars
     // TODO Add other demos
 
@@ -21,5 +19,11 @@ let toHash page =
     | Installation -> "#/getting-started/installation"
     | Usage -> "#/getting-started/usage"
     | AppBar -> "#/demos/app-bar"
-    | Autocomplete -> "#/demos/autocomplete"
     | Avatars -> "#/demos/avatars"
+
+let toTitle = function
+    | Home -> ""
+    | Installation -> "Installation"
+    | Usage -> "Usage"
+    | AppBar -> "App Bar"
+    | Avatars -> "Avatars"

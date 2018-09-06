@@ -119,5 +119,5 @@ let home dispatch (props : IClassesProps) =
     ]
 
 
-let root _ dispatch =
+let root dispatch =
     from (home dispatch |> homeWithStyles) createEmpty []

@@ -10,14 +10,14 @@
     <Compile Include="Global.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />
+    <Compile Include="Components/Code.fs" />
+    <Compile Include="Components/Typography.fs" />
     <Compile Include="GettingStarted/Installation.fs" />
     <Compile Include="GettingStarted/Usage.fs" />
     <Compile Include="Demos/Demo.fs" />
-    <Compile Include="Demos/DemoWrapper.fs" />
     <Compile Include="Demos/AppBar/SimpleAppBar.fs" />
     <Compile Include="Demos/AppBar/AppBarWithButtons.fs" />
     <Compile Include="Demos/AppBar.fs" />
-    <Compile Include="Demos/Autocomplete.fs" />
     <Compile Include="Demos/Avatars.fs" />
     <Content Include="Demos/**/*.fs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -26,7 +26,7 @@ const babelOptions = fableUtils.resolveBabelOptions({
             "regenerator": false
         }],
         ["prismjs", {
-            "languages": ["fsharp"],
+            "languages": ["fsharp", "bash"],
             "theme": "default",
             "css": true
         }]

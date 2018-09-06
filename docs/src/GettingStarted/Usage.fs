@@ -1,5 +1,5 @@
 module GettingStarted.Usage.View
 open Fable.Helpers.React
 
-let root model dispatch =
+let root () =
     div [] [ str "usage" ]

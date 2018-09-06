@@ -5,6 +5,7 @@ open Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Themes
 open Fable.Core
 open Fable.Core.JsInterop
+open Components.Code
 open Utils
 open Fable.Import.React
 open Fable.Helpers.React.Props
@@ -13,23 +14,6 @@ open Fable.Helpers.React.Props
 let inline requireContext (dir: string) = jsNative
 
 let demosContext: obj = requireContext "../../demos"
-
-type Prism =
-    abstract highlight: text: string * grammar: obj -> string
-    abstract member languages: obj
-
-let prism : Prism = importDefault "prismjs"
-
-let code text =
-    let markedCode = prism.highlight (text, prism.languages?("fsharp"))
-    div [ Class "code-block"] [
-        pre [] [
-            code [
-                Class "language-fsharp"
-                DangerouslySetInnerHTML { __html = markedCode } ] []
-        ]
-    ]
-
 
 let demoStyles (theme : ITheme) : IStyles list =
     [
@@ -109,7 +93,7 @@ type DemoComponent(p) as this =
                 ]
                 collapse [
                     MaterialProp.In this.state.expanded
-                ] [ code d ]
+                ] [ code d "fsharp" ]
                 div [
                     Class contentClassNames
                 ] [

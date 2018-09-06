@@ -31,7 +31,6 @@ let navItems = [
         Children =
             [
                 { Title = "App Bar"; Href = Some Page.AppBar; Children = [] }
-                { Title = "Autocomplete"; Href = Some Page.Autocomplete; Children = [] }
                 { Title = "Avatars"; Href = Some Page.Avatars; Children = [] }
             ]
     }

@@ -15,7 +15,6 @@ let pageParser: Parser<Page->Page,Page> =
         map Installation (s "getting-started" </> s "installation")
         map Usage (s "getting-started" </> s "usage")
         map AppBar (s "demos" </> s "app-bar")
-        map Autocomplete (s "demos" </> s "autocomplete")
         map Avatars (s "demos" </> s "avatars")
     ]
 

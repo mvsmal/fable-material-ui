@@ -1,5 +1,5 @@
 module Demos.Avatars.View
 open Fable.Helpers.React
 
-let root model dispatch =
+let root () =
     div [] [ str "avatars" ]

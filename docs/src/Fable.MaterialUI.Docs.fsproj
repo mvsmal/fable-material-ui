@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Fable.MaterialUI.fsproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Utils.fs" />
+    <Compile Include="Global.fs" />
+    <Compile Include="Types.fs" />
+    <Compile Include="State.fs" />
+    <Compile Include="Components/Code.fs" />
+    <Compile Include="Components/Typography.fs" />
+    <Compile Include="GettingStarted/Installation.fs" />
+    <Compile Include="GettingStarted/Usage.fs" />
+    <Compile Include="Demos/Demo.fs" />
+    <Compile Include="Demos/AppBar/SimpleAppBar.fs" />
+    <Compile Include="Demos/AppBar/AppBarWithButtons.fs" />
+    <Compile Include="Demos/AppBar.fs" />
+    <Compile Include="Demos/Avatars.fs" />
+    <Content Include="Demos/**/*.fs" Exclude="Demos/*.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="Home.fs" />
+    <Compile Include="Navigation.fs" />
+    <Compile Include="App.fs" />
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

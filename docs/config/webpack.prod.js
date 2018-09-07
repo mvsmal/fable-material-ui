@@ -3,6 +3,7 @@ const webpackMerge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
 
@@ -42,6 +43,9 @@ module.exports = webpackMerge.smartStrategy({
         new HtmlWebpackPlugin({
             template: 'public/index.html'
         }),
+        new CopyWebpackPlugin([
+            { from: 'public/img/', to: 'img/'}
+        ]),
         new webpack.DefinePlugin({
             'process.env': {
                 'NODE_ENV': JSON.stringify(ENV)

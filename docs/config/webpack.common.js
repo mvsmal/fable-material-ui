@@ -56,16 +56,10 @@ module.exports = {
                 }
             },
             {
-                test: /\.(fs|html)$/,
+                test: /\.fs$/,
                 include: [ helpers.root("demos") ],
                 use: {
                     loader: "raw-loader"
-                }
-            },
-            {
-                test: /\.html$/,
-                use: {
-                    loader: 'raw-loader'
                 }
             },
             {
@@ -80,14 +74,30 @@ module.exports = {
                 test: /.sass$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ["css-loader", "sass-loader"]
+                    use: [{
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: !isProduction
+                        }
+                    }, {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: !isProduction
+                        }
+                    }]
                 })
             },
             {
                 test: /.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader' ]
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: !isProduction
+                            }
+                        }]
                 })
             }
 

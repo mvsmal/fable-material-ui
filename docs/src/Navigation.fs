@@ -31,7 +31,7 @@ let navItems = [
         Children =
             [
                 { Title = "App Bar"; Href = Some Page.AppBar; Children = [] }
-                { Title = "Avatars"; Href = Some Page.Avatars; Children = [] }
+                // { Title = "Avatars"; Href = Some Page.Avatars; Children = [] }
             ]
     }
 ]
@@ -113,7 +113,6 @@ let navItemStyles (theme: ITheme) : IStyles list =
     ]
 let navItemWithStyles<'a> = Mui.withStyles (StyleType.Func navItemStyles) []
 let navItem title depth href opened model childItems dispatch props =
-    Browser.console.log("navItem", title, href)
     let style =
         [
             CSSProp.PaddingLeft (8 * (3 + 2 * depth))

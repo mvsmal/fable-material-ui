@@ -46,6 +46,61 @@ let githubIcon =
         ] []
     ]
 
+let menuButton model dispatch =
+    match model.isLanding with
+    | false -> null
+    | _ ->
+        Mui.iconButton [
+            MProps.IconProp.Color MProps.IconColor.Inherit
+            OnClick (fun _ -> ToggleMenu |> dispatch)
+        ] [ Mui.icon [] [ str "menu" ] ]
+
+let appBarStyles (theme : ITheme) : IStyles list =
+    let mdBreakpoint = theme.breakpoints.up(MProps.MaterialSize.Md |> U2.Case1)
+    [
+        Styles.Custom
+            ("appBar", [
+                CSSProp.Custom
+                    (mdBreakpoint, [
+                        Left 250
+                        Width "calc(100% - 250px)"
+                     ] |> toObj)
+            ] |> toObj)
+        Styles.Custom
+            ("landingAppBar", [
+                Left 0
+                Width "100vw"
+                BoxShadow "unset"
+            ] |> toObj)
+    ]
+let appBarWithStyles<'a> = Mui.withStyles (StyleType.Func appBarStyles) []
+let appBar model dispatch props =
+    let classes = props?classes
+    Mui.appBar [
+        MProps.Position MProps.AppBarPosition.Fixed
+        Class (classNames [(!!classes?appBar, true); (!!classes?landingAppBar, model.isLanding)])
+    ] [
+        Mui.toolbar [] [
+            menuButton model dispatch
+            Mui.typography [
+                MProps.TypographyProp.Variant MProps.TypographyVariant.Title
+                MProps.MaterialProp.Color MProps.ComponentColor.Inherit
+            ] [ model.currentPage |> toTitle |> str ]
+            div [ Class "flex" ] []
+            Mui.tooltip [
+                MProps.TooltipProp.Title ((str "Github") |> U2.Case1 |> U3.Case1)
+                MProps.TooltipProp.EnterDelay 300
+            ] [
+                Mui.iconButton [
+                    MProps.IconProp.Color MProps.IconColor.Inherit
+                    MProps.MaterialProp.Component ("a" |> U3.Case1)
+                    Target "_blank"
+                    Href "https://github.com/mvsmal/fable-material-ui"
+                ] [ githubIcon ]
+            ]
+        ]
+    ]
+
 [<Pojo>]
 type DrawerMenuClasses =
     abstract member drawerRoot: string
@@ -112,79 +167,41 @@ let drawerMenu model dispatch (props : Mui.IClassesProps) =
         navigationMenu model dispatch
     ]
 
-let menuButton model dispatch =
-    match model.isLanding with
-    | false -> null
-    | _ ->
-        Mui.iconButton [
-            MProps.IconProp.Color MProps.IconColor.Inherit
-            OnClick (fun _ -> ToggleMenu |> dispatch)
-        ] [ Mui.icon [] [ str "menu" ] ]
-
-let appBarStyles (theme : ITheme) : IStyles list =
-    let mdBreakpoint = theme.breakpoints.up(MProps.MaterialSize.Md |> U2.Case1)
-    [
-        Styles.Custom
-            ("appBar", [
-                CSSProp.Custom
-                    (mdBreakpoint, [
-                        Left 250
-                        Width "calc(100% - 250px)"
-                     ] |> toObj)
-            ] |> toObj)
-        Styles.Custom
-            ("landingAppBar", [
-                Left 0
-                Width "100vw"
-                BoxShadow "unset"
-            ] |> toObj)
-    ]
-let appBarWithStyles<'a> = Mui.withStyles (StyleType.Func appBarStyles) []
-let appBar model dispatch props =
-    let classes = props?classes
-    Mui.appBar [
-        MProps.Position MProps.AppBarPosition.Fixed
-        Class (classNames [(!!classes?appBar, true); (!!classes?landingAppBar, model.isLanding)])
-    ] [
-        Mui.toolbar [] [
-            menuButton model dispatch
-            Mui.typography [
-                MProps.TypographyProp.Variant MProps.TypographyVariant.Title
-                MProps.MaterialProp.Color MProps.ComponentColor.Inherit
-            ] [ model.currentPage |> toTitle |> str ]
-            div [ Class "flex" ] []
-            Mui.tooltip [
-                MProps.TooltipProp.Title ((str "Github") |> U2.Case1 |> U3.Case1)
-                MProps.TooltipProp.EnterDelay 300
-            ] [
-                Mui.iconButton [
-                    MProps.IconProp.Color MProps.IconColor.Inherit
-                    MProps.MaterialProp.Component ("a" |> U3.Case1)
-                    Target "_blank"
-                    Href "https://github.com/mvsmal/fable-material-ui"
-                ] [ githubIcon ]
-            ]
-        ]
-    ]
-
 let drawerStyles : IStyles list =
     [
         Styles.Root [
             Width 250
         ]
     ]
-
 let drawerWithStyles<'a> = Mui.withStyles (StyleType.Styles drawerStyles) []
-
 let drawer model dispatch props =
-    Mui.drawer [
-        MProps.DrawerProp.Variant
-            (if model.isLanding then MProps.DrawerVariant.Temporary else MProps.DrawerVariant.Permanent)
-        MProps.MaterialProp.Open model.menuOpen
-        MProps.MaterialProp.OnClose (fun _ -> ToggleMenu |> dispatch)
-        Class !!props?classes?root
-    ] [
-        from (drawerMenu model dispatch |> drawerMenuWithStyles) createEmpty []
+    let innerDrawer = from (drawerMenu model dispatch |> drawerMenuWithStyles) createEmpty []
+    nav [] [
+        Mui.hidden [
+            MProps.LgUp (not model.isLanding)
+            MProps.Implementation MProps.HiddenImplementation.Js
+        ] [
+            Mui.swipeableDrawer [
+                MProps.DrawerProp.Variant MProps.DrawerVariant.Temporary
+                MProps.MaterialProp.Open model.menuOpen
+                MProps.MaterialProp.OnOpen (fun _ -> ())
+                MProps.MaterialProp.OnClose (fun _ -> ToggleMenu |> dispatch)
+                // MProps.ModalProps [
+                //     MProps.KeepMounted true
+                // ]
+            ] [ innerDrawer ]
+        ]
+        (if model.isLanding then null else
+            Mui.hidden [
+                MProps.MdDown true
+                MProps.Implementation MProps.HiddenImplementation.Js
+            ] [
+                Mui.drawer [
+                    MProps.DrawerProp.Variant MProps.DrawerVariant.Permanent
+                    MProps.MaterialProp.Open true
+                    Class !!props?classes?root
+                ] [ innerDrawer ]
+            ])
     ]
 
 let layoutStyles (theme : ITheme) : IStyles list=
@@ -228,7 +245,7 @@ let layoutStyles (theme : ITheme) : IStyles list=
                         CSSProp.BackgroundColor theme.palette.background.paper
                         CSSProp.BorderRadius theme.shape.borderRadius
                         CSSProp.Overflow "auto"
-                    ])
+                    ] |> toObj)
                 CSSProp.Custom
                     ("& code:not([class*=language])", [
                         CSSProp.LineHeight 1.6

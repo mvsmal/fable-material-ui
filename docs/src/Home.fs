@@ -9,6 +9,7 @@ open Fable.MaterialUI.Themes
 open Global
 open Utils
 open App.Types
+open Components.Typography
 module Mui = Fable.Helpers.MaterialUI
 
 let homeStyles (theme : ITheme) : IStyles list =
@@ -32,7 +33,7 @@ let homeStyles (theme : ITheme) : IStyles list =
             CSSProp.AlignItems "center"
         ]
         Styles.Title [
-            CSSProp.LetterSpacing ".7rem"
+            CSSProp.LetterSpacing ".2rem"
             CSSProp.TextIndent ".7rem"
             CSSProp.FontWeight theme.typography.fontWeightLight
             CSSProp.WhiteSpace "nowrap"
@@ -69,6 +70,10 @@ let homeStyles (theme : ITheme) : IStyles list =
                 Height "35vw"
                 MaxHeight 200
             ] |> toObj)
+        Styles.Custom
+            ("support", [
+                CSSProp.TextAlign "center"
+            ] |> toObj)
     ]
 
 let homeWithStyles<'a> = Mui.withStyles (StyleType.Func homeStyles) []
@@ -81,39 +86,57 @@ type HomeClasses =
     abstract member title : string
     abstract member headline : string
     abstract member button : string
+    abstract member support: string
     inherit Mui.IClasses
 let home dispatch (props : IClassesProps) =
     let classes = props.classes :?> HomeClasses
-    div [ Class classes.hero ] [
-        div [ Class classes.content ] [
-            img [
-                Src "img/fable-material-ui-logo.svg"
-                Alt "Fable Material-UI Logo"
-                Class classes.logo
+    fragment [] [
+        div [ Class classes.hero ] [
+            div [ Class classes.content ] [
+                img [
+                    Src "img/fable-material-ui-logo.svg"
+                    Alt "Fable Material-UI Logo"
+                    Class classes.logo
+                ]
+                div [ Class classes.text ] [
+                    typography [
+                        TypographyProp.Variant TypographyVariant.Display2
+                        TypographyProp.Align TypographyAlign.Center
+                        MaterialProp.Component ("h1" |> U3.Case1)
+                        TypographyProp.Color TypographyColor.Inherit
+                        TypographyProp.GutterBottom true
+                        Class classes.title
+                    ] [ str "FABLE MATERIAL-UI" ]
+                    typography [
+                        TypographyProp.Variant TypographyVariant.Headline
+                        MaterialProp.Component ("h2" |> U3.Case1)
+                        TypographyProp.Color TypographyColor.Inherit
+                        TypographyProp.GutterBottom true
+                        Class classes.headline
+                    ] [ str "Fable bindings for Material-UI React components"]
+                    Mui.button [
+                        MaterialProp.Component ("a" |> U3.Case1)
+                        OnClick (fun e -> e.preventDefault(); Navigate Installation |> dispatch)
+                        Class classes.button
+                        ButtonProp.Variant ButtonVariant.Outlined
+                        MaterialProp.Color ComponentColor.Primary
+                    ] [ str "Get Started" ]
+                ]
             ]
-            div [ Class classes.text ] [
-                typography [
-                    TypographyProp.Variant TypographyVariant.Display2
-                    TypographyProp.Align TypographyAlign.Center
-                    MaterialProp.Component ("h1" |> U3.Case1)
-                    TypographyProp.Color TypographyColor.Inherit
-                    TypographyProp.GutterBottom true
-                    Class classes.title
-                ] [ str "FABLE MATERIAL-UI" ]
-                typography [
-                    TypographyProp.Variant TypographyVariant.Headline
-                    MaterialProp.Component ("h2" |> U3.Case1)
-                    TypographyProp.Color TypographyColor.Inherit
-                    TypographyProp.GutterBottom true
-                    Class classes.headline
-                ] [ str "Fable bindings for Material-UI React components"]
-                Mui.button [
-                    MaterialProp.Component ("a" |> U3.Case1)
-                    OnClick (fun e -> e.preventDefault(); Navigate Installation |> dispatch)
-                    Class classes.button
-                    ButtonProp.Variant ButtonVariant.Outlined
-                    MaterialProp.Color ComponentColor.Primary
-                ] [ str "Get Started" ]
+        ]
+        div [ Class classes.support ] [
+            display1 "Support fable-material-ui"
+            p [] [
+                str "Fable.MaterialUI is a MIT licensed open source project. We are intent on code quality and project maintain. Entirely thanks to our awesome bakers."
+            ]
+            typography [
+                TypographyProp.Variant TypographyVariant.Headline
+            ] [
+                str "Support via "
+                a [
+                    Target "_blank"
+                    Href "https://www.patreon.com/mvsmal"
+                ] [ str "patreon" ]
             ]
         ]
     ]

@@ -12,7 +12,7 @@ let root () =
         p [] [
             str "Simply open Fable.Helpers.MaterialUI and Props module"
         ]
-        code "open Fable.Helper.MaterialUI\nopen Fable.MaterialUI.Props" "fsharp"
+        code "open Fable.Helpers.MaterialUI\nopen Fable.MaterialUI.Props" "fsharp"
         p [] [
             str "There are several components, such as "
             R.code [] [ str "button" ]

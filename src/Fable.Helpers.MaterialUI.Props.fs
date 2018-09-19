@@ -1,5 +1,6 @@
 [<AutoOpen>]
 module rec Fable.MaterialUI
+open Props
 
 [<AutoOpen>]
 module Themes =
@@ -786,7 +787,6 @@ module Colors =
 
 [<AutoOpen>]
 module Props =
-
     open Fable.Core
     open Fable.Helpers.React.Props
 
@@ -860,14 +860,10 @@ module Props =
         | Multiline of bool
         | Open of bool
         | Optional of Fable.Import.React.ReactNode
-        | [<CompiledName("PaperProps")>] PaperProps of IHTMLProp list
         | Placement of PlacementType
         | RowsMax of int
-        | [<CompiledName("SelectProps")>] SelectProps of IHTMLProp list
         | Timeout of TransitionDuration
-        | [<CompiledName("TransitionComponent")>] TransitionComponent of Fable.Import.React.ReactType
         | TransitionDuration of TransitionDuration
-        | [<CompiledName("TransitionProps")>] TransitionProps of IHTMLProp list
         | Value of obj // ? Should it be strongly typed? Like U{N}<string, int, float, decimal, arrays...>
 
         | OnClose of (obj->unit)
@@ -961,7 +957,6 @@ module Props =
         | FocusRipple of bool
         | FocusVisibleClassName of string
         | OnFocusVisible of (Fable.Import.React.FocusEvent->unit)
-        | [<CompiledName("TouchRippleProps")>] TouchRippleProps of IHTMLProp list
         | Type of ButtonBaseType
         interface IHTMLProp
 
@@ -1057,8 +1052,6 @@ module Props =
 
     type DrawerProp =
         | Anchor of Anchor
-        | [<CompiledName("ModalProps")>] ModalProps of IHTMLProp list
-        | [<CompiledName("SlideProps")>] SlideProps of IHTMLProp list
         | Variant of DrawerVariant
         interface IHTMLProp
 
@@ -1066,12 +1059,10 @@ module Props =
         | Expanded of bool
         | DefaultExpanded of bool
         | OnChange of (obj*bool->unit)
-        | [<CompiledName("CollapseProps")>] CollapseProps of IHTMLProp list
         interface IHTMLProp
 
     type ExpansionPanelSummaryProp =
         | ExpandIcon of Fable.Import.React.ReactNode
-        | [<CompiledName("IconButtonProps")>] IconButtonProps of IHTMLProp list
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] FormControlLabelPlacement = End | Start
@@ -1238,7 +1229,6 @@ module Props =
 
     type InputLabelProp =
         | DisableAnimation of bool
-        | [<CompiledName("FormLabelClasses")>] FormLabelClasses of Themes.IStyles list
         | Margin of InputLabelMargin
         | Shrink of bool
         interface IHTMLProp
@@ -1263,8 +1253,6 @@ module Props =
 
     type ListItemProp = 
         | Button of bool
-        | [<CompiledName("ContainerComponent")>] ContainerComponent of Fable.Import.React.ReactType
-        | [<CompiledName("ContainerProps")>] ContainerProps of IHTMLProp list
         | Divider of bool
         interface IHTMLProp
 
@@ -1284,8 +1272,6 @@ module Props =
 
     type MenuProp =
         | DisableAutoFocusItem of bool
-        | [<CompiledName("MenuListProps")>] MenuListProps of IHTMLProp list
-        | [<CompiledName("PopoverClasses")>] PopoperClasses of Themes.IClassNames list
         | TransitionDuration of AutoTransitionDuration
         interface IHTMLProp
 
@@ -1297,7 +1283,6 @@ module Props =
         | BackButton of Fable.Import.React.ReactElement
         | NextButton of Fable.Import.React.ReactElement
         | Position of MobileStepperPosition
-        | [<CompiledName("LinearProgressProps")>] LinearProgressProps of IHTMLProp list
         | Steps of int
         | Variant of MobileStepperVariant
         interface IHTMLProp
@@ -1305,8 +1290,6 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] ModalCloseReason = EscapeKeyDown | BackdropClick
 
     type ModalProp =
-        | [<CompiledName("BackdropComponent")>] BackdropComponent of Fable.Import.React.ReactType
-        | [<CompiledName("BackdropProps")>] BackdropProps of IHTMLProp list
         | DisableAutoFocus of bool
         | DisableBackdropClick of bool
         | DisableEnforceFocus of bool
@@ -1369,13 +1352,10 @@ module Props =
     type SelectProp =
         | AutoWidth of bool
         | DisplayEmpty of bool
-        | [<CompiledName("IconComponent")>] IconComponent of Fable.Import.React.ReactType
         | Input of Fable.Import.React.ReactNode
-        | [<CompiledName("MenuProps")>] MenuProps of IHTMLProp list
         | Native of bool
         | OnChange of (obj*obj->unit)
         | RenderValue of (obj->Fable.Import.React.ReactNode)
-        | [<CompiledName("SelectDisplayProps")>] SelectDisplayProps of IHTMLProp list
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] SlideDirection = Bottom | Up | Left | Right
@@ -1397,7 +1377,6 @@ module Props =
         | Action of Fable.Import.React.ReactElement
         | AnchorOrigin of SnackbarOrigin
         | AutoHideDuration of int
-        | [<CompiledName("ContentProps")>] ContentProps of IHTMLProp list
         | DisableWidnowBlurListener of bool
         | Message of Fable.Import.React.ReactElement
         | OnClose of (obj*SnackbarCloseReason->unit)
@@ -1410,10 +1389,6 @@ module Props =
 
     type StepContentProp =
         | TransitionDuration of AutoTransitionDuration
-        interface IHTMLProp
-
-    type StepLabelProp =
-        | [<CompiledName("StepIconProps")>] StepIconProps of IHTMLProp list
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] StepperOrientation = Vertical | Horizontal
@@ -1451,9 +1426,7 @@ module Props =
         | IndicatorColor of TabsIndicatorColor
         | OnChange of (obj*int->unit)
         | Scrollabel of bool
-        | [<CompiledName("ScrollButtonComponent")>] ScrollButtonComponent of Fable.Import.React.ReactType
         | ScrollButtons of ScrollButtonsType
-        | [<CompiledName("TabIndicatorProps")>] TabIndicatorProps of IHTMLProp list
         | TextColor of TabsTextColor
         interface IHTMLProp
 
@@ -1479,7 +1452,6 @@ module Props =
         abstract member page: int
 
     type TablePaginationProp =
-        | [<CompiledName("ActionsComponent")>] ActionsComponent of Fable.Import.React.ReactType
         | BackIconButtonProps of IHTMLProp list
         | Count of int
         | LabelDisplayedRows of (ILabelDisplayedRowsArgs->Fable.Import.React.ReactNode)
@@ -1502,10 +1474,7 @@ module Props =
         interface IHTMLProp
 
     type TextFieldProp =
-        | [<CompiledName("FormHelperTextProps")>] FormHelperTextProps of IHTMLProp list
         | HelperText of Fable.Import.React.ReactNode
-        | [<CompiledName("InputLabelProps")>] InputLabelProps of IHTMLProp list
-        | [<CompiledName("InputProps")>] InputProps of IHTMLProp list
         | Select of bool
         interface IHTMLProp
 
@@ -1522,7 +1491,6 @@ module Props =
         | EnterTouchDelay of int
         | LeaveDelay of int
         | LeaveTouchDelay of int
-        | [<CompiledName("PopperProps")>] PopperProps of IHTMLProp list
         | Title of Fable.Import.React.ReactNode
         interface IHTMLProp
 
@@ -1782,3 +1750,48 @@ module Props =
         | WithTheme of bool
         | NoSSR of bool
         | InitialWidth of Breakpoint
+
+    [<AutoOpen>]
+    module ChildrenProp =
+        open Fable.Core.JsInterop
+
+        let inline private pascalCaseProp<'a> (name : string) (props : 'a list) =
+            HTMLAttr.Custom (name, props |> keyValueList CaseRules.LowerFirst)
+        let inline private htmlAttrPascalCaseProp (name : string) (props : IHTMLProp list) =
+            pascalCaseProp<IHTMLProp> name props
+
+        let PaperProps props = htmlAttrPascalCaseProp "PaperProps" props
+        let BackdropProps props = htmlAttrPascalCaseProp "BackdropProps" props
+        let SelectProps props = htmlAttrPascalCaseProp "SelectProps" props
+        let TransitionProps props = htmlAttrPascalCaseProp "TransitionProps" props
+        let TouchRippleProps props = htmlAttrPascalCaseProp "TouchRippleProps" props
+        let ModalProps props = htmlAttrPascalCaseProp "ModalProps" props
+        let SlideProps props = htmlAttrPascalCaseProp "SlideProps" props
+        let CollapseProps props = htmlAttrPascalCaseProp "CollapseProps" props
+        let PopperProps props = htmlAttrPascalCaseProp "PopperProps" props
+        let InputProps props = htmlAttrPascalCaseProp "InputProps" props
+        let InputLabelProps props = htmlAttrPascalCaseProp "InputLabelProps" props
+        let FormHelperTextProps props = htmlAttrPascalCaseProp "FormHelperTextProps" props
+        let TabIndicatorProps props = htmlAttrPascalCaseProp "TabIndicatorProps" props
+        let StepIconProps props = htmlAttrPascalCaseProp "StepIconProps" props
+        let ContentProps props = htmlAttrPascalCaseProp "ContentProps" props
+        let SelectDisplayProps props = htmlAttrPascalCaseProp "SelectDisplayProps" props
+        let MenuProps props = htmlAttrPascalCaseProp "MenuProps" props
+        let LinearProgressProps props = htmlAttrPascalCaseProp "LinearProgressProps" props
+        let MenuListProps props = htmlAttrPascalCaseProp "MenuListProps" props
+        let ContainerProps props = htmlAttrPascalCaseProp "ContainerProps" props
+        let IconButtonProps props = htmlAttrPascalCaseProp "IconButtonProps" props
+        let PopoverClasses classes = pascalCaseProp<Themes.IClassNames> "PopoverClasses" classes
+        let FormLabelClasses classes = pascalCaseProp<Themes.IClassNames> "FormLabelClasses" classes
+        let ActionsComponent (comp : Fable.Import.React.ReactType) =
+            HTMLAttr.Custom("ActionsComponent", comp)
+        let ScrollButtonComponent (comp : Fable.Import.React.ReactType) =
+            HTMLAttr.Custom("ScrollButtonComponent", comp)
+        let IconComponent (comp : Fable.Import.React.ReactType) =
+            HTMLAttr.Custom("IconComponent", comp)
+        let BackdropComponent (comp : Fable.Import.React.ReactType) =
+            HTMLAttr.Custom("BackdropComponent", comp)
+        let ContainerComponent (comp : Fable.Import.React.ReactType) =
+            HTMLAttr.Custom("ContainerComponent", comp)
+        let TransitionComponent (comp : Fable.Import.React.ReactType) =
+            HTMLAttr.Custom("TransitionComponent", comp)

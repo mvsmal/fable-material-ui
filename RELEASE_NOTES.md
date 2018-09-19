@@ -1,3 +1,14 @@
+## New in 1.3.0
+* [TextField] Added TextFieldVariant enum and Variant to TextFieldProp
+* [Typography] Added Inherit case to TypographyVariant enum
+* [Icon/SvgIcon] Added Small and Large cases to IconFontSize enum
+* [AppBar] Added Relative case to AppBarPosition enum
+* [Snackbar] Added ClickAwayListenerProps
+* [SwipeableDrawer] Added Hysteresis and MinFlingVelocity props
+* [Chip] Added Variant prop
+* [Dialog] Added Lg case for DialogMaxWidth enum
+* [CardActionArea] Added cardActionArea component
+
 ## New in 1.2.2
 * Fixed PascalCase props
 * materialEl is inline now

@@ -73,6 +73,7 @@ let homeStyles (theme : ITheme) : IStyles list =
         Styles.Custom
             ("support", [
                 CSSProp.TextAlign "center"
+                CSSProp.MarginBottom 20
             ] |> toObj)
     ]
 
@@ -116,7 +117,7 @@ let home dispatch (props : IClassesProps) =
                     ] [ str "Fable bindings for Material-UI React components"]
                     Mui.button [
                         MaterialProp.Component ("a" |> U3.Case1)
-                        OnClick (fun e -> e.preventDefault(); Navigate Installation |> dispatch)
+                        Href ("/" + toHash Installation)
                         Class classes.button
                         ButtonProp.Variant ButtonVariant.Outlined
                         MaterialProp.Color ComponentColor.Primary
@@ -127,7 +128,7 @@ let home dispatch (props : IClassesProps) =
         div [ Class classes.support ] [
             display1 "Support fable-material-ui"
             p [] [
-                str "Fable.MaterialUI is a MIT licensed open source project. We are intent on code quality and project maintain. Entirely thanks to our awesome bakers."
+                str "Fable.MaterialUI is a MIT licensed open source project. We are intent on code quality and project maintain. Entirely thanks to our awesome backers."
             ]
             typography [
                 TypographyProp.Variant TypographyVariant.Headline

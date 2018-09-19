@@ -36,7 +36,6 @@ let init result =
     model, Cmd.batch [ cmd ]
 
 let update (msg: Msg) model =
-    Browser.console.log ("update", msg)
     match msg with
     | ToggleMenu ->
         { model with menuOpen = not model.menuOpen }, Cmd.Empty

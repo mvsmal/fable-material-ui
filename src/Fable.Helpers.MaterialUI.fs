@@ -6,7 +6,7 @@ open Fable.Helpers.React.Props
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
-let materialEl<[<Pojo>]'P when 'P :> IHTMLProp>
+let inline materialEl<[<Pojo>]'P when 'P :> IHTMLProp>
     (a:Fable.Import.React.ComponentClass<'P>) (b: IHTMLProp list) c : Fable.Import.React.ReactElement =
     Fable.Helpers.React.from a (keyValueList CaseRules.LowerFirst b |> unbox) c
 

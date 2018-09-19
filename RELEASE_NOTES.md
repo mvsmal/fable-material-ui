@@ -1,3 +1,7 @@
+## New in 1.2.2
+* Fixed PascalCase props
+* materialEl is inline now
+
 ## New in 1.2.1
 * Fixed `typography` property in Theme
 

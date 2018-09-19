@@ -69,14 +69,11 @@ type SubNav (p) as this =
         this.setInitState { opened = p.opened }
     let toggle = this.Toggle
     member this.Toggle (e : MouseEvent) =
-        Browser.console.log ("toggled collapse", this.props.title, this.state, this.props)
         e.preventDefault()
         e.stopPropagation()
         let newState = { this.state with opened = not this.state.opened }
         this.setState newState
-        Browser.console.log ("new state after toggle", newState)
     override this.render() =
-        Browser.console.log ("render sub nav", this.state, this.props)
         fragment [] [
             Mui.button [
                 OnClick toggle

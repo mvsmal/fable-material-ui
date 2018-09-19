@@ -38,6 +38,9 @@ let inline buttonBase b c = materialEl ButtonBase b c
 let Card = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/Card"
 let inline card b c = materialEl Card b c
 
+let CardActionArea = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/CardActionArea"
+let inline cardActionArea b c = materialEl CardActionArea b c
+
 let CardActions = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/CardActions"
 let inline cardActions b c = materialEl CardActions b c
 

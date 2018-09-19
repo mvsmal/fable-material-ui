@@ -257,6 +257,7 @@ module Themes =
         | FlatSecondary of CSSProp list
         | FlexContainer of CSSProp list
         | FocusVisible of CSSProp list
+        | FocusHiglight of CSSProp list
         | Focused of CSSProp list
         | FontSizeInherit of CSSProp list
         | Footer of CSSProp list
@@ -569,6 +570,7 @@ module Themes =
         | FlatSecondary of string
         | FlexContainer of string
         | FocusVisible of string
+        | FocusHiglight of string
         | Focused of string
         | FontSizeInherit of string
         | Footer of string
@@ -887,6 +889,7 @@ module Props =
         | Absolute
         | Sticky
         | Static
+        | Relative
 
     type AppBarProp = 
         | Position of AppBarPosition
@@ -986,11 +989,13 @@ module Props =
         | IndeterminateIcon of Fable.Import.React.ReactNode
         interface IHTMLProp
         
+    type [<StringEnum; RequireQualifiedAccess>] ChipVariant = Default | Outlined
     type ChipProp =
         | Avatar of Fable.Import.React.ReactElement
         | Clickable of bool
         | DeleteIcon of Fable.Import.React.ReactElement
         | OnDelete of (Fable.Import.React.FormEvent->unit)
+        | Variant of ChipVariant
         interface IHTMLProp
 
     type CircularProgressSize = U2<int, string>
@@ -1031,6 +1036,7 @@ module Props =
         | Xs
         | Sm
         | Md
+        | Lg
         | [<CompiledName("")>] False
 
     type DialogProp =
@@ -1196,7 +1202,12 @@ module Props =
         | XsUp of bool
         interface IHTMLProp
 
-    type [<StringEnum; RequireQualifiedAccess>] IconFontSize = Inherit | Default
+    type [<StringEnum; RequireQualifiedAccess>] IconFontSize =
+        | Inherit
+        | Default
+        | Small
+        | Large
+
     type [<StringEnum; RequireQualifiedAccess>] IconColor =
         | Inherit
         | Primary
@@ -1411,6 +1422,8 @@ module Props =
         | DisableDiscovery of bool
         | DisableSwipeToOpen of bool
         | SwipeAreaWidth of int
+        | Hysteresis of float
+        | MinFlingVelocity of int
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] TabsIndicatorColor = Primary | Secondary
@@ -1473,9 +1486,15 @@ module Props =
         | Direction of TableSortDirection
         interface IHTMLProp
 
+    type [<StringEnum; RequireQualifiedAccess>] TextFieldVariant =
+        | Standard
+        | Outlined
+        | Filled
+
     type TextFieldProp =
         | HelperText of Fable.Import.React.ReactNode
         | Select of bool
+        | Variant of TextFieldVariant
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] ToolbarVariant = Regular | Dense
@@ -1526,6 +1545,7 @@ module Props =
         | Body2
         | Caption
         | Button
+        | Inherit
 
     type TypographyProp =
         | Align of TypographyAlign
@@ -1781,6 +1801,7 @@ module Props =
         let MenuListProps props = htmlAttrPascalCaseProp "MenuListProps" props
         let ContainerProps props = htmlAttrPascalCaseProp "ContainerProps" props
         let IconButtonProps props = htmlAttrPascalCaseProp "IconButtonProps" props
+        let ClickAwayListenerProps props = htmlAttrPascalCaseProp "ClickAwayListenerProps" props
         let PopoverClasses classes = pascalCaseProp<Themes.IClassNames> "PopoverClasses" classes
         let FormLabelClasses classes = pascalCaseProp<Themes.IClassNames> "FormLabelClasses" classes
         let ActionsComponent (comp : Fable.Import.React.ReactType) =

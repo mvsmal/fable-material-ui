@@ -1,6 +1,7 @@
 public/bundle.js*
 docs/demos/
 dist
+.ionide
 # Node
 node_modules/
 

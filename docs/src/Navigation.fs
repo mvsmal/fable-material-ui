@@ -68,9 +68,15 @@ type SubNav (p) as this =
     do
         this.setInitState { opened = p.opened }
     let toggle = this.Toggle
-    member __.Toggle (_) =
-        this.setState(fun s _ -> { opened = not s.opened })
-    override __.render() =
+    member this.Toggle (e : MouseEvent) =
+        Browser.console.log ("toggled collapse", this.props.title, this.state, this.props)
+        e.preventDefault()
+        e.stopPropagation()
+        let newState = { this.state with opened = not this.state.opened }
+        this.setState newState
+        Browser.console.log ("new state after toggle", newState)
+    override this.render() =
+        Browser.console.log ("render sub nav", this.state, this.props)
         fragment [] [
             Mui.button [
                 OnClick toggle
@@ -80,9 +86,9 @@ type SubNav (p) as this =
             Mui.collapse [
                 MProps.In this.state.opened
                 HTMLAttr.Custom ("unmountOnExit", true)
-                MProps.Component ("ul" |> U3.Case1)
                 Class !!this.props.classes?collapse
-            ] this.props.childItems
+            ] [
+                Mui.list [] this.props.childItems ]
         ]
 let subNav props =
     ofType<SubNav, SubNavProps, SubNavState> props []
@@ -112,7 +118,7 @@ let navItemStyles (theme: ITheme) : IStyles list =
         ]
     ]
 let navItemWithStyles<'a> = Mui.withStyles (StyleType.Func navItemStyles) []
-let navItem title depth href opened model childItems dispatch props =
+let navItem title depth href opened currentPage childItems props =
     let style =
         [
             CSSProp.PaddingLeft (8 * (3 + 2 * depth))
@@ -120,7 +126,7 @@ let navItem title depth href opened model childItems dispatch props =
     match href with
     | Some page ->
         let buttonClasses =
-            [ (!!props?classes?selected, model.currentPage = page) ] |> classNames
+            [ (!!props?classes?selected, currentPage = page) ] |> classNames
         Mui.listItem [
             MProps.DisableGutters true
             Class !!props?classes?listItem
@@ -131,7 +137,8 @@ let navItem title depth href opened model childItems dispatch props =
                 Style style
                 Class buttonClasses
                 MProps.Classes [ ClassNames.Root !!props?classes?button ]
-                OnClick (fun _ -> Navigate page |> dispatch)
+                Href ("/" + (toHash page))
+                OnClick (fun _ -> !!props?closeDrawer())
             ] [ str title ]
         ]
     | None ->
@@ -145,19 +152,17 @@ let navItem title depth href opened model childItems dispatch props =
             Class !!props?classes?listItem
         ] [ from (subNav |> subNavWithStyles) subNavProps [] ]
 
-let rec mapNavigation (model: Model) dispatch (depth: int) =
+let rec mapNavigation currentPage closeDrawer (depth: int) =
     fun item ->
         let opened =
             if not (item.Children |> List.isEmpty)
-            then item.Children |> List.exists (fun i -> i.Href = Some model.currentPage)
+            then item.Children |> List.exists (fun i -> i.Href = Some currentPage)
             else false
-        let childItems = item.Children |> List.map (mapNavigation model dispatch (depth + 1))
+        let childItems = item.Children |> List.map (mapNavigation currentPage closeDrawer (depth + 1))
         from
-            ((navItem item.Title depth item.Href opened model childItems dispatch) |> navItemWithStyles)
-            createEmpty []
+            ((navItem item.Title depth item.Href opened currentPage childItems) |> navItemWithStyles)
+            !!(createObj [ "closeDrawer" ==> closeDrawer ]) []
 
-let navigationMenu model dispatch =
-    Mui.list
-        [ MProps.MaterialProp.Component ("nav" |> U3.Case1) ]
-        (navItems |> List.map (mapNavigation model dispatch 0))
+let navigationMenu currentPage closeDrawer =
+    Mui.list [] (navItems |> List.map (mapNavigation currentPage closeDrawer 0))
 

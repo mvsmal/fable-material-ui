@@ -5,6 +5,7 @@ open Elmish.Browser.Navigation
 open Elmish.Browser.UrlParser
 open Fable.Core
 open Fable.Core.JsInterop
+open Fable.Import
 open Types
 open App.State
 open Global
@@ -20,6 +21,7 @@ open Fable.MaterialUI.Props
 open Demos
 open Utils
 open App.Navigation
+open Elmish.React.Common
 
 module Mui = Fable.Helpers.MaterialUI
 module MProps = Fable.MaterialUI.Props
@@ -47,21 +49,25 @@ let githubIcon =
     ]
 
 let menuButton model dispatch =
-    match model.isLanding with
-    | false -> null
-    | _ ->
+    let button = 
         Mui.iconButton [
             MProps.IconProp.Color MProps.IconColor.Inherit
             OnClick (fun _ -> ToggleMenu |> dispatch)
         ] [ Mui.icon [] [ str "menu" ] ]
+    match model.isLanding with
+    | false ->
+        Mui.hidden [ MProps.LgUp true ] [
+            button
+        ]
+    | _ -> button
 
 let appBarStyles (theme : ITheme) : IStyles list =
-    let mdBreakpoint = theme.breakpoints.up(MProps.MaterialSize.Md |> U2.Case1)
+    let lgBreakpoint = theme.breakpoints.up(MProps.MaterialSize.Lg |> U2.Case1)
     [
         Styles.Custom
             ("appBar", [
                 CSSProp.Custom
-                    (mdBreakpoint, [
+                    (lgBreakpoint, [
                         Left 250
                         Width "calc(100% - 250px)"
                      ] |> toObj)
@@ -137,14 +143,14 @@ let drawerMenuStyles (theme : ITheme) : IStyles list =
             ] |> toObj)
     ]
 let drawerMenuWithStyles<'a> = Mui.withStyles (StyleType.Func drawerMenuStyles) []
-let drawerMenu model dispatch (props : Mui.IClassesProps) =
+let drawerMenu (props : Mui.IClassesProps) =
     let classes = props.classes :?> DrawerMenuClasses
-    nav [ Class classes.drawerRoot ] [
+    div [ Class classes.drawerRoot ] [
         Mui.toolbar [ Class classes.drawerToolbar ] [
             a [
                 Class classes.title
-                Href ""
-                OnClick (fun e -> e.preventDefault(); Navigate Home |> dispatch)
+                Href ("/" + toHash Home)
+                OnClick (fun _ -> !!props?closeDrawer())
             ] [
                 Mui.typography
                     [ MProps.TypographyProp.Variant MProps.TypographyVariant.Title
@@ -164,7 +170,7 @@ let drawerMenu model dispatch (props : Mui.IClassesProps) =
             ]
         ]
         Mui.divider []
-        navigationMenu model dispatch
+        navigationMenu !!props?currentPage !!props?closeDrawer
     ]
 
 let drawerStyles : IStyles list =
@@ -173,36 +179,68 @@ let drawerStyles : IStyles list =
             Width 250
         ]
     ]
+[<Pojo>]
+type AppDrawerProps =
+    abstract member isLanding: bool with get,set
+    abstract member currentPage: Page with get,set
+    abstract member classes: obj with get,set
+    inherit Mui.IClassesProps
+
+[<Pojo>]
+type AppDrawerState = {
+    opened: bool
+}
+
 let drawerWithStyles<'a> = Mui.withStyles (StyleType.Styles drawerStyles) []
-let drawer model dispatch props =
-    let innerDrawer = from (drawerMenu model dispatch |> drawerMenuWithStyles) createEmpty []
-    nav [] [
-        Mui.hidden [
-            MProps.LgUp (not model.isLanding)
-            MProps.Implementation MProps.HiddenImplementation.Js
-        ] [
-            Mui.swipeableDrawer [
-                MProps.DrawerProp.Variant MProps.DrawerVariant.Temporary
-                MProps.MaterialProp.Open model.menuOpen
-                MProps.MaterialProp.OnOpen (fun _ -> ())
-                MProps.MaterialProp.OnClose (fun _ -> ToggleMenu |> dispatch)
-                // MProps.ModalProps [
-                //     MProps.KeepMounted true
-                // ]
-            ] [ innerDrawer ]
-        ]
-        (if model.isLanding then null else
+type AppDrawer(p) as this =
+    inherit PureComponent<AppDrawerProps, AppDrawerState>(p)
+    do this.setInitState { opened = false }
+    let closeDrawer = this.CloseDrawer
+    let openDrawer = this.OpenDrawer
+
+    member this.CloseDrawer(_) =
+        this.setState { this.state with opened = false }
+    
+    member this.OpenDrawer(_) =
+        this.setState { this.state with opened = true }
+
+    override this.render() =
+        let menuProps =
+            createObj [
+                "closeDrawer" ==> closeDrawer
+                "currentPage" ==> this.props.currentPage ]
+        let innerDrawer = from (drawerMenu |> drawerMenuWithStyles) !!menuProps []
+        nav [] [
             Mui.hidden [
-                MProps.MdDown true
+                MProps.LgUp (not this.props.isLanding)
                 MProps.Implementation MProps.HiddenImplementation.Js
             ] [
-                Mui.drawer [
-                    MProps.DrawerProp.Variant MProps.DrawerVariant.Permanent
-                    MProps.MaterialProp.Open true
-                    Class !!props?classes?root
+                Mui.swipeableDrawer [
+                    MProps.DrawerProp.Variant MProps.DrawerVariant.Temporary
+                    MProps.MaterialProp.Open this.state.opened
+                    MProps.MaterialProp.OnOpen openDrawer
+                    MProps.MaterialProp.OnClose closeDrawer
+                    HTMLAttr.Custom
+                        ("ModalProps", [
+                            MProps.KeepMounted true
+                        ] |> toObj)
                 ] [ innerDrawer ]
-            ])
-    ]
+            ]
+            (if this.props.isLanding then null else
+                Mui.hidden [
+                    MProps.MdDown true
+                    MProps.Implementation MProps.HiddenImplementation.Js
+                ] [
+                    Mui.drawer [
+                        MProps.DrawerProp.Variant MProps.DrawerVariant.Permanent
+                        MProps.MaterialProp.Open true
+                        Class !!this.props.classes?root
+                    ] [ innerDrawer ]
+                ])
+        ]
+
+let drawer props =  
+    ofType<AppDrawer,_,_> props []
 
 let layoutStyles (theme : ITheme) : IStyles list=
     let lgBreakpoint = theme.breakpoints.up(MProps.MaterialSize.Lg |> U2.Case1)
@@ -245,6 +283,7 @@ let layoutStyles (theme : ITheme) : IStyles list=
                         CSSProp.BackgroundColor theme.palette.background.paper
                         CSSProp.BorderRadius theme.shape.borderRadius
                         CSSProp.Overflow "auto"
+                        CSSProp.Width "100%"
                     ] |> toObj)
                 CSSProp.Custom
                     ("& code:not([class*=language])", [
@@ -301,10 +340,13 @@ let layout (model : Model) dispatch props =
             (!!classes?main, true)
             (!!classes?landingMain, model.isLanding)
         ] |> classNames
+    let drProps = createEmpty<AppDrawerProps>
+    drProps.currentPage <- model.currentPage
+    drProps.isLanding <- model.isLanding
     Mui.muiThemeProvider [MProps.MuiThemeProviderProp.Theme (MProps.ProviderTheme.Theme theme) ] [
         div [ Class !!classes?root ] [
             from (appBar model dispatch |> appBarWithStyles) createEmpty []
-            from (drawer model dispatch |> drawerWithStyles) createEmpty []
+            from (drawer |> drawerWithStyles) drProps []
             main [ Class mainClasses ] [ content model.currentPage ]
         ]
     ]

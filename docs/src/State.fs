@@ -35,13 +35,9 @@ let init result =
            }
     model, Cmd.batch [ cmd ]
 
-let update msg model =
+let update (msg: Msg) model =
+    Browser.console.log ("update", msg)
     match msg with
-    | Navigate page ->
-        { model with
-            currentPage = page
-            isLanding = (page = Home)
-        }, Navigation.newUrl (toHash page)
     | ToggleMenu ->
         { model with menuOpen = not model.menuOpen }, Cmd.Empty
     | OpenMenu o->

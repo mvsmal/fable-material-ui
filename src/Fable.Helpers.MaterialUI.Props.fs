@@ -1481,7 +1481,7 @@ module Props =
         | Hover of bool
         interface IHTMLProp
 
-    type [<StringEnum; RequireQualifiedAccess>] TableSortDirection = Acs | Desc
+    type [<StringEnum; RequireQualifiedAccess>] TableSortDirection = Asc | Desc
     type TableSortLabelProp =
         | Direction of TableSortDirection
         interface IHTMLProp

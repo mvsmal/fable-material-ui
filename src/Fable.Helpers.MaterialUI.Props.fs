@@ -912,8 +912,7 @@ module Props =
         interface IHTMLProp
 
     type BottomNavigationProp =
-        | OnChange of (obj*obj->unit)
-        | ShowLabel of bool
+        | ShowLabels of bool
         | Value of obj
         interface IHTMLProp
 

@@ -1,3 +1,6 @@
+## New in 1.3.1
+* [Table] Fixed typo in TableSortDirection @toburger
+
 ## New in 1.3.0
 * [TextField] Added TextFieldVariant enum and Variant to TextFieldProp
 * [Typography] Added Inherit case to TypographyVariant enum

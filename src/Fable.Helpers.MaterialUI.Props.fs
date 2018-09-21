@@ -881,7 +881,7 @@ module Props =
 
     type SelectionControlProp =
         | Color of SelectionControlColor
-        | OnChange of (Fable.Import.React.FormEvent*bool->unit)
+        | OnChange of (Fable.Import.React.FormEvent->bool->unit)
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] AppBarPosition =
@@ -912,6 +912,7 @@ module Props =
         interface IHTMLProp
 
     type BottomNavigationProp =
+        | OnChange of (obj->obj->unit)
         | ShowLabels of bool
         | Value of obj
         interface IHTMLProp
@@ -1063,7 +1064,7 @@ module Props =
     type ExpansionPanelProp =
         | Expanded of bool
         | DefaultExpanded of bool
-        | OnChange of (obj*bool->unit)
+        | OnChange of (obj->bool->unit)
         interface IHTMLProp
 
     type ExpansionPanelSummaryProp =
@@ -1075,7 +1076,7 @@ module Props =
     type FormControlLabelProp =
         | Control of Fable.Import.React.ReactElement
         | LabelPlacement of FormControlLabelPlacement
-        | OnChange of (obj*bool->unit)
+        | OnChange of (obj->bool->unit)
         interface IHTMLProp
 
     type FormGroupProp =
@@ -1309,7 +1310,7 @@ module Props =
         | Manager of obj // TODO check static type for ModalManager
         | OnBackdropClick of (obj->unit)
         | OnEscapeKeyDown of (obj->unit)
-        | OnClose of (obj*ModalCloseReason->unit)
+        | OnClose of (obj->ModalCloseReason->unit)
         interface IHTMLProp
 
     type PaperProp =
@@ -1352,7 +1353,7 @@ module Props =
         interface IHTMLProp
 
     type RadioGroupProp =
-        | OnChange of (obj*string->unit)
+        | OnChange of (obj->string->unit)
         interface IHTMLProp
 
     type RootRefProp =
@@ -1364,7 +1365,7 @@ module Props =
         | DisplayEmpty of bool
         | Input of Fable.Import.React.ReactNode
         | Native of bool
-        | OnChange of (obj*obj->unit)
+        | OnChange of (obj->obj->unit)
         | RenderValue of (obj->Fable.Import.React.ReactNode)
         interface IHTMLProp
 
@@ -1389,7 +1390,7 @@ module Props =
         | AutoHideDuration of int
         | DisableWidnowBlurListener of bool
         | Message of Fable.Import.React.ReactElement
-        | OnClose of (obj*SnackbarCloseReason->unit)
+        | OnClose of (obj->SnackbarCloseReason->unit)
         | ResumeHideDuration of int
         interface IHTMLProp
 
@@ -1436,7 +1437,7 @@ module Props =
         | Action of (ITabsActions->unit)
         | Centered of bool
         | IndicatorColor of TabsIndicatorColor
-        | OnChange of (obj*int->unit)
+        | OnChange of (obj->int->unit)
         | Scrollabel of bool
         | ScrollButtons of ScrollButtonsType
         | TextColor of TabsTextColor
@@ -1469,7 +1470,7 @@ module Props =
         | LabelDisplayedRows of (ILabelDisplayedRowsArgs->Fable.Import.React.ReactNode)
         | LabelRowsPerPage of Fable.Import.React.ReactNode
         | NextIconButtonPropss of IHTMLProp list
-        | OnChangePage of (obj*int->unit)
+        | OnChangePage of (obj->int->unit)
         | OnChangeRowsPerPage of (obj->unit)
         | Page of int
         | RowsPerPage of int

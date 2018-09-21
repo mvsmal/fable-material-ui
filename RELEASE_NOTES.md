@@ -1,3 +1,16 @@
+## New in 1.3.2
+* [BottomNavigation] Fixed typo in `ShowLabels`
+* [BottomNavigation] Fixed `OnChange` to be `obj->obj->unit`
+* [Tabs] Fixed `OnChange` to be `obj->int->unit`
+* [ExpansionPanel] Fixed `OnChange` to be `obj->bool->unit`
+* [FormControlLabel] Fixed `OnChange` to be `obj->bool->unit`
+* [Modal] Fixed `OnClose` to be `obj->ModalCloseReason->unit`
+* [RadioGroup] Fixed `OnChange` to be `obj->string->unit`
+* [Select] Fixed `OnChange` to be `obj->obj->unit`
+* [Snackbar] Fixed `OnClose` to be `obj->SnackbarCloseReason->unit`
+* [TablePagination] Fixed `OnChangePage` to be `obj->int->unit`
+* [Checkbox/Radio/Switch] Fixed `OnChange` to be `FormEvent->bool->unit`
+
 ## New in 1.3.1
 * [Table] Fixed typo in TableSortDirection @toburger
 

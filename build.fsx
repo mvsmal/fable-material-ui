@@ -138,11 +138,7 @@ Target.create "Release" ignore
     ==> "DocsYarnInstall"
     ==> "DocsRun"
 
-"Clean"
-    ==> "DocsClean"
-    ==> "DocsBuild"
-    ==> "DemosCopy"
-    ==> "DocsYarnInstall"
+"DocsYarnInstall"
     ==> "DocsPackage"
     ==> "DocsPublish"
 

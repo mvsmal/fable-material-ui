@@ -45,7 +45,7 @@ let CardActions = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@
 let inline cardActions b c = materialEl CardActions b c
 
 let CardContent = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/CardContent"
-let cardContent b c = materialEl CardContent b c
+let inline cardContent b c = materialEl CardContent b c
 
 let CardHeader = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/CardHeader"
 let inline cardHeader b c = materialEl CardHeader b c

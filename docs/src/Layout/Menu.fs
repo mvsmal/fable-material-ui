@@ -57,7 +57,7 @@ let menu (props : MenuProps) =
         Mui.toolbar [ Class classes.toolbar ] [
             a [
                 Class classes.title
-                Href ("/" + toHash Home)
+                Href (toHash Home)
                 OnClick (fun _ -> OpenMenu false |> props.dispatch)
             ] [
                 Mui.typography

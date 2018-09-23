@@ -74,7 +74,7 @@ let menu (props : MenuProps) =
                 Mui.typography
                     [ TypographyProp.Variant TypographyVariant.Caption
                       Class classes.headerLink ]
-                    [ str "v1.3.2" ]
+                    [ str libVersion ]
             ]
         ]
         Mui.divider []

@@ -1,4 +1,7 @@
 module Global
+
+let [<Literal>] libVersion = "v1.3.2"
+
 type Page =
     | Home
     | Installation

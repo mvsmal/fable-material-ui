@@ -13,11 +13,10 @@ module.exports = webpackMerge.smartStrategy({
     entry: 'replace',
     'module.rules': 'prepend'
 })(commonConfig, {
-    devtool: 'source-map',
     output: {
         path: helpers.root('dist'),
         publicPath: '',
-        filename: '[name].js'
+        filename: '[name].[hash].js'
     },
 
     optimization: {
@@ -39,7 +38,7 @@ module.exports = webpackMerge.smartStrategy({
 
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
-        new ExtractTextPlugin('[name].css'),
+        new ExtractTextPlugin('[name].[hash].css'),
         new HtmlWebpackPlugin({
             template: 'public/index.html'
         }),

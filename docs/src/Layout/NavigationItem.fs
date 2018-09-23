@@ -118,7 +118,7 @@ let navItem (props : NavItemProps) =
                 Style style
                 Class buttonClasses
                 Classes [ ClassNames.Root !!props?classes?button ]
-                Href ("/" + (toHash page))
+                Href ((toHash page))
                 OnClick (fun _ -> OpenMenu false |> props.dispatch)
             ] [ str props.title ]
         ]

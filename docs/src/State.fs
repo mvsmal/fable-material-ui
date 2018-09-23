@@ -37,7 +37,5 @@ let init result =
 
 let update (msg: Msg) model =
     match msg with
-    | ToggleMenu ->
-        { model with menuOpen = not model.menuOpen }, Cmd.Empty
     | OpenMenu o->
         { model with menuOpen = o}, Cmd.Empty

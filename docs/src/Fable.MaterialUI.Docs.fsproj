@@ -23,7 +23,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="Home.fs" />
-    <Compile Include="Navigation.fs" />
+    <Compile Include="Layout/NavigationItem.fs" />
+    <Compile Include="Layout/Navigation.fs" />
+    <Compile Include="Layout/Menu.fs" />
+    <Compile Include="Layout/Drawer.fs" />
+    <Compile Include="Layout/AppBar.fs" />
+    <Compile Include="Layout/Layout.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />

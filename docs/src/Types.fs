@@ -1,9 +1,10 @@
 module App.Types
 
+open Fable.Core
+open Fable.Helpers.MaterialUI
 open Global
 
 type Msg =
-    | ToggleMenu
     | OpenMenu of bool
 
 type Model = {
@@ -11,3 +12,9 @@ type Model = {
     isLanding: bool
     menuOpen: bool
 }
+
+[<Pojo>]
+type AppProps =
+    abstract member model : Model with get,set
+    abstract member dispatch : (Msg->unit) with get,set
+    inherit IClassesProps

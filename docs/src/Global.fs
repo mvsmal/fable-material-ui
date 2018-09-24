@@ -9,6 +9,7 @@ type Page =
     | AppBar
     | Avatars
     | Buttons
+    | SignIn
     // TODO Add other demos
 
 type NavItem = {
@@ -25,6 +26,7 @@ let toHash page =
     | AppBar -> "#/demos/app-bar"
     | Avatars -> "#/demos/avatars"
     | Buttons -> "#/demos/buttons"
+    | SignIn -> "#/pagelayout/signin"
 
 let toTitle = function
     | Home -> ""
@@ -33,3 +35,4 @@ let toTitle = function
     | AppBar -> "App Bar"
     | Avatars -> "Avatars"
     | Buttons -> "Buttons"
+    | SignIn -> "Sign-in"

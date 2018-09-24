@@ -17,6 +17,7 @@ let pageParser: Parser<Page->Page,Page> =
         map AppBar (s "demos" </> s "app-bar")
         map Avatars (s "demos" </> s "avatars")
         map Buttons (s "demos" </> s "buttons")
+        map SignIn (s "pagelayout" </> s "signin")
     ]
 
 let urlUpdate (result: Option<Page>) model =

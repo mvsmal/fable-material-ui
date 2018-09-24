@@ -35,6 +35,7 @@
     <Compile Include="Layout/Drawer.fs" />
     <Compile Include="Layout/AppBar.fs" />
     <Compile Include="Layout/Layout.fs" />
+    <Compile Include="PageLayoutDemos/SignIn.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />

@@ -51,38 +51,6 @@ let layoutStyles (theme : ITheme) : IStyles list=
             CSSProp.FontFamily theme.typography.fontFamily
             CSSProp.FontSize 16
             CSSProp.Color theme.palette.text.primary
-            customCss "& p, & ul, & ol" [
-                CSSProp.LineHeight 1.6
-                customCss "&.low" [
-                    CSSProp.LineHeight 1
-                    CSSProp.MarginTop ".5em"
-                    CSSProp.MarginBottom ".5em"
-                ]
-            ]
-            customCss "& pre" [
-                CSSProp.Margin "24px 0"
-                CSSProp.Padding "12px 18px"
-                CSSProp.BackgroundColor theme.palette.background.paper
-                CSSProp.BorderRadius theme.shape.borderRadius
-                CSSProp.Overflow "auto"
-                CSSProp.Width "100%"
-            ]
-            customCss "& code:not([class*=language])" [
-                CSSProp.LineHeight 1.6
-                CSSProp.Color theme.palette.secondary.main
-                CSSProp.BackgroundColor theme.palette.background.paper
-                CSSProp.Display "inline-block"
-                CSSProp.FontFamily "Consolas, 'Liberation Mono', Menlo, Courier, monospace"
-                CSSProp.Padding "3px 6px"
-                CSSProp.FontSize 14
-            ]
-            customCss "& a" [
-                CSSProp.Color theme.palette.secondary.main
-                CSSProp.TextDecoration "none"
-                customCss "&:hover" [
-                    CSSProp.TextDecoration "underline"
-                ]
-            ]
             customCss smBreakpoint [
                 PaddingLeft (theme.spacing.unit * 4)
                 PaddingRight (theme.spacing.unit * 4)
@@ -114,7 +82,7 @@ let layout (props : AppProps) =
         | Page.Home -> Home.View.root props.dispatch
         | Page.Installation -> GettingStarted.Installation.View.root ()
         | Page.Usage -> GettingStarted.Usage.View.root ()
-        | Page.AppBar -> Demos.AppBar.View.root ()
+        | Page.AppBar -> Demos.AppBar.View.view ()
         | Page.Avatars -> Demos.Avatars.View.root ()
 
     let classes : LayoutClasses = !!props.classes

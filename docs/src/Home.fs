@@ -1,4 +1,5 @@
 module Home.View
+
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
@@ -6,26 +7,27 @@ open Fable.Helpers.React.Props
 open Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
+
+open App.Types
+open Components
 open Global
 open Utils
-open App.Types
-open Components.Typography
+
 module Mui = Fable.Helpers.MaterialUI
 
 let homeStyles (theme : ITheme) : IStyles list =
     let xsBreakpoint = theme.breakpoints.only MaterialSize.Xs
     let smBreakpoint = theme.breakpoints.only MaterialSize.Sm
     [
-        Styles.Custom
-            ("hero", [
-                MinHeight "80vh"
-                Flex "0 0 auto"
-                Display "flex"
-                JustifyContent "center"
-                CSSProp.AlignItems "center"
-                BackgroundColor theme.palette.background.paper
-                CSSProp.Color theme.palette.primary.dark
-            ] |> toObj)
+        customStyle "hero" [
+            MinHeight "80vh"
+            Flex "0 0 auto"
+            Display "flex"
+            JustifyContent "center"
+            CSSProp.AlignItems "center"
+            BackgroundColor theme.palette.background.paper
+            CSSProp.Color theme.palette.primary.dark
+        ]
         Styles.Text [
             Display "flex"
             FlexDirection "column"
@@ -37,10 +39,9 @@ let homeStyles (theme : ITheme) : IStyles list =
             CSSProp.TextIndent ".7rem"
             CSSProp.FontWeight theme.typography.fontWeightLight
             CSSProp.WhiteSpace "nowrap"
-            CSSProp.Custom
-                (xsBreakpoint, [
-                    CSSProp.FontSize 28
-                ] |> toObj)
+            customCss xsBreakpoint [
+                CSSProp.FontSize 28
+            ]
         ]
         Styles.Headline [
             PaddingLeft (theme.spacing.unit * 4)
@@ -52,33 +53,34 @@ let homeStyles (theme : ITheme) : IStyles list =
         Styles.Content [
             PaddingBottom (theme.spacing.unit * 8)
             PaddingTop (theme.spacing.unit * 8)
-            CSSProp.Custom
-                (smBreakpoint, [
-                    PaddingTop (theme.spacing.unit * 12)
-                ] |> toObj)
+            customCss smBreakpoint [
+                PaddingTop (theme.spacing.unit * 12)
+            ]
         ]
         Styles.Button [
             MarginTop (theme.spacing.unit * 3)
         ]
-        Styles.Custom
-            ("logo", [
-                CSSProp.MarginTop (theme.spacing.unit * 3)
-                CSSProp.MarginRight 0
-                CSSProp.MarginLeft 0
-                CSSProp.MarginBottom (theme.spacing.unit * 4)
-                Width "100%"
-                Height "35vw"
-                MaxHeight 200
-            ] |> toObj)
-        Styles.Custom
-            ("support", [
-                CSSProp.TextAlign "center"
-                CSSProp.MarginBottom 20
-            ] |> toObj)
+        customStyle "logo" [
+            CSSProp.MarginTop (theme.spacing.unit * 3)
+            CSSProp.MarginRight 0
+            CSSProp.MarginLeft 0
+            CSSProp.MarginBottom (theme.spacing.unit * 4)
+            Width "100%"
+            Height "35vw"
+            MaxHeight 200
+        ]
+        customStyle "support" [
+            CSSProp.TextAlign "center"
+            CSSProp.MarginBottom 30
+        ]
     ]
 
-let homeWithStyles<'a> = Mui.withStyles (StyleType.Func homeStyles) []
+[<Pojo>]
+type HomeProps =
+    abstract member dispatch : (Msg->unit) with get,set
+    inherit Mui.IClassesProps
 
+[<Pojo>]
 type HomeClasses =
     abstract member hero : string
     abstract member content : string
@@ -89,8 +91,16 @@ type HomeClasses =
     abstract member button : string
     abstract member support: string
     inherit Mui.IClasses
-let home dispatch (props : IClassesProps) =
-    let classes = props.classes :?> HomeClasses
+
+let supportText = """
+## Support fable-material-ui
+Fable.MaterialUI is a MIT licensed open source project. We are intent on code quality and project maintain. Entirely thanks to our awesome backers.
+
+### Support via [patreon](https://www.patreaon.com/mvsmal)
+"""
+
+let home (props : HomeProps) =
+    let classes : HomeClasses = !!props.classes
     fragment [] [
         div [ Class classes.hero ] [
             div [ Class classes.content ] [
@@ -126,22 +136,13 @@ let home dispatch (props : IClassesProps) =
             ]
         ]
         div [ Class classes.support ] [
-            display1 "Support fable-material-ui"
-            p [] [
-                str "Fable.MaterialUI is a MIT licensed open source project. We are intent on code quality and project maintain. Entirely thanks to our awesome backers."
-            ]
-            typography [
-                TypographyProp.Variant TypographyVariant.Headline
-            ] [
-                str "Support via "
-                a [
-                    Target "_blank"
-                    Href "https://www.patreon.com/mvsmal"
-                ] [ str "patreon" ]
-            ]
+            Markdown.view supportText
         ]
     ]
 
+let homeWithStyles = Mui.withStyles (StyleType.Func homeStyles) [] home
 
 let root dispatch =
-    from (home dispatch |> homeWithStyles) createEmpty []
+    let props = createEmpty<HomeProps>
+    props.dispatch <- dispatch
+    from homeWithStyles props []

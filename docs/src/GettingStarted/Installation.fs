@@ -1,34 +1,30 @@
 module GettingStarted.Installation.View
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Components.Typography
-open Components.Code
 
+open Components
+
+let text = """
+# Installation
+<p class="description">Install Fable bindings for Material-UI</p>
+
+## Nuget
+Fable Material-UI is available as [Nuget package](https://www.nuget.org/packages/Fable.MaterialUI/)
+```sh
+dotnet add package Fable.MaterialUI
+```
+or
+```sh
+paket add Fable.MaterialUI
+```
+
+## NPM
+You also need to install [Material-UI](https://material-ui.com/getting-started/installation/) npm package
+```sh
+npm install @material-ui/core
+```
+or
+```sh
+yarn add @material-ui/core
+```
+"""
 let root () =
-    div [] [
-        title "Installation"
-        description "Install Fable bindings for Material-UI"
-        display1 "Nuget"
-        p [] [
-            str "Fable Material-UI is available as "
-            a [ 
-                Target "_blank"
-                Href "https://www.nuget.org/packages/Fable.MaterialUI/"
-            ] [ str "Nuget package" ]
-        ]
-        code "dotnet add package Fable.MaterialUI" "shell"
-        p [ Class "low" ] [ str "or" ]
-        code "paket add Fable.MaterialUI" "shell"
-        display1 "NPM"
-        p [] [
-            str "You also need to install "
-            a [
-                Target "_blank"
-                Href "https://material-ui.com/getting-started/installation/"
-            ] [ str "Material-UI" ]
-            str " npm package"
-        ]
-        code "npm install @material-ui/core" "shell"
-        p [ Class "low" ] [ str "or" ]
-        code "yarn add @material-ui/core" "shell"
-    ]
+    Markdown.view text

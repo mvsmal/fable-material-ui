@@ -1,33 +1,32 @@
 module GettingStarted.Usage.View
-open Fable.Helpers.React
+open Components
+
+let text = """
+# Usage
+<p class="description">How to use the bindings</p>
+
+Simply open Fable.Helpers.MaterialUI and Props module
+```fsharp
+open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Props
+```
+There are several components, such as `button`, which are also present in `Fable.Helpers.React`. To avoid conflicts you can assign module names:
+```fsharp
 module R = Fable.Helpers.React
-open Components.Typography
-open Components.Code
+module Mui = Fable.Helpers.MaterialUI
+```
 
-let root () =
-    div [] [
-        title "Usage"
-        description "How to use the bindings"
-        p [] [
-            str "Simply open Fable.Helpers.MaterialUI and Props module"
-        ]
-        code "open Fable.Helpers.MaterialUI\nopen Fable.MaterialUI.Props" "fsharp"
-        p [] [
-            str "There are several components, such as "
-            R.code [] [ str "button" ]
-            str ", which are also present in "
-            R.code [] [ str "Fable.Helpers.React" ]
-            str ". To avoid conflicts you can assign module names:"
-        ]
-        code "module R = Fable.Helpers.React\nmodule Mui = Fable.Helpers.MaterialUI" "fsharp"
-
-        display1 "Minimal example"
-        code "module R = Fable.Helpers.React
+## Minimal example
+```fsharp
+module R = Fable.Helpers.React
 module Mui = Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Props
 
 let view =
     Mui.button [
         ButtonProp.Variant ButtonVariant.Contained
-    ] [ R.str \"Hello world!\" ]" "fsharp"
-    ]
+    ] [ R.str "Hello world!" ]
+```
+"""
+let root () =
+    Markdown.view text

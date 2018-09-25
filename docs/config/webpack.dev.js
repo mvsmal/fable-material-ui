@@ -22,10 +22,7 @@ module.exports = webpackMerge(commonConfig, {
         new ExtractTextPlugin('[name].css'),
         new HtmlWebpackPlugin({
             template: 'public/index.html'
-        }),
-        new CopyWebpackPlugin([
-            { from: 'demos/**/*', to: 'demos/'}
-        ])
+        })
     ],
 
     devServer: {

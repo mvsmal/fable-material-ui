@@ -87,12 +87,6 @@ Target.create "GitHubRelease" (fun _ ->
 
 Target.create "DocsClean" (cleanDirs "docs/" "docs/dist")
 Target.create "DocsBuild" (build "docs/")
-Target.create "DemosCopy" (fun _ ->
-    Shell.cleanDir "docs/demos"
-    Shell.copyDir
-        "docs/demos"
-        "docs/src/bin/Release/netstandard2.0/Demos"
-        (fun _ -> true) )
 Target.create "DocsYarnInstall" (fun _ -> 
     Yarn.install (fun o -> { o with WorkingDirectory = "docs/" }))
 let inline withWorkDir wd =
@@ -135,7 +129,6 @@ Target.create "Release" ignore
 "Clean"
     ==> "DocsClean"
     ==> "DocsBuild"
-    ==> "DemosCopy"
     ==> "DocsYarnInstall"
 
 "DocsYarnInstall"

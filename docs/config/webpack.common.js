@@ -46,7 +46,6 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.fs(x|proj)?$/,
-                exclude: [ helpers.root("demos") ],
                 use: {
                     loader: "fable-loader",
                     options: {
@@ -56,11 +55,8 @@ module.exports = {
                 }
             },
             {
-                test: /\.fs$/,
-                include: [ helpers.root("demos") ],
-                use: {
-                    loader: "raw-loader"
-                }
+                test: /\.md$/,
+                use: [ "raw-loader" ]
             },
             {
                 test: /\.js$/,

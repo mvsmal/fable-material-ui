@@ -1,4 +1,6 @@
 {
-  "devDependencies": {},
+  "devDependencies": {
+    "favicons-webpack-plugin": "^0.0.9"
+  },
   "dependencies": {}
 }

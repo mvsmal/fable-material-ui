@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const helpers = require('./helpers');
 const fableUtils = require("fable-utils");
 
@@ -54,6 +55,10 @@ module.exports = {
                     }
                 }
             },
+            {
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                use: [{ loader: 'file-loader', options: { name: '[name].[hash].[ext]', outputPath: 'assets/' } }]
+            }, 
             {
                 test: /\.md$/,
                 use: [ "raw-loader" ]

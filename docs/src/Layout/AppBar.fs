@@ -5,7 +5,6 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Import
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
@@ -55,7 +54,6 @@ type AppBarClasses =
     abstract member landingAppBar : string
 
 let appBar (props : AppProps) =
-    Browser.console.log("app bar render")
     let classes : AppBarClasses = !!props.classes
     Mui.appBar [
         MProps.Position AppBarPosition.Fixed

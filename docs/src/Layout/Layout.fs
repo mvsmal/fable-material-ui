@@ -1,7 +1,6 @@
 module Layout.Layout
 
 open Elmish.React
-open Fable.Import
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
@@ -77,7 +76,6 @@ type LayoutClasses =
     inherit Mui.IClasses
 
 let layout (props : AppProps) =
-    Browser.console.log("layout render")
     let content = function
         | Page.Home -> Home.View.root props.dispatch
         | Page.Installation -> GettingStarted.Installation.View.root ()

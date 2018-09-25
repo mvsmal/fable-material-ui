@@ -1,16 +1,7 @@
 module Layout.Navigation
 
-open Fable.Core
-open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Fable.MaterialUI.Props
-
-open Utils
 open Global
-open App.Types
-open Fable.Import
-open Fable.Import.React
+
 module Mui = Fable.Helpers.MaterialUI
 module MColors = Fable.MaterialUI.Colors
 
@@ -45,6 +36,5 @@ let rec mapNavigation currentPage dispatch (depth: int) =
         Layout.NavigationItem.view item depth opened currentPage childItems dispatch
 
 let view currentPage dispatch =
-    Browser.console.log("navigation render")
     Mui.list [] (navItems |> List.map (mapNavigation currentPage dispatch 0))
 

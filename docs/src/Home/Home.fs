@@ -92,12 +92,8 @@ type HomeClasses =
     abstract member support: string
     inherit Mui.IClasses
 
-let supportText = """
-## Support fable-material-ui
-Fable.MaterialUI is a MIT licensed open source project. We are intent on code quality and project maintain. Entirely thanks to our awesome backers.
-
-### Support via [patreon](https://www.patreaon.com/mvsmal)
-"""
+let supportText = importDefault "./Support.md"
+let logo = importDefault "../../public/img/fable-material-ui-logo.svg"
 
 let home (props : HomeProps) =
     let classes : HomeClasses = !!props.classes
@@ -105,7 +101,7 @@ let home (props : HomeProps) =
         div [ Class classes.hero ] [
             div [ Class classes.content ] [
                 img [
-                    Src "img/fable-material-ui-logo.svg"
+                    Src logo
                     Alt "Fable Material-UI Logo"
                     Class classes.logo
                 ]

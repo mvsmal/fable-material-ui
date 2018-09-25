@@ -1,5 +1,6 @@
 module Layout.Menu
 
+open Elmish.React.Common
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
@@ -7,11 +8,9 @@ open Fable.Helpers.React.Props
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
+open App.Types
 open Global
 open Utils
-open Fable.Import
-open App.Types
-open Elmish.React.Common
 
 module Mui = Fable.Helpers.MaterialUI
 
@@ -51,7 +50,6 @@ let menuStyles (theme : ITheme) : IStyles list =
         ]
     ]
 let menu (props : MenuProps) =
-    Browser.console.log("menu render")
     let classes : MenuClasses = !!props.classes
     div [ Class classes.root ] [
         Mui.toolbar [ Class classes.toolbar ] [

@@ -110,14 +110,14 @@ let navItem (props : NavItemProps) =
             [ (!!props.classes?selected, props.currentPage = page) ] |> classNames
         Mui.listItem [
             DisableGutters true
-            Class !!props?classes?listItem
+            Class !!props.classes?listItem
         ] [
             Mui.button [
                 DisableRipple true
                 MaterialProp.Component ("a" |> U3.Case1)
                 Style style
                 Class buttonClasses
-                Classes [ ClassNames.Root !!props?classes?button ]
+                Classes [ ClassNames.Root !!props.classes?button ]
                 Href ((toHash page))
                 OnClick (fun _ -> OpenMenu false |> props.dispatch)
             ] [ str props.title ]
@@ -129,7 +129,7 @@ let navItem (props : NavItemProps) =
         subNavProps.childItems <- props.childItems
         Mui.listItem [
             DisableGutters true
-            Class !!props?classes?listItem
+            Class !!props.classes?listItem
         ] [ from subNavWithStyles subNavProps [] ]
 
 let navItemWithStyles = Mui.withStyles (StyleType.Func navItemStyles) [] navItem

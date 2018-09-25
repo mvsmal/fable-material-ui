@@ -12,7 +12,7 @@
   "author": "Mikhail Smal",
   "license": "ISC",
   "dependencies": {
-    "@material-ui/core": "^3.0.2",
+    "@material-ui/core": "3.1.1",
     "babel-runtime": "^6.26.0",
     "marked": "^0.5.0",
     "prismjs": "^1.15.0",
@@ -32,6 +32,8 @@
     "fable-loader": "^1.1.6",
     "fable-splitter": "^0.1.21",
     "fable-utils": "^1.2.0",
+    "favicons-webpack-plugin": "^0.0.9",
+    "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
     "loglevel": "^1.6.1",
     "node-sass": "^4.9.3",

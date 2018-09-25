@@ -4,13 +4,11 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Import.React
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
 open App.Types
 open Global
-open Layout.Menu
 open Elmish.React.Common
 
 module Mui = Fable.Helpers.MaterialUI

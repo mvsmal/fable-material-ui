@@ -13,8 +13,7 @@
     <Compile Include="Import/Prism.fs" />
     <Compile Include="Import/Marked.fs" />
     <Compile Include="Components/Markdown.fs" />
-    <Compile Include="Components/Code.fs" />
-    <Compile Include="Components/Typography.fs" />
+    <!-- <Compile Include="Components/Typography.fs" /> -->
     <Compile Include="GettingStarted/Installation.fs" />
     <Compile Include="GettingStarted/Usage.fs" />
     <Compile Include="Demos/Demo.fs" />
@@ -28,7 +27,7 @@
     <Content Include="Demos/**/*.fs" Exclude="Demos/*.fs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Compile Include="Home.fs" />
+    <Compile Include="Home/Home.fs" />
     <Compile Include="Layout/NavigationItem.fs" />
     <Compile Include="Layout/Navigation.fs" />
     <Compile Include="Layout/Menu.fs" />

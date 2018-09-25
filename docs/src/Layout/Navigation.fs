@@ -21,6 +21,7 @@ let navItems = [
         Children =
             [
                 { Title = "App Bar"; Href = Some Page.AppBar; Children = [] }
+                { Title = "Buttons"; Href = Some Page.Buttons; Children = [] }
                 // { Title = "Avatars"; Href = Some Page.Avatars; Children = [] }
             ]
     }

@@ -22,6 +22,9 @@
     <Compile Include="Demos/AppBar/AppBarWithButtons.fs" />
     <Compile Include="Demos/AppBar.fs" />
     <Compile Include="Demos/Avatars.fs" />
+    <Content Include="**/*.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Demos/**/*.fs" Exclude="Demos/*.fs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -9,15 +9,13 @@ open Fable.Import.React
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
-open Components.Code
-open Components.Typography
 open Utils
 open Components
 
-[<Emit("require.context($0)")>]
+[<Emit("require.context('!!raw-loader!' + $0, true, /\\.fs$/);")>]
 let inline requireContext (dir: string) = jsNative
 
-let demosContext: obj = requireContext "../../demos"
+let demosContext: obj = requireContext "./"
 
 let demoStyles (theme : ITheme) : IStyles list =
     [
@@ -80,14 +78,14 @@ type DemoComponent(p) as this =
         this.setState (fun s _ -> { s with expanded = not s.expanded })
 
     override __.render() =
-        let d : string = !!(demosContext $ this.props.demoPath)
+        let demo = !!(demosContext $ this.props.demoPath)
         let classes : DemoClasses = !!this.props.classes
         let contentClassNames =
             [(classes.content, true)
              (classes.content + "-below", this.state.expanded)]
             |> classNames
         fragment [] [
-            display1 this.props.title
+            Markdown.view this.props.title
             div [ Class classes.wrapper ] [
                 tooltip [
                     Placement PlacementType.Top
@@ -104,15 +102,8 @@ type DemoComponent(p) as this =
                 collapse [
                     Class classes.container
                     MaterialProp.In this.state.expanded
-                ] [ 
-                    Markdown.view (d |> wrapWithFsharp)
-                    // code d "fsharp"
-                ]
-                div [
-                    Class contentClassNames
-                ] [
-                    this.props.demoElement
-                ]
+                ] [ Markdown.view (demo |> wrapWithFsharp) ]
+                div [ Class contentClassNames ] [ this.props.demoElement ]
             ]
         ]
 

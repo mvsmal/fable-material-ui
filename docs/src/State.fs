@@ -16,6 +16,7 @@ let pageParser: Parser<Page->Page,Page> =
         map Usage (s "getting-started" </> s "usage")
         map AppBar (s "demos" </> s "app-bar")
         map Avatars (s "demos" </> s "avatars")
+        map Buttons (s "demos" </> s "buttons")
     ]
 
 let urlUpdate (result: Option<Page>) model =

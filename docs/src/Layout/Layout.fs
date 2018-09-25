@@ -82,6 +82,7 @@ let layout (props : AppProps) =
         | Page.Usage -> GettingStarted.Usage.View.root ()
         | Page.AppBar -> Demos.AppBar.View.view ()
         | Page.Avatars -> Demos.Avatars.View.root ()
+        | Page.Buttons -> Demos.Buttons.View.view ()
 
     let classes : LayoutClasses = !!props.classes
     let mainClasses =

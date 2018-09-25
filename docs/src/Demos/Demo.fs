@@ -18,41 +18,97 @@ let inline requireContext (dir: string) = jsNative
 let demosContext: obj = requireContext "./"
 
 let demoStyles (theme : ITheme) : IStyles list =
+    let smBreakpoint = theme.breakpoints.up(MaterialSize.Sm |> U2.Case1)
     [
-        customStyle "sourceButton" [
-            CSSProp.Position "absolute"
-            CSSProp.Top 10
-            CSSProp.Right 10
-        ]
-        customStyle "wrapper" [
+        Styles.Root [
             CSSProp.Position "relative"
-        ]
-        Styles.Container [
-            CSSProp.BackgroundColor "#ffffff"
-        ]
-        customStyle "content" [
-            CSSProp.BackgroundColor theme.palette.grey.``200``
-            CSSProp.Padding 20
-            CSSProp.PaddingTop 70
-            customCss "&-below" [
-                CSSProp.PaddingTop 20
+            CSSProp.MarginBottom 40
+            CSSProp.MarginLeft (-theme.spacing.unit * 2)
+            CSSProp.MarginRight (-theme.spacing.unit * 2)
+            customCss smBreakpoint [
+                CSSProp.Padding (sprintf "0 %ipx" theme.spacing.unit)
+                CSSProp.MarginLeft 0
+                CSSProp.MarginRight 0
             ]
         ]
+        Styles.Custom (
+            "demo",
+            [
+                CSSProp.BorderRadius theme.shape.borderRadius
+                CSSProp.BackgroundColor theme.palette.grey.``200``
+                CSSProp.Display "flex"
+                CSSProp.JustifyContent "center"
+                CSSProp.PaddingTop (theme.spacing.unit * 2)
+                CSSProp.PaddingBottom (theme.spacing.unit * 2)
+                customCss smBreakpoint [
+                    CSSProp.PaddingLeft (theme.spacing.unit * 3)
+                    CSSProp.PaddingRight (theme.spacing.unit * 3)
+                    CSSProp.PaddingTop (theme.spacing.unit * 6)
+                    CSSProp.PaddingBottom (theme.spacing.unit * 3)
+                ]
+            ] |> toObj |> !!theme?mixins?gutters)
+        customStyle "header" [
+            CSSProp.Display "none"
+            customCss smBreakpoint [
+                CSSProp.Display "flex"
+                CSSProp.Custom ("flip", false)
+                CSSProp.Position "absolute"
+                CSSProp.Top 0
+                CSSProp.Right theme.spacing.unit
+            ]
+        ]
+        customStyle "code" [
+            CSSProp.Display "none"
+            CSSProp.Padding 0
+            CSSProp.Margin 0
+            customCss smBreakpoint [
+                CSSProp.Display "block"
+            ]
+            customCss "& pre" [
+                CSSProp.Overflow "auto"
+                CSSProp.Margin "0px !important"
+                CSSProp.BorderRadius "0px !important"
+            ]
+        ]
+        // customStyle "sourceButton" [
+        //     CSSProp.Position "absolute"
+        //     CSSProp.Top 10
+        //     CSSProp.Right 10
+        // ]
+        // customStyle "wrapper" [
+        //     CSSProp.Position "relative"
+        // ]
+        // Styles.Container [
+        //     CSSProp.BackgroundColor "#ffffff"
+        // ]
+        // customStyle "content" [
+        //     CSSProp.BackgroundColor theme.palette.grey.``200``
+        //     CSSProp.Padding 20
+        //     CSSProp.PaddingBottom (theme.spacing.unit * 2)
+        //     CSSProp.PaddingTop (theme.spacing.unit * 2)
+        //     CSSProp.Display "flex"
+        //     CSSProp.JustifyContent "center"
+        //     CSSProp.BorderRadius theme.shape.borderRadius
+        //     customCss "&-below" [
+        //         CSSProp.PaddingTop 20
+        //     ]
+        // ]
     ]
 
 [<Pojo>]
 type DemoProps =
     abstract member demoPath: string with get,set
     abstract member title: string with get,set
-    abstract member demoElement: ReactElement with get,set
+    abstract member demoElement: (unit->ReactElement) with get,set
     inherit IClassesProps
 
 [<Pojo>]
 type DemoClasses =
-    abstract member sourceButton : string
-    abstract member wrapper : string
-    abstract member content : string
-    abstract member container : string
+    abstract member root : string
+    abstract member header : string
+    abstract member demo : string
+    abstract member code : string
+    // abstract member sourceButton : string
     inherit IClasses
 
 [<Pojo>]
@@ -80,31 +136,32 @@ type DemoComponent(p) as this =
     override __.render() =
         let demo = !!(demosContext $ this.props.demoPath)
         let classes : DemoClasses = !!this.props.classes
-        let contentClassNames =
-            [(classes.content, true)
-             (classes.content + "-below", this.state.expanded)]
-            |> classNames
-        fragment [] [
-            Markdown.view this.props.title
-            div [ Class classes.wrapper ] [
-                tooltip [
-                    Placement PlacementType.Top
-                    TooltipProp.Title
-                        (if this.state.expanded
-                         then (str "Hide source" |> U2.Case1 |> U3.Case1)
-                         else (str "Show source" |> U2.Case1 |> U3.Case1))
-                ] [
-                    iconButton [
-                        Class classes.sourceButton
-                        OnClick toggleSource
-                    ] [ icon [] [ str "code" ]]
+
+        div [ Class classes.root ] [
+            div [] [
+                div [ Class classes.header ] [
+                    tooltip [
+                        Placement PlacementType.Top
+                        TooltipProp.Title
+                            (if this.state.expanded
+                             then (str "Hide source" |> U2.Case1 |> U3.Case1)
+                             else (str "Show source" |> U2.Case1 |> U3.Case1))
+                    ] [
+                        iconButton [
+                            HTMLAttr.Custom ("aria-label", "Source of demo")
+                            // Class classes.sourceButton
+                            OnClick toggleSource
+                        ] [ icon [] [ str "code" ]]
+                    ]
                 ]
                 collapse [
-                    Class classes.container
-                    MaterialProp.In this.state.expanded
-                ] [ Markdown.view (demo |> wrapWithFsharp) ]
-                div [ Class contentClassNames ] [ this.props.demoElement ]
+                    In this.state.expanded
+                    HTMLAttr.Custom ("unmountOnExit", true)
+                ] [ 
+                    div [ Class classes.code ] [ Markdown.view (demo |> wrapWithFsharp) ]
+                ]
             ]
+            div [ Class classes.demo ] [ this.props.demoElement () ]
         ]
 
 let demoComponent props =

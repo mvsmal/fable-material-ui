@@ -71,7 +71,7 @@ animation to finish before the new one enters.
 let buttonSizesText = """
 ## Sizes
 
-Fancy larger or smaller buttons? Use the `size` or the `mini` property.
+Fancy larger or smaller buttons? Use the `ButtonProp.Size` or the `ButtonProp.Mini` property.
 """
 
 let iconButtonsText = """
@@ -92,7 +92,7 @@ Sometimes you might want to have icons for certain button to enhance the UX of t
 let customizedButtonsText = """
 ## Customized Buttons
 
-If you have been reading the [overrides documentation page](/customization/overrides)
+If you have been reading the [overrides documentation page](#/customization/overrides)
 but you are not confident jumping in,
 here are examples of how you can change the main color of a Button using classes,
 and using a theme; and of a Bootstrap style Button.
@@ -113,4 +113,8 @@ let view () =
         Demo.view containedButtonsText "./Buttons/ContainedButtons.fs" ContainedButtons.view
         Demo.view floatingButtonsText "./Buttons/FloatingActionButtons.fs" FloatingActionButtons.view
         Demo.view floatingButtonZoomText "./Buttons/FloatingActionButtonZoom.fs" FloatingActionButtonZoom.view
+        Demo.view buttonSizesText "./Buttons/ButtonSizes.fs" ButtonSizes.view
+        Demo.view iconButtonsText "./Buttons/IconButtons.fs" IconButtons.view
+        Demo.view iconLabelButtonsText "./Buttons/IconLabelButtons.fs" IconLabelButtons.view
+        Demo.view customizedButtonsText "./Buttons/CustomizedButtons.fs" CustomizedButtons.view
     ]

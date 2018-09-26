@@ -17,10 +17,9 @@
     <Compile Include="GettingStarted/Installation.fs" />
     <Compile Include="GettingStarted/Usage.fs" />
     <Compile Include="Demos/Demo.fs" />
-    <Compile Include="Demos/AppBar/SimpleAppBar.fs" />
-    <Compile Include="Demos/AppBar/AppBarWithButtons.fs" />
+    <Compile Include="Demos/AppBar/*.fs" />
     <Compile Include="Demos/AppBar.fs" />
-    <Compile Include="Demos/Buttons/TextButtons.fs" />
+    <Compile Include="Demos/Buttons/*.fs" />
     <Compile Include="Demos/Buttons.fs" />
     <Compile Include="Demos/Avatars.fs" />
     <Content Include="**/*.md">

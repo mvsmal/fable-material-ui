@@ -70,29 +70,6 @@ let demoStyles (theme : ITheme) : IStyles list =
                 CSSProp.BorderRadius "0px !important"
             ]
         ]
-        // customStyle "sourceButton" [
-        //     CSSProp.Position "absolute"
-        //     CSSProp.Top 10
-        //     CSSProp.Right 10
-        // ]
-        // customStyle "wrapper" [
-        //     CSSProp.Position "relative"
-        // ]
-        // Styles.Container [
-        //     CSSProp.BackgroundColor "#ffffff"
-        // ]
-        // customStyle "content" [
-        //     CSSProp.BackgroundColor theme.palette.grey.``200``
-        //     CSSProp.Padding 20
-        //     CSSProp.PaddingBottom (theme.spacing.unit * 2)
-        //     CSSProp.PaddingTop (theme.spacing.unit * 2)
-        //     CSSProp.Display "flex"
-        //     CSSProp.JustifyContent "center"
-        //     CSSProp.BorderRadius theme.shape.borderRadius
-        //     customCss "&-below" [
-        //         CSSProp.PaddingTop 20
-        //     ]
-        // ]
     ]
 
 [<Pojo>]
@@ -136,32 +113,33 @@ type DemoComponent(p) as this =
     override __.render() =
         let demo = !!(demosContext $ this.props.demoPath)
         let classes : DemoClasses = !!this.props.classes
-
-        div [ Class classes.root ] [
-            div [] [
-                div [ Class classes.header ] [
-                    tooltip [
-                        Placement PlacementType.Top
-                        TooltipProp.Title
-                            (if this.state.expanded
-                             then (str "Hide source" |> U2.Case1 |> U3.Case1)
-                             else (str "Show source" |> U2.Case1 |> U3.Case1))
-                    ] [
-                        iconButton [
-                            HTMLAttr.Custom ("aria-label", "Source of demo")
-                            // Class classes.sourceButton
-                            OnClick toggleSource
-                        ] [ icon [] [ str "code" ]]
+        fragment [] [
+            Markdown.view this.props.title
+            div [ Class classes.root ] [
+                div [] [
+                    div [ Class classes.header ] [
+                        tooltip [
+                            Placement PlacementType.Top
+                            TooltipProp.Title
+                                (if this.state.expanded
+                                 then (str "Hide source" |> U2.Case1 |> U3.Case1)
+                                 else (str "Show source" |> U2.Case1 |> U3.Case1))
+                        ] [
+                            iconButton [
+                                HTMLAttr.Custom ("aria-label", "Source of demo")
+                                OnClick toggleSource
+                            ] [ icon [] [ str "code" ]]
+                        ]
+                    ]
+                    collapse [
+                        In this.state.expanded
+                        HTMLAttr.Custom ("unmountOnExit", true)
+                    ] [ 
+                        div [ Class classes.code ] [ Markdown.view (demo |> wrapWithFsharp) ]
                     ]
                 ]
-                collapse [
-                    In this.state.expanded
-                    HTMLAttr.Custom ("unmountOnExit", true)
-                ] [ 
-                    div [ Class classes.code ] [ Markdown.view (demo |> wrapWithFsharp) ]
-                ]
+                div [ Class classes.demo ] [ this.props.demoElement () ]
             ]
-            div [ Class classes.demo ] [ this.props.demoElement () ]
         ]
 
 let demoComponent props =

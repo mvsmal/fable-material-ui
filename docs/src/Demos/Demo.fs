@@ -46,7 +46,7 @@ let demoStyles (theme : ITheme) : IStyles list =
                     CSSProp.PaddingTop (theme.spacing.unit * 6)
                     CSSProp.PaddingBottom (theme.spacing.unit * 3)
                 ]
-            ] |> toObj |> !!theme?mixins?gutters)
+            ] |> toObj |> unbox |> theme.mixins.gutters)
         customStyle "header" [
             CSSProp.Display "none"
             customCss smBreakpoint [
@@ -134,7 +134,7 @@ type DemoComponent(p) as this =
                     collapse [
                         In this.state.expanded
                         HTMLAttr.Custom ("unmountOnExit", true)
-                    ] [ 
+                    ] [
                         div [ Class classes.code ] [ Markdown.view (demo |> wrapWithFsharp) ]
                     ]
                 ]
@@ -152,5 +152,5 @@ let view title demoPath demoElement =
     props.demoPath <- demoPath
     props.title <- title
     props.demoElement <- demoElement
-        
+
     from demoWithStyles props []

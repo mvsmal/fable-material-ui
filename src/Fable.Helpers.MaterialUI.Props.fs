@@ -5,6 +5,7 @@ open Props
 [<AutoOpen>]
 module Themes =
     open Fable.Core
+    open Fable.Import.React
     open Fable.Helpers.React.Props
 
     type IPaletteIntention =
@@ -131,6 +132,36 @@ module Themes =
         abstract between: start: Props.MaterialSize * ``end``: Props.MaterialSize -> string
         abstract width: key: Props.MaterialSize -> int
 
+    type IMixins =
+        abstract gutters: ?styles : CSSProperties -> CSSProperties
+        abstract toolbar: CSSProperties
+
+    type IEasing =
+        abstract member easeInOut: string
+        abstract member easeOut: string
+        abstract member easeIn: string
+        abstract member sharp: string
+
+    type IDuration =
+        abstract member shortest: float
+        abstract member shorter: float
+        abstract member short: float
+        abstract member standard: float
+        abstract member complex: float
+        abstract member enteringScreen: float
+        abstract member leavingScreen: float
+
+    type ITransitionOptions =
+        abstract member duration: U2<float, string> with get,set
+        abstract member easing: string with get,set
+        abstract member delay: U2<float, string> with get,set
+
+    type ITransitions =
+        abstract member easing: IEasing
+        abstract member duration: IDuration
+        abstract create: props : U2<string, string list> * ?options: ITransitionOptions -> string
+        abstract getAutoHeightDuration: height : int -> int
+
     type ITheme =
         abstract member breakpoints: IBreakpoints
         abstract member direction: TextDirection
@@ -142,6 +173,8 @@ module Themes =
         abstract member shape: IShape
         abstract member spacing: ISpacing
         abstract member zIndex: IZIndex
+        abstract member mixins: IMixins
+        abstract member transitions: ITransitions
 
     type IStyles = interface end
 

@@ -27,8 +27,6 @@ let styles : IStyles list =
             ] |> toObj)
     ]
 
-let withStyles<'a> = Mui.withStyles (StyleType.Styles styles) []
-
 let appBar props =
     let classes = props?classes
     div [ Class !!classes?root ] [
@@ -53,5 +51,7 @@ let appBar props =
         ]
     ]
 
-let view =
-    from (appBar |> withStyles) createEmpty []
+let appBarWithStyles<'a> = Mui.withStyles (StyleType.Styles styles) [] appBar
+
+let view () =
+    from appBarWithStyles createEmpty []

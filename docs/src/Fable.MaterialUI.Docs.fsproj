@@ -10,20 +10,31 @@
     <Compile Include="Global.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="State.fs" />
-    <Compile Include="Components/Code.fs" />
-    <Compile Include="Components/Typography.fs" />
+    <Compile Include="Import/Prism.fs" />
+    <Compile Include="Import/Marked.fs" />
+    <Compile Include="Components/Markdown.fs" />
+    <!-- <Compile Include="Components/Typography.fs" /> -->
     <Compile Include="GettingStarted/Installation.fs" />
     <Compile Include="GettingStarted/Usage.fs" />
     <Compile Include="Demos/Demo.fs" />
-    <Compile Include="Demos/AppBar/SimpleAppBar.fs" />
-    <Compile Include="Demos/AppBar/AppBarWithButtons.fs" />
+    <Compile Include="Demos/AppBar/*.fs" />
     <Compile Include="Demos/AppBar.fs" />
+    <Compile Include="Demos/Buttons/*.fs" />
+    <Compile Include="Demos/Buttons.fs" />
     <Compile Include="Demos/Avatars.fs" />
+    <Content Include="**/*.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Demos/**/*.fs" Exclude="Demos/*.fs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Compile Include="Home.fs" />
-    <Compile Include="Navigation.fs" />
+    <Compile Include="Home/Home.fs" />
+    <Compile Include="Layout/NavigationItem.fs" />
+    <Compile Include="Layout/Navigation.fs" />
+    <Compile Include="Layout/Menu.fs" />
+    <Compile Include="Layout/Drawer.fs" />
+    <Compile Include="Layout/AppBar.fs" />
+    <Compile Include="Layout/Layout.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />

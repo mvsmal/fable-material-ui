@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 const helpers = require('./helpers');
 const fableUtils = require("fable-utils");
 
@@ -26,7 +27,7 @@ const babelOptions = fableUtils.resolveBabelOptions({
             "regenerator": false
         }],
         ["prismjs", {
-            "languages": ["fsharp", "bash"],
+            "languages": ["fsharp", "bash", "markdown", "markup"],
             "theme": "default",
             "css": true
         }]
@@ -46,7 +47,6 @@ module.exports = {
     module: {
         rules: [{
                 test: /\.fs(x|proj)?$/,
-                exclude: [ helpers.root("demos") ],
                 use: {
                     loader: "fable-loader",
                     options: {
@@ -56,17 +56,12 @@ module.exports = {
                 }
             },
             {
-                test: /\.(fs|html)$/,
-                include: [ helpers.root("demos") ],
-                use: {
-                    loader: "raw-loader"
-                }
-            },
+                test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+                use: [{ loader: 'file-loader', options: { name: '[name].[hash].[ext]', outputPath: 'assets/' } }]
+            }, 
             {
-                test: /\.html$/,
-                use: {
-                    loader: 'raw-loader'
-                }
+                test: /\.md$/,
+                use: [ "raw-loader" ]
             },
             {
                 test: /\.js$/,
@@ -87,10 +82,9 @@ module.exports = {
                 test: /.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader' ]
+                    use: ['css-loader']
                 })
             }
-
         ]
     },
 };

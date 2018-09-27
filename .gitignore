@@ -2,6 +2,7 @@ public/bundle.js*
 docs/demos/
 dist
 .ionide
+out
 # Node
 node_modules/
 

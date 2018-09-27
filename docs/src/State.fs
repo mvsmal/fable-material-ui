@@ -16,10 +16,10 @@ let pageParser: Parser<Page->Page,Page> =
         map Usage (s "getting-started" </> s "usage")
         map AppBar (s "demos" </> s "app-bar")
         map Avatars (s "demos" </> s "avatars")
+        map Buttons (s "demos" </> s "buttons")
     ]
 
 let urlUpdate (result: Option<Page>) model =
-    Browser.console.log ("urlUpdate", result, model)
     match result with
     | None ->
         console.error("Error parsing url")
@@ -36,15 +36,7 @@ let init result =
            }
     model, Cmd.batch [ cmd ]
 
-let update msg model =
-    Browser.console.log ("udpate", msg, model)
-    let result =
-        match msg with
-        | Navigate page ->
-            { model with
-                currentPage = page
-                isLanding = (page = Home)
-            }, Navigation.newUrl (toHash page)
-        | ToggleMenu ->
-            { model with menuOpen = not model.menuOpen }, Cmd.Empty
-    result
+let update (msg: Msg) model =
+    match msg with
+    | OpenMenu o->
+        { model with menuOpen = o}, Cmd.Empty

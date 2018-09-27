@@ -1,10 +1,14 @@
 module Global
+
+let [<Literal>] libVersion = "v1.3.2"
+
 type Page =
     | Home
     | Installation
     | Usage
     | AppBar
     | Avatars
+    | Buttons
     // TODO Add other demos
 
 type NavItem = {
@@ -20,6 +24,7 @@ let toHash page =
     | Usage -> "#/getting-started/usage"
     | AppBar -> "#/demos/app-bar"
     | Avatars -> "#/demos/avatars"
+    | Buttons -> "#/demos/buttons"
 
 let toTitle = function
     | Home -> ""
@@ -27,3 +32,4 @@ let toTitle = function
     | Usage -> "Usage"
     | AppBar -> "App Bar"
     | Avatars -> "Avatars"
+    | Buttons -> "Buttons"

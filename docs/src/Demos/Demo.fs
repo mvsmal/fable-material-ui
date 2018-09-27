@@ -1,58 +1,105 @@
 module Demos.Demo
-open Fable.Helpers.React
-open Fable.MaterialUI.Props
-open Fable.Helpers.MaterialUI
-open Fable.MaterialUI.Themes
+
 open Fable.Core
 open Fable.Core.JsInterop
-open Components.Code
-open Utils
-open Fable.Import.React
+open Fable.Helpers.MaterialUI
+open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Components.Typography
+open Fable.Import.React
+open Fable.MaterialUI.Props
+open Fable.MaterialUI.Themes
 
-[<Emit("require.context($0)")>]
+open Utils
+open Components
+
+[<Emit("require.context('!!raw-loader!' + $0, true, /\\.fs$/);")>]
 let inline requireContext (dir: string) = jsNative
 
-let demosContext: obj = requireContext "../../demos"
+let demosContext: obj = requireContext "./"
 
 let demoStyles (theme : ITheme) : IStyles list =
+    let smBreakpoint = theme.breakpoints.up(MaterialSize.Sm |> U2.Case1)
     [
-        Styles.Custom
-            ("sourceButton", [
-                CSSProp.Position "absolute"
-                CSSProp.Top 10
-                CSSProp.Right 10
-            ] |> toObj)
-        Styles.Custom
-            ("wrapper", [
-                CSSProp.Position "relative"
-            ] |> toObj)
-        Styles.Custom
-            ("content", [
+        Styles.Root [
+            CSSProp.Position "relative"
+            CSSProp.MarginBottom 40
+            CSSProp.MarginLeft (-theme.spacing.unit * 2)
+            CSSProp.MarginRight (-theme.spacing.unit * 2)
+            customCss smBreakpoint [
+                CSSProp.Padding (sprintf "0 %ipx" theme.spacing.unit)
+                CSSProp.MarginLeft 0
+                CSSProp.MarginRight 0
+            ]
+        ]
+        Styles.Custom (
+            "demo",
+            [
+                CSSProp.BorderRadius theme.shape.borderRadius
                 CSSProp.BackgroundColor theme.palette.grey.``200``
-                CSSProp.Padding 20
-                CSSProp.PaddingTop 70
-                CSSProp.Custom
-                    ("&-below", [
-                        CSSProp.PaddingTop 20
-                    ] |> toObj)
-            ] |> toObj)
+                CSSProp.Display "flex"
+                CSSProp.JustifyContent "center"
+                CSSProp.PaddingTop (theme.spacing.unit * 2)
+                CSSProp.PaddingBottom (theme.spacing.unit * 2)
+                customCss smBreakpoint [
+                    CSSProp.PaddingLeft (theme.spacing.unit * 3)
+                    CSSProp.PaddingRight (theme.spacing.unit * 3)
+                    CSSProp.PaddingTop (theme.spacing.unit * 6)
+                    CSSProp.PaddingBottom (theme.spacing.unit * 3)
+                ]
+            ] |> toObj |> !!theme?mixins?gutters)
+        customStyle "header" [
+            CSSProp.Display "none"
+            customCss smBreakpoint [
+                CSSProp.Display "flex"
+                CSSProp.Custom ("flip", false)
+                CSSProp.Position "absolute"
+                CSSProp.Top 0
+                CSSProp.Right theme.spacing.unit
+            ]
+        ]
+        customStyle "code" [
+            CSSProp.Display "none"
+            CSSProp.Padding 0
+            CSSProp.Margin 0
+            customCss smBreakpoint [
+                CSSProp.Display "block"
+            ]
+            customCss "& pre" [
+                CSSProp.Overflow "auto"
+                CSSProp.Margin "0px !important"
+                CSSProp.BorderRadius "0px !important"
+            ]
+        ]
     ]
 
-let demoWithStyles<'a> = withStyles (StyleType.Func demoStyles) []
+[<Pojo>]
+type DemoProps =
+    abstract member demoPath: string with get,set
+    abstract member title: string with get,set
+    abstract member demoElement: (unit->ReactElement) with get,set
+    inherit IClassesProps
 
 [<Pojo>]
-type DemoProps = {
-    demoPath: string
-    title: string
-    demoElement: ReactElement
-    classes: obj
-}
+type DemoClasses =
+    abstract member root : string
+    abstract member header : string
+    abstract member demo : string
+    abstract member code : string
+    // abstract member sourceButton : string
+    inherit IClasses
+
 [<Pojo>]
 type DemoState = {
     expanded: bool
 }
+
+let wrapWithFsharp text =
+    text |> sprintf "
+```fsharp
+%s
+```
+    "
+
 type DemoComponent(p) as this =
     inherit PureComponent<DemoProps,DemoState>(p)
     do
@@ -60,50 +107,50 @@ type DemoComponent(p) as this =
 
     let toggleSource = this.ToggleSource
 
-    member __.ToggleSource (e: MouseEvent) =
+    member __.ToggleSource _ =
         this.setState (fun s _ -> { s with expanded = not s.expanded })
 
     override __.render() =
-        let d : string = !!(demosContext $ this.props.demoPath)
-        let contentClassNames =
-            [(!!this.props.classes?content, true)
-             ((!!this.props.classes?content + "-below"), this.state.expanded)]
-            |> classNames
+        let demo = !!(demosContext $ this.props.demoPath)
+        let classes : DemoClasses = !!this.props.classes
         fragment [] [
-            display1 this.props.title
-            div [ Class !!this.props.classes?wrapper ] [
-                tooltip [
-                    Placement PlacementType.Top
-                    TooltipProp.Title
-                        (if this.state.expanded
-                         then (str "Hide source" |> U2.Case1 |> U3.Case1)
-                         else (str "Show source" |> U2.Case1 |> U3.Case1))
-                ] [
-                    iconButton [
-                        Class !!this.props.classes?sourceButton
-                        OnClick toggleSource
-                    ] [ icon [] [ str "code" ]]
+            Markdown.view this.props.title
+            div [ Class classes.root ] [
+                div [] [
+                    div [ Class classes.header ] [
+                        tooltip [
+                            Placement PlacementType.Top
+                            TooltipProp.Title
+                                (if this.state.expanded
+                                 then (str "Hide source" |> U2.Case1 |> U3.Case1)
+                                 else (str "Show source" |> U2.Case1 |> U3.Case1))
+                        ] [
+                            iconButton [
+                                HTMLAttr.Custom ("aria-label", "Source of demo")
+                                OnClick toggleSource
+                            ] [ icon [] [ str "code" ]]
+                        ]
+                    ]
+                    collapse [
+                        In this.state.expanded
+                        HTMLAttr.Custom ("unmountOnExit", true)
+                    ] [ 
+                        div [ Class classes.code ] [ Markdown.view (demo |> wrapWithFsharp) ]
+                    ]
                 ]
-                collapse [
-                    MaterialProp.In this.state.expanded
-                ] [ code d "fsharp" ]
-                div [
-                    Class contentClassNames
-                ] [
-                    this.props.demoElement
-                ]
+                div [ Class classes.demo ] [ this.props.demoElement () ]
             ]
         ]
 
-let demoComponent title demoPath demoElement props =
-    ofType<DemoComponent, DemoProps, DemoState>
-        {
-            demoPath = demoPath
-            title = title
-            demoElement = demoElement
-            classes = !!props?classes
-        } []
+let demoComponent props =
+    ofType<DemoComponent,_,_> props []
 
+let demoWithStyles = withStyles (StyleType.Func demoStyles) [] demoComponent
 
-let root title demoPath demoElement =
-    from (demoComponent title demoPath demoElement |> demoWithStyles) createEmpty []
+let view title demoPath demoElement =
+    let props = createEmpty<DemoProps>
+    props.demoPath <- demoPath
+    props.title <- title
+    props.demoElement <- demoElement
+        
+    from demoWithStyles props []

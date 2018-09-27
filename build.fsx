@@ -87,12 +87,6 @@ Target.create "GitHubRelease" (fun _ ->
 
 Target.create "DocsClean" (cleanDirs "docs/" "docs/dist")
 Target.create "DocsBuild" (build "docs/")
-Target.create "DemosCopy" (fun _ ->
-    Shell.cleanDir "docs/demos"
-    Shell.copyDir
-        "docs/demos"
-        "docs/src/bin/Release/netstandard2.0/Demos"
-        (fun _ -> true) )
 Target.create "DocsYarnInstall" (fun _ -> 
     Yarn.install (fun o -> { o with WorkingDirectory = "docs/" }))
 let inline withWorkDir wd =
@@ -108,7 +102,7 @@ Target.create "DocsPackage" (fun _ ->
         |> ignore)
 
 // Where to push generated documentation
-let githubLink = "git@github.com:mvsmal/fable-material-ui.git"
+let githubLink = "https://github.com/mvsmal/fable-material-ui.git"
 let publishBranch = "gh-pages"
 let temp        = "docs/temp"
 let docsOuput = "docs/dist"
@@ -117,13 +111,14 @@ let docsOuput = "docs/dist"
 // Release Scripts
 
 Target.create "DocsPublish" (fun _ ->
-  Shell.cleanDir temp
-  Repository.cloneSingleBranch "" githubLink publishBranch temp
+    let now = System.DateTime.Now
+    Shell.cleanDir temp
+    Repository.cloneSingleBranch "" githubLink publishBranch temp
 
-  Shell.copyRecursive docsOuput temp true |> Trace.tracefn "%A"
-  Staging.stageAll temp
-  Commit.exec temp (sprintf "Update site (%s)" (System.DateTime.Now.ToShortDateString()))
-  Branches.push temp
+    Shell.copyRecursive docsOuput temp true |> Trace.tracefn "%A"
+    Staging.stageAll temp
+    Commit.exec temp (sprintf "Update site (%s)" (now.ToShortDateString()))
+    Branches.push temp
 )
 
 Target.create "All" ignore
@@ -134,8 +129,9 @@ Target.create "Release" ignore
 "Clean"
     ==> "DocsClean"
     ==> "DocsBuild"
-    ==> "DemosCopy"
     ==> "DocsYarnInstall"
+
+"DocsYarnInstall"
     ==> "DocsRun"
 
 "DocsYarnInstall"

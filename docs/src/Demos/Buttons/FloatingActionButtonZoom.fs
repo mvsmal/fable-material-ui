@@ -33,7 +33,7 @@ let styles (theme : ITheme) : IStyles list =
         ]
         Styles.Custom (
             "fabGreen",
-            [ 
+            [
                 CSSProp.Color theme.palette.common.white
                 CSSProp.BackgroundColor Colors.green.``500``
             ] |> toObj
@@ -66,9 +66,9 @@ type FloatingActionButtonZoom (props) as this =
     override __.render() =
         let classes = this.props.classes
         let theme : ITheme = !!this.props?theme
-        let transitionExit = !!theme?transitions?duration?leavingScreen
+        let transitionExit = theme.transitions.duration.leavingScreen
         let transitionsDuration = [
-            TransitionDurationProp.Enter !!theme?transitions?duration?enteringScreen
+            TransitionDurationProp.Enter theme.transitions.duration.enteringScreen
             TransitionDurationProp.Exit transitionExit
         ]
         let fabs = [
@@ -128,7 +128,7 @@ type FloatingActionButtonZoom (props) as this =
                     ] [ f.icon ]
                 ])
         ]
-    
+
 let floatingButtonsZoom props =
     R.ofType<FloatingActionButtonZoom,_,_> props []
 

@@ -827,7 +827,7 @@ module Props =
         | Name of string
         | Flip of bool
 
-    type TransitionDurationProp = 
+    type TransitionDurationProp =
         | Enter of float
         | Exit of float
 
@@ -891,7 +891,7 @@ module Props =
         | Static
         | Relative
 
-    type AppBarProp = 
+    type AppBarProp =
         | Position of AppBarPosition
         interface IHTMLProp
 
@@ -988,7 +988,7 @@ module Props =
         | Indeterminate of bool
         | IndeterminateIcon of Fable.Import.React.ReactNode
         interface IHTMLProp
-        
+
     type [<StringEnum; RequireQualifiedAccess>] ChipVariant = Default | Outlined
     type ChipProp =
         | Avatar of Fable.Import.React.ReactElement
@@ -1026,7 +1026,7 @@ module Props =
         | TouchEvent of ClickAwayListenerTouchEvent
         interface IHTMLProp
 
-    type CollapseProp = 
+    type CollapseProp =
         | CollapseHeight of string
         | Timeout of AutoTransitionDuration
         interface IHTMLProp
@@ -1262,7 +1262,7 @@ module Props =
         | Subheader of Fable.Import.React.ReactElement
         interface IHTMLProp
 
-    type ListItemProp = 
+    type ListItemProp =
         | Button of bool
         | Divider of bool
         interface IHTMLProp
@@ -1371,7 +1371,7 @@ module Props =
 
     type [<StringEnum; RequireQualifiedAccess>] SlideDirection = Bottom | Up | Left | Right
 
-    type SlideProp = 
+    type SlideProp =
         | Direction of SlideDirection
         interface IHTMLProp
 
@@ -1657,90 +1657,101 @@ module Props =
         | Snackbar of int
         | Tooltip of int
 
+    type IOverridesProp = interface end
     type OverridesProp =
-        | MuiAppBar of Themes.IStyles list
-        | MuiAvatar of Themes.IStyles list
-        | MuiBackdrop of Themes.IStyles list
-        | MuiBadge of Themes.IStyles list
-        | MuiBottomNavigation of Themes.IStyles list
-        | MuiBottomNavigationAction of Themes.IStyles list
-        | MuiButton of Themes.IStyles list
-        | MuiButtonBase of Themes.IStyles list
-        | MuiCard of Themes.IStyles list
-        | MuiCardActions of Themes.IStyles list
-        | MuiCardContent of Themes.IStyles list
-        | MuiCardHeader of Themes.IStyles list
-        | MuiCardMedia of Themes.IStyles list
-        | MuiCheckbox of Themes.IStyles list
-        | MuiChip of Themes.IStyles list
-        | MuiCircularProgress of Themes.IStyles list
-        | MuiCollapse of Themes.IStyles list
-        | MuiCssBaseline of Themes.IStyles list
-        | MuiDialog of Themes.IStyles list
-        | MuiDialogActions of Themes.IStyles list
-        | MuiDialogContent of Themes.IStyles list
-        | MuiDialogContentText of Themes.IStyles list
-        | MuiDialogTitle of Themes.IStyles list
-        | MuiDivider of Themes.IStyles list
-        | MuiDrawer of Themes.IStyles list
-        | MuiExpansionPanel of Themes.IStyles list
-        | MuiExpansionPanelActions of Themes.IStyles list
-        | MuiExpansionPanelDetails of Themes.IStyles list
-        | MuiExpansionPanelSummary of Themes.IStyles list
-        | MuiFormControl of Themes.IStyles list
-        | MuiFormControlLabel of Themes.IStyles list
-        | MuiFormGroup of Themes.IStyles list
-        | MuiFormHelperText of Themes.IStyles list
-        | MuiFormLabel of Themes.IStyles list
-        | MuiGrid of Themes.IStyles list
-        | MuiGridList of Themes.IStyles list
-        | MuiGridListTile of Themes.IStyles list
-        | MuiGridListTileBar of Themes.IStyles list
-        | MuiIcon of Themes.IStyles list
-        | MuiIconButton of Themes.IStyles list
-        | MuiInput of Themes.IStyles list
-        | MuiInputAdornment of Themes.IStyles list
-        | MuiInputLabel of Themes.IStyles list
-        | MuiLinearProgress of Themes.IStyles list
-        | MuiList of Themes.IStyles list
-        | MuiListItem of Themes.IStyles list
-        | MuiListItemAvatar of Themes.IStyles list
-        | MuiListItemIcon of Themes.IStyles list
-        | MuiListItemSecondaryAction of Themes.IStyles list
-        | MuiListItemText of Themes.IStyles list
-        | MuiListSubheader of Themes.IStyles list
-        | MuiMenu of Themes.IStyles list
-        | MuiMenuItem of Themes.IStyles list
-        | MuiMobileStepper of Themes.IStyles list
-        | MuiModal of Themes.IStyles list
-        | MuiNativeSelect of Themes.IStyles list
-        | MuiPaper of Themes.IStyles list
-        | MuiPopover of Themes.IStyles list
-        | MuiRadio of Themes.IStyles list
-        | MuiSelect of Themes.IStyles list
-        | MuiSnackbar of Themes.IStyles list
-        | MuiSnackbarContent of Themes.IStyles list
-        | MuiStep of Themes.IStyles list
-        | MuiStepButton of Themes.IStyles list
-        | MuiStepConnector of Themes.IStyles list
-        | MuiStepContent of Themes.IStyles list
-        | MuiStepIcon of Themes.IStyles list
-        | MuiStepLabel of Themes.IStyles list
-        | MuiStepper of Themes.IStyles list
-        | MuiSvgIcon of Themes.IStyles list
-        | MuiSwitch of Themes.IStyles list
-        | MuiTab of Themes.IStyles list
-        | MuiTable of Themes.IStyles list
-        | MuiTableCell of Themes.IStyles list
-        | MuiTableFooter of Themes.IStyles list
-        | MuiTablePagination of Themes.IStyles list
-        | MuiTableRow of Themes.IStyles list
-        | MuiTableSortLabel of Themes.IStyles list
-        | MuiTabs of Themes.IStyles list
-        | MuiToolbar of Themes.IStyles list
-        | MuiTooltip of Themes.IStyles list
-        | MuiTouchRipple of Themes.IStyles list
-        | MuiTypography of Themes.IStyles list
+        | [<Erase>] Custom of string * obj
+        interface IOverridesProp
+
+    [<AutoOpen>]
+    module OverridesProp =
+        open Fable.Core.JsInterop
+        let inline private pascalCaseProp (name : string) (props : Themes.IStyles list) =
+            OverridesProp.Custom (name, props |> keyValueList CaseRules.LowerFirst)
+
+        let MuiAppBar styles = pascalCaseProp "MuiAppBar" styles
+        let MuiAvatar styles = pascalCaseProp "MuiAvatar" styles
+        let MuiBackdrop styles = pascalCaseProp "MuiBackdrop" styles
+        let MuiBadge styles = pascalCaseProp "MuiBadge" styles
+        let MuiBottomNavigation styles = pascalCaseProp "MuiBottomNavigation" styles
+        let MuiBottomNavigationAction styles = pascalCaseProp "MuiBottomNavigationAction" styles
+        let MuiButton styles = pascalCaseProp "MuiButton" styles
+        let MuiButtonBase styles = pascalCaseProp "MuiButtonBase" styles
+        let MuiCard styles = pascalCaseProp "MuiCard" styles
+        let MuiCardActionArea styles = pascalCaseProp "MuiCardActionArea" styles
+        let MuiCardActions styles = pascalCaseProp "MuiCardActions" styles
+        let MuiCardContent styles = pascalCaseProp "MuiCardContent" styles
+        let MuiCardHeader styles = pascalCaseProp "MuiCardHeader" styles
+        let MuiCardMedia styles = pascalCaseProp "MuiCardMedia" styles
+        let MuiCheckbox styles = pascalCaseProp "MuiCheckbox" styles
+        let MuiChip styles = pascalCaseProp "MuiChip" styles
+        let MuiCircularProgress styles = pascalCaseProp "MuiCircularProgress" styles
+        let MuiCollapse styles = pascalCaseProp "MuiCollapse" styles
+        let MuiCssBaseline styles = pascalCaseProp "MuiCssBaseline" styles
+        let MuiDialog styles = pascalCaseProp "MuiDialog" styles
+        let MuiDialogActions styles = pascalCaseProp "MuiDialogActions" styles
+        let MuiDialogContent styles = pascalCaseProp "MuiDialogContent" styles
+        let MuiDialogContentText styles = pascalCaseProp "MuiDialogContentText" styles
+        let MuiDialogTitle styles = pascalCaseProp "MuiDialogTitle" styles
+        let MuiDivider styles = pascalCaseProp "MuiDivider" styles
+        let MuiDrawer styles = pascalCaseProp "MuiDrawer" styles
+        let MuiExpansionPanel styles = pascalCaseProp "MuiExpansionPanel" styles
+        let MuiExpansionPanelActions styles = pascalCaseProp "MuiExpansionPanelActions" styles
+        let MuiExpansionPanelDetails styles = pascalCaseProp "MuiExpansionPanelDetails" styles
+        let MuiExpansionPanelSummary styles = pascalCaseProp "MuiExpansionPanelSummary" styles
+        let MuiFormControl styles = pascalCaseProp "MuiFormControl" styles
+        let MuiFormControlLabel styles = pascalCaseProp "MuiFormControlLabel" styles
+        let MuiFormGroup styles = pascalCaseProp "MuiFormGroup" styles
+        let MuiFormHelperText styles = pascalCaseProp "MuiFormHelperText" styles
+        let MuiFormLabel styles = pascalCaseProp "MuiFormLabel" styles
+        let MuiGrid styles = pascalCaseProp "MuiGrid" styles
+        let MuiGridList styles = pascalCaseProp "MuiGridList" styles
+        let MuiGridListTile styles = pascalCaseProp "MuiGridListTile" styles
+        let MuiGridListTileBar styles = pascalCaseProp "MuiGridListTileBar" styles
+        let MuiIcon styles = pascalCaseProp "MuiIcon" styles
+        let MuiIconButton styles = pascalCaseProp "MuiIconButton" styles
+        let MuiInput styles = pascalCaseProp "MuiInput" styles
+        let MuiInputAdornment styles = pascalCaseProp "MuiInputAdornment" styles
+        let MuiInputLabel styles = pascalCaseProp "MuiInputLabel" styles
+        let MuiLinearProgress styles = pascalCaseProp "MuiLinearProgress" styles
+        let MuiList styles = pascalCaseProp "MuiList" styles
+        let MuiListItem styles = pascalCaseProp "MuiListItem" styles
+        let MuiListItemAvatar styles = pascalCaseProp "MuiListItemAvatar" styles
+        let MuiListItemIcon styles = pascalCaseProp "MuiListItemIcon" styles
+        let MuiListItemSecondaryAction styles = pascalCaseProp "MuiListItemSecondaryAction" styles
+        let MuiListItemText styles = pascalCaseProp "MuiListItemText" styles
+        let MuiListSubheader styles = pascalCaseProp "MuiListSubheader" styles
+        let MuiMenu styles = pascalCaseProp "MuiMenu" styles
+        let MuiMenuItem styles = pascalCaseProp "MuiMenuItem" styles
+        let MuiMobileStepper styles = pascalCaseProp "MuiMobileStepper" styles
+        let MuiModal styles = pascalCaseProp "MuiModal" styles
+        let MuiNativeSelect styles = pascalCaseProp "MuiNativeSelect" styles
+        let MuiPaper styles = pascalCaseProp "MuiPaper" styles
+        let MuiPopover styles = pascalCaseProp "MuiPopover" styles
+        let MuiRadio styles = pascalCaseProp "MuiRadio" styles
+        let MuiSelect styles = pascalCaseProp "MuiSelect" styles
+        let MuiSnackbar styles = pascalCaseProp "MuiSnackbar" styles
+        let MuiSnackbarContent styles = pascalCaseProp "MuiSnackbarContent" styles
+        let MuiStep styles = pascalCaseProp "MuiStep" styles
+        let MuiStepButton styles = pascalCaseProp "MuiStepButton" styles
+        let MuiStepConnector styles = pascalCaseProp "MuiStepConnector" styles
+        let MuiStepContent styles = pascalCaseProp "MuiStepContent" styles
+        let MuiStepIcon styles = pascalCaseProp "MuiStepIcon" styles
+        let MuiStepLabel styles = pascalCaseProp "MuiStepLabel" styles
+        let MuiStepper styles = pascalCaseProp "MuiStepper" styles
+        let MuiSvgIcon styles = pascalCaseProp "MuiSvgIcon" styles
+        let MuiSwitch styles = pascalCaseProp "MuiSwitch" styles
+        let MuiTab styles = pascalCaseProp "MuiTab" styles
+        let MuiTable styles = pascalCaseProp "MuiTable" styles
+        let MuiTableCell styles = pascalCaseProp "MuiTableCell" styles
+        let MuiTableFooter styles = pascalCaseProp "MuiTableFooter" styles
+        let MuiTablePagination styles = pascalCaseProp "MuiTablePagination" styles
+        let MuiTableRow styles = pascalCaseProp "MuiTableRow" styles
+        let MuiTableSortLabel styles = pascalCaseProp "MuiTableSortLabel" styles
+        let MuiTabs styles = pascalCaseProp "MuiTabs" styles
+        let MuiToolbar styles = pascalCaseProp "MuiToolbar" styles
+        let MuiTooltip styles = pascalCaseProp "MuiTooltip" styles
+        let MuiTouchRipple styles = pascalCaseProp "MuiTouchRipple" styles
+        let MuiTypography styles = pascalCaseProp "MuiTypography" styles
 
     // TODO implement breakpoints, mixins, transitions?
     type ThemeProp =
@@ -1751,7 +1762,7 @@ module Props =
         | Spacing of SpacingProp list
         | Typography of ThemeTypographyProp list
         | ZIndex of ZIndexProp list
-        | Overrides of OverridesProp list
+        | Overrides of IOverridesProp list
 
     type [<Erase>] ProviderTheme =
         | Theme of Themes.ITheme

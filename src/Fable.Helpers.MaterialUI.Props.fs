@@ -912,6 +912,15 @@ module Props =
         | OnRendered of (obj->unit)
         interface IHTMLProp
 
+    type TransitionProp =
+        | MountOnEnter of bool
+        | UnmountOnExit of bool
+        | Appear of bool
+        | Enter of bool
+        | Exit of bool
+        | AddEndListener of (Fable.Helpers.React.HTMLNode->(obj->unit)->unit)
+        interface IHTMLProp
+
     type SelectionControlProp =
         | Color of SelectionControlColor
         | OnChange of (Fable.Import.React.FormEvent->bool->unit)

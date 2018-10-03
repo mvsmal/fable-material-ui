@@ -1,6 +1,6 @@
 [<AutoOpen>]
 module rec Fable.MaterialUI
-open Props
+// open Props
 
 [<AutoOpen>]
 module Themes =
@@ -918,7 +918,7 @@ module Props =
         | Appear of bool
         | Enter of bool
         | Exit of bool
-        | AddEndListener of (Fable.Helpers.React.HTMLNode->(obj->unit)->unit)
+        | AddEndListener of (obj->(obj->unit)->unit)
         interface IHTMLProp
 
     type SelectionControlProp =

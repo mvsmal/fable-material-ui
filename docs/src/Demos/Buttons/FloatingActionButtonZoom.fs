@@ -119,7 +119,7 @@ type FloatingActionButtonZoom (props) as this =
                         CSSProp.TransitionDelay
                             ((if this.state.value = i then transitionExit else 0.) |> sprintf "%.0fms")
                     ]
-                    HTMLAttr.Custom ("unmountOnExit", true)
+                    TransitionProp.UnmountOnExit true
                 ] [
                     button [
                         ButtonProp.Variant ButtonVariant.Fab

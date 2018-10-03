@@ -1,6 +1,5 @@
 [<AutoOpen>]
 module rec Fable.MaterialUI
-// open Props
 
 [<AutoOpen>]
 module Themes =

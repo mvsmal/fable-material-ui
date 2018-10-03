@@ -59,7 +59,7 @@ type SubNav (p) as this =
             ] [ str this.props.title ]
             Mui.collapse [
                 In this.state.opened
-                HTMLAttr.Custom ("unmountOnExit", true)
+                UnmountOnExit true
                 Class !!classes?collapse
             ] [
                 Mui.list [] this.props.childItems ]

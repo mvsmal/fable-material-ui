@@ -133,7 +133,7 @@ type DemoComponent(p) as this =
                     ]
                     collapse [
                         In this.state.expanded
-                        HTMLAttr.Custom ("unmountOnExit", true)
+                        TransitionProp.UnmountOnExit true
                     ] [
                         div [ Class classes.code ] [ Markdown.view (demo |> wrapWithFsharp) ]
                     ]

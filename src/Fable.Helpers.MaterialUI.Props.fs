@@ -1,6 +1,5 @@
 [<AutoOpen>]
 module rec Fable.MaterialUI
-open Props
 
 [<AutoOpen>]
 module Themes =
@@ -910,6 +909,15 @@ module Props =
         | OnExiting of (obj->unit)
         | OnOpen of (obj->unit)
         | OnRendered of (obj->unit)
+        interface IHTMLProp
+
+    type TransitionProp =
+        | MountOnEnter of bool
+        | UnmountOnExit of bool
+        | Appear of bool
+        | Enter of bool
+        | Exit of bool
+        | AddEndListener of (obj->(obj->unit)->unit)
         interface IHTMLProp
 
     type SelectionControlProp =

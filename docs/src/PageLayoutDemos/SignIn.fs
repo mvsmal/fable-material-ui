@@ -1,4 +1,4 @@
-module PageLayoutDemos.SignIn.View
+module PageLayoutDemos.SignIn
 
 open Fable.Core
 open Fable.Core.JsInterop
@@ -12,6 +12,9 @@ module Mui = Fable.Helpers.MaterialUI
 let toObj = keyValueList CaseRules.LowerFirst
 
 let styles (theme : ITheme) : IStyles list =
+    // In Fable 2 you don't need to create a seperate variable.
+    let breakPoint = theme.breakpoints.up( U2.Case2 <| 400 + theme.spacing.unit * 3 * 2 )
+
     [
         Styles.Layout [
             Width "auto"
@@ -19,10 +22,7 @@ let styles (theme : ITheme) : IStyles list =
             MarginLeft (theme.spacing.unit * 3)
             MarginRight (theme.spacing.unit * 3)            
             CSSProp.Custom(
-                // In Fable 2 you can use breakpoints instead
-                // (theme.breakpoints.up( U2.Case2 <| 400 + theme.spacing.unit * 3 * 2 )
-                // Note: 720px is needed for the left drawer, without it it would've been 448px
-                "@media (min-width: 720px)", [
+                breakPoint, [
                     Width 400
                     MarginLeft "auto"
                     MarginRight "auto"

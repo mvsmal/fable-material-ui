@@ -22,6 +22,7 @@
     <Compile Include="Demos/Buttons/*.fs" />
     <Compile Include="Demos/Buttons.fs" />
     <Compile Include="Demos/Avatars.fs" />
+    <Compile Include="PageLayoutDemos/SignIn.fs" />
     <Content Include="**/*.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -35,7 +36,6 @@
     <Compile Include="Layout/Drawer.fs" />
     <Compile Include="Layout/AppBar.fs" />
     <Compile Include="Layout/Layout.fs" />
-    <Compile Include="PageLayoutDemos/SignIn.fs" />
     <Compile Include="App.fs" />
   </ItemGroup>
   <Import Project="..\..\.paket\Paket.Restore.targets" />

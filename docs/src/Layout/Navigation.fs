@@ -25,6 +25,14 @@ let navItems = [
                 // { Title = "Avatars"; Href = Some Page.Avatars; Children = [] }
             ]
     }
+    {
+        Title = "Page layout demos"
+        Href = None
+        Children =
+            [
+                { Title = "Sign-in"; Href = Some Page.SignIn; Children = [] }
+            ]
+    }
 ]
 
 let rec mapNavigation currentPage dispatch (depth: int) =

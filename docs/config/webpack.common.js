@@ -1,14 +1,13 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const helpers = require('./helpers');
-const fableUtils = require("fable-utils");
 
 const isProduction = process.argv.indexOf("-p") >= 0;
 console.log("Bundling for " + (isProduction ? "production" : "development") + "...");
 
-const babelOptions = fableUtils.resolveBabelOptions({
+const babelOptions = {
     presets: [
-        ["babel-preset-env", {
+        ["@babel/preset-env", {
             "targets": {
                 "browsers": [
                     "last 3 versions",
@@ -19,29 +18,21 @@ const babelOptions = fableUtils.resolveBabelOptions({
         }]
     ],
     plugins: [
-        ["transform-runtime", {
-            "helpers": true,
-            // We don't need the polyfills as we're already calling
-            // cdn.polyfill.io/v2/polyfill.js in index.html
-            "polyfill": false,
-            "regenerator": false
-        }],
         ["prismjs", {
             "languages": ["fsharp", "bash", "markdown", "markup"],
             "theme": "default",
             "css": true
         }]
     ]
-});
+};
 module.exports = {
     entry: {
-        'index': helpers.root('./src/Fable.MaterialUI.Docs.fsproj'),
+        'index': './src/Fable.MaterialUI.Docs.fsproj',
     },
-
     resolve: {
-        modules: [
-            "node_modules", helpers.root("./node_modules/")
-        ]
+        // See https://github.com/fable-compiler/Fable/issues/1490
+        symlinks: false,
+        modules: [helpers.root("./node_modules/")]
     },
 
     module: {
@@ -50,7 +41,6 @@ module.exports = {
                 use: {
                     loader: "fable-loader",
                     options: {
-                        babel: babelOptions,
                         define: isProduction ? [] : ["DEBUG"]
                     }
                 }
@@ -58,7 +48,7 @@ module.exports = {
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
                 use: [{ loader: 'file-loader', options: { name: '[name].[hash].[ext]', outputPath: 'assets/' } }]
-            }, 
+            },
             {
                 test: /\.md$/,
                 use: [ "raw-loader" ]

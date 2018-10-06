@@ -72,14 +72,14 @@ let demoStyles (theme : ITheme) : IStyles list =
         ]
     ]
 
-[<Pojo>]
+
 type DemoProps =
     abstract member demoPath: string with get,set
     abstract member title: string with get,set
     abstract member demoElement: (unit->ReactElement) with get,set
     inherit IClassesProps
 
-[<Pojo>]
+
 type DemoClasses =
     abstract member root : string
     abstract member header : string
@@ -88,7 +88,7 @@ type DemoClasses =
     // abstract member sourceButton : string
     inherit IClasses
 
-[<Pojo>]
+
 type DemoState = {
     expanded: bool
 }
@@ -100,17 +100,15 @@ let wrapWithFsharp text =
 ```
     "
 
-type DemoComponent(p) as this =
+type DemoComponent(p) =
     inherit PureComponent<DemoProps,DemoState>(p)
     do
-        this.setInitState { expanded = false }
+        base.setInitState { expanded = false }
 
-    let toggleSource = this.ToggleSource
-
-    member __.ToggleSource _ =
+    member this.ToggleSource _ =
         this.setState (fun s _ -> { s with expanded = not s.expanded })
 
-    override __.render() =
+    override this.render() =
         let demo = !!(demosContext $ this.props.demoPath)
         let classes : DemoClasses = !!this.props.classes
         fragment [] [
@@ -127,7 +125,7 @@ type DemoComponent(p) as this =
                         ] [
                             iconButton [
                                 HTMLAttr.Custom ("aria-label", "Source of demo")
-                                OnClick toggleSource
+                                OnClick this.ToggleSource
                             ] [ icon [] [ str "code" ]]
                         ]
                     ]

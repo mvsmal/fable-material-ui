@@ -75,12 +75,12 @@ let homeStyles (theme : ITheme) : IStyles list =
         ]
     ]
 
-[<Pojo>]
+
 type HomeProps =
     abstract member dispatch : (Msg->unit) with get,set
     inherit Mui.IClassesProps
 
-[<Pojo>]
+
 type HomeClasses =
     abstract member hero : string
     abstract member content : string

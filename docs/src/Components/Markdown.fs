@@ -144,7 +144,7 @@ let markdownStyles (theme : ITheme) : IStyles list =
         ]
     ]
 
-[<Pojo>]
+
 type MarkdownProps =
     abstract member text : string with get,set
     inherit IClassesProps

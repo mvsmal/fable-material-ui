@@ -68,7 +68,7 @@ let layoutStyles (theme : ITheme) : IStyles list=
 ]
 
 
-[<Pojo>]
+
 type LayoutClasses =
     abstract member main : string
     abstract member landingMain : string

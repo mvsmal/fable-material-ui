@@ -29,23 +29,22 @@ let subNavStyles (theme: ITheme) : IStyles list =
         ]
     ]
 
-[<Pojo>]
+
 type SubNavProps =
     abstract member title: string with get, set
     abstract member opened: bool with get, set
     abstract member childItems: ReactElement list with get, set
     inherit Mui.IClassesProps
 
-[<Pojo>]
+
 type SubNavState = {
     opened: bool
 }
 
-type SubNav (p) as this =
+type SubNav (p) =
     inherit PureComponent<SubNavProps,SubNavState>(p)
     do
-        this.setInitState { opened = p.opened }
-    let toggle = this.Toggle
+        base.setInitState { opened = p.opened }
     member this.Toggle e =
         let newState = { this.state with opened = not this.state.opened }
         this.setState newState
@@ -54,7 +53,7 @@ type SubNav (p) as this =
         let classes = this.props.classes
         fragment [] [
             Mui.button [
-                OnClick toggle
+                OnClick this.Toggle
                 Classes [ ClassNames.Root !!classes?button ]
             ] [ str this.props.title ]
             Mui.collapse [
@@ -91,7 +90,7 @@ let navItemStyles (theme: ITheme) : IStyles list =
         ]
     ]
 
-[<Pojo>]
+
 type NavItemProps =
     abstract member title : string with get,set
     abstract member href : Page option with get,set

@@ -6,7 +6,7 @@ open Fable.Helpers.React.Props
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
-let inline materialEl<[<Pojo>]'P when 'P :> IHTMLProp>
+let inline materialEl<'P when 'P :> IHTMLProp>
     (a:Fable.Import.React.ComponentClass<'P>) (b: IHTMLProp list) c : Fable.Import.React.ReactElement =
     Fable.Helpers.React.from a (keyValueList CaseRules.LowerFirst b |> unbox) c
 
@@ -137,7 +137,7 @@ let GridListTile = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "
 let inline gridListTile b c = materialEl GridListTile b c
 
 let GridListTileBar = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/GridListTileBar"
-let inline gridListTileBar b c = materialEl GridListTileBar b c 
+let inline gridListTileBar b c = materialEl GridListTileBar b c
 
 let Grow = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/Grow"
 let inline grow b c = materialEl Grow b c
@@ -320,11 +320,11 @@ type IClasses = interface end
 type IClassesProps =
     abstract member classes: IClasses
 
-let withStyles'<[<Pojo>]'P, [<Pojo>]'O when 'P :> IClassesProps>
+let withStyles'<'P, 'O when 'P :> IClassesProps>
     styles (options: 'O) (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
     !!((import "withStyles" "@material-ui/core/styles") $ (styles, options) $ fn)
 
-let withStyles<[<Pojo>]'P when 'P :> IClassesProps>
+let withStyles<'P when 'P :> IClassesProps>
     (styles : StyleType)
     (options: StyleOption list)
     (fn : 'P -> Fable.Import.React.ReactElement) =
@@ -338,7 +338,7 @@ let MuiThemeProvider = importMember<Fable.Import.React.ComponentClass<IHTMLProp>
 let inline muiThemeProvider b c = materialEl MuiThemeProvider b c
 
 [<Import("createMuiTheme", "@material-ui/core/styles")>]
-let private createMuiTheme'<[<Pojo>]'O> (options: 'O) : ITheme = jsNative
+let private createMuiTheme'<'O> (options: 'O) : ITheme = jsNative
 
 let createMuiTheme (options: ThemeProp list) =
     options
@@ -346,12 +346,12 @@ let createMuiTheme (options: ThemeProp list) =
     |> unbox
     |> createMuiTheme'
 
-let withWidth'<[<Pojo>]'O, [<Pojo>]'P>
+let withWidth'<'O, 'P>
     (options: 'O)
     (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
     !!((importDefault "@material-ui/core/withWidth") $ options $ fn)
 
-let withWidth<[<Pojo>]'P>
+let withWidth<'P>
     (options: WithWidthOption list)
     (fn: ('P -> Fable.Import.React.ReactElement)) =
     withWidth' (keyValueList CaseRules.LowerFirst options |> unbox) fn
@@ -367,28 +367,28 @@ module ColorManipulator =
 
     let recomposeColor (color: ColorObject): string =
         import "recomposeColor" "@material-ui/core/styles/colorManipulator"
-    
+
     let convertHexToRGB (hex: string): string =
         import "convertHexToRGB" "@material-ui/core/styles/colorManipulator"
-    
+
     let rbgToHex (color: string): string =
         import "rbgToHex" "@material-ui/core/styles/colorManipulator"
-    
+
     let decomposeColor (color: string): ColorObject =
         import "decomposeColor" "@material-ui/core/styles/colorManipulator"
 
     let getContrastRatio ((foreground: string), (background: string)): float =
         import "getContrastRatio" "@material-ui/core/styles/colorManipulator"
-    
+
     let getLuminance (color: string) =
         import "getLuminance" "@material-ui/core/styles/colorManipulator"
-    
+
     let emphasize ((color: string), (coefficient: float)): string =
         import "emphasize" "@material-ui/core/styles/colorManipulator"
-    
+
     let fade ((color: string), (value: float)): string =
         import "fade" "@material-ui/core/styles/colorManipulator"
-    
+
     let darken ((color: string), (coefficient: float)): string =
         import "darken" "@material-ui/core/styles/colorManipulator"
 

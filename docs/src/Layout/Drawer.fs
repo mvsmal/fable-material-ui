@@ -20,7 +20,7 @@ let drawerStyles : IStyles list =
         ]
     ]
 
-[<Pojo>]
+
 type AppDrawerProps =
     abstract member isLanding: bool with get,set
     abstract member currentPage: Page with get,set
@@ -41,7 +41,7 @@ let drawer (props : AppDrawerProps) =
                 MaterialProp.OnOpen (fun _ -> OpenMenu true |> props.dispatch)
                 MaterialProp.OnClose (fun _ -> OpenMenu false |> props.dispatch)
                 ModalProps [ KeepMounted true ]
-            ] [ 
+            ] [
                 lazyView2 Layout.Menu.view props.currentPage props.dispatch ]
         ]
         if not props.isLanding then
@@ -53,7 +53,7 @@ let drawer (props : AppDrawerProps) =
                     DrawerProp.Variant DrawerVariant.Permanent
                     MaterialProp.Open true
                     Class !!props.classes?root
-                ] [ 
+                ] [
                     lazyView2 Layout.Menu.view props.currentPage props.dispatch ]
             ]
     ]

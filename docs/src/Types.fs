@@ -13,7 +13,7 @@ type Model = {
     menuOpen: bool
 }
 
-[<Pojo>]
+
 type AppProps =
     abstract member model : Model with get,set
     abstract member dispatch : (Msg->unit) with get,set

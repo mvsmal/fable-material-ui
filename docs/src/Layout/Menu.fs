@@ -14,7 +14,7 @@ open Utils
 
 module Mui = Fable.Helpers.MaterialUI
 
-[<Pojo>]
+
 type MenuClasses =
     abstract member root: string
     abstract member toolbar: string
@@ -22,7 +22,7 @@ type MenuClasses =
     abstract member title: string
     inherit Mui.IClasses
 
-[<Pojo>]
+
 type MenuProps =
     abstract member currentPage : Page with get, set
     abstract member dispatch : (Msg->unit) with get,set

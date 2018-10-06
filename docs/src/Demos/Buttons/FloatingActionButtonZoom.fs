@@ -40,30 +40,30 @@ let styles (theme : ITheme) : IStyles list =
         )
     ]
 
-[<Pojo>]
+
 type Fab = {
     color : ComponentColor
     className : string
     icon : ReactElement
 }
 
-[<Pojo>]
+
 type ButtonsProps =
     inherit IClassesProps
 
-[<Pojo>]
+
 type ButtonsState = {
     value : int
 }
 
-type FloatingActionButtonZoom (props) as this =
+type FloatingActionButtonZoom (props) =
     inherit Component<ButtonsProps,ButtonsState>(props)
-    do this.setInitState { value = 0 }
+    do base.setInitState { value = 0 }
 
-    member __.handleChange _ index =
+    member this.handleChange _ index =
         this.setState { this.state with value = index }
 
-    override __.render() =
+    override this.render() =
         let classes = this.props.classes
         let theme : ITheme = !!this.props?theme
         let transitionExit = theme.transitions.duration.leavingScreen

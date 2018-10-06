@@ -23,7 +23,7 @@ let githubIcon =
     ]
 
 let menuButton model dispatch =
-    let button = 
+    let button =
         Mui.iconButton [
             IconProp.Color IconColor.Inherit
             OnClick (fun _ -> OpenMenu true |> dispatch)
@@ -48,7 +48,7 @@ let appBarStyles (theme : ITheme) : IStyles list =
         ]
     ]
 
-[<Pojo>]
+
 type AppBarClasses =
     abstract member appBar : string
     abstract member landingAppBar : string

@@ -70,7 +70,7 @@ let signIn props =
                 lockIcon
             ]
 
-            typography [Variant TypographyVariant.Headline] [ str "Sign in" ]
+            typography [Variant TypographyVariant.H5] [ str "Sign in" ]
 
             form [Class !!classes?form] [
                 formControl [MaterialProp.Margin FormControlMargin.Normal; HTMLAttr.Required true; MaterialProp.FullWidth true] [

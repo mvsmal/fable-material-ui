@@ -18,7 +18,7 @@ let appBar props =
         ] [
             toolbar [] [
                 typography [
-                    TypographyProp.Variant TypographyVariant.Title
+                    TypographyProp.Variant TypographyVariant.H6
                     MaterialProp.Color ComponentColor.Inherit
                 ] [ str "Photos" ]
             ]

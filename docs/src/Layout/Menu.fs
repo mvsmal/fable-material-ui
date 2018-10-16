@@ -59,7 +59,7 @@ let menu (props : MenuProps) =
                 OnClick (fun _ -> OpenMenu false |> props.dispatch)
             ] [
                 Mui.typography
-                    [ TypographyProp.Variant TypographyVariant.Title
+                    [ TypographyProp.Variant TypographyVariant.H6
                       Class classes.headerLink
                       TypographyProp.Color TypographyColor.Inherit ]
                     [ str "Fable Material-UI" ]

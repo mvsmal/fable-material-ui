@@ -1,3 +1,17 @@
+## New in 1.4.0
+* [Theme] Fixed Overrides prop (PascalCase issue)
+* [Theme] Added `transitions` and `mixins` properties
+* [Theme] Added `withTheme` HOC
+* [Styles] Added `isWidthUp`, `isWidthDown` helpers
+* [Typography] Added V2 Typography variants
+* [Transitions] Added `TransitionProp`
+* [Buttons] `Flat` and `Raised` variants are deprecated
+* [OutlinedInput] Added `OutlinedInput` component
+* [Select] Added Variant prop
+* [InputLabel] Added Variant prop
+* [InputAdornment] Added Variant prop
+* [StepLabel] Added StepIconComponent prop
+
 ## New in 1.3.2
 * [BottomNavigation] Fixed typo in `ShowLabels`
 * [BottomNavigation] Fixed `OnChange` to be `obj->obj->unit`

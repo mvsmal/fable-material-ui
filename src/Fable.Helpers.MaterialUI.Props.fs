@@ -1578,18 +1578,29 @@ module Props =
         | TextSecondary
 
     type [<StringEnum; RequireQualifiedAccess>] TypographyVariant =
-        | Display1
-        | Display2
-        | Display3
-        | Display4
-        | Headline
-        | Title
-        | Subheading
+        | H1
+        | H2
+        | H3
+        | H4
+        | H5
+        | H6
+        | Subtitle1
+        | Subtitle2
+        | Overline
+        | SrOnly
         | Body1
         | Body2
         | Caption
         | Button
         | Inherit
+        // Depreceted
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Display1` is deprecated. Please use `H4` instead")>] Display1
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Display2` is deprecated. Please use `H3` instead")>] Display2
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Display3` is deprecated. Please use `H2` instead")>] Display3
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Display4` is deprecated. Please use `H1` instead")>] Display4
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Headline` is deprecated. Please use `H5` instead")>] Headline
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Title` is deprecated. Please use `H6` instead")>] Title
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Subheading` is deprecated. Please use `Subtitle1` instead")>] Subheading
 
     type TypographyProp =
         | Align of TypographyAlign

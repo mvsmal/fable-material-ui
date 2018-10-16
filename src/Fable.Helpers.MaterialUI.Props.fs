@@ -1311,11 +1311,13 @@ module Props =
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] InputLabelMargin = Dense
+    type [<StringEnum; RequireQualifiedAccess>] InputLabelVariant = Standard | Outlined | Filled
 
     type InputLabelProp =
         | DisableAnimation of bool
         | Margin of InputLabelMargin
         | Shrink of bool
+        | Variant of InputLabelVariant
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] LinearProgressColor = Primary | Secondary

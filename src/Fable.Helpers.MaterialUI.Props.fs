@@ -1681,22 +1681,35 @@ module Props =
 
     type ThemeTypographyProp =
         | FontFamily of string
-        | HtmlFontSize of string
         | FontSize of string
         | FontWeightLight of int
         | FontWeightRegular of int
         | FontWeightMedium of int
-        | Display4 of TextStyleProp list
-        | Display3 of TextStyleProp list
-        | Display2 of TextStyleProp list
-        | Display1 of TextStyleProp list
-        | Headline of TextStyleProp list
-        | Title of TextStyleProp list
-        | Subheading of TextStyleProp list
+        | HtmlFontSize of string
+        | AllVariants of CSSProp list
+        | UseNextVariants of bool
+
+        | H1 of TextStyleProp list
+        | H2 of TextStyleProp list
+        | H3 of TextStyleProp list
+        | H4 of TextStyleProp list
+        | H5 of TextStyleProp list
+        | H6 of TextStyleProp list
+        | Subtitle1 of TextStyleProp list
+        | Subtitle2 of TextStyleProp list
+        | Overline of TextStyleProp list
+
         | Body2 of TextStyleProp list
         | Body1 of TextStyleProp list
         | Caption of TextStyleProp list
         | Button of TextStyleProp list
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Display1` is deprecated. Please use `H4` instead")>] Display1 of TextStyleProp list
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Display2` is deprecated. Please use `H3` instead")>] Display2 of TextStyleProp list
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Display3` is deprecated. Please use `H2` instead")>] Display3 of TextStyleProp list
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Display4` is deprecated. Please use `H1` instead")>] Display4 of TextStyleProp list
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Headline` is deprecated. Please use `H5` instead")>] Headline of TextStyleProp list
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Title` is deprecated. Please use `H6` instead")>] Title of TextStyleProp list
+        | [<Obsolete("Material-UI@3.2.0: Typography type `Subheading` is deprecated. Please use `Subtitle1` instead")>] Subheading of TextStyleProp list
 
     type ShapeProp =
         | BorderRadius of int

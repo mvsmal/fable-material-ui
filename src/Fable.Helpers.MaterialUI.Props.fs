@@ -1,5 +1,6 @@
 [<AutoOpen>]
 module rec Fable.MaterialUI
+open System
 
 [<AutoOpen>]
 module Themes =
@@ -970,10 +971,12 @@ module Props =
 
     type [<StringEnum; RequireQualifiedAccess>] ButtonVariant =
         | Text
-        | Flat
+        | [<Obsolete("Material-UI@3.2.0: The `flat` Button variant will be removed in the next major release of Material-UI. `text` is equivalent and should be used instead.")>]
+            Flat
         | Outlined
         | Contained
-        | Raised
+        | [<Obsolete("Material-UI@3.2.0: The `raised` Button variant will be removed in the next major release of Material-UI. `contained` is equivalent and should be used instead.")>]
+            Raised
         | Fab
         | ExtendedFab
 

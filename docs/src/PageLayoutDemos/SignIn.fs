@@ -95,7 +95,7 @@ let signIn props =
 
                 button [ HTMLAttr.Type "submit"
                          MaterialProp.FullWidth true
-                         ButtonProp.Variant ButtonVariant.Raised
+                         ButtonProp.Variant ButtonVariant.Contained
                          MaterialProp.Color ComponentColor.Primary
                          Class !!classes?submit ]  [
                     str "Sign in"

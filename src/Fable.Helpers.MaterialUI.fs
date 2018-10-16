@@ -356,6 +356,15 @@ let withWidth<[<Pojo>]'P>
     (fn: ('P -> Fable.Import.React.ReactElement)) =
     withWidth' (keyValueList CaseRules.LowerFirst options |> unbox) fn
 
+type IWidthProps =
+    abstract member width : Breakpoint
+
+let isWidthUp (breakpoint : Breakpoint) (screenWidth : Breakpoint) (inclusive : bool) =
+    importMember "@material-ui/core/withWidth"
+
+let isWidthDown (breakpoint : Breakpoint) (screenWidth : Breakpoint) (inclusive : bool) =
+    importMember "@material-ui/core/withWidth"
+
 module ColorManipulator =
 
     [<StringEnum; RequireQualifiedAccess>]

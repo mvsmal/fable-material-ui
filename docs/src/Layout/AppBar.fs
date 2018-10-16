@@ -62,7 +62,7 @@ let appBar (props : AppProps) =
         Mui.toolbar [] [
             lazyView2 menuButton props.model props.dispatch
             Mui.typography [
-                TypographyProp.Variant TypographyVariant.Title
+                TypographyProp.Variant TypographyVariant.H6
                 MaterialProp.Color ComponentColor.Inherit
             ] [ props.model.currentPage |> toTitle |> str ]
             div [ Class "flex" ] []

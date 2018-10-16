@@ -179,6 +179,11 @@ module Themes =
     type IStyles = interface end
 
     type Styles =
+        | AdornedStart of CSSProp list
+        | AdornedEnd of CSSProp list
+        | NotchedOutline of CSSProp list
+        | InputAdornedStart of CSSProp list
+        | InputAdornedEnd of CSSProp list
         | Absolute of CSSProp list
         | Action of CSSProp list
         | ActionIcon of CSSProp list
@@ -498,6 +503,11 @@ module Themes =
     type IClassNames = interface end
 
     type ClassNames =
+        | AdornedStart of string
+        | AdornedEnd of string
+        | NotchedOutline of string
+        | InputAdornedStart of string
+        | InputAdornedEnd of string
         | Absolute of string
         | Action of string
         | ActionIcon of string
@@ -1301,11 +1311,13 @@ module Props =
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] InputLabelMargin = Dense
+    type [<StringEnum; RequireQualifiedAccess>] InputLabelVariant = Standard | Outlined | Filled
 
     type InputLabelProp =
         | DisableAnimation of bool
         | Margin of InputLabelMargin
         | Shrink of bool
+        | Variant of InputLabelVariant
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] LinearProgressColor = Primary | Secondary
@@ -1377,6 +1389,10 @@ module Props =
         | OnClose of (obj->ModalCloseReason->unit)
         interface IHTMLProp
 
+    type OutlinedInputProp =
+        | Notched of bool
+        interface IHTMLProp
+
     type PaperProp =
         | Square of bool
         interface IHTMLProp
@@ -1424,6 +1440,7 @@ module Props =
         | RootRef of RefProp
         interface IHTMLProp
 
+    type [<StringEnum; RequireQualifiedAccess>] SelectVariant = Standard | Outlined | Filled
     type SelectProp =
         | AutoWidth of bool
         | DisplayEmpty of bool
@@ -1431,6 +1448,7 @@ module Props =
         | Native of bool
         | OnChange of (obj->obj->unit)
         | RenderValue of (obj->Fable.Import.React.ReactNode)
+        | Variant of SelectVariant
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] SlideDirection = Bottom | Up | Left | Right
@@ -1813,6 +1831,7 @@ module Props =
         let MuiMobileStepper styles = pascalCaseProp "MuiMobileStepper" styles
         let MuiModal styles = pascalCaseProp "MuiModal" styles
         let MuiNativeSelect styles = pascalCaseProp "MuiNativeSelect" styles
+        let MuiOutlinedInput styles = pascalCaseProp "MuiOutlinedInput" styles
         let MuiPaper styles = pascalCaseProp "MuiPaper" styles
         let MuiPopover styles = pascalCaseProp "MuiPopover" styles
         let MuiRadio styles = pascalCaseProp "MuiRadio" styles
@@ -1907,6 +1926,8 @@ module Props =
             HTMLAttr.Custom("ActionsComponent", comp)
         let ScrollButtonComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("ScrollButtonComponent", comp)
+        let StepIconComponent (comp : Fable.Import.React.ReactType) =
+            HTMLAttr.Custom("StepIconComponent", comp)
         let IconComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("IconComponent", comp)
         let BackdropComponent (comp : Fable.Import.React.ReactType) =

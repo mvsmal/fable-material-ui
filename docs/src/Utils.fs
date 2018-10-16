@@ -12,9 +12,6 @@ let classNames =
     List.choose (fun (txt,add) -> if add then Some txt else None)
     >> String.concat " "
 
-let customStyle name styles =
-    Styles.Custom (name, styles |> toObj)
-
 let customCss name styles =
     CSSProp.Custom (name, styles |> toObj)
 

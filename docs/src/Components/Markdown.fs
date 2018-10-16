@@ -15,7 +15,7 @@ module MProps = Fable.MaterialUI.Props
 
 let markdownStyles (theme : ITheme) : IStyles list =
     [
-        customStyle "markdown" [
+        Styles.Custom ("markdown", [
             FontFamily theme.typography.fontFamily
             FontSize 16
             CSSProp.Color theme.palette.text.primary
@@ -141,7 +141,7 @@ let markdownStyles (theme : ITheme) : IStyles list =
             customCss "& img" [
                 MaxWidth "100%"
             ]
-        ]
+        ])
     ]
 
 

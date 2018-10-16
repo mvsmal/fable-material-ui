@@ -20,7 +20,7 @@ let styles (theme : ITheme) : IStyles list =
             Width "auto"
             Display "block"
             MarginLeft (theme.spacing.unit * 3)
-            MarginRight (theme.spacing.unit * 3)            
+            MarginRight (theme.spacing.unit * 3)
             CSSProp.Custom(
                 breakPoint, [
                     Width 400
@@ -48,7 +48,7 @@ let styles (theme : ITheme) : IStyles list =
 
         Styles.Custom (
             "submit",
-            [MarginTop (theme.spacing.unit * 3)] |> toObj
+            [MarginTop (theme.spacing.unit * 3)]
         )
     ]
 

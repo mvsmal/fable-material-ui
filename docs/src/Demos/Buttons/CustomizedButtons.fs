@@ -9,22 +9,20 @@ open Fable.MaterialUI.Props
 open Fable.MaterialUI
 module R = Fable.Helpers.React
 
-let toObj = keyValueList CaseRules.LowerFirst
-
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Container [
             CSSProp.Display "flex"
             CSSProp.FlexWrap "wrap"
         ]
-        Styles.Custom ("margin", [ CSSProp.Margin theme.spacing.unit] |> toObj)
+        Styles.Custom ("margin", [ CSSProp.Margin theme.spacing.unit])
         Styles.Custom
             ("cssRoot", [
                 CSSProp.Color (theme.palette.getContrastText(Colors.purple.``500``))
                 CSSProp.BackgroundColor Colors.purple.``500``
                 CSSProp.Custom
-                    ("&:hover", [ CSSProp.BackgroundColor Colors.purple.``700`` ] |> toObj)
-            ] |> toObj)
+                    ("&:hover", [ CSSProp.BackgroundColor Colors.purple.``700`` ])
+            ])
         Styles.Custom
             ("boostrapRoot", [
                 CSSProp.BoxShadow "none"
@@ -49,17 +47,17 @@ let styles (theme : ITheme) : IStyles list =
                     ("&:hover", [
                         CSSProp.BackgroundColor "#0069d9"
                         CSSProp.BorderColor "#0069d9"
-                    ] |> toObj)
+                    ])
                 CSSProp.Custom
                     ("&:active", [
                         CSSProp.BoxShadow "none"
                         CSSProp.BackgroundColor "#0062cc"
                         CSSProp.BorderColor "#0062cc"
-                    ] |> toObj)
+                    ])
                 CSSProp.Custom
                     ("&:focus", [
                         CSSProp.BoxShadow "0 0 0 0.2rem rgba(0,123,255,.5)"
-                    ] |> toObj)
+                    ])
             ])
     ]
 
@@ -70,8 +68,8 @@ let theme = createMuiTheme [
             ]
 
 
-let buttons props =
-    let classes = props?classes
+let buttons (props : IClassesProps) =
+    let classes = props.classes
     R.div [ HTMLAttr.Class !!classes?container ] [
         button [
             ButtonProp.Variant ButtonVariant.Contained
@@ -93,7 +91,7 @@ let buttons props =
         ] [ R.str "Bootstrap" ]
     ]
 
-let buttonsWithStyles<'a> = withStyles (StyleType.Func styles) [] buttons
+let buttonsWithStyles = withStyles<IClassesProps> (StyleType.Func styles) [] buttons
 
 let view () =
     R.from buttonsWithStyles createEmpty []

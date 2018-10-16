@@ -35,17 +35,17 @@ let menuButton model dispatch =
 let appBarStyles (theme : ITheme) : IStyles list =
     let lgBreakpoint = theme.breakpoints.up(MaterialSize.Lg |> U2.Case1)
     [
-        customStyle "appBar" [
+        Styles.Custom ("appBar", [
             customCss lgBreakpoint [
                 Left 250
                 Width "calc(100% - 250px)"
             ]
-        ]
-        customStyle "landingAppBar" [
+        ])
+        Styles.Custom ("landingAppBar", [
             Left 0
             Width "100vw"
             BoxShadow "unset"
-        ]
+        ])
     ]
 
 

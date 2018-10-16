@@ -31,7 +31,7 @@ let demoStyles (theme : ITheme) : IStyles list =
                 CSSProp.MarginRight 0
             ]
         ]
-        Styles.Custom (
+        Styles.Custom' (
             "demo",
             [
                 CSSProp.BorderRadius theme.shape.borderRadius
@@ -47,7 +47,7 @@ let demoStyles (theme : ITheme) : IStyles list =
                     CSSProp.PaddingBottom (theme.spacing.unit * 3)
                 ]
             ] |> toObj |> unbox |> theme.mixins.gutters)
-        customStyle "header" [
+        Styles.Custom ("header", [
             CSSProp.Display "none"
             customCss smBreakpoint [
                 CSSProp.Display "flex"
@@ -56,8 +56,8 @@ let demoStyles (theme : ITheme) : IStyles list =
                 CSSProp.Top 0
                 CSSProp.Right theme.spacing.unit
             ]
-        ]
-        customStyle "code" [
+        ])
+        Styles.Custom ("code", [
             CSSProp.Display "none"
             CSSProp.Padding 0
             CSSProp.Margin 0
@@ -69,7 +69,7 @@ let demoStyles (theme : ITheme) : IStyles list =
                 CSSProp.Margin "0px !important"
                 CSSProp.BorderRadius "0px !important"
             ]
-        ]
+        ])
     ]
 
 

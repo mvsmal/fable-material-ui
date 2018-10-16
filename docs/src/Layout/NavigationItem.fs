@@ -23,10 +23,10 @@ let subNavStyles (theme: ITheme) : IStyles list =
             CSSProp.Width "100%"
             CSSProp.FontWeight theme.typography.fontWeightMedium
         ]
-        customStyle "collapse" [
+        Styles.Custom ("collapse", [
             CSSProp.Padding 0
             CSSProp.Margin 0
-        ]
+        ])
     ]
 
 
@@ -45,7 +45,7 @@ type SubNav (p) =
     inherit PureComponent<SubNavProps,SubNavState>(p)
     do
         base.setInitState { opened = p.opened }
-    member this.Toggle e =
+    member this.Toggle _ =
         let newState = { this.state with opened = not this.state.opened }
         this.setState newState
 
@@ -54,7 +54,7 @@ type SubNav (p) =
         fragment [] [
             Mui.button [
                 OnClick this.Toggle
-                Classes [ ClassNames.Root !!classes?button ]
+                MaterialProp.Classes [ ClassNames.Root !!classes?button ]
             ] [ str this.props.title ]
             Mui.collapse [
                 In this.state.opened
@@ -70,14 +70,14 @@ let subNavWithStyles<'a> = Mui.withStyles (StyleType.Func subNavStyles) [] subNa
 
 let navItemStyles (theme: ITheme) : IStyles list =
     [
-        customStyle "listItem" [
+        Styles.Custom ("listItem", [
             CSSProp.Display "block"
             PaddingTop 0
             PaddingBottom 0
-        ]
-        customStyle "bold" [
+        ])
+        Styles.Custom ("bold", [
             CSSProp.FontWeight 500
-        ]
+        ])
         Styles.Button [
             JustifyContent "flex-start"
             CSSProp.TextTransform "none"
@@ -116,7 +116,7 @@ let navItem (props : NavItemProps) =
                 MaterialProp.Component ("a" |> U3.Case1)
                 Style style
                 Class buttonClasses
-                Classes [ ClassNames.Root !!props.classes?button ]
+                MaterialProp.Classes [ ClassNames.Root !!props.classes?button ]
                 Href ((toHash page))
                 OnClick (fun _ -> OpenMenu false |> props.dispatch)
             ] [ str props.title ]

@@ -10,8 +10,8 @@ open Fable.MaterialUI.Themes
 let styles : IStyles list =
     [ Styles.Root [ CSSProp.FlexGrow 1 ] ]
 
-let appBar props =
-    div [ Class !!props?classes?root ] [
+let appBar (props : IClassesProps) =
+    div [ Class !!props.classes?root ] [
         appBar [
             AppBarProp.Position AppBarPosition.Static
             MaterialProp.Color ComponentColor.Default
@@ -25,7 +25,7 @@ let appBar props =
         ]
     ]
 
-let appBarWithStyles<'a> = withStyles (StyleType.Styles styles) [] appBar
+let appBarWithStyles = withStyles<IClassesProps> (StyleType.Styles styles) [] appBar
 
 let view () =
     from appBarWithStyles createEmpty []

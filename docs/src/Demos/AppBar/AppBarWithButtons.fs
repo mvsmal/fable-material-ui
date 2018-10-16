@@ -1,15 +1,11 @@
 module Demos.AppBar.AppBarWithButtons
 
-open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
-module Mui = Fable.Helpers.MaterialUI
-
-let toObj = keyValueList CaseRules.LowerFirst
 
 let styles : IStyles list =
     [
@@ -19,16 +15,16 @@ let styles : IStyles list =
         Styles.Custom
             ("flex", [
                 FlexGrow 1
-            ] |> toObj)
+            ])
         Styles.Custom
             ("menuButton", [
                 CSSProp.MarginLeft -12
                 CSSProp.MarginRight 20
-            ] |> toObj)
+            ])
     ]
 
-let appBar props =
-    let classes = props?classes
+let appBar (props : IClassesProps) =
+    let classes = props.classes
     div [ Class !!classes?root ] [
         appBar [
             AppBarProp.Position AppBarPosition.Static
@@ -51,7 +47,7 @@ let appBar props =
         ]
     ]
 
-let appBarWithStyles<'a> = Mui.withStyles (StyleType.Styles styles) [] appBar
+let appBarWithStyles = withStyles<IClassesProps> (StyleType.Styles styles) [] appBar
 
 let view () =
     from appBarWithStyles createEmpty []

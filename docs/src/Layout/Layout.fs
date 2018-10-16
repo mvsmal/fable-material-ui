@@ -36,11 +36,11 @@ let layoutStyles (theme : ITheme) : IStyles list=
         Styles.Root [
             Display "flex"
         ]
-        customStyle "menuButton" [
+        Styles.Custom ("menuButton", [
             MarginLeft -12
             MarginRight 20
-        ]
-        customStyle "main" [
+        ])
+        Styles.Custom ("main", [
             PaddingTop 80
             Flex "1 1 100%"
             CSSProp.MaxWidth "100%"
@@ -59,12 +59,12 @@ let layoutStyles (theme : ITheme) : IStyles list=
                 PaddingRight (theme.spacing.unit * 9)
                 CSSProp.MaxWidth "calc(100% - 250px)"
             ]
-        ]
-        customStyle "landingMain" [
+        ])
+        Styles.Custom ("landingMain", [
             CSSProp.Padding 0
             CSSProp.MaxWidth "100vw"
             MarginLeft 0
-        ]
+        ])
 ]
 
 

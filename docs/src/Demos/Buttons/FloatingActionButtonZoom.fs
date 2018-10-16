@@ -10,8 +10,6 @@ open Fable.MaterialUI.Props
 open Fable.MaterialUI
 module R = Fable.Helpers.React
 
-let toObj = keyValueList CaseRules.LowerFirst
-
 let tabContainer children =
     typography [
         MaterialProp.Component ("div" |> U3.Case1)
@@ -36,7 +34,7 @@ let styles (theme : ITheme) : IStyles list =
             [
                 CSSProp.Color theme.palette.common.white
                 CSSProp.BackgroundColor Colors.green.``500``
-            ] |> toObj
+            ]
         )
     ]
 
@@ -132,8 +130,8 @@ type FloatingActionButtonZoom (props) =
 let floatingButtonsZoom props =
     R.ofType<FloatingActionButtonZoom,_,_> props []
 
-let floatingButtonsZoomWithStyles<'a> =
-    withStyles (StyleType.Func styles) [ StyleOption.WithTheme true ] floatingButtonsZoom
+let floatingButtonsZoomWithStyles =
+    withStyles<ButtonsProps> (StyleType.Func styles) [ StyleOption.WithTheme true ] floatingButtonsZoom
 
 let view () =
     R.from floatingButtonsZoomWithStyles createEmpty []

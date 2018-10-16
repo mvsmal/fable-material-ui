@@ -107,7 +107,7 @@ let home (props : HomeProps) =
                 ]
                 div [ Class classes.text ] [
                     typography [
-                        TypographyProp.Variant TypographyVariant.Display2
+                        TypographyProp.Variant TypographyVariant.H3
                         TypographyProp.Align TypographyAlign.Center
                         MaterialProp.Component ("h1" |> U3.Case1)
                         TypographyProp.Color TypographyColor.Inherit
@@ -115,7 +115,7 @@ let home (props : HomeProps) =
                         Class classes.title
                     ] [ str "FABLE MATERIAL-UI" ]
                     typography [
-                        TypographyProp.Variant TypographyVariant.Headline
+                        TypographyProp.Variant TypographyVariant.H5
                         MaterialProp.Component ("h2" |> U3.Case1)
                         TypographyProp.Color TypographyColor.Inherit
                         TypographyProp.GutterBottom true

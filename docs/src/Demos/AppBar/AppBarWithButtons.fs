@@ -41,7 +41,7 @@ let appBar props =
                 ] [ icon [] [ str "menu" ] ]
                 typography [
                     Class !!classes?flex
-                    TypographyProp.Variant TypographyVariant.Title
+                    TypographyProp.Variant TypographyVariant.H6
                     MaterialProp.Color ComponentColor.Inherit
                 ] [ str "News" ]
                 button [

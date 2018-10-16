@@ -299,6 +299,16 @@ module Themes =
         | FullWidth of CSSProp list
         | GutterBottom of CSSProp list
         | Gutters of CSSProp list
+        | H1 of CSSProp list
+        | H2 of CSSProp list
+        | H3 of CSSProp list
+        | H4 of CSSProp list
+        | H5 of CSSProp list
+        | H6 of CSSProp list
+        | Subtitle1 of CSSProp list
+        | Subtitle2 of CSSProp list
+        | Overline of CSSProp list
+        | SrOnly of CSSProp list
         | Head of CSSProp list
         | Headline of CSSProp list
         | Hidden of CSSProp list
@@ -612,6 +622,16 @@ module Themes =
         | FullWidth of string
         | GutterBottom of string
         | Gutters of string
+        | H1 of string
+        | H2 of string
+        | H3 of string
+        | H4 of string
+        | H5 of string
+        | H6 of string
+        | Subtitle1 of string
+        | Subtitle2 of string
+        | Overline of string
+        | SrOnly of string
         | Head of string
         | Headline of string
         | Hidden of string

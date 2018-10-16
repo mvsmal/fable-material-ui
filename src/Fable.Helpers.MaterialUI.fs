@@ -346,6 +346,16 @@ let createMuiTheme (options: ThemeProp list) =
     |> unbox
     |> createMuiTheme'
 
+type IThemeProps =
+    abstract member theme : ITheme
+
+[<Import("withTheme", "@material-ui/core/styles")>]
+let withTheme' : obj = jsNative
+
+let withTheme<[<Pojo>]'P when 'P :> IThemeProps>
+    (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
+    !!(withTheme' $ () $ fn)
+
 let withWidth'<[<Pojo>]'O, [<Pojo>]'P>
     (options: 'O)
     (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =

@@ -346,6 +346,16 @@ let createMuiTheme (options: ThemeProp list) =
     |> unbox
     |> createMuiTheme'
 
+type IThemeProps =
+    abstract member theme : ITheme
+
+[<Import("withTheme", "@material-ui/core/styles")>]
+let withTheme' : obj = jsNative
+
+let withTheme<[<Pojo>]'P when 'P :> IThemeProps>
+    (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
+    !!(withTheme' $ () $ fn)
+
 let withWidth'<[<Pojo>]'O, [<Pojo>]'P>
     (options: 'O)
     (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
@@ -355,6 +365,15 @@ let withWidth<[<Pojo>]'P>
     (options: WithWidthOption list)
     (fn: ('P -> Fable.Import.React.ReactElement)) =
     withWidth' (keyValueList CaseRules.LowerFirst options |> unbox) fn
+
+type IWidthProps =
+    abstract member width : Breakpoint
+
+let isWidthUp (breakpoint : Breakpoint) (screenWidth : Breakpoint) (inclusive : bool) =
+    importMember "@material-ui/core/withWidth"
+
+let isWidthDown (breakpoint : Breakpoint) (screenWidth : Breakpoint) (inclusive : bool) =
+    importMember "@material-ui/core/withWidth"
 
 module ColorManipulator =
 

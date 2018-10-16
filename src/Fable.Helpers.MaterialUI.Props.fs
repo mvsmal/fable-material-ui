@@ -1924,6 +1924,8 @@ module Props =
             HTMLAttr.Custom("ActionsComponent", comp)
         let ScrollButtonComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("ScrollButtonComponent", comp)
+        let StepIconComponent (comp : Fable.Import.React.ReactType) =
+            HTMLAttr.Custom("StepIconComponent", comp)
         let IconComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("IconComponent", comp)
         let BackdropComponent (comp : Fable.Import.React.ReactType) =

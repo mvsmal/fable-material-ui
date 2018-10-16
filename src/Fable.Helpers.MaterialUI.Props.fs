@@ -1305,9 +1305,11 @@ module Props =
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] InputAdornmentPosition = Start | End
+    type [<StringEnum; RequireQualifiedAccess>] InputAdornmentVariant = Standard | Outlined | Filled
 
     type InputAdornmentProp =
         | Position of InputAdornmentPosition
+        | Variant of InputAdornmentVariant
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] InputLabelMargin = Dense

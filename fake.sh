@@ -22,6 +22,6 @@ FAKE="$TOOL_PATH"/fake
 
 if ! [ -e "$FAKE" ]
 then
-  dotnet tool install fake-cli --tool-path $TOOL_PATH --version 5.3.1
+  dotnet tool install fake-cli --tool-path $TOOL_PATH --version 5.*
 fi
 "$FAKE" "$@"

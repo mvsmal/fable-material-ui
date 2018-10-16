@@ -1440,6 +1440,7 @@ module Props =
         | RootRef of RefProp
         interface IHTMLProp
 
+    type [<StringEnum; RequireQualifiedAccess>] SelectVariant = Standard | Outlined | Filled
     type SelectProp =
         | AutoWidth of bool
         | DisplayEmpty of bool
@@ -1447,6 +1448,7 @@ module Props =
         | Native of bool
         | OnChange of (obj->obj->unit)
         | RenderValue of (obj->Fable.Import.React.ReactNode)
+        | Variant of SelectVariant
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] SlideDirection = Bottom | Up | Left | Right

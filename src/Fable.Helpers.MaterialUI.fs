@@ -203,6 +203,9 @@ let inline modal b c = materialEl Modal b c
 let NativeSelect = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/NativeSelect"
 let inline nativeSelect b c = materialEl NativeSelect b c
 
+let OutlinedInput = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/OutlinedInput"
+let inline outlinedInput b c = materialEl OutlinedInput b c
+
 let Paper = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/Paper"
 let inline paper b c = materialEl Paper b c
 

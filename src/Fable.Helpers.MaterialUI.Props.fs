@@ -179,6 +179,11 @@ module Themes =
     type IStyles = interface end
 
     type Styles =
+        | AdornedStart of CSSProp list
+        | AdornedEnd of CSSProp list
+        | NotchedOutline of CSSProp list
+        | InputAdornedStart of CSSProp list
+        | InputAdornedEnd of CSSProp list
         | Absolute of CSSProp list
         | Action of CSSProp list
         | ActionIcon of CSSProp list
@@ -498,6 +503,11 @@ module Themes =
     type IClassNames = interface end
 
     type ClassNames =
+        | AdornedStart of string
+        | AdornedEnd of string
+        | NotchedOutline of string
+        | InputAdornedStart of string
+        | InputAdornedEnd of string
         | Absolute of string
         | Action of string
         | ActionIcon of string
@@ -1377,6 +1387,10 @@ module Props =
         | OnClose of (obj->ModalCloseReason->unit)
         interface IHTMLProp
 
+    type OutlinedInputProp =
+        | Notched of bool
+        interface IHTMLProp
+
     type PaperProp =
         | Square of bool
         interface IHTMLProp
@@ -1813,6 +1827,7 @@ module Props =
         let MuiMobileStepper styles = pascalCaseProp "MuiMobileStepper" styles
         let MuiModal styles = pascalCaseProp "MuiModal" styles
         let MuiNativeSelect styles = pascalCaseProp "MuiNativeSelect" styles
+        let MuiOutlinedInput styles = pascalCaseProp "MuiOutlinedInput" styles
         let MuiPaper styles = pascalCaseProp "MuiPaper" styles
         let MuiPopover styles = pascalCaseProp "MuiPopover" styles
         let MuiRadio styles = pascalCaseProp "MuiRadio" styles

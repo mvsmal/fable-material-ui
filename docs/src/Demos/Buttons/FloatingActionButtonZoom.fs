@@ -59,7 +59,7 @@ type FloatingActionButtonZoom (props) =
     do base.setInitState { value = 0 }
 
     member this.handleChange _ index =
-        this.setState { this.state with value = index }
+        this.setState (fun s _ -> { s with value = index })
 
     override this.render() =
         let classes = this.props.classes

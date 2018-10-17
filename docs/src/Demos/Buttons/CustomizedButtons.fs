@@ -9,6 +9,8 @@ open Fable.MaterialUI.Props
 open Fable.MaterialUI
 module R = Fable.Helpers.React
 
+let toObj = keyValueList CaseRules.LowerFirst
+
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Container [
@@ -21,7 +23,7 @@ let styles (theme : ITheme) : IStyles list =
                 CSSProp.Color (theme.palette.getContrastText(Colors.purple.``500``))
                 CSSProp.BackgroundColor Colors.purple.``500``
                 CSSProp.Custom
-                    ("&:hover", [ CSSProp.BackgroundColor Colors.purple.``700`` ])
+                    ("&:hover", [ CSSProp.BackgroundColor Colors.purple.``700`` ] |> toObj)
             ])
         Styles.Custom
             ("boostrapRoot", [
@@ -47,21 +49,25 @@ let styles (theme : ITheme) : IStyles list =
                     ("&:hover", [
                         CSSProp.BackgroundColor "#0069d9"
                         CSSProp.BorderColor "#0069d9"
-                    ])
+                    ] |> toObj)
                 CSSProp.Custom
                     ("&:active", [
                         CSSProp.BoxShadow "none"
                         CSSProp.BackgroundColor "#0062cc"
                         CSSProp.BorderColor "#0062cc"
-                    ])
+                    ] |> toObj)
                 CSSProp.Custom
                     ("&:focus", [
                         CSSProp.BoxShadow "0 0 0 0.2rem rgba(0,123,255,.5)"
-                    ])
+                    ] |> toObj)
             ])
     ]
 
 let theme = createMuiTheme [
+                Typography [
+                    // Needed until Material-UI v4 to avoid deprecation warning: https://material-ui.com/style/typography#migration-to-typography-v2
+                    UseNextVariants true
+                ]
                 ThemeProp.Palette [
                     PaletteProp.Primary [ PaletteIntentionProp.Main Colors.green.``500`` ]
                 ]

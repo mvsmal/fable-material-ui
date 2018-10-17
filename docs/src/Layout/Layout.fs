@@ -67,8 +67,6 @@ let layoutStyles (theme : ITheme) : IStyles list=
         ])
 ]
 
-
-
 type LayoutClasses =
     abstract member main : string
     abstract member landingMain : string

@@ -19,6 +19,22 @@ let demosContext: obj = requireContext "./"
 
 let demoStyles (theme : ITheme) : IStyles list =
     let smBreakpoint = theme.breakpoints.up(MaterialSize.Sm |> U2.Case1)
+    let demoStyle = 
+            theme.mixins.gutters(
+                !!([
+                        CSSProp.BorderRadius theme.shape.borderRadius
+                        CSSProp.BackgroundColor theme.palette.grey.``200``
+                        CSSProp.Display "flex"
+                        CSSProp.JustifyContent "center"
+                        CSSProp.PaddingTop (theme.spacing.unit * 2)
+                        CSSProp.PaddingBottom (theme.spacing.unit * 2)
+                        customCss smBreakpoint [
+                            CSSProp.PaddingLeft (theme.spacing.unit * 3)
+                            CSSProp.PaddingRight (theme.spacing.unit * 3)
+                            CSSProp.PaddingTop (theme.spacing.unit * 6)
+                            CSSProp.PaddingBottom (theme.spacing.unit * 3)
+                        ]
+                    ] |> toObj))
     [
         Styles.Root [
             CSSProp.Position "relative"
@@ -31,22 +47,7 @@ let demoStyles (theme : ITheme) : IStyles list =
                 CSSProp.MarginRight 0
             ]
         ]
-        Styles.Custom' (
-            "demo",
-            [
-                CSSProp.BorderRadius theme.shape.borderRadius
-                CSSProp.BackgroundColor theme.palette.grey.``200``
-                CSSProp.Display "flex"
-                CSSProp.JustifyContent "center"
-                CSSProp.PaddingTop (theme.spacing.unit * 2)
-                CSSProp.PaddingBottom (theme.spacing.unit * 2)
-                customCss smBreakpoint [
-                    CSSProp.PaddingLeft (theme.spacing.unit * 3)
-                    CSSProp.PaddingRight (theme.spacing.unit * 3)
-                    CSSProp.PaddingTop (theme.spacing.unit * 6)
-                    CSSProp.PaddingBottom (theme.spacing.unit * 3)
-                ]
-            ] |> toObj |> unbox |> theme.mixins.gutters)
+        Styles.Custom' ("demo", demoStyle)
         Styles.Custom ("header", [
             CSSProp.Display "none"
             customCss smBreakpoint [

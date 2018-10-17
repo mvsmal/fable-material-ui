@@ -860,7 +860,11 @@ module Colors =
 [<AutoOpen>]
 module Props =
     open Fable.Core
+    open Fable.Core.JsInterop
     open Fable.Helpers.React.Props
+
+    let inline private customHtmlAttr key props =
+        HTMLAttr.Custom(key, props |> keyValueList CaseRules.LowerFirst)
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
     type [<StringEnum; RequireQualifiedAccess>] TouchEvent = OnTouchStart | OnTouchEnd
@@ -922,7 +926,6 @@ module Props =
         | FullWidth of bool
         | Icon of Fable.Import.React.ReactNode
         | In of bool
-        | InputProps of IHTMLProp list
         | InputRef of RefProp
         | Inset of bool
         | KeepMounted of bool
@@ -951,7 +954,10 @@ module Props =
     [<AutoOpen>]
     module MaterialProp =
         open Fable.Core.JsInterop
-        let inline Classes (classNames : IClassNames list) = HTMLAttr.Custom("classes", classNames |> keyValueList CaseRules.LowerFirst)
+        let inline Classes (classNames : IClassNames list) =
+            customHtmlAttr "classes" classNames
+        let inline InputProps (props : IHTMLProp list) =
+            customHtmlAttr "inputProps" props
 
     type TransitionProp =
         | MountOnEnter of bool
@@ -979,9 +985,12 @@ module Props =
         interface IHTMLProp
 
     type AvatarProp =
-        | ImgProps of IHTMLProp list
         | Sizes of string
         interface IHTMLProp
+
+    [<AutoOpen>]
+    module AvatarProp =
+        let inline ImgProps (props : IHTMLProp list) = customHtmlAttr "imgProps" props
 
     type BackdropProp =
         | Invisible of bool
@@ -1060,10 +1069,15 @@ module Props =
         | Action of Fable.Import.React.ReactNode
         | Avatar of Fable.Import.React.ReactNode
         | Subheader of Fable.Import.React.ReactNode
-        | SubheaderTypographyProps of IHTMLProp list
         | Title of Fable.Import.React.ReactNode
-        | TitleTypographyProps of IHTMLProp list
         interface IHTMLProp
+
+    [<AutoOpen>]
+    module CardHeaderProp =
+        let inline SubheaderTypographyProps (props : IHTMLProp list) =
+            customHtmlAttr "subheaderTypographyProps" props
+        let inline TitleTypographyProps (props : IHTMLProp list) =
+            customHtmlAttr "titleTypographyProps" props
 
     type CardMediaProp =
         | Image of string
@@ -1358,10 +1372,15 @@ module Props =
 
     type ListItemTextProp =
         | Primary of Fable.Import.React.ReactNode
-        | PrimaryTypographyProps of IHTMLProp list
         | Secondary of Fable.Import.React.ReactNode
-        | SecondaryTypographyProps of IHTMLProp list
         interface IHTMLProp
+
+    [<AutoOpen>]
+    module ListItemTextProp =
+        let inline PrimaryTypographyProps (props : IHTMLProp list) =
+            customHtmlAttr "primaryTypographyProps" props
+        let inline SecondaryTypographyProps (props : IHTMLProp list) =
+            customHtmlAttr "secondaryTypographyProps" props
 
     type [<StringEnum; RequireQualifiedAccess>] ListSubheaderColor = Default | Primary | Inherit
 
@@ -1560,17 +1579,22 @@ module Props =
         abstract member page: int
 
     type TablePaginationProp =
-        | BackIconButtonProps of IHTMLProp list
         | Count of int
         | LabelDisplayedRows of (ILabelDisplayedRowsArgs->Fable.Import.React.ReactNode)
         | LabelRowsPerPage of Fable.Import.React.ReactNode
-        | NextIconButtonPropss of IHTMLProp list
         | OnChangePage of (obj->int->unit)
         | OnChangeRowsPerPage of (obj->unit)
         | Page of int
         | RowsPerPage of int
         | RowsPerPageOptions of int list
         interface IHTMLProp
+
+    [<AutoOpen>]
+    module TablePaginationProp =
+        let inline BackIconButtonProps (props : IHTMLProp list) =
+            customHtmlAttr "backIconButtonProps" props
+        let inline NextIconButtonProps (props : IHTMLProp list) =
+            customHtmlAttr "nextIconButtonProps" props
 
     type TableRowProp =
         | Hover of bool

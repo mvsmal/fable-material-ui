@@ -906,7 +906,20 @@ module Props =
         | Exit of float
 
     type TransitionDuration = U2<float, TransitionDurationProp list>
+    let inline private transitionDurationToHtmlAttr key (duration : TransitionDuration) =
+        let prop = match duration with
+                   | U2.Case1 float -> float
+                   | U2.Case2 props -> props |> keyValueList CaseRules.LowerFirst |> unbox
+        HTMLAttr.Custom(key, prop)
+
     type AutoTransitionDuration = U3<float, TransitionDuration list, AutoEnum>
+    let inline private autoTransitionDurationToHtmlAttr key (duration : AutoTransitionDuration) =
+        let prop = match duration with
+                   | U3.Case1 float -> float
+                   | U3.Case2 props -> props |> keyValueList CaseRules.LowerFirst |> unbox
+                   | U3.Case3 auto -> auto |> unbox
+        HTMLAttr.Custom (key, prop)
+
     type RefProp = U2<obj,(Fable.Import.React.ReactInstance->unit)>
 
     type MaterialProp =
@@ -936,8 +949,6 @@ module Props =
         | Optional of Fable.Import.React.ReactNode
         | Placement of PlacementType
         | RowsMax of int
-        | Timeout of TransitionDuration
-        | TransitionDuration of TransitionDuration
         | Value of obj // ? Should it be strongly typed? Like U{N}<string, int, float, decimal, arrays...>
 
         | OnClose of (obj->unit)
@@ -958,6 +969,9 @@ module Props =
             customHtmlAttr "classes" classNames
         let inline InputProps (props : IHTMLProp list) =
             customHtmlAttr "inputProps" props
+        let Timeout = transitionDurationToHtmlAttr "timeout"
+        let TransitionDuration = transitionDurationToHtmlAttr "transitionDuration"
+        let TransitionDurationAuto = autoTransitionDurationToHtmlAttr "transitionDuration"
 
     type TransitionProp =
         | MountOnEnter of bool
@@ -987,7 +1001,7 @@ module Props =
     type AvatarProp =
         | Sizes of string
         interface IHTMLProp
-
+    
     [<AutoOpen>]
     module AvatarProp =
         let inline ImgProps (props : IHTMLProp list) = customHtmlAttr "imgProps" props
@@ -1071,7 +1085,7 @@ module Props =
         | Subheader of Fable.Import.React.ReactNode
         | Title of Fable.Import.React.ReactNode
         interface IHTMLProp
-
+    
     [<AutoOpen>]
     module CardHeaderProp =
         let inline SubheaderTypographyProps (props : IHTMLProp list) =
@@ -1374,7 +1388,7 @@ module Props =
         | Primary of Fable.Import.React.ReactNode
         | Secondary of Fable.Import.React.ReactNode
         interface IHTMLProp
-
+    
     [<AutoOpen>]
     module ListItemTextProp =
         let inline PrimaryTypographyProps (props : IHTMLProp list) =
@@ -1391,9 +1405,8 @@ module Props =
 
     type MenuProp =
         | DisableAutoFocusItem of bool
-        | TransitionDuration of AutoTransitionDuration
         interface IHTMLProp
-
+    
     type [<StringEnum; RequireQualifiedAccess>] MobileStepperPosition = Bottom | Top | Static
     type [<StringEnum; RequireQualifiedAccess>] MobileStepperVariant = Text | Dots | Progress
 
@@ -1455,9 +1468,8 @@ module Props =
         | GetContentAnchorEl of (obj->obj)
         | MarginThreshold of int
         | TransformOrigin of PopoverOrigin
-        | TransitionDuration of AutoTransitionDuration
         interface IHTMLProp
-
+    
     type PopperProp =
         | Modifies of obj
         | PopperOptions of obj
@@ -1510,10 +1522,6 @@ module Props =
 
     type StepProp =
         | Completed of bool
-        interface IHTMLProp
-
-    type StepContentProp =
-        | TransitionDuration of AutoTransitionDuration
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] StepperOrientation = Vertical | Horizontal
@@ -1588,7 +1596,7 @@ module Props =
         | RowsPerPage of int
         | RowsPerPageOptions of int list
         interface IHTMLProp
-
+    
     [<AutoOpen>]
     module TablePaginationProp =
         let inline BackIconButtonProps (props : IHTMLProp list) =

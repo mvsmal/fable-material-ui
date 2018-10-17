@@ -349,7 +349,6 @@ let createMuiTheme (options: ThemeProp list) =
     |> unbox
     |> createMuiTheme'
 
-<<<<<<< HEAD
 type IThemeProps =
     abstract member theme : ITheme
 
@@ -360,8 +359,6 @@ let withTheme<'P when 'P :> IThemeProps>
     (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
     !!(withTheme' $ () $ fn)
 
-=======
->>>>>>> 69ee1edc80733108ee2f44bcd9b13f5ce737b0be
 let withWidth'<'O, 'P>
     (options: 'O)
     (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =

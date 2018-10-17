@@ -14,6 +14,7 @@ let pageParser: Parser<Page->Page,Page> =
         map Home (s "home")
         map Installation (s "getting-started" </> s "installation")
         map Usage (s "getting-started" </> s "usage")
+        map MigrationToV2 (s "getting-started" </> s "migration-to-v2")
         map AppBar (s "demos" </> s "app-bar")
         map Avatars (s "demos" </> s "avatars")
         map Buttons (s "demos" </> s "buttons")

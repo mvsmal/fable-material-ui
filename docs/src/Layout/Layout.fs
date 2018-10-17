@@ -80,6 +80,7 @@ let layout (props : AppProps) =
     let content = function
         | Page.Home -> Home.View.root props.dispatch
         | Page.Installation -> GettingStarted.Installation.View.root ()
+        | Page.MigrationToV2 -> GettingStarted.MigrationToV2.View.root ()
         | Page.Usage -> GettingStarted.Usage.View.root ()
         | Page.AppBar -> Demos.AppBar.View.view ()
         | Page.Avatars -> Demos.Avatars.View.root ()

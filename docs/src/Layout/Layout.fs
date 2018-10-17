@@ -7,24 +7,27 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
+open Fable.MaterialUI
 
 open App.Types
 open Global
 open Utils
 
 module Mui = Fable.Helpers.MaterialUI
-module MColors = Fable.MaterialUI.Colors
 
 let theme =
     Mui.createMuiTheme [
+        Typography [
+            UseNextVariants true
+        ]
         ThemeProp.Palette [
             PaletteProp.Type PaletteType.Light
             PaletteProp.Primary [
-                PaletteIntentionProp.Main MColors.blue.``500``
+                PaletteIntentionProp.Main Colors.blue.``500``
             ]
             PaletteProp.Secondary [
                 PaletteIntentionProp.Main
-                    (Mui.ColorManipulator.darken (MColors.pink.A400, 0.08))
+                    (Mui.ColorManipulator.darken (Colors.pink.A400, 0.08))
             ]
         ]
     ]

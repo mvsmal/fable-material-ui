@@ -183,7 +183,6 @@ module Themes =
         | [<Erase>] Custom' of string * obj
         interface IStyles
 
-    [<AutoOpen>]
     module Styles =
         open Fable.Core.JsInterop
 
@@ -1729,9 +1728,9 @@ module Props =
         let inline customPaletteProp key props = PaletteProp.Custom(key, props |> keyValueList CaseRules.LowerFirst)
 
         let inline Common (props : PaletteCommonProp list) = customPaletteProp "common" props
-        let inline Primary (props : PaletteIntentionProp list) = customPaletteProp "primary"
-        let inline Secondary (props : PaletteIntentionProp list) = customPaletteProp "secondary"
-        let inline Error (props : PaletteIntentionProp list) = customPaletteProp "error"
+        let inline Primary (props : PaletteIntentionProp list) = customPaletteProp "primary" props
+        let inline Secondary (props : PaletteIntentionProp list) = customPaletteProp "secondary" props
+        let inline Error (props : PaletteIntentionProp list) = customPaletteProp "error" props
         let inline Grey (props : (string * obj) list) = customPaletteProp "grey" props
         let inline Text (props : PaletteTextProp list) = customPaletteProp "text" props
         let inline Background (props : PaletteBackgroundProp list) = customPaletteProp "background" props
@@ -1912,7 +1911,7 @@ module Props =
     type ThemeProp =
         | Direction of Themes.TextDirection
         | Shadows of string list
-        | Custom of string*obj
+        | [<Erase>] Custom of string*obj
 
     [<AutoOpen>]
     module ThemeProp =

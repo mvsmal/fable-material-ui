@@ -17,7 +17,8 @@ module Mui = Fable.Helpers.MaterialUI
 let subNavStyles (theme: ITheme) : IStyles list =
     [
         Styles.Button [
-            JustifyContent "flex-start"
+            CSSProp.JustifyContent "flex-start"
+            CSSProp.LetterSpacing 0
             CSSProp.PaddingLeft 24
             CSSProp.TextTransform "none"
             CSSProp.Width "100%"
@@ -71,14 +72,15 @@ let navItemStyles (theme: ITheme) : IStyles list =
     [
         Styles.Custom ("listItem", [
             CSSProp.Display "block"
-            PaddingTop 0
-            PaddingBottom 0
+            CSSProp.PaddingTop 0
+            CSSProp.PaddingBottom 0
         ])
         Styles.Custom ("bold", [
             CSSProp.FontWeight 500
         ])
         Styles.Button [
-            JustifyContent "flex-start"
+            CSSProp.JustifyContent "flex-start"
+            CSSProp.LetterSpacing 0
             CSSProp.TextTransform "none"
             CSSProp.Width "100%"
             CSSProp.FontWeight theme.typography.fontWeightRegular

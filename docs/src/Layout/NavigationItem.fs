@@ -46,8 +46,7 @@ type SubNav (p) =
     do
         base.setInitState { opened = p.opened }
     member this.Toggle _ =
-        let newState = { this.state with opened = not this.state.opened }
-        this.setState newState
+        this.setState (fun s p -> { s with opened = not s.opened })
 
     override this.render() =
         let classes = this.props.classes
@@ -117,7 +116,7 @@ let navItem (props : NavItemProps) =
                 Style style
                 Class buttonClasses
                 MaterialProp.Classes [ ClassNames.Root !!props.classes?button ]
-                Href ((toHash page))
+                HTMLAttr.Href (toHash page)
                 OnClick (fun _ -> OpenMenu false |> props.dispatch)
             ] [ str props.title ]
         ]

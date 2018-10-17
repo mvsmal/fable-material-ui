@@ -13,7 +13,6 @@
     <Compile Include="Import/Prism.fs" />
     <Compile Include="Import/Marked.fs" />
     <Compile Include="Components/Markdown.fs" />
-    <!-- <Compile Include="Components/Typography.fs" /> -->
     <Compile Include="GettingStarted/Installation.fs" />
     <Compile Include="GettingStarted/Usage.fs" />
     <Compile Include="Demos/Demo.fs" />

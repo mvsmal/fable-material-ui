@@ -27,7 +27,7 @@ const babelOptions = {
 };
 module.exports = {
     entry: {
-        'index': './src/Fable.MaterialUI.Docs.fsproj',
+        'index': helpers.root('src/Fable.MaterialUI.Docs.fsproj'),
     },
     resolve: {
         // See https://github.com/fable-compiler/Fable/issues/1490
@@ -41,7 +41,8 @@ module.exports = {
                 use: {
                     loader: "fable-loader",
                     options: {
-                        define: isProduction ? [] : ["DEBUG"]
+                        define: isProduction ? [] : ["DEBUG"],
+                        babel: babelOptions
                     }
                 }
             },

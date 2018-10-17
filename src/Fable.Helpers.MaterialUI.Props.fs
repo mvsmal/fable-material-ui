@@ -1708,18 +1708,10 @@ module Props =
         | DisabledBackground of string
 
     type PaletteProp =
-        | Common of PaletteCommonProp list
         | Type of Themes.PaletteType
-        | Primary of PaletteIntentionProp list
-        | Secondary of PaletteIntentionProp list
-        | Error of PaletteIntentionProp list
-        | Grey of (string*obj) list
         | ContrastThreshold of int
         | TonalOffset of float
-        | Text of PaletteTextProp list
         | Divider of string
-        | Background of PaletteBackgroundProp list
-        | Action of PaletteActionProp list
         | [<Erase>] Custom of string*obj
     
     [<AutoOpen>]

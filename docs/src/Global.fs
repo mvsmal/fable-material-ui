@@ -10,6 +10,7 @@ type Page =
     | AppBar
     | Avatars
     | Buttons
+    | TextFields
     | SignIn
     // TODO Add other demos
 
@@ -28,6 +29,7 @@ let toHash page =
     | AppBar -> "#/demos/app-bar"
     | Avatars -> "#/demos/avatars"
     | Buttons -> "#/demos/buttons"
+    | TextFields -> "#/demos/text-fields"
     | SignIn -> "#/pagelayout/signin"
 
 let toTitle = function
@@ -38,4 +40,5 @@ let toTitle = function
     | AppBar -> "App Bar"
     | Avatars -> "Avatars"
     | Buttons -> "Buttons"
+    | TextFields -> "Text Fields"
     | SignIn -> "Sign-in"

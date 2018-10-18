@@ -18,6 +18,7 @@ let pageParser: Parser<Page->Page,Page> =
         map AppBar (s "demos" </> s "app-bar")
         map Avatars (s "demos" </> s "avatars")
         map Buttons (s "demos" </> s "buttons")
+        map TextFields (s "demos" </> s "text-fields")
         map SignIn (s "pagelayout" </> s "signin")
     ]
 

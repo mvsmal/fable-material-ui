@@ -1,3 +1,6 @@
+## New in 2.0.1
+* Fixed `Styles.Completed`
+
 ## New in 2.0.0
 * Support Fable 2 (required version of dotnet-fable: 2.0.6)
 * BREAKING CHANGE: `Styles.Custom` has new signature: `string * CSSProp list -> Styles`

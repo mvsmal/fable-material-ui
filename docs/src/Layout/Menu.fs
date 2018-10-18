@@ -14,7 +14,7 @@ open Utils
 
 module Mui = Fable.Helpers.MaterialUI
 
-[<Pojo>]
+
 type MenuClasses =
     abstract member root: string
     abstract member toolbar: string
@@ -22,7 +22,7 @@ type MenuClasses =
     abstract member title: string
     inherit Mui.IClasses
 
-[<Pojo>]
+
 type MenuProps =
     abstract member currentPage : Page with get, set
     abstract member dispatch : (Msg->unit) with get,set
@@ -35,19 +35,19 @@ let menuStyles (theme : ITheme) : IStyles list =
             CSSProp.MarginBottom (theme.spacing.unit / 2)
         ]
         Styles.Root [ Width 250 ]
-        customStyle "toolbar" [
+        Styles.Custom ("toolbar", [
             Display "flex"
             FlexDirection "column"
             JustifyContent "center"
             CSSProp.AlignItems "flex-start"
-        ]
-        customStyle "headerLink" [
+        ])
+        Styles.Custom ("headerLink", [
             CSSProp.Transition "color .2s ease-in-out"
             customCss "&:hover" [
                 CSSProp.Color theme.palette.primary.main
                 TextDecoration "underline"
             ]
-        ]
+        ])
     ]
 let menu (props : MenuProps) =
     let classes : MenuClasses = !!props.classes

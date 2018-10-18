@@ -19,7 +19,7 @@ let homeStyles (theme : ITheme) : IStyles list =
     let xsBreakpoint = theme.breakpoints.only MaterialSize.Xs
     let smBreakpoint = theme.breakpoints.only MaterialSize.Sm
     [
-        customStyle "hero" [
+        Styles.Custom ("hero", [
             MinHeight "80vh"
             Flex "0 0 auto"
             Display "flex"
@@ -27,7 +27,7 @@ let homeStyles (theme : ITheme) : IStyles list =
             CSSProp.AlignItems "center"
             BackgroundColor theme.palette.background.paper
             CSSProp.Color theme.palette.primary.dark
-        ]
+        ])
         Styles.Text [
             Display "flex"
             FlexDirection "column"
@@ -60,7 +60,7 @@ let homeStyles (theme : ITheme) : IStyles list =
         Styles.Button [
             MarginTop (theme.spacing.unit * 3)
         ]
-        customStyle "logo" [
+        Styles.Custom ("logo", [
             CSSProp.MarginTop (theme.spacing.unit * 3)
             CSSProp.MarginRight 0
             CSSProp.MarginLeft 0
@@ -68,19 +68,19 @@ let homeStyles (theme : ITheme) : IStyles list =
             Width "100%"
             Height "35vw"
             MaxHeight 200
-        ]
-        customStyle "support" [
+        ])
+        Styles.Custom ("support", [
             CSSProp.TextAlign "center"
             CSSProp.MarginBottom 30
-        ]
+        ])
     ]
 
-[<Pojo>]
+
 type HomeProps =
     abstract member dispatch : (Msg->unit) with get,set
     inherit Mui.IClassesProps
 
-[<Pojo>]
+
 type HomeClasses =
     abstract member hero : string
     abstract member content : string

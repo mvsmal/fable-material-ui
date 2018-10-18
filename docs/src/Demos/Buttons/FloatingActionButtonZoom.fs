@@ -10,8 +10,6 @@ open Fable.MaterialUI.Props
 open Fable.MaterialUI
 module R = Fable.Helpers.React
 
-let toObj = keyValueList CaseRules.LowerFirst
-
 let tabContainer children =
     typography [
         MaterialProp.Component ("div" |> U3.Case1)
@@ -36,34 +34,34 @@ let styles (theme : ITheme) : IStyles list =
             [
                 CSSProp.Color theme.palette.common.white
                 CSSProp.BackgroundColor Colors.green.``500``
-            ] |> toObj
+            ]
         )
     ]
 
-[<Pojo>]
+
 type Fab = {
     color : ComponentColor
     className : string
     icon : ReactElement
 }
 
-[<Pojo>]
+
 type ButtonsProps =
     inherit IClassesProps
 
-[<Pojo>]
+
 type ButtonsState = {
     value : int
 }
 
-type FloatingActionButtonZoom (props) as this =
+type FloatingActionButtonZoom (props) =
     inherit Component<ButtonsProps,ButtonsState>(props)
-    do this.setInitState { value = 0 }
+    do base.setInitState { value = 0 }
 
-    member __.handleChange _ index =
-        this.setState { this.state with value = index }
+    member this.handleChange _ index =
+        this.setState (fun s _ -> { s with value = index })
 
-    override __.render() =
+    override this.render() =
         let classes = this.props.classes
         let theme : ITheme = !!this.props?theme
         let transitionExit = theme.transitions.duration.leavingScreen
@@ -132,8 +130,8 @@ type FloatingActionButtonZoom (props) as this =
 let floatingButtonsZoom props =
     R.ofType<FloatingActionButtonZoom,_,_> props []
 
-let floatingButtonsZoomWithStyles<'a> =
-    withStyles (StyleType.Func styles) [ StyleOption.WithTheme true ] floatingButtonsZoom
+let floatingButtonsZoomWithStyles =
+    withStyles<ButtonsProps> (StyleType.Func styles) [ StyleOption.WithTheme true ] floatingButtonsZoom
 
 let view () =
     R.from floatingButtonsZoomWithStyles createEmpty []

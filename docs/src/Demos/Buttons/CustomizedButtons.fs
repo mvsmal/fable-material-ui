@@ -17,14 +17,14 @@ let styles (theme : ITheme) : IStyles list =
             CSSProp.Display "flex"
             CSSProp.FlexWrap "wrap"
         ]
-        Styles.Custom ("margin", [ CSSProp.Margin theme.spacing.unit] |> toObj)
+        Styles.Custom ("margin", [ CSSProp.Margin theme.spacing.unit])
         Styles.Custom
             ("cssRoot", [
                 CSSProp.Color (theme.palette.getContrastText(Colors.purple.``500``))
                 CSSProp.BackgroundColor Colors.purple.``500``
                 CSSProp.Custom
                     ("&:hover", [ CSSProp.BackgroundColor Colors.purple.``700`` ] |> toObj)
-            ] |> toObj)
+            ])
         Styles.Custom
             ("boostrapRoot", [
                 CSSProp.BoxShadow "none"
@@ -64,14 +64,18 @@ let styles (theme : ITheme) : IStyles list =
     ]
 
 let theme = createMuiTheme [
+                Typography [
+                    // Needed until Material-UI v4 to avoid deprecation warning: https://material-ui.com/style/typography#migration-to-typography-v2
+                    UseNextVariants true
+                ]
                 ThemeProp.Palette [
                     PaletteProp.Primary [ PaletteIntentionProp.Main Colors.green.``500`` ]
                 ]
             ]
 
 
-let buttons props =
-    let classes = props?classes
+let buttons (props : IClassesProps) =
+    let classes = props.classes
     R.div [ HTMLAttr.Class !!classes?container ] [
         button [
             ButtonProp.Variant ButtonVariant.Contained
@@ -93,7 +97,7 @@ let buttons props =
         ] [ R.str "Bootstrap" ]
     ]
 
-let buttonsWithStyles<'a> = withStyles (StyleType.Func styles) [] buttons
+let buttonsWithStyles = withStyles<IClassesProps> (StyleType.Func styles) [] buttons
 
 let view () =
     R.from buttonsWithStyles createEmpty []

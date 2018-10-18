@@ -19,6 +19,22 @@ let demosContext: obj = requireContext "./"
 
 let demoStyles (theme : ITheme) : IStyles list =
     let smBreakpoint = theme.breakpoints.up(MaterialSize.Sm |> U2.Case1)
+    let demoStyle = 
+            theme.mixins.gutters(
+                !!([
+                        CSSProp.BorderRadius theme.shape.borderRadius
+                        CSSProp.BackgroundColor theme.palette.grey.``200``
+                        CSSProp.Display "flex"
+                        CSSProp.JustifyContent "center"
+                        CSSProp.PaddingTop (theme.spacing.unit * 2)
+                        CSSProp.PaddingBottom (theme.spacing.unit * 2)
+                        customCss smBreakpoint [
+                            CSSProp.PaddingLeft (theme.spacing.unit * 3)
+                            CSSProp.PaddingRight (theme.spacing.unit * 3)
+                            CSSProp.PaddingTop (theme.spacing.unit * 6)
+                            CSSProp.PaddingBottom (theme.spacing.unit * 3)
+                        ]
+                    ] |> toObj))
     [
         Styles.Root [
             CSSProp.Position "relative"
@@ -31,23 +47,8 @@ let demoStyles (theme : ITheme) : IStyles list =
                 CSSProp.MarginRight 0
             ]
         ]
-        Styles.Custom (
-            "demo",
-            [
-                CSSProp.BorderRadius theme.shape.borderRadius
-                CSSProp.BackgroundColor theme.palette.grey.``200``
-                CSSProp.Display "flex"
-                CSSProp.JustifyContent "center"
-                CSSProp.PaddingTop (theme.spacing.unit * 2)
-                CSSProp.PaddingBottom (theme.spacing.unit * 2)
-                customCss smBreakpoint [
-                    CSSProp.PaddingLeft (theme.spacing.unit * 3)
-                    CSSProp.PaddingRight (theme.spacing.unit * 3)
-                    CSSProp.PaddingTop (theme.spacing.unit * 6)
-                    CSSProp.PaddingBottom (theme.spacing.unit * 3)
-                ]
-            ] |> toObj |> unbox |> theme.mixins.gutters)
-        customStyle "header" [
+        Styles.Custom' ("demo", demoStyle)
+        Styles.Custom ("header", [
             CSSProp.Display "none"
             customCss smBreakpoint [
                 CSSProp.Display "flex"
@@ -56,8 +57,8 @@ let demoStyles (theme : ITheme) : IStyles list =
                 CSSProp.Top 0
                 CSSProp.Right theme.spacing.unit
             ]
-        ]
-        customStyle "code" [
+        ])
+        Styles.Custom ("code", [
             CSSProp.Display "none"
             CSSProp.Padding 0
             CSSProp.Margin 0
@@ -69,17 +70,17 @@ let demoStyles (theme : ITheme) : IStyles list =
                 CSSProp.Margin "0px !important"
                 CSSProp.BorderRadius "0px !important"
             ]
-        ]
+        ])
     ]
 
-[<Pojo>]
+
 type DemoProps =
     abstract member demoPath: string with get,set
     abstract member title: string with get,set
     abstract member demoElement: (unit->ReactElement) with get,set
     inherit IClassesProps
 
-[<Pojo>]
+
 type DemoClasses =
     abstract member root : string
     abstract member header : string
@@ -88,7 +89,7 @@ type DemoClasses =
     // abstract member sourceButton : string
     inherit IClasses
 
-[<Pojo>]
+
 type DemoState = {
     expanded: bool
 }
@@ -100,17 +101,15 @@ let wrapWithFsharp text =
 ```
     "
 
-type DemoComponent(p) as this =
+type DemoComponent(p) =
     inherit PureComponent<DemoProps,DemoState>(p)
     do
-        this.setInitState { expanded = false }
+        base.setInitState { expanded = false }
 
-    let toggleSource = this.ToggleSource
-
-    member __.ToggleSource _ =
+    member this.ToggleSource _ =
         this.setState (fun s _ -> { s with expanded = not s.expanded })
 
-    override __.render() =
+    override this.render() =
         let demo = !!(demosContext $ this.props.demoPath)
         let classes : DemoClasses = !!this.props.classes
         fragment [] [
@@ -127,7 +126,7 @@ type DemoComponent(p) as this =
                         ] [
                             iconButton [
                                 HTMLAttr.Custom ("aria-label", "Source of demo")
-                                OnClick toggleSource
+                                OnClick this.ToggleSource
                             ] [ icon [] [ str "code" ]]
                         ]
                     ]

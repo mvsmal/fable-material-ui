@@ -1,6 +1,7 @@
 [<AutoOpen>]
 module rec Fable.MaterialUI
 open System
+open Fable.Core
 
 [<AutoOpen>]
 module Themes =
@@ -179,322 +180,328 @@ module Themes =
     type IStyles = interface end
 
     type Styles =
-        | AdornedStart of CSSProp list
-        | AdornedEnd of CSSProp list
-        | NotchedOutline of CSSProp list
-        | InputAdornedStart of CSSProp list
-        | InputAdornedEnd of CSSProp list
-        | Absolute of CSSProp list
-        | Action of CSSProp list
-        | ActionIcon of CSSProp list
-        | ActionIconActionPosLeft of CSSProp list
-        | Actions of CSSProp list
-        | AlignCenter of CSSProp list
-        | AlignJistify of CSSProp list
-        | AlignLeft of CSSProp list
-        | AlignRight of CSSProp list
-        | AlternativeLabel of CSSProp list
-        | AnchorOriginBottomCenter of CSSProp list
-        | AnchorOriginBottomLeft of CSSProp list
-        | AnchorOriginBottomRight of CSSProp list
-        | AnchorOriginTopCenter of CSSProp list
-        | AnchorOriginTopLeft of CSSProp list
-        | AnchorOriginTopRight of CSSProp list
-        | Animated of CSSProp list
-        | Asterisk of CSSProp list
-        | Avatar of CSSProp list
-        | AvatarChildren of CSSProp list
-        | Badge of CSSProp list
-        | Bar of CSSProp list
-        | Bar1Buffer of CSSProp list
-        | Bar1Determinate of CSSProp list
-        | Bar1Indeterminate of CSSProp list
-        | Bar2Buffer of CSSProp list
-        | Bar2Determinate of CSSProp list
-        | Bar2Indeterminate of CSSProp list
-        | BarColorPrimary of CSSProp list
-        | BarColorSecondary of CSSProp list
-        | Body of CSSProp list
-        | Body1 of CSSProp list
-        | Body2 of CSSProp list
-        | Button of CSSProp list
-        | Caption of CSSProp list
-        | Centered of CSSProp list
-        | Checked of CSSProp list
-        | Child of CSSProp list
-        | ChildLeaving of CSSProp list
-        | ChildPulsate of CSSProp list
-        | Circle of CSSProp list
-        | CircleIndeterminate of CSSProp list
-        | CircleStatic of CSSProp list
-        | Clickable of CSSProp list
-        | ColorAction of CSSProp list
-        | ColorDefault of CSSProp list
-        | ColorDisabled of CSSProp list
-        | ColorError of CSSProp list
-        | ColorInherit of CSSProp list
-        | ColorPrimary of CSSProp list
-        | ColorSecondary of CSSProp list
-        | ColorTextPrimary of CSSProp list
-        | ColorTextSecondary of CSSProp list
-        | Completed of CSSProp list
-        | Contained of CSSProp list
-        | ContainedPrimary of CSSProp list
-        | ContainedSecondary of CSSProp list
-        | Container of CSSProp list
-        | Content of CSSProp list
-        | Default of CSSProp list
-        | Deletable of CSSProp list
-        | DeleteIcon of CSSProp list
-        | Dense of CSSProp list
-        | Disabled of CSSProp list
-        | Display1 of CSSProp list
-        | Display2 of CSSProp list
-        | Display3 of CSSProp list
-        | Display4 of CSSProp list
-        | Divider of CSSProp list
-        | Docked of CSSProp list
-        | Dot of CSSProp list
-        | DotActive of CSSProp list
-        | Dots of CSSProp list
-        | Elevation0 of CSSProp list
-        | Elevation1 of CSSProp list
-        | Elevation10 of CSSProp list
-        | Elevation11 of CSSProp list
-        | Elevation12 of CSSProp list
-        | Elevation13 of CSSProp list
-        | Elevation14 of CSSProp list
-        | Elevation15 of CSSProp list
-        | Elevation16 of CSSProp list
-        | Elevation17 of CSSProp list
-        | Elevation18 of CSSProp list
-        | Elevation19 of CSSProp list
-        | Elevation2 of CSSProp list
-        | Elevation20 of CSSProp list
-        | Elevation21 of CSSProp list
-        | Elevation22 of CSSProp list
-        | Elevation23 of CSSProp list
-        | Elevation24 of CSSProp list
-        | Elevation3 of CSSProp list
-        | Elevation4 of CSSProp list
-        | Elevation5 of CSSProp list
-        | Elevation6 of CSSProp list
-        | Elevation7 of CSSProp list
-        | Elevation8 of CSSProp list
-        | Elevation9 of CSSProp list
-        | Entered of CSSProp list
-        | Error of CSSProp list
-        | ExpandIcon of CSSProp list
-        | Expanded of CSSProp list
-        | ExtendedFab of CSSProp list
-        | Fab of CSSProp list
-        | Filled of CSSProp list
-        | Fixed of CSSProp list
-        | Flat of CSSProp list
-        | FlatPrimary of CSSProp list
-        | FlatSecondary of CSSProp list
-        | FlexContainer of CSSProp list
-        | FocusVisible of CSSProp list
-        | FocusHiglight of CSSProp list
-        | Focused of CSSProp list
-        | FontSizeInherit of CSSProp list
-        | Footer of CSSProp list
-        | Form of CSSProp list
-        | FormControl of CSSProp list
-        | FullWidth of CSSProp list
-        | GutterBottom of CSSProp list
-        | Gutters of CSSProp list
-        | H1 of CSSProp list
-        | H2 of CSSProp list
-        | H3 of CSSProp list
-        | H4 of CSSProp list
-        | H5 of CSSProp list
-        | H6 of CSSProp list
-        | Subtitle1 of CSSProp list
-        | Subtitle2 of CSSProp list
-        | Overline of CSSProp list
-        | SrOnly of CSSProp list
-        | Head of CSSProp list
-        | Headline of CSSProp list
-        | Hidden of CSSProp list
-        | Horizontal of CSSProp list
-        | Hover of CSSProp list
-        | Icon of CSSProp list
-        | IconContainer of CSSProp list
-        | IconDirectionAsc of CSSProp list
-        | IconDirectionDesc of CSSProp list
-        | Img of CSSProp list
-        | ImgFullHeight of CSSProp list
-        | ImgFullWidth of CSSProp list
-        | Indeterminate of CSSProp list
-        | Indicator of CSSProp list
-        | Input of CSSProp list
-        | InputMarginDense of CSSProp list
-        | InputMultiline of CSSProp list
-        | InputType of CSSProp list
-        | InputTypeSearch of CSSProp list
-        | Inset of CSSProp list
-        | Invisible of CSSProp list
-        | Item of CSSProp list
-        | Label of CSSProp list
-        | LabelContainer of CSSProp list
-        | LabelIcon of CSSProp list
-        | LabelPlacementStart of CSSProp list
-        | LabelWrapped of CSSProp list
-        | Last of CSSProp list
-        | Layout of CSSProp list
-        | Light of CSSProp list
-        | Line of CSSProp list
-        | LineHorizontal of CSSProp list
-        | LineVertical of CSSProp list
-        | MarginDense of CSSProp list
-        | MarginNormal of CSSProp list
-        | Media of CSSProp list
-        | MenuItem of CSSProp list
-        | Message of CSSProp list
-        | Mini of CSSProp list
-        | Modal of CSSProp list
-        | Multiline of CSSProp list
-        | NoWrap of CSSProp list
-        | Numeric of CSSProp list
-        | Outlined of CSSProp list
-        | OutlinedPrimary of CSSProp list
-        | OutlinedSecondary of CSSProp list
-        | Padding of CSSProp list
-        | PaddingCheckbox of CSSProp list
-        | PaddingDense of CSSProp list
-        | PaddingNone of CSSProp list
-        | Paper of CSSProp list
-        | PaperAnchorBottom of CSSProp list
-        | PaperAnchorDockedBottom of CSSProp list
-        | PaperAnchorDockedLeft of CSSProp list
-        | PaperAnchorDockedRight of CSSProp list
-        | PaperAnchorDockedTop of CSSProp list
-        | PaperAnchorLeft of CSSProp list
-        | PaperAnchorRight of CSSProp list
-        | PaperAnchorTop of CSSProp list
-        | PaperFullScreen of CSSProp list
-        | PaperFullWidth of CSSProp list
-        | PaperScrollBody of CSSProp list
-        | PaperScrollPaper of CSSProp list
-        | PaperWidthMd of CSSProp list
-        | PaperWidthSm of CSSProp list
-        | PaperWidthXs of CSSProp list
-        | Paragraph of CSSProp list
-        | Popper of CSSProp list
-        | PositionAbsolute of CSSProp list
-        | PositionBottom of CSSProp list
-        | PositionEnd of CSSProp list
-        | PositionFixed of CSSProp list
-        | PositionStart of CSSProp list
-        | PositionStatic of CSSProp list
-        | PositionSticky of CSSProp list
-        | PositionTop of CSSProp list
-        | Primary of CSSProp list
-        | Progress of CSSProp list
-        | Raised of CSSProp list
-        | RaisedPrimary of CSSProp list
-        | RaisedSecondary of CSSProp list
-        | Required of CSSProp list
-        | Regular of CSSProp list
-        | Ripple of CSSProp list
-        | RipplePulsate of CSSProp list
-        | RippleVisible of CSSProp list
-        | Root of CSSProp list
-        | RootSubtitle of CSSProp list
-        | Rounded of CSSProp list
-        | Row of CSSProp list
-        | ScrollButtons of CSSProp list
-        | ScrollButtonsAuto of CSSProp list
-        | Scrollable of CSSProp list
-        | Scroller of CSSProp list
-        | Secondary of CSSProp list
-        | SecondaryAction of CSSProp list
-        | Select of CSSProp list
-        | SelectIcon of CSSProp list
-        | SelectMenu of CSSProp list
-        | SelectRoot of CSSProp list
-        | Selected of CSSProp list
-        | Shrink of CSSProp list
-        | SizeLarge of CSSProp list
-        | SizeSmall of CSSProp list
-        | Spacer of CSSProp list
-        | Static of CSSProp list
-        | Sticky of CSSProp list
-        | Subheader of CSSProp list
-        | Subheading of CSSProp list
-        | Subtitle of CSSProp list
-        | Svg of CSSProp list
-        | SwitchBase of CSSProp list
-        | Text of CSSProp list
-        | TextColorInherit of CSSProp list
-        | TextColorPrimary of CSSProp list
-        | TextColorSecondary of CSSProp list
-        | TextDense of CSSProp list
-        | TextPrimary of CSSProp list
-        | TextSecondary of CSSProp list
-        | Tile of CSSProp list
-        | Title of CSSProp list
-        | TitlePositionBottom of CSSProp list
-        | TitlePositionTop of CSSProp list
-        | TitleWrap of CSSProp list
-        | TitleWrapActionPosLeft of CSSProp list
-        | TitleWrapActionPosRight of CSSProp list
-        | Toolbar of CSSProp list
-        | Tooltip of CSSProp list
-        | TooltipPlacementBottom of CSSProp list
-        | TooltipPlacementLeft of CSSProp list
-        | TooltipPlacementRight of CSSProp list
-        | TooltipPlacementTop of CSSProp list
-        | Touch of CSSProp list
-        | TouchRipple of CSSProp list
-        | Transition of CSSProp list
-        | Underline of CSSProp list
-        | Vertical of CSSProp list
-        | Wrapper of CSSProp list
-        | WrapperInner of CSSProp list
-        | ZeroMinWidth of CSSProp list
-        | ``Align-content-xs-center`` of CSSProp list
-        | ``Align-content-xs-flex-end`` of CSSProp list
-        | ``Align-content-xs-flex-start`` of CSSProp list
-        | ``Align-content-xs-space-around`` of CSSProp list
-        | ``Align-content-xs-space-between`` of CSSProp list
-        | ``Align-items-xs-baseline`` of CSSProp list
-        | ``Align-items-xs-center`` of CSSProp list
-        | ``Align-items-xs-flex-end`` of CSSProp list
-        | ``Align-items-xs-flex-start`` of CSSProp list
-        | ``Direction-xs-column-reverse`` of CSSProp list
-        | ``Direction-xs-column`` of CSSProp list
-        | ``Direction-xs-row-reverse`` of CSSProp list
-        | ``Grid-xs-10`` of CSSProp list
-        | ``Grid-xs-11`` of CSSProp list
-        | ``Grid-xs-12`` of CSSProp list
-        | ``Grid-xs-1`` of CSSProp list
-        | ``Grid-xs-2`` of CSSProp list
-        | ``Grid-xs-3`` of CSSProp list
-        | ``Grid-xs-4`` of CSSProp list
-        | ``Grid-xs-5`` of CSSProp list
-        | ``Grid-xs-6`` of CSSProp list
-        | ``Grid-xs-7`` of CSSProp list
-        | ``Grid-xs-8`` of CSSProp list
-        | ``Grid-xs-9`` of CSSProp list
-        | ``Grid-xs-auto`` of CSSProp list
-        | ``Grid-xs-true`` of CSSProp list
-        | ``Justify-xs-center`` of CSSProp list
-        | ``Justify-xs-flex-end`` of CSSProp list
-        | ``Justify-xs-space-around`` of CSSProp list
-        | ``Justify-xs-space-between`` of CSSProp list
-        | ``Justify-xs-space-evenly`` of CSSProp list
-        | ``Spacing-xs-16`` of CSSProp list
-        | ``Spacing-xs-24`` of CSSProp list
-        | ``Spacing-xs-32`` of CSSProp list
-        | ``Spacing-xs-40`` of CSSProp list
-        | ``Spacing-xs-8`` of CSSProp list
-        | ``Wrap-xs-nowrap`` of CSSProp list
-        | ``Wrap-xs-wrap-reverse`` of CSSProp list
-
-        | [<Erase>] Custom of string * obj
+        | [<Erase>] Custom' of string * obj
         interface IStyles
+
+    module Styles =
+        open Fable.Core.JsInterop
+
+        let Custom (key, (props : CSSProp list)) =
+            Styles.Custom' (key, props |> keyValueList CaseRules.LowerFirst)
+
+        let inline AdornedStart props = Custom ("adornedStart", props)
+        let inline AdornedEnd props = Custom ("adornedEnd", props)
+        let inline NotchedOutline props = Custom ("notchedOutline", props)
+        let inline InputAdornedStart props = Custom ("inputAdornedStart", props)
+        let inline InputAdornedEnd props = Custom ("inputAdornedEnd", props)
+        let inline Absolute props = Custom ("absolute", props)
+        let inline Action props = Custom ("action", props)
+        let inline ActionIcon props = Custom ("actionIcon", props)
+        let inline ActionIconActionPosLeft props = Custom ("actionIconActionPosLeft", props)
+        let inline Actions props = Custom ("actions", props)
+        let inline AlignCenter props = Custom ("alignCenter", props)
+        let inline AlignJistify props = Custom ("alignJistify", props)
+        let inline AlignLeft props = Custom ("alignLeft", props)
+        let inline AlignRight props = Custom ("alignRight", props)
+        let inline AlternativeLabel props = Custom ("alternativeLabel", props)
+        let inline AnchorOriginBottomCenter props = Custom ("anchorOriginBottomCenter", props)
+        let inline AnchorOriginBottomLeft props = Custom ("anchorOriginBottomLeft", props)
+        let inline AnchorOriginBottomRight props = Custom ("anchorOriginBottomRight", props)
+        let inline AnchorOriginTopCenter props = Custom ("anchorOriginTopCenter", props)
+        let inline AnchorOriginTopLeft props = Custom ("anchorOriginTopLeft", props)
+        let inline AnchorOriginTopRight props = Custom ("anchorOriginTopRight", props)
+        let inline Animated props = Custom ("animated", props)
+        let inline Asterisk props = Custom ("asterisk", props)
+        let inline Avatar props = Custom ("avatar", props)
+        let inline AvatarChildren props = Custom ("avatarChildren", props)
+        let inline Badge props = Custom ("badge", props)
+        let inline Bar props = Custom ("bar", props)
+        let inline Bar1Buffer props = Custom ("bar1Buffer", props)
+        let inline Bar1Determinate props = Custom ("bar1Determinate", props)
+        let inline Bar1Indeterminate props = Custom ("bar1Indeterminate", props)
+        let inline Bar2Buffer props = Custom ("bar2Buffer", props)
+        let inline Bar2Determinate props = Custom ("bar2Determinate", props)
+        let inline Bar2Indeterminate props = Custom ("bar2Indeterminate", props)
+        let inline BarColorPrimary props = Custom ("barColorPrimary", props)
+        let inline BarColorSecondary props = Custom ("barColorSecondary", props)
+        let inline Body props = Custom ("body", props)
+        let inline Body1 props = Custom ("body1", props)
+        let inline Body2 props = Custom ("body2", props)
+        let inline Button props = Custom ("button", props)
+        let inline Caption props = Custom ("caption", props)
+        let inline Centered props = Custom ("centered", props)
+        let inline Checked props = Custom ("checked", props)
+        let inline Child props = Custom ("child", props)
+        let inline ChildLeaving props = Custom ("childLeaving", props)
+        let inline ChildPulsate props = Custom ("childPulsate", props)
+        let inline Circle props = Custom ("circle", props)
+        let inline CircleIndeterminate props = Custom ("circleIndeterminate", props)
+        let inline CircleStatic props = Custom ("circleStatic", props)
+        let inline Clickable props = Custom ("clickable", props)
+        let inline ColorAction props = Custom ("colorAction", props)
+        let inline ColorDefault props = Custom ("colorDefault", props)
+        let inline ColorDisabled props = Custom ("colorDisabled", props)
+        let inline ColorError props = Custom ("colorError", props)
+        let inline ColorInherit props = Custom ("colorInherit", props)
+        let inline ColorPrimary props = Custom ("colorPrimary", props)
+        let inline ColorSecondary props = Custom ("colorSecondary", props)
+        let inline ColorTextPrimary props = Custom ("colorTextPrimary", props)
+        let inline ColorTextSecondary props = Custom ("colorTextSecondary", props)
+        let inline Complet inlineed props = Custom ("complet inlineed", props)
+        let inline Contained props = Custom ("contained", props)
+        let inline ContainedPrimary props = Custom ("containedPrimary", props)
+        let inline ContainedSecondary props = Custom ("containedSecondary", props)
+        let inline Container props = Custom ("container", props)
+        let inline Content props = Custom ("content", props)
+        let inline Default props = Custom ("default", props)
+        let inline Delete props = Custom ("deletable", props)
+        let inline DeleteIcon props = Custom ("deleteIcon", props)
+        let inline Dense props = Custom ("dense", props)
+        let inline Disabled props = Custom ("disabled", props)
+        let inline Display1 props = Custom ("display1", props)
+        let inline Display2 props = Custom ("display2", props)
+        let inline Display3 props = Custom ("display3", props)
+        let inline Display4 props = Custom ("display4", props)
+        let inline Divider props = Custom ("divider", props)
+        let inline Docked props = Custom ("docked", props)
+        let inline Dot props = Custom ("dot", props)
+        let inline DotActive props = Custom ("dotActive", props)
+        let inline Dots props = Custom ("dots", props)
+        let inline Elevation0 props = Custom ("elevation0", props)
+        let inline Elevation1 props = Custom ("elevation1", props)
+        let inline Elevation10 props = Custom ("elevation10", props)
+        let inline Elevation11 props = Custom ("elevation11", props)
+        let inline Elevation12 props = Custom ("elevation12", props)
+        let inline Elevation13 props = Custom ("elevation13", props)
+        let inline Elevation14 props = Custom ("elevation14", props)
+        let inline Elevation15 props = Custom ("elevation15", props)
+        let inline Elevation16 props = Custom ("elevation16", props)
+        let inline Elevation17 props = Custom ("elevation17", props)
+        let inline Elevation18 props = Custom ("elevation18", props)
+        let inline Elevation19 props = Custom ("elevation19", props)
+        let inline Elevation2 props = Custom ("elevation2", props)
+        let inline Elevation20 props = Custom ("elevation20", props)
+        let inline Elevation21 props = Custom ("elevation21", props)
+        let inline Elevation22 props = Custom ("elevation22", props)
+        let inline Elevation23 props = Custom ("elevation23", props)
+        let inline Elevation24 props = Custom ("elevation24", props)
+        let inline Elevation3 props = Custom ("elevation3", props)
+        let inline Elevation4 props = Custom ("elevation4", props)
+        let inline Elevation5 props = Custom ("elevation5", props)
+        let inline Elevation6 props = Custom ("elevation6", props)
+        let inline Elevation7 props = Custom ("elevation7", props)
+        let inline Elevation8 props = Custom ("elevation8", props)
+        let inline Elevation9 props = Custom ("elevation9", props)
+        let inline Entered props = Custom ("entered", props)
+        let inline Error props = Custom ("error", props)
+        let inline ExpandIcon props = Custom ("expandIcon", props)
+        let inline Expanded props = Custom ("expanded", props)
+        let inline ExtendedFab props = Custom ("extendedFab", props)
+        let inline Fab props = Custom ("fab", props)
+        let inline Filled props = Custom ("filled", props)
+        let inline Fixed props = Custom ("fixed", props)
+        let inline Flat props = Custom ("flat", props)
+        let inline FlatPrimary props = Custom ("flatPrimary", props)
+        let inline FlatSecondary props = Custom ("flatSecondary", props)
+        let inline FlexContainer props = Custom ("flexContainer", props)
+        let inline FocusVisible props = Custom ("focusVisible", props)
+        let inline FocusHiglight props = Custom ("focusHiglight", props)
+        let inline Focused props = Custom ("focused", props)
+        let inline FontSizeInherit props = Custom ("fontSizeInherit", props)
+        let inline Footer props = Custom ("footer", props)
+        let inline Form props = Custom ("form", props)
+        let inline FormControl props = Custom ("formControl", props)
+        let inline FullWidth props = Custom ("fullWidth", props)
+        let inline GutterBottom props = Custom ("gutterBottom", props)
+        let inline Gutters props = Custom ("gutters", props)
+        let inline H1 props = Custom ("h1", props)
+        let inline H2 props = Custom ("h2", props)
+        let inline H3 props = Custom ("h3", props)
+        let inline H4 props = Custom ("h4", props)
+        let inline H5 props = Custom ("h5", props)
+        let inline H6 props = Custom ("h6", props)
+        let inline Subtitle1 props = Custom ("subtitle1", props)
+        let inline Subtitle2 props = Custom ("subtitle2", props)
+        let inline Overline props = Custom ("overline", props)
+        let inline SrOnly props = Custom ("srOnly", props)
+        let inline Head props = Custom ("head", props)
+        let inline Headline props = Custom ("headline", props)
+        let inline Hidden props = Custom ("hidden", props)
+        let inline Horizontal props = Custom ("horizontal", props)
+        let inline Hover props = Custom ("hover", props)
+        let inline Icon props = Custom ("icon", props)
+        let inline IconContainer props = Custom ("iconContainer", props)
+        let inline IconDirectionAsc props = Custom ("iconDirectionAsc", props)
+        let inline IconDirectionDesc props = Custom ("iconDirectionDesc", props)
+        let inline Img props = Custom ("img", props)
+        let inline ImgFullHeight props = Custom ("imgFullHeight", props)
+        let inline ImgFullWidth props = Custom ("imgFullWidth", props)
+        let inline Indeterminate props = Custom ("indeterminate", props)
+        let inline Indicator props = Custom ("indicator", props)
+        let inline Input props = Custom ("input", props)
+        let inline InputMarginDense props = Custom ("inputMarginDense", props)
+        let inline InputMultiline props = Custom ("inputMultiline", props)
+        let inline InputType props = Custom ("inputType", props)
+        let inline InputTypeSearch props = Custom ("inputTypeSearch", props)
+        let inline Inset props = Custom ("inset", props)
+        let inline Invisible props = Custom ("invisible", props)
+        let inline Item props = Custom ("item", props)
+        let inline Label props = Custom ("label", props)
+        let inline LabelContainer props = Custom ("labelContainer", props)
+        let inline LabelIcon props = Custom ("labelIcon", props)
+        let inline LabelPlacementStart props = Custom ("labelPlacementStart", props)
+        let inline LabelWrapped props = Custom ("labelWrapped", props)
+        let inline Last props = Custom ("last", props)
+        let inline Layout props = Custom ("layout", props)
+        let inline Light props = Custom ("light", props)
+        let inline Line props = Custom ("line", props)
+        let inline LineHorizontal props = Custom ("lineHorizontal", props)
+        let inline LineVertical props = Custom ("lineVertical", props)
+        let inline MarginDense props = Custom ("marginDense", props)
+        let inline MarginNormal props = Custom ("marginNormal", props)
+        let inline Media props = Custom ("media", props)
+        let inline MenuItem props = Custom ("menuItem", props)
+        let inline Message props = Custom ("message", props)
+        let inline Mini props = Custom ("mini", props)
+        let inline Modal props = Custom ("modal", props)
+        let inline Multiline props = Custom ("multiline", props)
+        let inline NoWrap props = Custom ("noWrap", props)
+        let inline Numeric props = Custom ("numeric", props)
+        let inline Outlined props = Custom ("outlined", props)
+        let inline OutlinedPrimary props = Custom ("outlinedPrimary", props)
+        let inline OutlinedSecondary props = Custom ("outlinedSecondary", props)
+        let inline Padding props = Custom ("padding", props)
+        let inline PaddingCheckbox props = Custom ("paddingCheckbox", props)
+        let inline PaddingDense props = Custom ("paddingDense", props)
+        let inline PaddingNone props = Custom ("paddingNone", props)
+        let inline Paper props = Custom ("paper", props)
+        let inline PaperAnchorBottom props = Custom ("paperAnchorBottom", props)
+        let inline PaperAnchorDockedBottom props = Custom ("paperAnchorDockedBottom", props)
+        let inline PaperAnchorDockedLeft props = Custom ("paperAnchorDockedLeft", props)
+        let inline PaperAnchorDockedRight props = Custom ("paperAnchorDockedRight", props)
+        let inline PaperAnchorDockedTop props = Custom ("paperAnchorDockedTop", props)
+        let inline PaperAnchorLeft props = Custom ("paperAnchorLeft", props)
+        let inline PaperAnchorRight props = Custom ("paperAnchorRight", props)
+        let inline PaperAnchorTop props = Custom ("paperAnchorTop", props)
+        let inline PaperFullScreen props = Custom ("paperFullScreen", props)
+        let inline PaperFullWidth props = Custom ("paperFullWidth", props)
+        let inline PaperScrollBody props = Custom ("paperScrollBody", props)
+        let inline PaperScrollPaper props = Custom ("paperScrollPaper", props)
+        let inline PaperWidthMd props = Custom ("paperWidthMd", props)
+        let inline PaperWidthSm props = Custom ("paperWidthSm", props)
+        let inline PaperWidthXs props = Custom ("paperWidthXs", props)
+        let inline Paragraph props = Custom ("paragraph", props)
+        let inline Popper props = Custom ("popper", props)
+        let inline PositionAbsolute props = Custom ("positionAbsolute", props)
+        let inline PositionBottom props = Custom ("positionBottom", props)
+        let inline PositionEnd props = Custom ("positionEnd", props)
+        let inline PositionFixed props = Custom ("positionFixed", props)
+        let inline PositionStart props = Custom ("positionStart", props)
+        let inline PositionStatic props = Custom ("positionStatic", props)
+        let inline PositionSticky props = Custom ("positionSticky", props)
+        let inline PositionTop props = Custom ("positionTop", props)
+        let inline Primary props = Custom ("primary", props)
+        let inline Progress props = Custom ("progress", props)
+        let inline Raised props = Custom ("raised", props)
+        let inline RaisedPrimary props = Custom ("raisedPrimary", props)
+        let inline RaisedSecondary props = Custom ("raisedSecondary", props)
+        let inline Required props = Custom ("required", props)
+        let inline Regular props = Custom ("regular", props)
+        let inline Ripple props = Custom ("ripple", props)
+        let inline RipplePulsate props = Custom ("ripplePulsate", props)
+        let inline RippleVisible props = Custom ("rippleVisible", props)
+        let inline Root props = Custom ("root", props)
+        let inline RootSubtitle props = Custom ("rootSubtitle", props)
+        let inline Rounded props = Custom ("rounded", props)
+        let inline Row props = Custom ("row", props)
+        let inline ScrollButtons props = Custom ("scrollButtons", props)
+        let inline ScrollButtonsAuto props = Custom ("scrollButtonsAuto", props)
+        let inline Scrollable props = Custom ("scrollable", props)
+        let inline Scroller props = Custom ("scroller", props)
+        let inline Secondary props = Custom ("secondary", props)
+        let inline SecondaryAction props = Custom ("secondaryAction", props)
+        let inline Select props = Custom ("select", props)
+        let inline SelectIcon props = Custom ("selectIcon", props)
+        let inline SelectMenu props = Custom ("selectMenu", props)
+        let inline SelectRoot props = Custom ("selectRoot", props)
+        let inline Selected props = Custom ("selected", props)
+        let inline Shrink props = Custom ("shrink", props)
+        let inline SizeLarge props = Custom ("sizeLarge", props)
+        let inline SizeSmall props = Custom ("sizeSmall", props)
+        let inline Spacer props = Custom ("spacer", props)
+        let inline Static props = Custom ("static", props)
+        let inline Sticky props = Custom ("sticky", props)
+        let inline Subheader props = Custom ("subheader", props)
+        let inline Subheading props = Custom ("subheading", props)
+        let inline Subtitle props = Custom ("subtitle", props)
+        let inline Svg props = Custom ("svg", props)
+        let inline SwitchBase props = Custom ("switchBase", props)
+        let inline Text props = Custom ("text", props)
+        let inline TextColorInherit props = Custom ("textColorInherit", props)
+        let inline TextColorPrimary props = Custom ("textColorPrimary", props)
+        let inline TextColorSecondary props = Custom ("textColorSecondary", props)
+        let inline TextDense props = Custom ("textDense", props)
+        let inline TextPrimary props = Custom ("textPrimary", props)
+        let inline TextSecondary props = Custom ("textSecondary", props)
+        let inline Tile props = Custom ("tile", props)
+        let inline Title props = Custom ("title", props)
+        let inline TitlePositionBottom props = Custom ("titlePositionBottom", props)
+        let inline TitlePositionTop props = Custom ("titlePositionTop", props)
+        let inline TitleWrap props = Custom ("titleWrap", props)
+        let inline TitleWrapActionPosLeft props = Custom ("titleWrapActionPosLeft", props)
+        let inline TitleWrapActionPosRight props = Custom ("titleWrapActionPosRight", props)
+        let inline Toolbar props = Custom ("toolbar", props)
+        let inline Tooltip props = Custom ("tooltip", props)
+        let inline TooltipPlacementBottom props = Custom ("tooltipPlacementBottom", props)
+        let inline TooltipPlacementLeft props = Custom ("tooltipPlacementLeft", props)
+        let inline TooltipPlacementRight props = Custom ("tooltipPlacementRight", props)
+        let inline TooltipPlacementTop props = Custom ("tooltipPlacementTop", props)
+        let inline Touch props = Custom ("touch", props)
+        let inline TouchRipple props = Custom ("touchRipple", props)
+        let inline Transition props = Custom ("transition", props)
+        let inline Underline props = Custom ("underline", props)
+        let inline Vertical props = Custom ("vertical", props)
+        let inline Wrapper props = Custom ("wrapper", props)
+        let inline WrapperInner props = Custom ("wrapperInner", props)
+        let inline ZeroMinWidth props = Custom ("zeroMinWidth", props)
+        let inline ``Align-content-xs-center`` props = Custom ("align-content-xs-center``", props)
+        let inline ``Align-content-xs-flex-end`` props = Custom ("align-content-xs-flex-end``", props)
+        let inline ``Align-content-xs-flex-start`` props = Custom ("align-content-xs-flex-start``", props)
+        let inline ``Align-content-xs-space-around`` props = Custom ("align-content-xs-space-around``", props)
+        let inline ``Align-content-xs-space-between`` props = Custom ("align-content-xs-space-between``", props)
+        let inline ``Align-items-xs-baseline`` props = Custom ("align-items-xs-baseline``", props)
+        let inline ``Align-items-xs-center`` props = Custom ("align-items-xs-center``", props)
+        let inline ``Align-items-xs-flex-end`` props = Custom ("align-items-xs-flex-end``", props)
+        let inline ``Align-items-xs-flex-start`` props = Custom ("align-items-xs-flex-start``", props)
+        let inline ``Direction-xs-column-reverse`` props = Custom ("direction-xs-column-reverse``", props)
+        let inline ``Direction-xs-column`` props = Custom ("direction-xs-column``", props)
+        let inline ``Direction-xs-row-reverse`` props = Custom ("direction-xs-row-reverse``", props)
+        let inline ``Grid-xs-10`` props = Custom ("grid-xs-10``", props)
+        let inline ``Grid-xs-11`` props = Custom ("grid-xs-11``", props)
+        let inline ``Grid-xs-12`` props = Custom ("grid-xs-12``", props)
+        let inline ``Grid-xs-1`` props = Custom ("grid-xs-1``", props)
+        let inline ``Grid-xs-2`` props = Custom ("grid-xs-2``", props)
+        let inline ``Grid-xs-3`` props = Custom ("grid-xs-3``", props)
+        let inline ``Grid-xs-4`` props = Custom ("grid-xs-4``", props)
+        let inline ``Grid-xs-5`` props = Custom ("grid-xs-5``", props)
+        let inline ``Grid-xs-6`` props = Custom ("grid-xs-6``", props)
+        let inline ``Grid-xs-7`` props = Custom ("grid-xs-7``", props)
+        let inline ``Grid-xs-8`` props = Custom ("grid-xs-8``", props)
+        let inline ``Grid-xs-9`` props = Custom ("grid-xs-9``", props)
+        let inline ``Grid-xs-auto`` props = Custom ("grid-xs-auto``", props)
+        let inline ``Grid-xs-true`` props = Custom ("grid-xs-true``", props)
+        let inline ``Justify-xs-center`` props = Custom ("justify-xs-center``", props)
+        let inline ``Justify-xs-flex-end`` props = Custom ("justify-xs-flex-end``", props)
+        let inline ``Justify-xs-space-around`` props = Custom ("justify-xs-space-around``", props)
+        let inline ``Justify-xs-space-between`` props = Custom ("justify-xs-space-between``", props)
+        let inline ``Justify-xs-space-evenly`` props = Custom ("justify-xs-space-evenly``", props)
+        let inline ``Spacing-xs-16`` props = Custom ("spacing-xs-16``", props)
+        let inline ``Spacing-xs-24`` props = Custom ("spacing-xs-24``", props)
+        let inline ``Spacing-xs-32`` props = Custom ("spacing-xs-32``", props)
+        let inline ``Spacing-xs-40`` props = Custom ("spacing-xs-40``", props)
+        let inline ``Spacing-xs-8`` props = Custom ("spacing-xs-8``", props)
+        let inline ``Wrap-xs-nowrap`` props = Custom ("wrap-xs-nowrap``", props)
+        let inline ``Wrap-xs-wrap-reverse`` props = Custom ("wrap-xs-wrap-reverse``", props)
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
         | Styles of IStyles list
@@ -853,7 +860,11 @@ module Colors =
 [<AutoOpen>]
 module Props =
     open Fable.Core
+    open Fable.Core.JsInterop
     open Fable.Helpers.React.Props
+
+    let inline private customHtmlAttr key props =
+        HTMLAttr.Custom(key, props |> keyValueList CaseRules.LowerFirst)
 
     type [<StringEnum; RequireQualifiedAccess>] MouseEvent = OnClick | OnMouseDown | OnMouseUp
     type [<StringEnum; RequireQualifiedAccess>] TouchEvent = OnTouchStart | OnTouchEnd
@@ -895,14 +906,26 @@ module Props =
         | Exit of float
 
     type TransitionDuration = U2<float, TransitionDurationProp list>
+    let inline private transitionDurationToHtmlAttr key (duration : TransitionDuration) =
+        let prop = match duration with
+                   | U2.Case1 float -> float
+                   | U2.Case2 props -> props |> keyValueList CaseRules.LowerFirst |> unbox
+        HTMLAttr.Custom(key, prop)
+
     type AutoTransitionDuration = U3<float, TransitionDuration list, AutoEnum>
+    let inline private autoTransitionDurationToHtmlAttr key (duration : AutoTransitionDuration) =
+        let prop = match duration with
+                   | U3.Case1 float -> float
+                   | U3.Case2 props -> props |> keyValueList CaseRules.LowerFirst |> unbox
+                   | U3.Case3 auto -> auto |> unbox
+        HTMLAttr.Custom (key, prop)
+
     type RefProp = U2<obj,(Fable.Import.React.ReactInstance->unit)>
 
     type MaterialProp =
         | Active of bool
         | AnchorEl of Fable.Import.React.ReactInstance
         | CheckedIcon of Fable.Import.React.ReactNode
-        | Classes of Themes.IClassNames list
         | Color of ComponentColor
         | Component of Fable.Import.React.ReactType
         | Container of Fable.Import.React.ReactInstance
@@ -916,7 +939,6 @@ module Props =
         | FullWidth of bool
         | Icon of Fable.Import.React.ReactNode
         | In of bool
-        | InputProps of IHTMLProp list
         | InputRef of RefProp
         | Inset of bool
         | KeepMounted of bool
@@ -927,8 +949,6 @@ module Props =
         | Optional of Fable.Import.React.ReactNode
         | Placement of PlacementType
         | RowsMax of int
-        | Timeout of TransitionDuration
-        | TransitionDuration of TransitionDuration
         | Value of obj // ? Should it be strongly typed? Like U{N}<string, int, float, decimal, arrays...>
 
         | OnClose of (obj->unit)
@@ -941,6 +961,17 @@ module Props =
         | OnOpen of (obj->unit)
         | OnRendered of (obj->unit)
         interface IHTMLProp
+    
+    [<AutoOpen>]
+    module MaterialProp =
+        open Fable.Core.JsInterop
+        let inline Classes (classNames : IClassNames list) =
+            customHtmlAttr "classes" classNames
+        let inline InputProps (props : IHTMLProp list) =
+            customHtmlAttr "inputProps" props
+        let Timeout = transitionDurationToHtmlAttr "timeout"
+        let TransitionDuration = transitionDurationToHtmlAttr "transitionDuration"
+        let TransitionDurationAuto = autoTransitionDurationToHtmlAttr "transitionDuration"
 
     type TransitionProp =
         | MountOnEnter of bool
@@ -968,9 +999,12 @@ module Props =
         interface IHTMLProp
 
     type AvatarProp =
-        | ImgProps of IHTMLProp list
         | Sizes of string
         interface IHTMLProp
+    
+    [<AutoOpen>]
+    module AvatarProp =
+        let inline ImgProps (props : IHTMLProp list) = customHtmlAttr "imgProps" props
 
     type BackdropProp =
         | Invisible of bool
@@ -1049,10 +1083,15 @@ module Props =
         | Action of Fable.Import.React.ReactNode
         | Avatar of Fable.Import.React.ReactNode
         | Subheader of Fable.Import.React.ReactNode
-        | SubheaderTypographyProps of IHTMLProp list
         | Title of Fable.Import.React.ReactNode
-        | TitleTypographyProps of IHTMLProp list
         interface IHTMLProp
+    
+    [<AutoOpen>]
+    module CardHeaderProp =
+        let inline SubheaderTypographyProps (props : IHTMLProp list) =
+            customHtmlAttr "subheaderTypographyProps" props
+        let inline TitleTypographyProps (props : IHTMLProp list) =
+            customHtmlAttr "titleTypographyProps" props
 
     type CardMediaProp =
         | Image of string
@@ -1347,10 +1386,15 @@ module Props =
 
     type ListItemTextProp =
         | Primary of Fable.Import.React.ReactNode
-        | PrimaryTypographyProps of IHTMLProp list
         | Secondary of Fable.Import.React.ReactNode
-        | SecondaryTypographyProps of IHTMLProp list
         interface IHTMLProp
+    
+    [<AutoOpen>]
+    module ListItemTextProp =
+        let inline PrimaryTypographyProps (props : IHTMLProp list) =
+            customHtmlAttr "primaryTypographyProps" props
+        let inline SecondaryTypographyProps (props : IHTMLProp list) =
+            customHtmlAttr "secondaryTypographyProps" props
 
     type [<StringEnum; RequireQualifiedAccess>] ListSubheaderColor = Default | Primary | Inherit
 
@@ -1361,9 +1405,8 @@ module Props =
 
     type MenuProp =
         | DisableAutoFocusItem of bool
-        | TransitionDuration of AutoTransitionDuration
         interface IHTMLProp
-
+    
     type [<StringEnum; RequireQualifiedAccess>] MobileStepperPosition = Bottom | Top | Static
     type [<StringEnum; RequireQualifiedAccess>] MobileStepperVariant = Text | Dots | Progress
 
@@ -1402,14 +1445,14 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] PopoverHorizontalPosition = Left | Center | Right
     type [<StringEnum; RequireQualifiedAccess>] PopoverVerticalPosition = Top | Center | Bottom
     type [<StringEnum; RequireQualifiedAccess>] AnchorReference = AnchorEl | AnchorPosition | None
-    and [<Pojo>] AnchorPosition = {
+    and  AnchorPosition = {
         left: int
         top: int
     }
 
     type PopoverHorizontalOrigin = U2<int,PopoverHorizontalPosition>
     type PopoverVerticalOrigin = U2<int,PopoverVerticalPosition>
-    type [<Pojo>] PopoverOrigin = {
+    type  PopoverOrigin = {
         horizontal: PopoverHorizontalOrigin
         vertical: PopoverVerticalOrigin
     }
@@ -1425,9 +1468,8 @@ module Props =
         | GetContentAnchorEl of (obj->obj)
         | MarginThreshold of int
         | TransformOrigin of PopoverOrigin
-        | TransitionDuration of AutoTransitionDuration
         interface IHTMLProp
-
+    
     type PopperProp =
         | Modifies of obj
         | PopperOptions of obj
@@ -1463,7 +1505,7 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] SnackbarVerticalOrigin = Top | Center | Bottom
     type [<StringEnum; RequireQualifiedAccess>] SnackbarCloseReason = Timeout | Clickaway
 
-    type [<Pojo>] SnackbarOrigin = {
+    type  SnackbarOrigin = {
         vertical: SnackbarVerticalOrigin
         horizontal: SnackbarHorizontalOrigin
     }
@@ -1480,10 +1522,6 @@ module Props =
 
     type StepProp =
         | Completed of bool
-        interface IHTMLProp
-
-    type StepContentProp =
-        | TransitionDuration of AutoTransitionDuration
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] StepperOrientation = Vertical | Horizontal
@@ -1549,17 +1587,22 @@ module Props =
         abstract member page: int
 
     type TablePaginationProp =
-        | BackIconButtonProps of IHTMLProp list
         | Count of int
         | LabelDisplayedRows of (ILabelDisplayedRowsArgs->Fable.Import.React.ReactNode)
         | LabelRowsPerPage of Fable.Import.React.ReactNode
-        | NextIconButtonPropss of IHTMLProp list
         | OnChangePage of (obj->int->unit)
         | OnChangeRowsPerPage of (obj->unit)
         | Page of int
         | RowsPerPage of int
         | RowsPerPageOptions of int list
         interface IHTMLProp
+    
+    [<AutoOpen>]
+    module TablePaginationProp =
+        let inline BackIconButtonProps (props : IHTMLProp list) =
+            customHtmlAttr "backIconButtonProps" props
+        let inline NextIconButtonProps (props : IHTMLProp list) =
+            customHtmlAttr "nextIconButtonProps" props
 
     type TableRowProp =
         | Hover of bool
@@ -1697,18 +1740,26 @@ module Props =
         | DisabledBackground of string
 
     type PaletteProp =
-        | Common of PaletteCommonProp list
         | Type of Themes.PaletteType
-        | Primary of PaletteIntentionProp list
-        | Secondary of PaletteIntentionProp list
-        | Error of PaletteIntentionProp list
-        | Grey of (string*obj) list
         | ContrastThreshold of int
         | TonalOffset of float
-        | Text of PaletteTextProp list
         | Divider of string
-        | Background of PaletteBackgroundProp list
-        | Action of PaletteActionProp list
+        | [<Erase>] Custom of string*obj
+    
+    [<AutoOpen>]
+    module PaletteProp =
+        open Fable.Core.JsInterop
+        let inline customPaletteProp key props = PaletteProp.Custom(key, props |> keyValueList CaseRules.LowerFirst)
+
+        let inline Common (props : PaletteCommonProp list) = customPaletteProp "common" props
+        let inline Primary (props : PaletteIntentionProp list) = customPaletteProp "primary" props
+        let inline Secondary (props : PaletteIntentionProp list) = customPaletteProp "secondary" props
+        let inline Error (props : PaletteIntentionProp list) = customPaletteProp "error" props
+        let inline Grey (props : (string * obj) list) = customPaletteProp "grey" props
+        let inline Text (props : PaletteTextProp list) = customPaletteProp "text" props
+        let inline Background (props : PaletteBackgroundProp list) = customPaletteProp "background" props
+        let inline Action (props : PaletteActionProp list) = customPaletteProp "action" props
+
 
     type TextStyleProp =
         | FontFamily of string
@@ -1726,30 +1777,48 @@ module Props =
         | FontWeightRegular of int
         | FontWeightMedium of int
         | HtmlFontSize of string
-        | AllVariants of CSSProp list
         | UseNextVariants of bool
 
-        | H1 of TextStyleProp list
-        | H2 of TextStyleProp list
-        | H3 of TextStyleProp list
-        | H4 of TextStyleProp list
-        | H5 of TextStyleProp list
-        | H6 of TextStyleProp list
-        | Subtitle1 of TextStyleProp list
-        | Subtitle2 of TextStyleProp list
-        | Overline of TextStyleProp list
+        | [<Erase>] Custom of string*obj
 
-        | Body2 of TextStyleProp list
-        | Body1 of TextStyleProp list
-        | Caption of TextStyleProp list
-        | Button of TextStyleProp list
-        | [<Obsolete("Material-UI@3.2.0: Typography type `Display1` is deprecated. Please use `H4` instead")>] Display1 of TextStyleProp list
-        | [<Obsolete("Material-UI@3.2.0: Typography type `Display2` is deprecated. Please use `H3` instead")>] Display2 of TextStyleProp list
-        | [<Obsolete("Material-UI@3.2.0: Typography type `Display3` is deprecated. Please use `H2` instead")>] Display3 of TextStyleProp list
-        | [<Obsolete("Material-UI@3.2.0: Typography type `Display4` is deprecated. Please use `H1` instead")>] Display4 of TextStyleProp list
-        | [<Obsolete("Material-UI@3.2.0: Typography type `Headline` is deprecated. Please use `H5` instead")>] Headline of TextStyleProp list
-        | [<Obsolete("Material-UI@3.2.0: Typography type `Title` is deprecated. Please use `H6` instead")>] Title of TextStyleProp list
-        | [<Obsolete("Material-UI@3.2.0: Typography type `Subheading` is deprecated. Please use `Subtitle1` instead")>] Subheading of TextStyleProp list
+    [<AutoOpen>]
+    module ThemeTypographyProp =
+        open Fable.Core.JsInterop
+        let inline customThemeTypographyProp key props =
+            ThemeTypographyProp.Custom (key, props |> keyValueList CaseRules.LowerFirst)
+        let inline textStyleProps key (props : TextStyleProp list) =
+            customThemeTypographyProp key props
+
+        let inline AllVariants (props : CSSProp list) = customThemeTypographyProp "allVariants" props
+        let H1 = textStyleProps "h1"
+        let H2 = textStyleProps "h2"
+        let H3 = textStyleProps "h3"
+        let H4 = textStyleProps "h4"
+        let H5 = textStyleProps "h5"
+        let H6 = textStyleProps "h6"
+        let Subtitle1 = textStyleProps "subtitle1"
+        let Subtitle2 = textStyleProps "subtitle2"
+        let Overline = textStyleProps "overline"
+        let Body1 = textStyleProps "body1"
+        let Body2 = textStyleProps "body2"
+        let Caption = textStyleProps "caption"
+        let Button = textStyleProps "button"
+
+        [<Obsolete("Material-UI@3.2.0: Typography type `Display1` is deprecated. Please use `H4` instead")>]
+        let Display1 = textStyleProps "display1"
+        [<Obsolete("Material-UI@3.2.0: Typography type `Display2` is deprecated. Please use `H3` instead")>]
+        let Display2 = textStyleProps "display2"
+        [<Obsolete("Material-UI@3.2.0: Typography type `Display3` is deprecated. Please use `H2` instead")>]
+        let Display3 = textStyleProps "display3"
+        [<Obsolete("Material-UI@3.2.0: Typography type `Display4` is deprecated. Please use `H1` instead")>]
+        let Display4 = textStyleProps "display4"
+        [<Obsolete("Material-UI@3.2.0: Typography type `Headline` is deprecated. Please use `H5` instead")>]
+        let Headline = textStyleProps "headline"
+        [<Obsolete("Material-UI@3.2.0: Typography type `Title` is deprecated. Please use `H6` instead")>]
+        let Title = textStyleProps "title"
+        [<Obsolete("Material-UI@3.2.0: Typography type `Subheading` is deprecated. Please use `Subtitle1` instead")>]
+        let Subheading = textStyleProps "subheading"
+
 
     type ShapeProp =
         | BorderRadius of int
@@ -1776,102 +1845,108 @@ module Props =
         let inline private pascalCaseProp (name : string) (props : Themes.IStyles list) =
             OverridesProp.Custom (name, props |> keyValueList CaseRules.LowerFirst)
 
-        let MuiAppBar styles = pascalCaseProp "MuiAppBar" styles
-        let MuiAvatar styles = pascalCaseProp "MuiAvatar" styles
-        let MuiBackdrop styles = pascalCaseProp "MuiBackdrop" styles
-        let MuiBadge styles = pascalCaseProp "MuiBadge" styles
-        let MuiBottomNavigation styles = pascalCaseProp "MuiBottomNavigation" styles
-        let MuiBottomNavigationAction styles = pascalCaseProp "MuiBottomNavigationAction" styles
-        let MuiButton styles = pascalCaseProp "MuiButton" styles
-        let MuiButtonBase styles = pascalCaseProp "MuiButtonBase" styles
-        let MuiCard styles = pascalCaseProp "MuiCard" styles
-        let MuiCardActionArea styles = pascalCaseProp "MuiCardActionArea" styles
-        let MuiCardActions styles = pascalCaseProp "MuiCardActions" styles
-        let MuiCardContent styles = pascalCaseProp "MuiCardContent" styles
-        let MuiCardHeader styles = pascalCaseProp "MuiCardHeader" styles
-        let MuiCardMedia styles = pascalCaseProp "MuiCardMedia" styles
-        let MuiCheckbox styles = pascalCaseProp "MuiCheckbox" styles
-        let MuiChip styles = pascalCaseProp "MuiChip" styles
-        let MuiCircularProgress styles = pascalCaseProp "MuiCircularProgress" styles
-        let MuiCollapse styles = pascalCaseProp "MuiCollapse" styles
-        let MuiCssBaseline styles = pascalCaseProp "MuiCssBaseline" styles
-        let MuiDialog styles = pascalCaseProp "MuiDialog" styles
-        let MuiDialogActions styles = pascalCaseProp "MuiDialogActions" styles
-        let MuiDialogContent styles = pascalCaseProp "MuiDialogContent" styles
-        let MuiDialogContentText styles = pascalCaseProp "MuiDialogContentText" styles
-        let MuiDialogTitle styles = pascalCaseProp "MuiDialogTitle" styles
-        let MuiDivider styles = pascalCaseProp "MuiDivider" styles
-        let MuiDrawer styles = pascalCaseProp "MuiDrawer" styles
-        let MuiExpansionPanel styles = pascalCaseProp "MuiExpansionPanel" styles
-        let MuiExpansionPanelActions styles = pascalCaseProp "MuiExpansionPanelActions" styles
-        let MuiExpansionPanelDetails styles = pascalCaseProp "MuiExpansionPanelDetails" styles
-        let MuiExpansionPanelSummary styles = pascalCaseProp "MuiExpansionPanelSummary" styles
-        let MuiFormControl styles = pascalCaseProp "MuiFormControl" styles
-        let MuiFormControlLabel styles = pascalCaseProp "MuiFormControlLabel" styles
-        let MuiFormGroup styles = pascalCaseProp "MuiFormGroup" styles
-        let MuiFormHelperText styles = pascalCaseProp "MuiFormHelperText" styles
-        let MuiFormLabel styles = pascalCaseProp "MuiFormLabel" styles
-        let MuiGrid styles = pascalCaseProp "MuiGrid" styles
-        let MuiGridList styles = pascalCaseProp "MuiGridList" styles
-        let MuiGridListTile styles = pascalCaseProp "MuiGridListTile" styles
-        let MuiGridListTileBar styles = pascalCaseProp "MuiGridListTileBar" styles
-        let MuiIcon styles = pascalCaseProp "MuiIcon" styles
-        let MuiIconButton styles = pascalCaseProp "MuiIconButton" styles
-        let MuiInput styles = pascalCaseProp "MuiInput" styles
-        let MuiInputAdornment styles = pascalCaseProp "MuiInputAdornment" styles
-        let MuiInputLabel styles = pascalCaseProp "MuiInputLabel" styles
-        let MuiLinearProgress styles = pascalCaseProp "MuiLinearProgress" styles
-        let MuiList styles = pascalCaseProp "MuiList" styles
-        let MuiListItem styles = pascalCaseProp "MuiListItem" styles
-        let MuiListItemAvatar styles = pascalCaseProp "MuiListItemAvatar" styles
-        let MuiListItemIcon styles = pascalCaseProp "MuiListItemIcon" styles
-        let MuiListItemSecondaryAction styles = pascalCaseProp "MuiListItemSecondaryAction" styles
-        let MuiListItemText styles = pascalCaseProp "MuiListItemText" styles
-        let MuiListSubheader styles = pascalCaseProp "MuiListSubheader" styles
-        let MuiMenu styles = pascalCaseProp "MuiMenu" styles
-        let MuiMenuItem styles = pascalCaseProp "MuiMenuItem" styles
-        let MuiMobileStepper styles = pascalCaseProp "MuiMobileStepper" styles
-        let MuiModal styles = pascalCaseProp "MuiModal" styles
-        let MuiNativeSelect styles = pascalCaseProp "MuiNativeSelect" styles
-        let MuiOutlinedInput styles = pascalCaseProp "MuiOutlinedInput" styles
-        let MuiPaper styles = pascalCaseProp "MuiPaper" styles
-        let MuiPopover styles = pascalCaseProp "MuiPopover" styles
-        let MuiRadio styles = pascalCaseProp "MuiRadio" styles
-        let MuiSelect styles = pascalCaseProp "MuiSelect" styles
-        let MuiSnackbar styles = pascalCaseProp "MuiSnackbar" styles
-        let MuiSnackbarContent styles = pascalCaseProp "MuiSnackbarContent" styles
-        let MuiStep styles = pascalCaseProp "MuiStep" styles
-        let MuiStepButton styles = pascalCaseProp "MuiStepButton" styles
-        let MuiStepConnector styles = pascalCaseProp "MuiStepConnector" styles
-        let MuiStepContent styles = pascalCaseProp "MuiStepContent" styles
-        let MuiStepIcon styles = pascalCaseProp "MuiStepIcon" styles
-        let MuiStepLabel styles = pascalCaseProp "MuiStepLabel" styles
-        let MuiStepper styles = pascalCaseProp "MuiStepper" styles
-        let MuiSvgIcon styles = pascalCaseProp "MuiSvgIcon" styles
-        let MuiSwitch styles = pascalCaseProp "MuiSwitch" styles
-        let MuiTab styles = pascalCaseProp "MuiTab" styles
-        let MuiTable styles = pascalCaseProp "MuiTable" styles
-        let MuiTableCell styles = pascalCaseProp "MuiTableCell" styles
-        let MuiTableFooter styles = pascalCaseProp "MuiTableFooter" styles
-        let MuiTablePagination styles = pascalCaseProp "MuiTablePagination" styles
-        let MuiTableRow styles = pascalCaseProp "MuiTableRow" styles
-        let MuiTableSortLabel styles = pascalCaseProp "MuiTableSortLabel" styles
-        let MuiTabs styles = pascalCaseProp "MuiTabs" styles
-        let MuiToolbar styles = pascalCaseProp "MuiToolbar" styles
-        let MuiTooltip styles = pascalCaseProp "MuiTooltip" styles
-        let MuiTouchRipple styles = pascalCaseProp "MuiTouchRipple" styles
-        let MuiTypography styles = pascalCaseProp "MuiTypography" styles
+        let inline MuiAppBar styles = pascalCaseProp "MuiAppBar" styles
+        let inline MuiAvatar styles = pascalCaseProp "MuiAvatar" styles
+        let inline MuiBackdrop styles = pascalCaseProp "MuiBackdrop" styles
+        let inline MuiBadge styles = pascalCaseProp "MuiBadge" styles
+        let inline MuiBottomNavigation styles = pascalCaseProp "MuiBottomNavigation" styles
+        let inline MuiBottomNavigationAction styles = pascalCaseProp "MuiBottomNavigationAction" styles
+        let inline MuiButton styles = pascalCaseProp "MuiButton" styles
+        let inline MuiButtonBase styles = pascalCaseProp "MuiButtonBase" styles
+        let inline MuiCard styles = pascalCaseProp "MuiCard" styles
+        let inline MuiCardActionArea styles = pascalCaseProp "MuiCardActionArea" styles
+        let inline MuiCardActions styles = pascalCaseProp "MuiCardActions" styles
+        let inline MuiCardContent styles = pascalCaseProp "MuiCardContent" styles
+        let inline MuiCardHeader styles = pascalCaseProp "MuiCardHeader" styles
+        let inline MuiCardMedia styles = pascalCaseProp "MuiCardMedia" styles
+        let inline MuiCheckbox styles = pascalCaseProp "MuiCheckbox" styles
+        let inline MuiChip styles = pascalCaseProp "MuiChip" styles
+        let inline MuiCircularProgress styles = pascalCaseProp "MuiCircularProgress" styles
+        let inline MuiCollapse styles = pascalCaseProp "MuiCollapse" styles
+        let inline MuiCssBaseline styles = pascalCaseProp "MuiCssBaseline" styles
+        let inline MuiDialog styles = pascalCaseProp "MuiDialog" styles
+        let inline MuiDialogActions styles = pascalCaseProp "MuiDialogActions" styles
+        let inline MuiDialogContent styles = pascalCaseProp "MuiDialogContent" styles
+        let inline MuiDialogContentText styles = pascalCaseProp "MuiDialogContentText" styles
+        let inline MuiDialogTitle styles = pascalCaseProp "MuiDialogTitle" styles
+        let inline MuiDivider styles = pascalCaseProp "MuiDivider" styles
+        let inline MuiDrawer styles = pascalCaseProp "MuiDrawer" styles
+        let inline MuiExpansionPanel styles = pascalCaseProp "MuiExpansionPanel" styles
+        let inline MuiExpansionPanelActions styles = pascalCaseProp "MuiExpansionPanelActions" styles
+        let inline MuiExpansionPanelDetails styles = pascalCaseProp "MuiExpansionPanelDetails" styles
+        let inline MuiExpansionPanelSummary styles = pascalCaseProp "MuiExpansionPanelSummary" styles
+        let inline MuiFormControl styles = pascalCaseProp "MuiFormControl" styles
+        let inline MuiFormControlLabel styles = pascalCaseProp "MuiFormControlLabel" styles
+        let inline MuiFormGroup styles = pascalCaseProp "MuiFormGroup" styles
+        let inline MuiFormHelperText styles = pascalCaseProp "MuiFormHelperText" styles
+        let inline MuiFormLabel styles = pascalCaseProp "MuiFormLabel" styles
+        let inline MuiGrid styles = pascalCaseProp "MuiGrid" styles
+        let inline MuiGridList styles = pascalCaseProp "MuiGridList" styles
+        let inline MuiGridListTile styles = pascalCaseProp "MuiGridListTile" styles
+        let inline MuiGridListTileBar styles = pascalCaseProp "MuiGridListTileBar" styles
+        let inline MuiIcon styles = pascalCaseProp "MuiIcon" styles
+        let inline MuiIconButton styles = pascalCaseProp "MuiIconButton" styles
+        let inline MuiInput styles = pascalCaseProp "MuiInput" styles
+        let inline MuiInputAdornment styles = pascalCaseProp "MuiInputAdornment" styles
+        let inline MuiInputLabel styles = pascalCaseProp "MuiInputLabel" styles
+        let inline MuiLinearProgress styles = pascalCaseProp "MuiLinearProgress" styles
+        let inline MuiList styles = pascalCaseProp "MuiList" styles
+        let inline MuiListItem styles = pascalCaseProp "MuiListItem" styles
+        let inline MuiListItemAvatar styles = pascalCaseProp "MuiListItemAvatar" styles
+        let inline MuiListItemIcon styles = pascalCaseProp "MuiListItemIcon" styles
+        let inline MuiListItemSecondaryAction styles = pascalCaseProp "MuiListItemSecondaryAction" styles
+        let inline MuiListItemText styles = pascalCaseProp "MuiListItemText" styles
+        let inline MuiListSubheader styles = pascalCaseProp "MuiListSubheader" styles
+        let inline MuiMenu styles = pascalCaseProp "MuiMenu" styles
+        let inline MuiMenuItem styles = pascalCaseProp "MuiMenuItem" styles
+        let inline MuiMobileStepper styles = pascalCaseProp "MuiMobileStepper" styles
+        let inline MuiModal styles = pascalCaseProp "MuiModal" styles
+        let inline MuiNativeSelect styles = pascalCaseProp "MuiNativeSelect" styles
+        let inline MuiOutlinedInput styles = pascalCaseProp "MuiOutlinedInput" styles
+        let inline MuiPaper styles = pascalCaseProp "MuiPaper" styles
+        let inline MuiPopover styles = pascalCaseProp "MuiPopover" styles
+        let inline MuiRadio styles = pascalCaseProp "MuiRadio" styles
+        let inline MuiSelect styles = pascalCaseProp "MuiSelect" styles
+        let inline MuiSnackbar styles = pascalCaseProp "MuiSnackbar" styles
+        let inline MuiSnackbarContent styles = pascalCaseProp "MuiSnackbarContent" styles
+        let inline MuiStep styles = pascalCaseProp "MuiStep" styles
+        let inline MuiStepButton styles = pascalCaseProp "MuiStepButton" styles
+        let inline MuiStepConnector styles = pascalCaseProp "MuiStepConnector" styles
+        let inline MuiStepContent styles = pascalCaseProp "MuiStepContent" styles
+        let inline MuiStepIcon styles = pascalCaseProp "MuiStepIcon" styles
+        let inline MuiStepLabel styles = pascalCaseProp "MuiStepLabel" styles
+        let inline MuiStepper styles = pascalCaseProp "MuiStepper" styles
+        let inline MuiSvgIcon styles = pascalCaseProp "MuiSvgIcon" styles
+        let inline MuiSwitch styles = pascalCaseProp "MuiSwitch" styles
+        let inline MuiTab styles = pascalCaseProp "MuiTab" styles
+        let inline MuiTable styles = pascalCaseProp "MuiTable" styles
+        let inline MuiTableCell styles = pascalCaseProp "MuiTableCell" styles
+        let inline MuiTableFooter styles = pascalCaseProp "MuiTableFooter" styles
+        let inline MuiTablePagination styles = pascalCaseProp "MuiTablePagination" styles
+        let inline MuiTableRow styles = pascalCaseProp "MuiTableRow" styles
+        let inline MuiTableSortLabel styles = pascalCaseProp "MuiTableSortLabel" styles
+        let inline MuiTabs styles = pascalCaseProp "MuiTabs" styles
+        let inline MuiToolbar styles = pascalCaseProp "MuiToolbar" styles
+        let inline MuiTooltip styles = pascalCaseProp "MuiTooltip" styles
+        let inline MuiTouchRipple styles = pascalCaseProp "MuiTouchRipple" styles
+        let inline MuiTypography styles = pascalCaseProp "MuiTypography" styles
 
-    // TODO implement breakpoints, mixins, transitions?
+
     type ThemeProp =
         | Direction of Themes.TextDirection
-        | Palette of PaletteProp list
         | Shadows of string list
-        | Shape of ShapeProp list
-        | Spacing of SpacingProp list
-        | Typography of ThemeTypographyProp list
-        | ZIndex of ZIndexProp list
-        | Overrides of IOverridesProp list
+        | [<Erase>] Custom of string*obj
+
+    [<AutoOpen>]
+    module ThemeProp =
+        open Fable.Core.JsInterop
+        let inline customThemeProp key props = ThemeProp.Custom (key, props |> keyValueList CaseRules.LowerFirst)
+        let inline Palette (props : PaletteProp list) = customThemeProp "palette" props
+        let inline Shape (props : ShapeProp list) = customThemeProp "shape" props
+        let inline Spacing (props : SpacingProp list) = customThemeProp "spacing" props
+        let inline Typography (props : ThemeTypographyProp list) = customThemeProp "typography" props
+        let inline ZIndex (props : ZIndexProp list) = customThemeProp "zIndex" props
+        let inline Overrides (props : IOverridesProp list) = customThemeProp "overrides" props
 
     type [<Erase>] ProviderTheme =
         | Theme of Themes.ITheme
@@ -1900,41 +1975,41 @@ module Props =
         let inline private htmlAttrPascalCaseProp (name : string) (props : IHTMLProp list) =
             pascalCaseProp<IHTMLProp> name props
 
-        let PaperProps props = htmlAttrPascalCaseProp "PaperProps" props
-        let BackdropProps props = htmlAttrPascalCaseProp "BackdropProps" props
-        let SelectProps props = htmlAttrPascalCaseProp "SelectProps" props
-        let TransitionProps props = htmlAttrPascalCaseProp "TransitionProps" props
-        let TouchRippleProps props = htmlAttrPascalCaseProp "TouchRippleProps" props
-        let ModalProps props = htmlAttrPascalCaseProp "ModalProps" props
-        let SlideProps props = htmlAttrPascalCaseProp "SlideProps" props
-        let CollapseProps props = htmlAttrPascalCaseProp "CollapseProps" props
-        let PopperProps props = htmlAttrPascalCaseProp "PopperProps" props
-        let InputProps props = htmlAttrPascalCaseProp "InputProps" props
-        let InputLabelProps props = htmlAttrPascalCaseProp "InputLabelProps" props
-        let FormHelperTextProps props = htmlAttrPascalCaseProp "FormHelperTextProps" props
-        let TabIndicatorProps props = htmlAttrPascalCaseProp "TabIndicatorProps" props
-        let StepIconProps props = htmlAttrPascalCaseProp "StepIconProps" props
-        let ContentProps props = htmlAttrPascalCaseProp "ContentProps" props
-        let SelectDisplayProps props = htmlAttrPascalCaseProp "SelectDisplayProps" props
-        let MenuProps props = htmlAttrPascalCaseProp "MenuProps" props
-        let LinearProgressProps props = htmlAttrPascalCaseProp "LinearProgressProps" props
-        let MenuListProps props = htmlAttrPascalCaseProp "MenuListProps" props
-        let ContainerProps props = htmlAttrPascalCaseProp "ContainerProps" props
-        let IconButtonProps props = htmlAttrPascalCaseProp "IconButtonProps" props
-        let ClickAwayListenerProps props = htmlAttrPascalCaseProp "ClickAwayListenerProps" props
-        let PopoverClasses classes = pascalCaseProp<Themes.IClassNames> "PopoverClasses" classes
-        let FormLabelClasses classes = pascalCaseProp<Themes.IClassNames> "FormLabelClasses" classes
-        let ActionsComponent (comp : Fable.Import.React.ReactType) =
+        let inline PaperProps props = htmlAttrPascalCaseProp "PaperProps" props
+        let inline BackdropProps props = htmlAttrPascalCaseProp "BackdropProps" props
+        let inline SelectProps props = htmlAttrPascalCaseProp "SelectProps" props
+        let inline TransitionProps props = htmlAttrPascalCaseProp "TransitionProps" props
+        let inline TouchRippleProps props = htmlAttrPascalCaseProp "TouchRippleProps" props
+        let inline ModalProps props = htmlAttrPascalCaseProp "ModalProps" props
+        let inline SlideProps props = htmlAttrPascalCaseProp "SlideProps" props
+        let inline CollapseProps props = htmlAttrPascalCaseProp "CollapseProps" props
+        let inline PopperProps props = htmlAttrPascalCaseProp "PopperProps" props
+        let inline InputProps props = htmlAttrPascalCaseProp "InputProps" props
+        let inline InputLabelProps props = htmlAttrPascalCaseProp "InputLabelProps" props
+        let inline FormHelperTextProps props = htmlAttrPascalCaseProp "FormHelperTextProps" props
+        let inline TabIndicatorProps props = htmlAttrPascalCaseProp "TabIndicatorProps" props
+        let inline StepIconProps props = htmlAttrPascalCaseProp "StepIconProps" props
+        let inline ContentProps props = htmlAttrPascalCaseProp "ContentProps" props
+        let inline SelectDisplayProps props = htmlAttrPascalCaseProp "SelectDisplayProps" props
+        let inline MenuProps props = htmlAttrPascalCaseProp "MenuProps" props
+        let inline LinearProgressProps props = htmlAttrPascalCaseProp "LinearProgressProps" props
+        let inline MenuListProps props = htmlAttrPascalCaseProp "MenuListProps" props
+        let inline ContainerProps props = htmlAttrPascalCaseProp "ContainerProps" props
+        let inline IconButtonProps props = htmlAttrPascalCaseProp "IconButtonProps" props
+        let inline ClickAwayListenerProps props = htmlAttrPascalCaseProp "ClickAwayListenerProps" props
+        let inline PopoverClasses classes = pascalCaseProp<Themes.IClassNames> "PopoverClasses" classes
+        let inline FormLabelClasses classes = pascalCaseProp<Themes.IClassNames> "FormLabelClasses" classes
+        let inline ActionsComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("ActionsComponent", comp)
-        let ScrollButtonComponent (comp : Fable.Import.React.ReactType) =
+        let inline ScrollButtonComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("ScrollButtonComponent", comp)
-        let StepIconComponent (comp : Fable.Import.React.ReactType) =
+        let inline StepIconComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("StepIconComponent", comp)
-        let IconComponent (comp : Fable.Import.React.ReactType) =
+        let inline IconComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("IconComponent", comp)
-        let BackdropComponent (comp : Fable.Import.React.ReactType) =
+        let inline BackdropComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("BackdropComponent", comp)
-        let ContainerComponent (comp : Fable.Import.React.ReactType) =
+        let inline ContainerComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("ContainerComponent", comp)
-        let TransitionComponent (comp : Fable.Import.React.ReactType) =
+        let inline TransitionComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("TransitionComponent", comp)

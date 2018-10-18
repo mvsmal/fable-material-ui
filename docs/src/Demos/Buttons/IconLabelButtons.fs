@@ -1,6 +1,5 @@
 module Demos.Buttons.IconLabelButtons
 
-open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.MaterialUI
 open Fable.Helpers.React.Props
@@ -8,18 +7,16 @@ open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
 module R = Fable.Helpers.React
 
-let toObj = keyValueList CaseRules.LowerFirst
-
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Button [ CSSProp.Margin theme.spacing.unit ]
-        Styles.Custom ("leftIcon", [ CSSProp.MarginRight theme.spacing.unit ] |> toObj)
-        Styles.Custom ("rightIcon", [ CSSProp.MarginLeft theme.spacing.unit ] |> toObj)
-        Styles.Custom ("iconSmall", [ CSSProp.FontSize 20 ] |> toObj)
+        Styles.Custom ("leftIcon", [ CSSProp.MarginRight theme.spacing.unit ])
+        Styles.Custom ("rightIcon", [ CSSProp.MarginLeft theme.spacing.unit ])
+        Styles.Custom ("iconSmall", [ CSSProp.FontSize 20 ])
     ]
 
-let buttons props =
-    let classes = props?classes
+let buttons (props : IClassesProps) =
+    let classes = props.classes
     R.div [] [
         button [
             ButtonProp.Variant ButtonVariant.Contained
@@ -66,7 +63,7 @@ let buttons props =
         ]
     ]
 
-let buttonsWithStyles<'a> = withStyles (StyleType.Func styles) [] buttons
+let buttonsWithStyles = withStyles<IClassesProps> (StyleType.Func styles) [] buttons
 
 let view () =
     R.from buttonsWithStyles createEmpty []

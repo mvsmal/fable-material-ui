@@ -7,24 +7,27 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
+open Fable.MaterialUI
 
 open App.Types
 open Global
 open Utils
 
 module Mui = Fable.Helpers.MaterialUI
-module MColors = Fable.MaterialUI.Colors
 
 let theme =
     Mui.createMuiTheme [
+        Typography [
+            UseNextVariants true
+        ]
         ThemeProp.Palette [
             PaletteProp.Type PaletteType.Light
             PaletteProp.Primary [
-                PaletteIntentionProp.Main MColors.blue.``500``
+                PaletteIntentionProp.Main Colors.blue.``500``
             ]
             PaletteProp.Secondary [
                 PaletteIntentionProp.Main
-                    (Mui.ColorManipulator.darken (MColors.pink.A400, 0.08))
+                    (Mui.ColorManipulator.darken (Colors.pink.A400, 0.08))
             ]
         ]
     ]
@@ -36,11 +39,11 @@ let layoutStyles (theme : ITheme) : IStyles list=
         Styles.Root [
             Display "flex"
         ]
-        customStyle "menuButton" [
+        Styles.Custom ("menuButton", [
             MarginLeft -12
             MarginRight 20
-        ]
-        customStyle "main" [
+        ])
+        Styles.Custom ("main", [
             PaddingTop 80
             Flex "1 1 100%"
             CSSProp.MaxWidth "100%"
@@ -59,16 +62,14 @@ let layoutStyles (theme : ITheme) : IStyles list=
                 PaddingRight (theme.spacing.unit * 9)
                 CSSProp.MaxWidth "calc(100% - 250px)"
             ]
-        ]
-        customStyle "landingMain" [
+        ])
+        Styles.Custom ("landingMain", [
             CSSProp.Padding 0
             CSSProp.MaxWidth "100vw"
             MarginLeft 0
-        ]
+        ])
 ]
 
-
-[<Pojo>]
 type LayoutClasses =
     abstract member main : string
     abstract member landingMain : string
@@ -79,6 +80,7 @@ let layout (props : AppProps) =
     let content = function
         | Page.Home -> Home.View.root props.dispatch
         | Page.Installation -> GettingStarted.Installation.View.root ()
+        | Page.MigrationToV2 -> GettingStarted.MigrationToV2.View.root ()
         | Page.Usage -> GettingStarted.Usage.View.root ()
         | Page.AppBar -> Demos.AppBar.View.view ()
         | Page.Avatars -> Demos.Avatars.View.root ()

@@ -1517,6 +1517,7 @@ module Props =
         | DisableWidnowBlurListener of bool
         | Message of Fable.Import.React.ReactElement
         | OnClose of (obj->SnackbarCloseReason->unit)
+        | Open of bool
         | ResumeHideDuration of int
         interface IHTMLProp
 
@@ -1563,6 +1564,10 @@ module Props =
         | Scrollabel of bool
         | ScrollButtons of ScrollButtonsType
         | TextColor of TabsTextColor
+
+    type TabProp =
+        | Icon of obj
+        | Label of obj
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] TableCellPadding = Default | Checkbox | Dense | None

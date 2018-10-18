@@ -961,7 +961,7 @@ module Props =
         | OnOpen of (obj->unit)
         | OnRendered of (obj->unit)
         interface IHTMLProp
-    
+
     [<AutoOpen>]
     module MaterialProp =
         open Fable.Core.JsInterop
@@ -1001,7 +1001,7 @@ module Props =
     type AvatarProp =
         | Sizes of string
         interface IHTMLProp
-    
+
     [<AutoOpen>]
     module AvatarProp =
         let inline ImgProps (props : IHTMLProp list) = customHtmlAttr "imgProps" props
@@ -1085,7 +1085,7 @@ module Props =
         | Subheader of Fable.Import.React.ReactNode
         | Title of Fable.Import.React.ReactNode
         interface IHTMLProp
-    
+
     [<AutoOpen>]
     module CardHeaderProp =
         let inline SubheaderTypographyProps (props : IHTMLProp list) =
@@ -1388,7 +1388,7 @@ module Props =
         | Primary of Fable.Import.React.ReactNode
         | Secondary of Fable.Import.React.ReactNode
         interface IHTMLProp
-    
+
     [<AutoOpen>]
     module ListItemTextProp =
         let inline PrimaryTypographyProps (props : IHTMLProp list) =
@@ -1406,7 +1406,7 @@ module Props =
     type MenuProp =
         | DisableAutoFocusItem of bool
         interface IHTMLProp
-    
+
     type [<StringEnum; RequireQualifiedAccess>] MobileStepperPosition = Bottom | Top | Static
     type [<StringEnum; RequireQualifiedAccess>] MobileStepperVariant = Text | Dots | Progress
 
@@ -1469,7 +1469,7 @@ module Props =
         | MarginThreshold of int
         | TransformOrigin of PopoverOrigin
         interface IHTMLProp
-    
+
     type PopperProp =
         | Modifies of obj
         | PopperOptions of obj
@@ -1596,7 +1596,7 @@ module Props =
         | RowsPerPage of int
         | RowsPerPageOptions of int list
         interface IHTMLProp
-    
+
     [<AutoOpen>]
     module TablePaginationProp =
         let inline BackIconButtonProps (props : IHTMLProp list) =
@@ -1745,7 +1745,7 @@ module Props =
         | TonalOffset of float
         | Divider of string
         | [<Erase>] Custom of string*obj
-    
+
     [<AutoOpen>]
     module PaletteProp =
         open Fable.Core.JsInterop

@@ -1,3 +1,9 @@
+## New in 2.0.0
+* Support Fable 2 (required version of dotnet-fable: 2.0.6)
+* BREAKING CHANGE: `Styles.Custom` has new signature: `string * CSSProp list -> Styles`
+* BREAKING CHANGE: Predefined `Styles` props for class keys need qualified access, e.g. `Styles.Root` or `open Fable.MaterialUI.Themes.Styles`
+* BREAKING CHANGE: `MenuProp.TransitionDuration`, `PopoverProp.TransitionDuration`, `StepContentProp.TransitionDuration` are moved to `MaterialProp.TransitionDurationAuto`
+
 ## New in 1.4.0
 * [Theme] Fixed Overrides prop (PascalCase issue)
 * [Theme] Added `transitions` and `mixins` properties

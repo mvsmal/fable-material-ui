@@ -11,12 +11,9 @@ open Fake.JavaScript
 open Fake.Tools.Git
 
 let outputDir = "nuget"
-let summary = "Fable bindings for MaterialUI"
-let project = "Fable.MaterialUI"
 let release =  ReleaseNotes.load "RELEASE_NOTES.md"
 let gitOwner = "mvsmal"
 let gitRepo = "fable-material-ui"
-let configuration = "Release"
 
 let toLines (strs: string list) = String.concat "\n" strs
 
@@ -31,27 +28,6 @@ let build root _ =
     |> Seq.iter (DotNet.build id)
 
 Target.create "Clean" (cleanDirs "" outputDir)
-
-Target.create "AssemblyInfo" (fun _ ->
-    let getAssemblyInfoAttributes projectName =
-        [ AssemblyInfo.Title (projectName)
-          AssemblyInfo.Product project
-          AssemblyInfo.Description summary
-          AssemblyInfo.Version release.AssemblyVersion
-          AssemblyInfo.FileVersion release.AssemblyVersion
-          AssemblyInfo.Configuration configuration ]
-
-    let getProjectDetails projectPath =
-        let projectName = System.IO.Path.GetFileNameWithoutExtension(projectPath)
-        ( System.IO.Path.GetDirectoryName(projectPath),
-          (getAssemblyInfoAttributes projectName)
-        )
-    !! "src/**/*.??proj"
-    |> Seq.map getProjectDetails
-    |> Seq.iter (fun (folderName, attributes) ->
-        AssemblyInfoFile.createFSharp (Path.combine folderName "AssemblyInfo.fs") attributes
-        )
-)
 
 Target.create "Build" (build "")
 
@@ -139,7 +115,6 @@ Target.create "Release" ignore
     ==> "DocsPublish"
 
 "Clean"
-    ==> "AssemblyInfo"
     ==> "Build"
     ==> "Nuget"
     ==> "BuildPackage"

@@ -1,3 +1,7 @@
+
+## New in 2.0.2
+* Fixed Fable 2 support
+
 ## New in 2.0.1
 * Fixed `Styles.Completed`
 

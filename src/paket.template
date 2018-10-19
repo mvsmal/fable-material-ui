@@ -7,3 +7,8 @@ authors Mikhail Smal
 files
   *.fs ==> fable//
   *.fsproj ==> fable//
+dependencies
+  framework: netstandard2.0
+    FSharp.Core >= 4.3.4
+    Fable.Core >= 2.0.0
+    Fable.React >= 4.0.1

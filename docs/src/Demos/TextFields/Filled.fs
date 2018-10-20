@@ -1,4 +1,4 @@
-module Demos.TextFields.TextField
+module Demos.TextFields.Filled
 
 open Fable.Core
 open Fable.Helpers.React
@@ -83,6 +83,7 @@ type TextFields (p) =
                 HTMLAttr.Value this.state.name
                 DOMAttr.OnChange this.handleNameChange
                 MaterialProp.Margin FormControlMargin.Normal
+                TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
                 HTMLAttr.Id "standard-uncontrolled"
@@ -90,6 +91,7 @@ type TextFields (p) =
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "foo"
                 MaterialProp.Margin FormControlMargin.Normal
+                TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
                 HTMLAttr.Id "standard-required"
@@ -98,6 +100,7 @@ type TextFields (p) =
                 HTMLAttr.DefaultValue "Hello World"
                 MaterialProp.Margin FormControlMargin.Normal
                 HTMLAttr.Required true
+                TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
                 HTMLAttr.Id "standard-error"
@@ -106,6 +109,7 @@ type TextFields (p) =
                 HTMLAttr.DefaultValue "Hello World"
                 MaterialProp.Margin FormControlMargin.Normal
                 MaterialProp.Error true
+                TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
                 HTMLAttr.Disabled true
@@ -114,6 +118,16 @@ type TextFields (p) =
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Hello World"
                 MaterialProp.Margin FormControlMargin.Normal
+                TextFieldProp.Variant TextFieldVariant.Filled
+            ] []
+            textField [
+                HTMLAttr.Id "standard-email-input"
+                HTMLAttr.Label "Email"
+                HTMLAttr.Class !!this.props.classes?textField
+                HTMLAttr.Type "email"
+                HTMLAttr.AutoComplete "email"
+                MaterialProp.Margin FormControlMargin.Normal
+                TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
                 HTMLAttr.Id "standard-password-input"
@@ -122,6 +136,7 @@ type TextFields (p) =
                 HTMLAttr.Type "password"
                 HTMLAttr.AutoComplete "current-password"
                 MaterialProp.Margin FormControlMargin.Normal
+                TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
                 HTMLAttr.Id "standard-read-only-input"
@@ -129,6 +144,7 @@ type TextFields (p) =
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Hello World"
                 MaterialProp.Margin FormControlMargin.Normal
+                TextFieldProp.Variant TextFieldVariant.Filled
                 ChildrenProp.InputProps [
                     HTMLAttr.ReadOnly true
                 ]
@@ -136,6 +152,7 @@ type TextFields (p) =
             textField [
                 HTMLAttr.Id "standard-dense"
                 HTMLAttr.Label "Dense"
+                TextFieldProp.Variant TextFieldVariant.Filled
                 classList [
                     (!!this.props.classes?textField, true)
                     (!!this.props.classes?dense, true)
@@ -150,6 +167,7 @@ type TextFields (p) =
                 HTMLAttr.Value this.state.multiline
                 DOMAttr.OnChange this.handleMultilineChange
                 MaterialProp.Margin FormControlMargin.Normal
+                TextFieldProp.Variant TextFieldVariant.Filled
                 HTMLAttr.Class !!this.props.classes?textField
             ] []
             textField [
@@ -159,6 +177,7 @@ type TextFields (p) =
                 HTMLAttr.Rows 4
                 MaterialProp.Multiline true
                 HTMLAttr.DefaultValue "Default Value"
+                TextFieldProp.Variant TextFieldVariant.Filled
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
@@ -167,6 +186,7 @@ type TextFields (p) =
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Default Value"
                 TextFieldProp.HelperText ("Some important text" |> str |> U2.Case1 |> U3.Case1)
+                TextFieldProp.Variant TextFieldVariant.Filled
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
@@ -174,13 +194,15 @@ type TextFields (p) =
                 HTMLAttr.Label "With placeholder"
                 HTMLAttr.Placeholder "Placeholder"
                 HTMLAttr.Class !!this.props.classes?textField
+                TextFieldProp.Variant TextFieldVariant.Filled
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
                 HTMLAttr.Id "standard-textarea"
-                HTMLAttr.Label "With placeholder multiline"
+                HTMLAttr.Label "Multiline placeholder"
                 HTMLAttr.Placeholder "Placeholder"
                 HTMLAttr.Class !!this.props.classes?textField
+                TextFieldProp.Variant TextFieldVariant.Filled
                 MaterialProp.Multiline true
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
@@ -189,6 +211,7 @@ type TextFields (p) =
                 HTMLAttr.Label "Number"
                 HTMLAttr.Value this.state.age
                 HTMLAttr.Type "number"
+                TextFieldProp.Variant TextFieldVariant.Filled
                 DOMAttr.OnChange this.handleAgeChange
                 ChildrenProp.InputLabelProps [
                     InputLabelProp.Shrink true
@@ -201,6 +224,7 @@ type TextFields (p) =
                 HTMLAttr.Label "Search field"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.Type "search"
+                TextFieldProp.Variant TextFieldVariant.Filled
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
@@ -210,6 +234,7 @@ type TextFields (p) =
                 HTMLAttr.Type "search"
                 HTMLAttr.Value this.state.currency
                 DOMAttr.OnChange this.handleCurrencyChange
+                TextFieldProp.Variant TextFieldVariant.Filled
                 TextFieldProp.HelperText ("Please select your currency" |> str |> U2.Case1 |> U3.Case1)
                 TextFieldProp.Select true
                 MaterialProp.Margin FormControlMargin.Normal
@@ -228,6 +253,7 @@ type TextFields (p) =
                 DOMAttr.OnChange this.handleCurrencyChange
                 TextFieldProp.HelperText ("Please select your currency" |> str |> U2.Case1 |> U3.Case1)
                 TextFieldProp.Select true
+                TextFieldProp.Variant TextFieldVariant.Filled
                 MaterialProp.Margin FormControlMargin.Normal
                 ChildrenProp.SelectProps [
                     SelectProp.Native true
@@ -243,6 +269,7 @@ type TextFields (p) =
                 HTMLAttr.Placeholder "Placeholder"
                 MaterialProp.FullWidth true
                 TextFieldProp.HelperText ("Full width!" |> str |> U2.Case1 |> U3.Case1)
+                TextFieldProp.Variant TextFieldVariant.Filled
                 ChildrenProp.InputLabelProps [
                     InputLabelProp.Shrink true
                 ]
@@ -254,6 +281,7 @@ type TextFields (p) =
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Bare"
                 MaterialProp.Margin FormControlMargin.Normal
+                TextFieldProp.Variant TextFieldVariant.Filled
             ] []
         ]
 

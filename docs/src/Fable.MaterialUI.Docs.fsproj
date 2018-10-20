@@ -21,6 +21,8 @@
     <Compile Include="Demos/AppBar.fs" />
     <Compile Include="Demos/Buttons/*.fs" />
     <Compile Include="Demos/Buttons.fs" />
+    <Compile Include="Demos/TextFields/*.fs" />
+    <Compile Include="Demos/TextFields.fs" />
     <Compile Include="Demos/Avatars.fs" />
     <Compile Include="PageLayoutDemos/SignIn.fs" />
     <Content Include="**/*.md">

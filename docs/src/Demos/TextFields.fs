@@ -48,6 +48,27 @@ let layoutText = """
 `none` (default) will not apply margins to the `FormControl`, whereas `dense` and `normal` will as well as alter
 other styles to meet the specification.
 """
+
+let inputAdornmentsText = """
+## Input Adornments
+
+`Input` allows the provision of `InputAdornment`.
+These can be used to add a prefix, a suffix or an action to an input.
+For instance, you can use an icon button to hide or reveal the password.
+"""
+
+let customizedText = """
+## Customized inputs
+
+If you have been reading the overrides documentation page
+but you are not confident jumping in, here's an example of how you can change the main color of an Input.
+"""
+
+let withIconText = """
+## With icon
+
+Icons can be specified as prepended or appended.
+"""
 let view () =
     div [] [
         Markdown.view text
@@ -57,4 +78,9 @@ let view () =
         Demo.view composedText "./TextFields/Composed.fs" Composed.view
         Demo.view "## Input" "./TextFields/Input.fs" Input.view
         Demo.view layoutText "./TextFields/Layout.fs" Layout.view
+        Demo.view inputAdornmentsText "./TextFields/InputAdornments.fs" InputAdornments.view
+        Demo.view "## Filled Input Adornments" "./TextFields/FilledInputAdornments.fs" FilledInputAdornments.view
+        Demo.view "## Outlined Input Adornments" "./TextFields/OutlinedInputAdornments.fs" OutlinedInputAdornments.view
+        Demo.view customizedText "./TextFields/Customized.fs" Customized.view
+        Demo.view withIconText "./TextFields/WithIcon.fs" WithIcon.view
     ]

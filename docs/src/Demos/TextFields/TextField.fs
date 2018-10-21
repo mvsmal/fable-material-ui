@@ -9,7 +9,6 @@ open Fable.Helpers.React.Props
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 open Fable.Import.React
-module R = Fable.Helpers.React
 
 let styles (theme : ITheme) : IStyles list =
     [
@@ -71,7 +70,7 @@ type TextFields (p) =
         this.setState (fun s _ -> { s with currency = value })
     
     override this.render() =
-        R.form [
+        form [
             HTMLAttr.Class !!this.props.classes?container
             HTMLAttr.NoValidate true
             HTMLAttr.AutoComplete "off"
@@ -262,4 +261,4 @@ let textFields props =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] textFields
 
 let view () =
-    R.from textFieldsWithStyles createEmpty<IClassesProps> []
+    from textFieldsWithStyles createEmpty<IClassesProps> []

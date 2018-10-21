@@ -2,13 +2,11 @@ module Demos.TextFields.Composed
 
 open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Import
 open Fable.Helpers.MaterialUI
 open Fable.Helpers.React.Props
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 open Fable.Import.React
-module R = Fable.Helpers.React
 
 let styles (theme : ITheme) : IStyles list =
     [
@@ -36,7 +34,7 @@ type ComposedTextField(p) =
     
     override this.render() =
         let classes = this.props.classes
-        R.div [ HTMLAttr.Class !!classes?container ] [
+        div [ HTMLAttr.Class !!classes?container ] [
             formControl [ HTMLAttr.Class !!classes?formControl ] [
                 inputLabel [ HtmlFor "component-simple" ] [ str "Name" ]
                 input [
@@ -92,6 +90,6 @@ let textFields props =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] textFields
 
 let view () =
-    R.from textFieldsWithStyles createEmpty<IClassesProps> []
+    from textFieldsWithStyles createEmpty<IClassesProps> []
 
 

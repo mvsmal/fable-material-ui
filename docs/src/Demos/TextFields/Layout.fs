@@ -7,7 +7,6 @@ open Fable.Helpers.MaterialUI
 open Fable.Helpers.React.Props
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
-module R = Fable.Helpers.React
 
 let styles (theme : ITheme) : IStyles list =
     [
@@ -54,4 +53,4 @@ let layoutTextFields (props : IClassesProps) =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] layoutTextFields
 
 let view () =
-    R.from textFieldsWithStyles createEmpty<IClassesProps> []
+    from textFieldsWithStyles createEmpty<IClassesProps> []

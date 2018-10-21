@@ -77,7 +77,7 @@ type TextFields (p) =
             HTMLAttr.AutoComplete "off"
         ] [
             textField [
-                HTMLAttr.Id "standard-name"
+                HTMLAttr.Id "filled-name"
                 HTMLAttr.Label "Name"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.Value this.state.name
@@ -86,7 +86,7 @@ type TextFields (p) =
                 TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
-                HTMLAttr.Id "standard-uncontrolled"
+                HTMLAttr.Id "filled-uncontrolled"
                 HTMLAttr.Label "Uncontrolled"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "foo"
@@ -94,7 +94,7 @@ type TextFields (p) =
                 TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
-                HTMLAttr.Id "standard-required"
+                HTMLAttr.Id "filled-required"
                 HTMLAttr.Label "Required"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Hello World"
@@ -103,7 +103,7 @@ type TextFields (p) =
                 TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
-                HTMLAttr.Id "standard-error"
+                HTMLAttr.Id "filled-error"
                 HTMLAttr.Label "Error"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Hello World"
@@ -113,7 +113,7 @@ type TextFields (p) =
             ] []
             textField [
                 HTMLAttr.Disabled true
-                HTMLAttr.Id "standard-disabled"
+                HTMLAttr.Id "filled-disabled"
                 HTMLAttr.Label "Disabled"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Hello World"
@@ -121,7 +121,7 @@ type TextFields (p) =
                 TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
-                HTMLAttr.Id "standard-email-input"
+                HTMLAttr.Id "filled-email-input"
                 HTMLAttr.Label "Email"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.Type "email"
@@ -130,7 +130,7 @@ type TextFields (p) =
                 TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
-                HTMLAttr.Id "standard-password-input"
+                HTMLAttr.Id "filled-password-input"
                 HTMLAttr.Label "Password"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.Type "password"
@@ -139,7 +139,7 @@ type TextFields (p) =
                 TextFieldProp.Variant TextFieldVariant.Filled
             ] []
             textField [
-                HTMLAttr.Id "standard-read-only-input"
+                HTMLAttr.Id "filled-read-only-input"
                 HTMLAttr.Label "Read Only"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Hello World"
@@ -150,7 +150,7 @@ type TextFields (p) =
                 ]
             ] []
             textField [
-                HTMLAttr.Id "standard-dense"
+                HTMLAttr.Id "filled-dense"
                 HTMLAttr.Label "Dense"
                 TextFieldProp.Variant TextFieldVariant.Filled
                 classList [
@@ -160,7 +160,7 @@ type TextFields (p) =
                 MaterialProp.Margin FormControlMargin.Dense
             ] []
             textField [
-                HTMLAttr.Id "standard-multiline-flexible"
+                HTMLAttr.Id "filled-multiline-flexible"
                 HTMLAttr.Label "Multiline"
                 MaterialProp.Multiline true
                 MaterialProp.RowsMax 4
@@ -171,7 +171,7 @@ type TextFields (p) =
                 HTMLAttr.Class !!this.props.classes?textField
             ] []
             textField [
-                HTMLAttr.Id "standard-multiline-static"
+                HTMLAttr.Id "filled-multiline-static"
                 HTMLAttr.Label "Multiline"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.Rows 4
@@ -181,7 +181,7 @@ type TextFields (p) =
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
-                HTMLAttr.Id "standard-helperText"
+                HTMLAttr.Id "filled-helperText"
                 HTMLAttr.Label "Helper text"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Default Value"
@@ -190,7 +190,7 @@ type TextFields (p) =
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
-                HTMLAttr.Id "standard-with-placeholder"
+                HTMLAttr.Id "filled-with-placeholder"
                 HTMLAttr.Label "With placeholder"
                 HTMLAttr.Placeholder "Placeholder"
                 HTMLAttr.Class !!this.props.classes?textField
@@ -198,7 +198,7 @@ type TextFields (p) =
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
-                HTMLAttr.Id "standard-textarea"
+                HTMLAttr.Id "filled-textarea"
                 HTMLAttr.Label "Multiline placeholder"
                 HTMLAttr.Placeholder "Placeholder"
                 HTMLAttr.Class !!this.props.classes?textField
@@ -207,7 +207,7 @@ type TextFields (p) =
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
-                HTMLAttr.Id "standard-number"
+                HTMLAttr.Id "filled-number"
                 HTMLAttr.Label "Number"
                 HTMLAttr.Value this.state.age
                 HTMLAttr.Type "number"
@@ -220,7 +220,7 @@ type TextFields (p) =
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
-                HTMLAttr.Id "standard-search"
+                HTMLAttr.Id "filled-search"
                 HTMLAttr.Label "Search field"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.Type "search"
@@ -228,7 +228,7 @@ type TextFields (p) =
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
             textField [
-                HTMLAttr.Id "standard-select-currency"
+                HTMLAttr.Id "filled-select-currency"
                 HTMLAttr.Label "Select"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.Type "search"
@@ -245,7 +245,7 @@ type TextFields (p) =
                 ]
             ] (currencies |> List.map (fun (k,v) -> menuItem [ Prop.Key v; HTMLAttr.Value v ] [ str k ]))
             textField [
-                HTMLAttr.Id "standard-select-currency-native"
+                HTMLAttr.Id "filled-select-currency-native"
                 HTMLAttr.Label "Native select"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.Type "search"
@@ -263,7 +263,7 @@ type TextFields (p) =
                 ]
             ] (currencies |> List.map (fun (k,v) -> option [ Prop.Key v; HTMLAttr.Value v ] [ str k ]))
             textField [
-                HTMLAttr.Id "standard-full-width"
+                HTMLAttr.Id "filled-full-width"
                 HTMLAttr.Label "Label"
                 Style [ CSSProp.Margin 8 ]
                 HTMLAttr.Placeholder "Placeholder"
@@ -277,7 +277,7 @@ type TextFields (p) =
                 // HTMLAttr.Class !!this.props.classes?textField
             ] []
             textField [
-                HTMLAttr.Id "standard-bare"
+                HTMLAttr.Id "filled-bare"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Bare"
                 MaterialProp.Margin FormControlMargin.Normal
@@ -288,7 +288,7 @@ type TextFields (p) =
 let textFields props =
     ofType<TextFields,_,_> props []
 
-let textFieldsWithStyles<'a> = withStyles (StyleType.Func styles) [] textFields
+let textFieldsWithStyles = withStyles (StyleType.Func styles) [] textFields
 
 let view () =
-    R.from textFieldsWithStyles createEmpty []
+    R.from textFieldsWithStyles createEmpty<IClassesProps> []

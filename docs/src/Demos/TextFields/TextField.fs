@@ -247,7 +247,6 @@ type TextFields (p) =
                     InputLabelProp.Shrink true
                 ]
                 MaterialProp.Margin FormControlMargin.Normal
-                // HTMLAttr.Class !!this.props.classes?textField
             ] []
             textField [
                 HTMLAttr.Id "standard-bare"
@@ -260,7 +259,7 @@ type TextFields (p) =
 let textFields props =
     ofType<TextFields,_,_> props []
 
-let textFieldsWithStyles<'a> = withStyles (StyleType.Func styles) [] textFields
+let textFieldsWithStyles = withStyles (StyleType.Func styles) [] textFields
 
 let view () =
-    R.from textFieldsWithStyles createEmpty []
+    R.from textFieldsWithStyles createEmpty<IClassesProps> []

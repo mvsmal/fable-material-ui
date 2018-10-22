@@ -112,6 +112,9 @@ let inline expansionPanelSummary b c = materialEl ExpansionPanelSummary b c
 let Fade = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/Fade"
 let inline fade b c = materialEl Fade b c
 
+let FilledInput = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/FilledInput"
+let inline filledInput b c = materialEl FilledInput b c
+
 let FormControl = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/FormControl"
 let inline formControl b c = materialEl FormControl b c
 

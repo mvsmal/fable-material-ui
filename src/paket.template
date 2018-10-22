@@ -5,8 +5,8 @@ projectUrl https://github.com/mvsmal/fable-material-ui
 licenseUrl https://github.com/mvsmal/fable-material-ui/blob/master/LICENSE
 authors Mikhail Smal
 files
-  *.fs ==> fable//
-  *.fsproj ==> fable//
+  *.fs ==> fable/
+  *.fsproj ==> fable/
 dependencies
   framework: netstandard2.0
     FSharp.Core >= 4.3.4

@@ -189,16 +189,13 @@ module Themes =
         let Custom (key, (props : CSSProp list)) =
             Styles.Custom' (key, props |> keyValueList CaseRules.LowerFirst)
 
-        let inline AdornedStart props = Custom ("adornedStart", props)
-        let inline AdornedEnd props = Custom ("adornedEnd", props)
-        let inline NotchedOutline props = Custom ("notchedOutline", props)
-        let inline InputAdornedStart props = Custom ("inputAdornedStart", props)
-        let inline InputAdornedEnd props = Custom ("inputAdornedEnd", props)
         let inline Absolute props = Custom ("absolute", props)
         let inline Action props = Custom ("action", props)
         let inline ActionIcon props = Custom ("actionIcon", props)
         let inline ActionIconActionPosLeft props = Custom ("actionIconActionPosLeft", props)
         let inline Actions props = Custom ("actions", props)
+        let inline AdornedEnd props = Custom ("adornedEnd", props)
+        let inline AdornedStart props = Custom ("adornedStart", props)
         let inline AlignCenter props = Custom ("alignCenter", props)
         let inline AlignJistify props = Custom ("alignJistify", props)
         let inline AlignLeft props = Custom ("alignLeft", props)
@@ -304,8 +301,8 @@ module Themes =
         let inline FlatPrimary props = Custom ("flatPrimary", props)
         let inline FlatSecondary props = Custom ("flatSecondary", props)
         let inline FlexContainer props = Custom ("flexContainer", props)
-        let inline FocusVisible props = Custom ("focusVisible", props)
         let inline FocusHiglight props = Custom ("focusHiglight", props)
+        let inline FocusVisible props = Custom ("focusVisible", props)
         let inline Focused props = Custom ("focused", props)
         let inline FontSizeInherit props = Custom ("fontSizeInherit", props)
         let inline Footer props = Custom ("footer", props)
@@ -320,10 +317,6 @@ module Themes =
         let inline H4 props = Custom ("h4", props)
         let inline H5 props = Custom ("h5", props)
         let inline H6 props = Custom ("h6", props)
-        let inline Subtitle1 props = Custom ("subtitle1", props)
-        let inline Subtitle2 props = Custom ("subtitle2", props)
-        let inline Overline props = Custom ("overline", props)
-        let inline SrOnly props = Custom ("srOnly", props)
         let inline Head props = Custom ("head", props)
         let inline Headline props = Custom ("headline", props)
         let inline Hidden props = Custom ("hidden", props)
@@ -339,6 +332,8 @@ module Themes =
         let inline Indeterminate props = Custom ("indeterminate", props)
         let inline Indicator props = Custom ("indicator", props)
         let inline Input props = Custom ("input", props)
+        let inline InputAdornedEnd props = Custom ("inputAdornedEnd", props)
+        let inline InputAdornedStart props = Custom ("inputAdornedStart", props)
         let inline InputMarginDense props = Custom ("inputMarginDense", props)
         let inline InputMultiline props = Custom ("inputMultiline", props)
         let inline InputType props = Custom ("inputType", props)
@@ -366,10 +361,12 @@ module Themes =
         let inline Modal props = Custom ("modal", props)
         let inline Multiline props = Custom ("multiline", props)
         let inline NoWrap props = Custom ("noWrap", props)
+        let inline NotchedOutline props = Custom ("notchedOutline", props)
         let inline Numeric props = Custom ("numeric", props)
         let inline Outlined props = Custom ("outlined", props)
         let inline OutlinedPrimary props = Custom ("outlinedPrimary", props)
         let inline OutlinedSecondary props = Custom ("outlinedSecondary", props)
+        let inline Overline props = Custom ("overline", props)
         let inline Padding props = Custom ("padding", props)
         let inline PaddingCheckbox props = Custom ("paddingCheckbox", props)
         let inline PaddingDense props = Custom ("paddingDense", props)
@@ -405,8 +402,8 @@ module Themes =
         let inline Raised props = Custom ("raised", props)
         let inline RaisedPrimary props = Custom ("raisedPrimary", props)
         let inline RaisedSecondary props = Custom ("raisedSecondary", props)
-        let inline Required props = Custom ("required", props)
         let inline Regular props = Custom ("regular", props)
+        let inline Required props = Custom ("required", props)
         let inline Ripple props = Custom ("ripple", props)
         let inline RipplePulsate props = Custom ("ripplePulsate", props)
         let inline RippleVisible props = Custom ("rippleVisible", props)
@@ -429,11 +426,14 @@ module Themes =
         let inline SizeLarge props = Custom ("sizeLarge", props)
         let inline SizeSmall props = Custom ("sizeSmall", props)
         let inline Spacer props = Custom ("spacer", props)
+        let inline SrOnly props = Custom ("srOnly", props)
         let inline Static props = Custom ("static", props)
         let inline Sticky props = Custom ("sticky", props)
         let inline Subheader props = Custom ("subheader", props)
         let inline Subheading props = Custom ("subheading", props)
         let inline Subtitle props = Custom ("subtitle", props)
+        let inline Subtitle1 props = Custom ("subtitle1", props)
+        let inline Subtitle2 props = Custom ("subtitle2", props)
         let inline Svg props = Custom ("svg", props)
         let inline SwitchBase props = Custom ("switchBase", props)
         let inline Text props = Custom ("text", props)
@@ -510,16 +510,13 @@ module Themes =
     type IClassNames = interface end
 
     type ClassNames =
-        | AdornedStart of string
-        | AdornedEnd of string
-        | NotchedOutline of string
-        | InputAdornedStart of string
-        | InputAdornedEnd of string
         | Absolute of string
         | Action of string
         | ActionIcon of string
         | ActionIconActionPosLeft of string
         | Actions of string
+        | AdornedEnd of string
+        | AdornedStart of string
         | AlignCenter of string
         | AlignJistify of string
         | AlignLeft of string
@@ -629,8 +626,8 @@ module Themes =
         | FlatPrimary of string
         | FlatSecondary of string
         | FlexContainer of string
-        | FocusVisible of string
         | FocusHiglight of string
+        | FocusVisible of string
         | Focused of string
         | FontSizeInherit of string
         | Footer of string
@@ -645,10 +642,6 @@ module Themes =
         | H4 of string
         | H5 of string
         | H6 of string
-        | Subtitle1 of string
-        | Subtitle2 of string
-        | Overline of string
-        | SrOnly of string
         | Head of string
         | Headline of string
         | Hidden of string
@@ -664,6 +657,8 @@ module Themes =
         | Indeterminate of string
         | Indicator of string
         | Input of string
+        | InputAdornedEnd of string
+        | InputAdornedStart of string
         | InputMarginDense of string
         | InputMultiline of string
         | InputType of string
@@ -691,10 +686,12 @@ module Themes =
         | Modal of string
         | Multiline of string
         | NoWrap of string
+        | NotchedOutline of string
         | Numeric of string
         | Outlined of string
         | OutlinedPrimary of string
         | OutlinedSecondary of string
+        | Overline of string
         | Padding of string
         | PaddingCheckbox of string
         | PaddingDense of string
@@ -731,8 +728,8 @@ module Themes =
         | Raised of string
         | RaisedPrimary of string
         | RaisedSecondary of string
-        | Required of string
         | Regular of string
+        | Required of string
         | Ripple of string
         | RipplePulsate of string
         | RippleVisible of string
@@ -757,11 +754,14 @@ module Themes =
         | SizeLarge of string
         | SizeSmall of string
         | Spacer of string
+        | SrOnly of string
         | Static of string
         | Sticky of string
         | Subheader of string
         | Subheading of string
         | Subtitle of string
+        | Subtitle1 of string
+        | Subtitle2 of string
         | Svg of string
         | SwitchBase of string
         | Text of string

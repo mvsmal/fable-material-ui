@@ -1187,6 +1187,15 @@ module Props =
     type ExpansionPanelSummaryProp =
         | ExpandIcon of Fable.Import.React.ReactNode
         interface IHTMLProp
+    
+    type [<StringEnum; RequireQualifiedAccess>] FormControlVariant =
+        | Standard
+        | Outlined
+        | Filled
+
+    type FormControlProp =
+        | Variant of FormControlVariant
+        interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] FormControlLabelPlacement = End | Start
 

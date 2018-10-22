@@ -967,6 +967,10 @@ module Props =
         open Fable.Core.JsInterop
         let inline Classes (classNames : IClassNames list) =
             customHtmlAttr "classes" classNames
+
+        /// Compiles to `inputProps`.
+        ///
+        /// For `InputProps` use `MaterialProp.InputProps`
         let inline InputProps (props : IHTMLProp list) =
             customHtmlAttr "inputProps" props
         let Timeout = transitionDurationToHtmlAttr "timeout"
@@ -1984,6 +1988,10 @@ module Props =
         let inline SlideProps props = htmlAttrPascalCaseProp "SlideProps" props
         let inline CollapseProps props = htmlAttrPascalCaseProp "CollapseProps" props
         let inline PopperProps props = htmlAttrPascalCaseProp "PopperProps" props
+
+        /// Compiles to `InputProps`.
+        ///
+        /// For `inputProps` use `MaterialProp.InputProps`
         let inline InputProps props = htmlAttrPascalCaseProp "InputProps" props
         let inline InputLabelProps props = htmlAttrPascalCaseProp "InputLabelProps" props
         let inline FormHelperTextProps props = htmlAttrPascalCaseProp "FormHelperTextProps" props

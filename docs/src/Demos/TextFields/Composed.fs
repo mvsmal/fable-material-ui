@@ -82,6 +82,17 @@ type ComposedTextField(p) =
                 ]
                 formHelperText [ HTMLAttr.Id "component-error-text" ] [ str "Error" ]
             ]
+            formControl [
+                HTMLAttr.Class !!classes?formControl
+                FormControlProp.Variant FormControlVariant.Filled
+            ] [
+                inputLabel [ HtmlFor "component-filled" ] [ str "Name" ]
+                filledInput [
+                    HTMLAttr.Id "component-filled"
+                    HTMLAttr.Value this.state.name
+                    DOMAttr.OnChange this.handleChange
+                ] []
+            ]
         ]
 
 let textFields props =

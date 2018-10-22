@@ -32,6 +32,37 @@ let styles (theme : ITheme) : IStyles list =
                 CSSProp.BorderBottomColor Colors.purple.``500``
             ] |> toObj)
         ])
+        Styles.Custom ("bootstrapRoot", [
+            CSSProp.Custom ("label + &", [
+                CSSProp.MarginTop (theme.spacing.unit * 3)
+            ] |> toObj)
+        ])
+        Styles.Custom ("bootstrapInput", [
+            CSSProp.BorderRadius 4
+            CSSProp.BackgroundColor theme.palette.common.white
+            CSSProp.Border "1px solid #ced4da"
+            CSSProp.FontSize 16
+            CSSProp.Padding "10px 12px"
+            CSSProp.Transition (theme.transitions.create(["border-color"; "box-shadow"] |> U2.Case2))
+            CSSProp.FontFamily (
+                [ "-apple-system"
+                  "BlinkMacSystemFont"
+                  "\"Segou UI\""
+                  "Roboto"
+                  "\"Helvetica Neue\""
+                  "Arial"
+                  "sans-serif"
+                  "\"Apple Color Emoji\""
+                  "\"Segoe UI Emoji\""
+                  "\"Segoe UI Symbol\"" ] |> String.concat(","))
+            CSSProp.Custom ("&:focus", [
+                CSSProp.BorderColor "#80bdff"
+                CSSProp.BoxShadow "0 0 0 0.2rem rgba(0,123,255,.25)"
+            ] |> toObj)
+        ])
+        Styles.Custom ("bootstrapFormLabel", [
+            CSSProp.FontSize 18
+        ])
     ]
 
 let theme = createMuiTheme([
@@ -67,6 +98,25 @@ let customizedInputs (props : IClassesProps) =
                 HTMLAttr.Label "MuiThemeProvider"
                 HTMLAttr.Id "mui-theme-provider-input"
             ] []
+        ]
+        formControl [ Class !!classes?margin ] [
+            inputLabel [
+                InputLabelProp.Shrink true
+                HTMLAttr.HtmlFor "bootstrap-input"
+                HTMLAttr.Class !!classes?bootstrapFormLabel
+            ] [ str "Bootstrap" ]
+            inputBase [
+                HTMLAttr.Id "bootstrap-input"
+                HTMLAttr.DefaultValue "react-bootstrap"
+                MaterialProp.Classes [
+                    ClassNames.Root !!classes?bootstrapRoot
+                    ClassNames.Input !!classes?bootstrapInput
+                ]
+            ]
+        ]
+        inputBase [
+            HTMLAttr.Class !!classes?margin
+            HTMLAttr.DefaultValue "Naked input"
         ]
     ]
 

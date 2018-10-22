@@ -157,11 +157,11 @@ let inline iconButton b c = materialEl IconButton b c
 let Input = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/Input"
 let inline input b = materialEl Input b []
 
-let InputBase = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/InputBase"
-let inline inputBase b = materialEl InputBase b []
-
 let InputAdornment = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/InputAdornment"
 let inline inputAdornment b c = materialEl InputAdornment b c
+
+let InputBase = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/InputBase"
+let inline inputBase b = materialEl InputBase b []
 
 let InputLabel = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/InputLabel"
 let inline inputLabel b c = materialEl InputLabel b c

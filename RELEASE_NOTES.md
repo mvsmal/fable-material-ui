@@ -1,3 +1,7 @@
+## New in 2.1.0
+* [FilledInput] Added `FilledInput` component
+* [InputBase] Added `InputBase` component
+* [FormControl] Added `FormControlProp` DU
 
 ## New in 2.0.2
 * Fixed Fable 2 support

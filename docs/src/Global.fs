@@ -1,6 +1,6 @@
 module Global
 
-let [<Literal>] libVersion = "v2.0.2"
+let [<Literal>] libVersion = "v2.1.0"
 
 type Page =
     | Home

@@ -1,3 +1,6 @@
+## New in 2.1.1
+* [Tabs] `TabsProp.Scrollable` typo fix
+
 ## New in 2.1.0
 * [FilledInput] Added `FilledInput` component
 * [InputBase] Added `InputBase` component

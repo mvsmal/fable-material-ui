@@ -12,6 +12,7 @@ open App.Types
 open Components
 open Global
 open Utils
+open Fable.Import
 
 module Mui = Fable.Helpers.MaterialUI
 

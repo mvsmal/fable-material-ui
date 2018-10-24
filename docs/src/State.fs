@@ -20,6 +20,7 @@ let pageParser: Parser<Page->Page,Page> =
         map Buttons (s "demos" </> s "buttons")
         map TextFields (s "demos" </> s "text-fields")
         map SignIn (s "pagelayout" </> s "signin")
+        map Overrides (s "customization" </> s "overrides")
     ]
 
 let urlUpdate (result: Option<Page>) model =

@@ -28,6 +28,14 @@ let navItems = [
             ]
     }
     {
+        Title = "Customization"
+        Href = None
+        Children =
+            [
+                { Title = "Overrides"; Href = Some Page.Overrides; Children = [] }
+            ]
+    }
+    {
         Title = "Page layout demos"
         Href = None
         Children =

@@ -12,6 +12,7 @@ type Page =
     | Buttons
     | TextFields
     | SignIn
+    | Overrides
     // TODO Add other demos
 
 type NavItem = {
@@ -31,6 +32,7 @@ let toHash page =
     | Buttons -> "#/demos/buttons"
     | TextFields -> "#/demos/text-fields"
     | SignIn -> "#/pagelayout/signin"
+    | Overrides -> "#/customization/overrides"
 
 let toTitle = function
     | Home -> ""
@@ -42,3 +44,4 @@ let toTitle = function
     | Buttons -> "Buttons"
     | TextFields -> "Text Fields"
     | SignIn -> "Sign-in"
+    | Overrides -> "Overrides"

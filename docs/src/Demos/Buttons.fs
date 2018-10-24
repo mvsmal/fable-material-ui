@@ -3,7 +3,6 @@ module Demos.Buttons.View
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 
-open Demos
 open Demos.Buttons
 open Components
 
@@ -108,13 +107,13 @@ You can take advantage of this lower level component to build custom interaction
 let view () =
     div [] [
         Markdown.view text
-        Demo.view textButtonsText "./Buttons/TextButtons.fs" TextButtons.view
-        Demo.view outlinedButtonsText "./Buttons/OutlinedButtons.fs" OutlinedButtons.view
-        Demo.view containedButtonsText "./Buttons/ContainedButtons.fs" ContainedButtons.view
-        Demo.view floatingButtonsText "./Buttons/FloatingActionButtons.fs" FloatingActionButtons.view
-        Demo.view floatingButtonZoomText "./Buttons/FloatingActionButtonZoom.fs" FloatingActionButtonZoom.view
-        Demo.view buttonSizesText "./Buttons/ButtonSizes.fs" ButtonSizes.view
-        Demo.view iconButtonsText "./Buttons/IconButtons.fs" IconButtons.view
-        Demo.view iconLabelButtonsText "./Buttons/IconLabelButtons.fs" IconLabelButtons.view
-        Demo.view customizedButtonsText "./Buttons/CustomizedButtons.fs" CustomizedButtons.view
+        Demo.view textButtonsText "./Demos/Buttons/TextButtons.fs" TextButtons.view
+        Demo.view outlinedButtonsText "./Demos/Buttons/OutlinedButtons.fs" OutlinedButtons.view
+        Demo.view containedButtonsText "./Demos/Buttons/ContainedButtons.fs" ContainedButtons.view
+        Demo.view floatingButtonsText "./Demos/Buttons/FloatingActionButtons.fs" FloatingActionButtons.view
+        Demo.view floatingButtonZoomText "./Demos/Buttons/FloatingActionButtonZoom.fs" FloatingActionButtonZoom.view
+        Demo.view buttonSizesText "./Demos/Buttons/ButtonSizes.fs" ButtonSizes.view
+        Demo.view iconButtonsText "./Demos/Buttons/IconButtons.fs" IconButtons.view
+        Demo.view iconLabelButtonsText "./Demos/Buttons/IconLabelButtons.fs" IconLabelButtons.view
+        Demo.view customizedButtonsText "./Demos/Buttons/CustomizedButtons.fs" CustomizedButtons.view
     ]

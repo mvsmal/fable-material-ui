@@ -3,7 +3,6 @@ module Demos.TextFields.View
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 
-open Demos
 open Demos.TextFields
 open Components
 
@@ -72,15 +71,15 @@ Icons can be specified as prepended or appended.
 let view () =
     div [] [
         Markdown.view text
-        Demo.view textFieldText "./TextFields/TextField.fs" TextField.view
-        Demo.view outlinedText "./TextFields/Outlined.fs" Outlined.view
-        Demo.view filledText "./TextFields/Filled.fs" Filled.view
-        Demo.view composedText "./TextFields/Composed.fs" Composed.view
-        Demo.view "## Input" "./TextFields/Input.fs" Input.view
-        Demo.view layoutText "./TextFields/Layout.fs" Layout.view
-        Demo.view inputAdornmentsText "./TextFields/InputAdornments.fs" InputAdornments.view
-        Demo.view "## Filled Input Adornments" "./TextFields/FilledInputAdornments.fs" FilledInputAdornments.view
-        Demo.view "## Outlined Input Adornments" "./TextFields/OutlinedInputAdornments.fs" OutlinedInputAdornments.view
-        Demo.view customizedText "./TextFields/Customized.fs" Customized.view
-        Demo.view withIconText "./TextFields/WithIcon.fs" WithIcon.view
+        Demo.view textFieldText "./Demos/TextFields/TextField.fs" TextField.view
+        Demo.view outlinedText "./Demos/TextFields/Outlined.fs" Outlined.view
+        Demo.view filledText "./Demos/TextFields/Filled.fs" Filled.view
+        Demo.view composedText "./Demos/TextFields/Composed.fs" Composed.view
+        Demo.view "## Input" "./Demos/TextFields/Input.fs" Input.view
+        Demo.view layoutText "./Demos/TextFields/Layout.fs" Layout.view
+        Demo.view inputAdornmentsText "./Demos/TextFields/InputAdornments.fs" InputAdornments.view
+        Demo.view "## Filled Input Adornments" "./Demos/TextFields/FilledInputAdornments.fs" FilledInputAdornments.view
+        Demo.view "## Outlined Input Adornments" "./Demos/TextFields/OutlinedInputAdornments.fs" OutlinedInputAdornments.view
+        Demo.view customizedText "./Demos/TextFields/Customized.fs" Customized.view
+        Demo.view withIconText "./Demos/TextFields/WithIcon.fs" WithIcon.view
     ]

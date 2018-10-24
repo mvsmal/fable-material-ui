@@ -1573,7 +1573,7 @@ module Props =
         | Centered of bool
         | IndicatorColor of TabsIndicatorColor
         | OnChange of (obj->int->unit)
-        | Scrollabel of bool
+        | Scrollable of bool
         | ScrollButtons of ScrollButtonsType
         | TextColor of TabsTextColor
         interface IHTMLProp

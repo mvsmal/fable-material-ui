@@ -1,4 +1,4 @@
-module Demos.Demo
+module Components.Demo
 
 open Fable.Core
 open Fable.Core.JsInterop
@@ -15,7 +15,7 @@ open Components
 [<Emit("require.context('!!raw-loader!' + $0, true, /\\.fs$/);")>]
 let inline requireContext (dir: string) = jsNative
 
-let demosContext: obj = requireContext "./"
+let demosContext: obj = requireContext "../"
 
 let demoStyles (theme : ITheme) : IStyles list =
     let smBreakpoint = theme.breakpoints.up(MaterialSize.Sm |> U2.Case1)

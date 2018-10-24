@@ -13,10 +13,10 @@
     <Compile Include="Import/Prism.fs" />
     <Compile Include="Import/Marked.fs" />
     <Compile Include="Components/Markdown.fs" />
+    <Compile Include="Components/Demo.fs" />
     <Compile Include="GettingStarted/Installation.fs" />
     <Compile Include="GettingStarted/Usage.fs" />
     <Compile Include="GettingStarted/MigrationToV2.fs" />
-    <Compile Include="Demos/Demo.fs" />
     <Compile Include="Demos/AppBar/*.fs" />
     <Compile Include="Demos/AppBar.fs" />
     <Compile Include="Demos/Buttons/*.fs" />
@@ -24,6 +24,10 @@
     <Compile Include="Demos/TextFields/*.fs" />
     <Compile Include="Demos/TextFields.fs" />
     <Compile Include="Demos/Avatars.fs" />
+
+    <Compile Include="Customization/Overrides/*.fs" />
+    <Compile Include="Customization/Overrides.fs" />
+
     <Compile Include="PageLayoutDemos/SignIn.fs" />
     <Content Include="**/*.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

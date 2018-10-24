@@ -5,6 +5,7 @@ open Fable.Core.JsInterop
 open Fable.Helpers.React.Props
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
+open Fable.Import.React
 
 let inline materialEl<'P when 'P :> IHTMLProp>
     (a:Fable.Import.React.ComponentClass<'P>) (b: IHTMLProp list) c : Fable.Import.React.ReactElement =

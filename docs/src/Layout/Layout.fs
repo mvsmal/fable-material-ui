@@ -87,6 +87,7 @@ let layout (props : AppProps) =
         | Page.Buttons -> Demos.Buttons.View.view ()
         | Page.TextFields -> Demos.TextFields.View.view ()
         | Page.SignIn -> PageLayoutDemos.SignIn.root ()
+        | Page.Overrides -> Customization.Overrides.View.view ()
 
     let classes : LayoutClasses = !!props.classes
     let mainClasses =

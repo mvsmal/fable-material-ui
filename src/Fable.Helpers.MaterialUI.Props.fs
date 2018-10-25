@@ -10,123 +10,123 @@ module Themes =
     open Fable.Helpers.React.Props
 
     type IPaletteIntention =
-        abstract member light: string
-        abstract member main: string
-        abstract member dark: string
-        abstract member contrastText: string
+        abstract light: string with get,set
+        abstract main: string with get,set
+        abstract dark: string with get,set
+        abstract contrastText: string with get,set
 
     type [<StringEnum; RequireQualifiedAccess>] PaletteType = Dark | Light
 
     type IPaletteCommon =
-        abstract member black: string
-        abstract member white: string
+        abstract black: string with get,set
+        abstract white: string with get,set
 
     type IPaletteAction =
-        abstract member active: string
-        abstract member hover: string
-        abstract member hoverOpacity: float
-        abstract member selected: string
-        abstract member disabled: string
-        abstract member disabledBackground: string
+        abstract active: string with get,set
+        abstract hover: string with get,set
+        abstract hoverOpacity: float with get,set
+        abstract selected: string with get,set
+        abstract disabled: string with get,set
+        abstract disabledBackground: string with get,set
 
     type IPaletteBackground =
-        abstract member paper: string
-        abstract member ``default``: string
+        abstract paper: string with get,set
+        abstract ``default``: string with get,set
 
     type IPaletteText =
-        abstract member primary: string
-        abstract member secondary: string
-        abstract member disabled: string
-        abstract member hint: string
+        abstract primary: string with get,set
+        abstract secondary: string with get,set
+        abstract disabled: string with get,set
+        abstract hint: string with get,set
 
     type IColor =
-        abstract member ``50``: string
-        abstract member ``100``: string
-        abstract member ``200``: string
-        abstract member ``300``: string
-        abstract member ``400``: string
-        abstract member ``500``: string
-        abstract member ``600``: string
-        abstract member ``700``: string
-        abstract member ``800``: string
-        abstract member ``900``: string
-        abstract member A100: string
-        abstract member A200: string
-        abstract member A400: string
-        abstract member A700: string
+        abstract ``50``: string with get,set
+        abstract ``100``: string with get,set
+        abstract ``200``: string with get,set
+        abstract ``300``: string with get,set
+        abstract ``400``: string with get,set
+        abstract ``500``: string with get,set
+        abstract ``600``: string with get,set
+        abstract ``700``: string with get,set
+        abstract ``800``: string with get,set
+        abstract ``900``: string with get,set
+        abstract A100: string with get,set
+        abstract A200: string with get,set
+        abstract A400: string with get,set
+        abstract A700: string with get,set
 
     type IPalette =
-        abstract member common: IPaletteCommon
-        abstract member ``type``: PaletteType
-        abstract member primary: IPaletteIntention
-        abstract member secondary: IPaletteIntention
-        abstract member error: IPaletteIntention
-        abstract member grey: IColor
-        abstract member contrastThreshold: int
+        abstract common: IPaletteCommon with get,set
+        abstract ``type``: PaletteType with get,set
+        abstract primary: IPaletteIntention with get,set
+        abstract secondary: IPaletteIntention with get,set
+        abstract error: IPaletteIntention with get,set
+        abstract grey: IColor with get,set
+        abstract contrastThreshold: int with get,set
         abstract getContrastText: background: string -> string
         abstract augmentColor: color: IPaletteIntention * mainShade : U2<int, string> * lightShade : U2<int, string> * darkShade : U2<int, string> -> unit
-        abstract member tonalOffset: float
-        abstract member text: IPaletteText
-        abstract member divider: string
-        abstract member background: IPaletteBackground
-        abstract member action: IPaletteAction
+        abstract tonalOffset: float with get,set
+        abstract text: IPaletteText with get,set
+        abstract divider: string with get,set
+        abstract background: IPaletteBackground with get,set
+        abstract action: IPaletteAction with get,set
 
     type [<StringEnum; RequireQualifiedAccess>] TextDirection = Ltr | Rtl
 
     type IShape =
-        abstract member borderRadius: int
+        abstract borderRadius: int with get,set
 
     type ISpacing =
-        abstract member ``unit``: int
+        abstract ``unit``: int with get,set
 
     type IZIndex =
-        abstract member mobileStepper: int
-        abstract member appBar: int
-        abstract member drawer: int
-        abstract member modal: int
-        abstract member snackbar: int
-        abstract member tooltip: int
+        abstract mobileStepper: int with get,set
+        abstract appBar: int with get,set
+        abstract drawer: int with get,set
+        abstract modal: int with get,set
+        abstract snackbar: int with get,set
+        abstract tooltip: int with get,set
 
     type ITypography =
-        abstract member fontSize: string
-        abstract member fontWeight: int
-        abstract member fontFamily: string
-        abstract member letterSpacing: string
-        abstract member lineHeight: string
-        abstract member marginLeft: string
-        abstract member color: string
-        abstract member textTransform: string
+        abstract fontSize: string with get,set
+        abstract fontWeight: int with get,set
+        abstract fontFamily: string with get,set
+        abstract letterSpacing: string with get,set
+        abstract lineHeight: string with get,set
+        abstract marginLeft: string with get,set
+        abstract color: string with get,set
+        abstract textTransform: string with get,set
 
     type IThemeTypography =
         abstract round: px: float -> float
         abstract pxToRem: px: float -> string
-        abstract member fontFamily: string
-        abstract member fontSize: string
-        abstract member fontWeightLight: int
-        abstract member fontWeightRegular: int
-        abstract member fontWeightMedium: int
-        abstract member display4: ITypography
-        abstract member dispaly3: ITypography
-        abstract member display2: ITypography
-        abstract member display1: ITypography
-        abstract member headline: ITypography
-        abstract member title: ITypography
-        abstract member subheading: ITypography
-        abstract member body2: ITypography
-        abstract member body1: ITypography
-        abstract member caption: ITypography
-        abstract member button: ITypography
+        abstract fontFamily: string with get,set
+        abstract fontSize: string with get,set
+        abstract fontWeightLight: int with get,set
+        abstract fontWeightRegular: int with get,set
+        abstract fontWeightMedium: int with get,set
+        abstract display4: ITypography with get,set
+        abstract dispaly3: ITypography with get,set
+        abstract display2: ITypography with get,set
+        abstract display1: ITypography with get,set
+        abstract headline: ITypography with get,set
+        abstract title: ITypography with get,set
+        abstract subheading: ITypography with get,set
+        abstract body2: ITypography with get,set
+        abstract body1: ITypography with get,set
+        abstract caption: ITypography with get,set
+        abstract button: ITypography with get,set
 
     type IBreakpointValues =
-        abstract member xs: int
-        abstract member sm: int
-        abstract member md: int
-        abstract member lg: int
-        abstract member xl: int
+        abstract xs: int with get,set
+        abstract sm: int with get,set
+        abstract md: int with get,set
+        abstract lg: int with get,set
+        abstract xl: int with get,set
 
     type IBreakpoints =
-        abstract member keys: Props.MaterialSize list
-        abstract member values: IBreakpointValues
+        abstract keys: Props.MaterialSize list with get,set
+        abstract values: IBreakpointValues with get,set
         abstract up: key: U2<Props.MaterialSize, int> -> string
         abstract down: key: U2<Props.MaterialSize, int> -> string
         abstract only: key: Props.MaterialSize -> string
@@ -135,47 +135,47 @@ module Themes =
 
     type IMixins =
         abstract gutters: ?styles : CSSProperties -> CSSProperties
-        abstract toolbar: CSSProperties
+        abstract toolbar: CSSProperties with get,set
 
     type IEasing =
-        abstract member easeInOut: string
-        abstract member easeOut: string
-        abstract member easeIn: string
-        abstract member sharp: string
+        abstract easeInOut: string with get,set
+        abstract easeOut: string with get,set
+        abstract easeIn: string with get,set
+        abstract sharp: string with get,set
 
     type IDuration =
-        abstract member shortest: float
-        abstract member shorter: float
-        abstract member short: float
-        abstract member standard: float
-        abstract member complex: float
-        abstract member enteringScreen: float
-        abstract member leavingScreen: float
+        abstract shortest: float with get,set
+        abstract shorter: float with get,set
+        abstract short: float with get,set
+        abstract standard: float with get,set
+        abstract complex: float with get,set
+        abstract enteringScreen: float with get,set
+        abstract leavingScreen: float with get,set
 
     type ITransitionOptions =
-        abstract member duration: U2<float, string> with get,set
-        abstract member easing: string with get,set
-        abstract member delay: U2<float, string> with get,set
+        abstract duration: U2<float, string> with get,set
+        abstract easing: string with get,set
+        abstract delay: U2<float, string> with get,set
 
     type ITransitions =
-        abstract member easing: IEasing
-        abstract member duration: IDuration
+        abstract easing: IEasing with get,set
+        abstract duration: IDuration with get,set
         abstract create: props : U2<string, string list> * ?options: ITransitionOptions -> string
         abstract getAutoHeightDuration: height : int -> int
 
     type ITheme =
-        abstract member breakpoints: IBreakpoints
-        abstract member direction: TextDirection
-        abstract member overrides: obj
-        abstract member palette: IPalette
-        abstract member props: obj
-        abstract member shadows: string list
-        abstract member typography: IThemeTypography
-        abstract member shape: IShape
-        abstract member spacing: ISpacing
-        abstract member zIndex: IZIndex
-        abstract member mixins: IMixins
-        abstract member transitions: ITransitions
+        abstract breakpoints: IBreakpoints with get,set
+        abstract direction: TextDirection with get,set
+        abstract overrides: obj with get,set
+        abstract palette: IPalette with get,set
+        abstract props: obj with get,set
+        abstract shadows: string list with get,set
+        abstract typography: IThemeTypography with get,set
+        abstract shape: IShape with get,set
+        abstract spacing: ISpacing with get,set
+        abstract zIndex: IZIndex with get,set
+        abstract mixins: IMixins with get,set
+        abstract transitions: ITransitions with get,set
 
     type IStyles = interface end
 
@@ -1058,7 +1058,7 @@ module Props =
         interface IHTMLProp
 
     type IButtonBaseActions =
-        abstract member focusVisible: unit -> bool
+        abstract focusVisible: unit -> bool
 
     type [<StringEnum; RequireQualifiedAccess>] ButtonBaseType =
         | Button
@@ -1472,7 +1472,7 @@ module Props =
     }
 
     type IPopoverActions =
-        abstract member updatePosition: unit -> unit
+        abstract updatePosition: unit -> unit
 
     type PopoverProp =
         | Action of (IPopoverActions->unit)
@@ -1567,7 +1567,7 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] ScrollButtonsType = Auto | On | Off
 
     type ITabsActions =
-        abstract member updateIndicator: unit -> unit
+        abstract updateIndicator: unit -> unit
 
     type TabsProp =
         | Action of (ITabsActions->unit)
@@ -1595,10 +1595,10 @@ module Props =
         interface IHTMLProp
 
     type ILabelDisplayedRowsArgs =
-        abstract member from: int
-        abstract member ``to``: int
-        abstract member count: int
-        abstract member page: int
+        abstract from: int
+        abstract ``to``: int
+        abstract count: int
+        abstract page: int
 
     type TablePaginationProp =
         | Count of int
@@ -2065,7 +2065,7 @@ module Props =
 
     type [<Erase>] ProviderTheme =
         | Theme of Themes.ITheme
-        | Func of (Themes.ITheme->ThemeProp list)
+        | Func of (Themes.ITheme->Themes.ITheme)
 
     type MuiThemeProviderProp =
         | Theme of ProviderTheme
@@ -2074,7 +2074,7 @@ module Props =
 
     type [<StringEnum; RequireQualifiedAccess>] Breakpoint = Xs | Sm | Md | Lg | Xl
     type [<AllowNullLiteral>] IWithWidthProps =
-        abstract member width: Breakpoint
+        abstract width: Breakpoint
 
     type WithWidthOption =
         | WithTheme of bool

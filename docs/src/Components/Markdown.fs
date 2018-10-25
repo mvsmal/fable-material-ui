@@ -187,7 +187,7 @@ renderer?link <- link
 let highlight code (lang : string) =
     let language = function
         | "fsharp" -> prism.languages?fsharp
-        | "js" | "jsx" -> prism.languages?jsx
+        | "js" | "jsx" -> prism.languages?javascript
         | "css" -> prism.languages?css
         | "shell" | "sh" -> prism.languages?shell
         | _ -> prism.languages?fsharp

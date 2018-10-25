@@ -32,6 +32,7 @@ let navItems = [
         Href = None
         Children =
             [
+                { Title = "Themes"; Href = Some Page.Themes; Children = [] }
                 { Title = "Overrides"; Href = Some Page.Overrides; Children = [] }
             ]
     }

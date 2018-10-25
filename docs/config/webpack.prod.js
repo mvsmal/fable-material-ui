@@ -45,7 +45,7 @@ module.exports = webpackMerge.smartStrategy({
         }),
         new FaviconsWebpackPlugin(helpers.root('public/favicon.png')),
         new CopyWebpackPlugin([{
-            from: helpers.root('public/img/fable-material-ui-logo.png'),
+            from: helpers.root('public/img/*'),
             to: 'img/'
         }]),
         new webpack.DefinePlugin({

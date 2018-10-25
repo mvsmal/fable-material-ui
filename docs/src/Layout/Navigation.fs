@@ -34,6 +34,7 @@ let navItems = [
             [
                 { Title = "Themes"; Href = Some Page.Themes; Children = [] }
                 { Title = "Overrides"; Href = Some Page.Overrides; Children = [] }
+                { Title = "CSS in JS (F#)"; Href = Some Page.CssInJs; Children = [] }
             ]
     }
     {

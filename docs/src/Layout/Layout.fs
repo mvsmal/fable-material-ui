@@ -90,6 +90,7 @@ let layout (props : AppProps) =
         | Page.SignIn -> PageLayoutDemos.SignIn.root ()
         | Page.Overrides -> Customization.Overrides.View.view ()
         | Page.Themes -> Customization.Themes.View.view ()
+        | Page.CssInJs -> Customization.CssInJs.View.view ()
 
     let classes : LayoutClasses = !!props.classes
     let mainClasses =

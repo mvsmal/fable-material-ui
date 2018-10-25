@@ -14,6 +14,7 @@ type Page =
     | SignIn
     | Overrides
     | Themes
+    | CssInJs
     // TODO Add other demos
 
 type NavItem = {
@@ -35,6 +36,7 @@ let toHash page =
     | SignIn -> "#/pagelayout/signin"
     | Overrides -> "#/customization/overrides"
     | Themes -> "#/customization/themes"
+    | CssInJs -> "#/customization/css-in-js"
 
 let toTitle = function
     | Home -> ""
@@ -48,3 +50,4 @@ let toTitle = function
     | SignIn -> "Sign-in"
     | Overrides -> "Overrides"
     | Themes -> "Themes"
+    | CssInJs -> "Css in JS (F#)"

@@ -2,7 +2,6 @@ module Customization.Overrides.View
 
 open Fable.Core.JsInterop
 open Fable.Helpers.React
-open Fable.Helpers.React.Props
 
 open Customization.Overrides
 open Components
@@ -18,7 +17,7 @@ Every component provides a `className` property which is always applied to the r
 In this example, we are using the [`withStyles()`](#/customization/css-in-js) higher-order
 component to inject custom styles into the DOM, and to pass the class name to the `ClassNames` component via
 its `classes` prop. You can choose any other styling solution, or even plain CSS to create the styles, but be sure to
-consider the [CSS injection order](#/customization/css-in-js), as the CSS injected into the DOM
+consider the [CSS injection order](https://material-ui.com/customization/css-in-js/#css-injection-order), as the CSS injected into the DOM
 by Material-UI to style a component has the highest specificity possible since the `<link>` is injected at the bottom
 of the `<head />` to ensure the components always render correctly.
 """
@@ -164,7 +163,7 @@ let view () =
         Demo.view shortlandText "./Customization/Overrides/ShortlandClasses.fs" ShortlandClasses.view
         Demo.view internalStateText "./Customization/Overrides/InternalState.fs" InternalState.view
         Demo.view inlineStyleText "./Customization/Overrides/InlineStyle.fs" InlineStyle.view
-        Markdown.view "[When should I use inline-style vs classes?](The list of these customization points for each component is documented under the **Component API** section.)"
+        Markdown.view "[When should I use inline-style vs classes?](https://material-ui.com/getting-started/faq/#when-should-i-use-inline-style-vs-classes-)"
         Markdown.view materialDesignVariations
         Markdown.view globalThemeVariationText
     ]

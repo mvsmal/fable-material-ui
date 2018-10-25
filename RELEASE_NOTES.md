@@ -1,3 +1,9 @@
+## New in 2.2.0
+* **BREAKING CHANGE** [WithStyles] `StyleOption.Flip` is now `bool option`
+* **BREAKING CHANGE** [ProviderTheme.Func] is now `ITheme->ITheme`. `unbox` can be used
+* [WithStyles] Added `StyleOption.Custom`
+* [Theme] Added `ThemeProp.Props` for overriding of props for the whole theme
+
 ## New in 2.1.1
 * [Tabs] `TabsProp.Scrollable` typo fix
 

@@ -7,7 +7,6 @@ open Fable.Helpers
 open Fable.Helpers.React.Props
 open Fable.MaterialUI.Themes
 open Fable
-open Fable.Import.React
 
 let styles : IStyles list = [
     Styles.Root [
@@ -24,10 +23,7 @@ let styles : IStyles list = [
     ]
 ]
 
-let styledButton =
-    withStyles
-        (StyleType.Styles styles) []
-        !!(fun p -> from MaterialUI.Button p !!p?children)
+let styledButton = withStyles (StyleType.Styles styles) [] !!MaterialUI.Button
 
 let view () =
     from styledButton createEmpty<IClassesProps> [ str "Classes Shortland" ]

@@ -38,6 +38,7 @@ let layoutStyles (theme : ITheme) : IStyles list=
     [
         Styles.Root [
             Display "flex"
+            PaddingBottom 40
         ]
         Styles.Custom ("menuButton", [
             MarginLeft -12
@@ -88,6 +89,7 @@ let layout (props : AppProps) =
         | Page.TextFields -> Demos.TextFields.View.view ()
         | Page.SignIn -> PageLayoutDemos.SignIn.root ()
         | Page.Overrides -> Customization.Overrides.View.view ()
+        | Page.Themes -> Customization.Themes.View.view ()
 
     let classes : LayoutClasses = !!props.classes
     let mainClasses =

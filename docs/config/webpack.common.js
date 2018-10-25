@@ -19,7 +19,7 @@ const babelOptions = {
     ],
     plugins: [
         ["prismjs", {
-            "languages": ["fsharp", "bash", "markdown", "markup"],
+            "languages": ["fsharp", "bash", "markdown", "markup", "css", "javascript"],
             "theme": "default",
             "css": true
         }]

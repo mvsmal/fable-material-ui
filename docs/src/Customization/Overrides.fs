@@ -2,6 +2,7 @@ module Customization.Overrides.View
 
 open Fable.Core.JsInterop
 open Fable.Helpers.React
+open Fable.Helpers.React.Props
 
 open Customization.Overrides
 open Components
@@ -42,6 +43,118 @@ let shortlandText = """
 
 The above code example can be condensed by using **the same CSS API** as the child component.
 In this example, the `withStyles()` higher-order component is injecting a `classes` property that is used by the `Button` component.
+```fsharp
+let styles : IStyles list = [
+    Styles.Root [
+        CSSProp.Background "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"
+        CSSProp.BorderRadius 3
+        CSSProp.Border 0
+        CSSProp.Color "white"
+        CSSProp.Height 48
+        CSSProp.Padding "0 30px"
+        CSSProp.BoxShadow "0 3px 5px 2px rgba(255, 105, 135, .3)"
+    ]
+    Styles.Label [
+        CSSProp.TextTransform "capitalize"
+    ]
+]
+
+let styledButton = withStyles (StyleType.Styles styles) [] !!MaterialUI.Button
+```
+"""
+
+let internalStateText = """
+#### Internal states
+
+Aside from accessing nested elements, the `classes` property can be used to customize the internal states of Material-UI components.
+The components internal states, like `:hover`, `:focus`, `disabled` and `selected`, are styled with a higher CSS specificity.
+[Specificity is a weight](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) that is applied to a given CSS declaration.
+In order to override the components internal states, **you need to increase specificity**.
+Here is an example with the `disable` state and the button component:
+
+```css
+.classes-state-root {
+  /* ... */
+}
+.classes-state-root.disabled {
+  color: white;
+}
+```
+
+```fsharp
+
+button [
+    HTMLAttr.Disabled true
+    MaterialProp.Classes [
+        ClassNames.Root "classes-state-root"
+        ClassNames.Disabled "disabled"
+    ]
+] []
+
+```
+
+#### Use `$ruleName` to reference a local rule within the same style sheet
+
+The [jss-nested](https://github.com/cssinjs/jss-nested) plugin (available by default) can make the process of increasing specificity easier.
+
+```fsharp
+let styles : IStyles list = [
+    Styles.Root [
+        CSSProp.Custom ("&$disabled", [
+            CSSProp.Color "white"
+        ] |> keyValueList CaseRules.LowerFirst)
+    ]
+    Styles.Disabled []
+]
+```
+
+compiles to:
+
+```css
+.root-x.disable-x {
+  color: white;
+}
+```
+"""
+
+let inlineStyleText = """
+### Overriding with inline-style
+
+The second way to override the style of a component is to use the **inline-style** approach.
+Every component provides a `style` property.
+These properties are always applied to the root element.
+
+You don't have to worry about CSS specificity as the inline-style takes precedence over the regular CSS.
+"""
+
+let materialDesignVariations = """
+## 2. Material Design variations
+
+The Material Design specification documents different variations of certain components, such as how buttons come in different shapes: [text](https://material.io/design/components/buttons.html#text-button) (formerly "flat"), [contained](https://material.io/design/components/buttons.html#contained-button) (formerly "raised"), [FAB](https://material.io/design/components/buttons-floating-action-button.html) and more.
+
+Material-UI attempts to implement all of these variations.
+"""
+
+let globalThemeVariationText = """
+## 3. Global theme variation
+
+### Theme variables
+
+In order to promote consistency between components, and manage the user interface appearance as a whole, Material-UI provides a mechanism to apply global changes by adjusting the [theme configuration variables](#/customization/themes).
+
+### Global theme override
+
+Do you want to customize **all the instances** of a component type?
+
+When the configuration variables aren't powerful enough,
+you can take advantage of the `overrides` key of the `theme` to potentially change every single style injected by Material-UI into the DOM.
+Learn more about it in the [themes section](#/customization/themes) of the documentation.
+
+### Global CSS override
+
+You can also customize all instances of a component with CSS.
+We expose a `dangerouslyUseGlobalCSS` option to do so.
+Learn more about it in the [CSS in JS section](#/customization/css-in-js) of the documentation. It's very similar to how you would customize Bootstrap.
 """
 let view () =
     div [] [
@@ -49,4 +162,9 @@ let view () =
         Demo.view classNamesText "./Customization/Overrides/ClassNames.fs" ClassNames.view
         Demo.view classNestingText "./Customization/Overrides/ClassNesting.fs" ClassNesting.view
         Demo.view shortlandText "./Customization/Overrides/ShortlandClasses.fs" ShortlandClasses.view
+        Demo.view internalStateText "./Customization/Overrides/InternalState.fs" InternalState.view
+        Demo.view inlineStyleText "./Customization/Overrides/InlineStyle.fs" InlineStyle.view
+        Markdown.view "[When should I use inline-style vs classes?](The list of these customization points for each component is documented under the **Component API** section.)"
+        Markdown.view materialDesignVariations
+        Markdown.view globalThemeVariationText
     ]

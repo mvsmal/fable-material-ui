@@ -21,6 +21,7 @@ let pageParser: Parser<Page->Page,Page> =
         map TextFields (s "demos" </> s "text-fields")
         map SignIn (s "pagelayout" </> s "signin")
         map Overrides (s "customization" </> s "overrides")
+        map Themes (s "customization" </> s "themes")
     ]
 
 let urlUpdate (result: Option<Page>) model =

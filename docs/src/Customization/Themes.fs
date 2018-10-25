@@ -147,6 +147,25 @@ let theme = createMuiTheme [
 ```
 """
 
+let overridesPropertiesText = """
+### Properties
+
+You can also apply properties on all the instances of a component type.
+We expose a `ThemeProp.Props` key in the `theme` for this use case.
+
+```fsharp
+let theme = createMuiTheme [
+                ThemeProp.Props [
+                    // Name of the component ⚛️
+                    ThemePropsProp.MuiButtonBase [
+                        // The properties to apply
+                        MaterialProp.DisableRipple true // No more ripple, on the whole application!
+                    ]
+                ]
+            ]
+```
+"""
+
 let withThemeText = """
 ## Accessing the theme in a component
 
@@ -295,6 +314,7 @@ let view () =
         Demo.view htmlFontSizeText "./Customization/Themes/FontSizeTheme.fs" FontSizeTheme.view
         Markdown.view otherVariablesText
         Demo.view overrideCSSText "./Customization/Themes/OverrideCss.fs" OverrideCss.view
+        Demo.view overridesPropertiesText "./Customization/Themes/OverrideProperties.fs" OverrideProperties.view
         Demo.view withThemeText "./Customization/Themes/WithTheme.fs" WithTheme.view
         // Demo.view nestedText "./Customization/Themes/Nested.fs" Nested.view
         Markdown.view apiText

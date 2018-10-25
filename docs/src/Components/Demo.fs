@@ -146,6 +146,8 @@ let demoComponent props =
 
 let demoWithStyles = withStyles (StyleType.Func demoStyles) [] demoComponent
 
+/// Renders the `demoElement` with `title` rendered as Markdown 
+/// and shows the code loaded from `demoPath` (relative to `src/`)
 let view title demoPath demoElement =
     let props = createEmpty<DemoProps>
     props.demoPath <- demoPath

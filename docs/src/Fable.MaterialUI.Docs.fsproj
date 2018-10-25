@@ -29,6 +29,8 @@
     <Compile Include="Customization/Overrides.fs" />
     <Compile Include="Customization/Themes/*.fs" />
     <Compile Include="Customization/Themes.fs" />
+    <Compile Include="Customization/CssInJs/*.fs" />
+    <Compile Include="Customization/CssInJs.fs" />
 
     <Compile Include="PageLayoutDemos/SignIn.fs" />
     <Content Include="**/*.md">

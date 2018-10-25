@@ -22,6 +22,7 @@ let pageParser: Parser<Page->Page,Page> =
         map SignIn (s "pagelayout" </> s "signin")
         map Overrides (s "customization" </> s "overrides")
         map Themes (s "customization" </> s "themes")
+        map CssInJs (s "customization" </> s "css-in-js")
     ]
 
 let urlUpdate (result: Option<Page>) model =

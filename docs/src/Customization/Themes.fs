@@ -87,7 +87,7 @@ let theme = createMuiTheme [
 ```
 The computed font size by the browser follows this mathematical equation:
 
-![font-size](/img/font-size.gif)
+![font-size](img/font-size.gif)
 """
 
 let htmlFontSizeText = """

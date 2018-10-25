@@ -211,7 +211,7 @@ let markdown (props : MarkdownProps) =
         DangerouslySetInnerHTML { __html = markedText }
     ] []
 
-let markdownWithStyles = withStyles (StyleType.Func markdownStyles) [ MProps.Flip false ] markdown
+let markdownWithStyles = withStyles (StyleType.Func markdownStyles) [ MProps.Flip (Some false) ] markdown
 
 let view text =
     let props = createEmpty<MarkdownProps>

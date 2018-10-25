@@ -10,123 +10,123 @@ module Themes =
     open Fable.Helpers.React.Props
 
     type IPaletteIntention =
-        abstract member light: string
-        abstract member main: string
-        abstract member dark: string
-        abstract member contrastText: string
+        abstract light: string with get,set
+        abstract main: string with get,set
+        abstract dark: string with get,set
+        abstract contrastText: string with get,set
 
     type [<StringEnum; RequireQualifiedAccess>] PaletteType = Dark | Light
 
     type IPaletteCommon =
-        abstract member black: string
-        abstract member white: string
+        abstract black: string with get,set
+        abstract white: string with get,set
 
     type IPaletteAction =
-        abstract member active: string
-        abstract member hover: string
-        abstract member hoverOpacity: float
-        abstract member selected: string
-        abstract member disabled: string
-        abstract member disabledBackground: string
+        abstract active: string with get,set
+        abstract hover: string with get,set
+        abstract hoverOpacity: float with get,set
+        abstract selected: string with get,set
+        abstract disabled: string with get,set
+        abstract disabledBackground: string with get,set
 
     type IPaletteBackground =
-        abstract member paper: string
-        abstract member ``default``: string
+        abstract paper: string with get,set
+        abstract ``default``: string with get,set
 
     type IPaletteText =
-        abstract member primary: string
-        abstract member secondary: string
-        abstract member disabled: string
-        abstract member hint: string
+        abstract primary: string with get,set
+        abstract secondary: string with get,set
+        abstract disabled: string with get,set
+        abstract hint: string with get,set
 
     type IColor =
-        abstract member ``50``: string
-        abstract member ``100``: string
-        abstract member ``200``: string
-        abstract member ``300``: string
-        abstract member ``400``: string
-        abstract member ``500``: string
-        abstract member ``600``: string
-        abstract member ``700``: string
-        abstract member ``800``: string
-        abstract member ``900``: string
-        abstract member A100: string
-        abstract member A200: string
-        abstract member A400: string
-        abstract member A700: string
+        abstract ``50``: string with get,set
+        abstract ``100``: string with get,set
+        abstract ``200``: string with get,set
+        abstract ``300``: string with get,set
+        abstract ``400``: string with get,set
+        abstract ``500``: string with get,set
+        abstract ``600``: string with get,set
+        abstract ``700``: string with get,set
+        abstract ``800``: string with get,set
+        abstract ``900``: string with get,set
+        abstract A100: string with get,set
+        abstract A200: string with get,set
+        abstract A400: string with get,set
+        abstract A700: string with get,set
 
     type IPalette =
-        abstract member common: IPaletteCommon
-        abstract member ``type``: PaletteType
-        abstract member primary: IPaletteIntention
-        abstract member secondary: IPaletteIntention
-        abstract member error: IPaletteIntention
-        abstract member grey: IColor
-        abstract member contrastThreshold: int
+        abstract common: IPaletteCommon with get,set
+        abstract ``type``: PaletteType with get,set
+        abstract primary: IPaletteIntention with get,set
+        abstract secondary: IPaletteIntention with get,set
+        abstract error: IPaletteIntention with get,set
+        abstract grey: IColor with get,set
+        abstract contrastThreshold: int with get,set
         abstract getContrastText: background: string -> string
         abstract augmentColor: color: IPaletteIntention * mainShade : U2<int, string> * lightShade : U2<int, string> * darkShade : U2<int, string> -> unit
-        abstract member tonalOffset: float
-        abstract member text: IPaletteText
-        abstract member divider: string
-        abstract member background: IPaletteBackground
-        abstract member action: IPaletteAction
+        abstract tonalOffset: float with get,set
+        abstract text: IPaletteText with get,set
+        abstract divider: string with get,set
+        abstract background: IPaletteBackground with get,set
+        abstract action: IPaletteAction with get,set
 
     type [<StringEnum; RequireQualifiedAccess>] TextDirection = Ltr | Rtl
 
     type IShape =
-        abstract member borderRadius: int
+        abstract borderRadius: int with get,set
 
     type ISpacing =
-        abstract member ``unit``: int
+        abstract ``unit``: int with get,set
 
     type IZIndex =
-        abstract member mobileStepper: int
-        abstract member appBar: int
-        abstract member drawer: int
-        abstract member modal: int
-        abstract member snackbar: int
-        abstract member tooltip: int
+        abstract mobileStepper: int with get,set
+        abstract appBar: int with get,set
+        abstract drawer: int with get,set
+        abstract modal: int with get,set
+        abstract snackbar: int with get,set
+        abstract tooltip: int with get,set
 
     type ITypography =
-        abstract member fontSize: string
-        abstract member fontWeight: int
-        abstract member fontFamily: string
-        abstract member letterSpacing: string
-        abstract member lineHeight: string
-        abstract member marginLeft: string
-        abstract member color: string
-        abstract member textTransform: string
+        abstract fontSize: string with get,set
+        abstract fontWeight: int with get,set
+        abstract fontFamily: string with get,set
+        abstract letterSpacing: string with get,set
+        abstract lineHeight: string with get,set
+        abstract marginLeft: string with get,set
+        abstract color: string with get,set
+        abstract textTransform: string with get,set
 
     type IThemeTypography =
         abstract round: px: float -> float
         abstract pxToRem: px: float -> string
-        abstract member fontFamily: string
-        abstract member fontSize: string
-        abstract member fontWeightLight: int
-        abstract member fontWeightRegular: int
-        abstract member fontWeightMedium: int
-        abstract member display4: ITypography
-        abstract member dispaly3: ITypography
-        abstract member display2: ITypography
-        abstract member display1: ITypography
-        abstract member headline: ITypography
-        abstract member title: ITypography
-        abstract member subheading: ITypography
-        abstract member body2: ITypography
-        abstract member body1: ITypography
-        abstract member caption: ITypography
-        abstract member button: ITypography
+        abstract fontFamily: string with get,set
+        abstract fontSize: string with get,set
+        abstract fontWeightLight: int with get,set
+        abstract fontWeightRegular: int with get,set
+        abstract fontWeightMedium: int with get,set
+        abstract display4: ITypography with get,set
+        abstract dispaly3: ITypography with get,set
+        abstract display2: ITypography with get,set
+        abstract display1: ITypography with get,set
+        abstract headline: ITypography with get,set
+        abstract title: ITypography with get,set
+        abstract subheading: ITypography with get,set
+        abstract body2: ITypography with get,set
+        abstract body1: ITypography with get,set
+        abstract caption: ITypography with get,set
+        abstract button: ITypography with get,set
 
     type IBreakpointValues =
-        abstract member xs: int
-        abstract member sm: int
-        abstract member md: int
-        abstract member lg: int
-        abstract member xl: int
+        abstract xs: int with get,set
+        abstract sm: int with get,set
+        abstract md: int with get,set
+        abstract lg: int with get,set
+        abstract xl: int with get,set
 
     type IBreakpoints =
-        abstract member keys: Props.MaterialSize list
-        abstract member values: IBreakpointValues
+        abstract keys: Props.MaterialSize list with get,set
+        abstract values: IBreakpointValues with get,set
         abstract up: key: U2<Props.MaterialSize, int> -> string
         abstract down: key: U2<Props.MaterialSize, int> -> string
         abstract only: key: Props.MaterialSize -> string
@@ -135,47 +135,47 @@ module Themes =
 
     type IMixins =
         abstract gutters: ?styles : CSSProperties -> CSSProperties
-        abstract toolbar: CSSProperties
+        abstract toolbar: CSSProperties with get,set
 
     type IEasing =
-        abstract member easeInOut: string
-        abstract member easeOut: string
-        abstract member easeIn: string
-        abstract member sharp: string
+        abstract easeInOut: string with get,set
+        abstract easeOut: string with get,set
+        abstract easeIn: string with get,set
+        abstract sharp: string with get,set
 
     type IDuration =
-        abstract member shortest: float
-        abstract member shorter: float
-        abstract member short: float
-        abstract member standard: float
-        abstract member complex: float
-        abstract member enteringScreen: float
-        abstract member leavingScreen: float
+        abstract shortest: float with get,set
+        abstract shorter: float with get,set
+        abstract short: float with get,set
+        abstract standard: float with get,set
+        abstract complex: float with get,set
+        abstract enteringScreen: float with get,set
+        abstract leavingScreen: float with get,set
 
     type ITransitionOptions =
-        abstract member duration: U2<float, string> with get,set
-        abstract member easing: string with get,set
-        abstract member delay: U2<float, string> with get,set
+        abstract duration: U2<float, string> with get,set
+        abstract easing: string with get,set
+        abstract delay: U2<float, string> with get,set
 
     type ITransitions =
-        abstract member easing: IEasing
-        abstract member duration: IDuration
+        abstract easing: IEasing with get,set
+        abstract duration: IDuration with get,set
         abstract create: props : U2<string, string list> * ?options: ITransitionOptions -> string
         abstract getAutoHeightDuration: height : int -> int
 
     type ITheme =
-        abstract member breakpoints: IBreakpoints
-        abstract member direction: TextDirection
-        abstract member overrides: obj
-        abstract member palette: IPalette
-        abstract member props: obj
-        abstract member shadows: string list
-        abstract member typography: IThemeTypography
-        abstract member shape: IShape
-        abstract member spacing: ISpacing
-        abstract member zIndex: IZIndex
-        abstract member mixins: IMixins
-        abstract member transitions: ITransitions
+        abstract breakpoints: IBreakpoints with get,set
+        abstract direction: TextDirection with get,set
+        abstract overrides: obj with get,set
+        abstract palette: IPalette with get,set
+        abstract props: obj with get,set
+        abstract shadows: string list with get,set
+        abstract typography: IThemeTypography with get,set
+        abstract shape: IShape with get,set
+        abstract spacing: ISpacing with get,set
+        abstract zIndex: IZIndex with get,set
+        abstract mixins: IMixins with get,set
+        abstract transitions: ITransitions with get,set
 
     type IStyles = interface end
 
@@ -899,7 +899,8 @@ module Props =
     type StyleOption =
         | WithTheme of bool
         | Name of string
-        | Flip of bool
+        | Flip of bool option
+        | [<Erase>] Custom of string*obj
 
     type TransitionDurationProp =
         | Enter of float
@@ -1057,7 +1058,7 @@ module Props =
         interface IHTMLProp
 
     type IButtonBaseActions =
-        abstract member focusVisible: unit -> bool
+        abstract focusVisible: unit -> bool
 
     type [<StringEnum; RequireQualifiedAccess>] ButtonBaseType =
         | Button
@@ -1471,7 +1472,7 @@ module Props =
     }
 
     type IPopoverActions =
-        abstract member updatePosition: unit -> unit
+        abstract updatePosition: unit -> unit
 
     type PopoverProp =
         | Action of (IPopoverActions->unit)
@@ -1566,7 +1567,7 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] ScrollButtonsType = Auto | On | Off
 
     type ITabsActions =
-        abstract member updateIndicator: unit -> unit
+        abstract updateIndicator: unit -> unit
 
     type TabsProp =
         | Action of (ITabsActions->unit)
@@ -1594,10 +1595,10 @@ module Props =
         interface IHTMLProp
 
     type ILabelDisplayedRowsArgs =
-        abstract member from: int
-        abstract member ``to``: int
-        abstract member count: int
-        abstract member page: int
+        abstract from: int
+        abstract ``to``: int
+        abstract count: int
+        abstract page: int
 
     type TablePaginationProp =
         | Count of int
@@ -1888,6 +1889,7 @@ module Props =
         let inline MuiExpansionPanelActions styles = pascalCaseProp "MuiExpansionPanelActions" styles
         let inline MuiExpansionPanelDetails styles = pascalCaseProp "MuiExpansionPanelDetails" styles
         let inline MuiExpansionPanelSummary styles = pascalCaseProp "MuiExpansionPanelSummary" styles
+        let inline MuiFilledInput styles = pascalCaseProp "MuiFilledInput" styles
         let inline MuiFormControl styles = pascalCaseProp "MuiFormControl" styles
         let inline MuiFormControlLabel styles = pascalCaseProp "MuiFormControlLabel" styles
         let inline MuiFormGroup styles = pascalCaseProp "MuiFormGroup" styles
@@ -1933,6 +1935,7 @@ module Props =
         let inline MuiSwitch styles = pascalCaseProp "MuiSwitch" styles
         let inline MuiTab styles = pascalCaseProp "MuiTab" styles
         let inline MuiTable styles = pascalCaseProp "MuiTable" styles
+        let inline MuiTableBody styles = pascalCaseProp "MuiTableBody" styles
         let inline MuiTableCell styles = pascalCaseProp "MuiTableCell" styles
         let inline MuiTableFooter styles = pascalCaseProp "MuiTableFooter" styles
         let inline MuiTablePagination styles = pascalCaseProp "MuiTablePagination" styles
@@ -1944,6 +1947,104 @@ module Props =
         let inline MuiTouchRipple styles = pascalCaseProp "MuiTouchRipple" styles
         let inline MuiTypography styles = pascalCaseProp "MuiTypography" styles
 
+    type IThemePropsProp = interface end
+    type ThemePropsProp =
+        | [<Erase>] Custom of string * obj
+        interface IThemePropsProp
+
+    [<AutoOpen>]
+    module ThemePropsProp =
+        open Fable.Core.JsInterop
+        let inline private pascalCaseProp (name : string) (props : IHTMLProp list) =
+            ThemePropsProp.Custom (name, props |> keyValueList CaseRules.LowerFirst)
+
+        let inline MuiAppBar props = pascalCaseProp "MuiAppBar" props
+        let inline MuiAvatar props = pascalCaseProp "MuiAvatar" props
+        let inline MuiBackdrop props = pascalCaseProp "MuiBackdrop" props
+        let inline MuiBadge props = pascalCaseProp "MuiBadge" props
+        let inline MuiBottomNavigation props = pascalCaseProp "MuiBottomNavigation" props
+        let inline MuiBottomNavigationAction props = pascalCaseProp "MuiBottomNavigationAction" props
+        let inline MuiButton props = pascalCaseProp "MuiButton" props
+        let inline MuiButtonBase props = pascalCaseProp "MuiButtonBase" props
+        let inline MuiCard props = pascalCaseProp "MuiCard" props
+        let inline MuiCardActionArea props = pascalCaseProp "MuiCardActionArea" props
+        let inline MuiCardActions props = pascalCaseProp "MuiCardActions" props
+        let inline MuiCardContent props = pascalCaseProp "MuiCardContent" props
+        let inline MuiCardHeader props = pascalCaseProp "MuiCardHeader" props
+        let inline MuiCardMedia props = pascalCaseProp "MuiCardMedia" props
+        let inline MuiCheckbox props = pascalCaseProp "MuiCheckbox" props
+        let inline MuiChip props = pascalCaseProp "MuiChip" props
+        let inline MuiCircularProgress props = pascalCaseProp "MuiCircularProgress" props
+        let inline MuiCollapse props = pascalCaseProp "MuiCollapse" props
+        let inline MuiCssBaseline props = pascalCaseProp "MuiCssBaseline" props
+        let inline MuiDialog props = pascalCaseProp "MuiDialog" props
+        let inline MuiDialogActions props = pascalCaseProp "MuiDialogActions" props
+        let inline MuiDialogContent props = pascalCaseProp "MuiDialogContent" props
+        let inline MuiDialogContentText props = pascalCaseProp "MuiDialogContentText" props
+        let inline MuiDialogTitle props = pascalCaseProp "MuiDialogTitle" props
+        let inline MuiDivider props = pascalCaseProp "MuiDivider" props
+        let inline MuiDrawer props = pascalCaseProp "MuiDrawer" props
+        let inline MuiExpansionPanel props = pascalCaseProp "MuiExpansionPanel" props
+        let inline MuiExpansionPanelActions props = pascalCaseProp "MuiExpansionPanelActions" props
+        let inline MuiExpansionPanelDetails props = pascalCaseProp "MuiExpansionPanelDetails" props
+        let inline MuiExpansionPanelSummary props = pascalCaseProp "MuiExpansionPanelSummary" props
+        let inline MuiFilledInput props = pascalCaseProp "MuiFilledInput" props
+        let inline MuiFormControl props = pascalCaseProp "MuiFormControl" props
+        let inline MuiFormControlLabel props = pascalCaseProp "MuiFormControlLabel" props
+        let inline MuiFormGroup props = pascalCaseProp "MuiFormGroup" props
+        let inline MuiFormHelperText props = pascalCaseProp "MuiFormHelperText" props
+        let inline MuiFormLabel props = pascalCaseProp "MuiFormLabel" props
+        let inline MuiGrid props = pascalCaseProp "MuiGrid" props
+        let inline MuiGridList props = pascalCaseProp "MuiGridList" props
+        let inline MuiGridListTile props = pascalCaseProp "MuiGridListTile" props
+        let inline MuiGridListTileBar props = pascalCaseProp "MuiGridListTileBar" props
+        let inline MuiIcon props = pascalCaseProp "MuiIcon" props
+        let inline MuiIconButton props = pascalCaseProp "MuiIconButton" props
+        let inline MuiInput props = pascalCaseProp "MuiInput" props
+        let inline MuiInputAdornment props = pascalCaseProp "MuiInputAdornment" props
+        let inline MuiInputLabel props = pascalCaseProp "MuiInputLabel" props
+        let inline MuiLinearProgress props = pascalCaseProp "MuiLinearProgress" props
+        let inline MuiList props = pascalCaseProp "MuiList" props
+        let inline MuiListItem props = pascalCaseProp "MuiListItem" props
+        let inline MuiListItemAvatar props = pascalCaseProp "MuiListItemAvatar" props
+        let inline MuiListItemIcon props = pascalCaseProp "MuiListItemIcon" props
+        let inline MuiListItemSecondaryAction props = pascalCaseProp "MuiListItemSecondaryAction" props
+        let inline MuiListItemText props = pascalCaseProp "MuiListItemText" props
+        let inline MuiListSubheader props = pascalCaseProp "MuiListSubheader" props
+        let inline MuiMenu props = pascalCaseProp "MuiMenu" props
+        let inline MuiMenuItem props = pascalCaseProp "MuiMenuItem" props
+        let inline MuiMobileStepper props = pascalCaseProp "MuiMobileStepper" props
+        let inline MuiModal props = pascalCaseProp "MuiModal" props
+        let inline MuiNativeSelect props = pascalCaseProp "MuiNativeSelect" props
+        let inline MuiOutlinedInput props = pascalCaseProp "MuiOutlinedInput" props
+        let inline MuiPaper props = pascalCaseProp "MuiPaper" props
+        let inline MuiPopover props = pascalCaseProp "MuiPopover" props
+        let inline MuiRadio props = pascalCaseProp "MuiRadio" props
+        let inline MuiSelect props = pascalCaseProp "MuiSelect" props
+        let inline MuiSnackbar props = pascalCaseProp "MuiSnackbar" props
+        let inline MuiSnackbarContent props = pascalCaseProp "MuiSnackbarContent" props
+        let inline MuiStep props = pascalCaseProp "MuiStep" props
+        let inline MuiStepButton props = pascalCaseProp "MuiStepButton" props
+        let inline MuiStepConnector props = pascalCaseProp "MuiStepConnector" props
+        let inline MuiStepContent props = pascalCaseProp "MuiStepContent" props
+        let inline MuiStepIcon props = pascalCaseProp "MuiStepIcon" props
+        let inline MuiStepLabel props = pascalCaseProp "MuiStepLabel" props
+        let inline MuiStepper props = pascalCaseProp "MuiStepper" props
+        let inline MuiSvgIcon props = pascalCaseProp "MuiSvgIcon" props
+        let inline MuiSwitch props = pascalCaseProp "MuiSwitch" props
+        let inline MuiTab props = pascalCaseProp "MuiTab" props
+        let inline MuiTable props = pascalCaseProp "MuiTable" props
+        let inline MuiTableBody props = pascalCaseProp "MuiTableBody" props
+        let inline MuiTableCell props = pascalCaseProp "MuiTableCell" props
+        let inline MuiTableFooter props = pascalCaseProp "MuiTableFooter" props
+        let inline MuiTablePagination props = pascalCaseProp "MuiTablePagination" props
+        let inline MuiTableRow props = pascalCaseProp "MuiTableRow" props
+        let inline MuiTableSortLabel props = pascalCaseProp "MuiTableSortLabel" props
+        let inline MuiTabs props = pascalCaseProp "MuiTabs" props
+        let inline MuiToolbar props = pascalCaseProp "MuiToolbar" props
+        let inline MuiTooltip props = pascalCaseProp "MuiTooltip" props
+        let inline MuiTouchRipple props = pascalCaseProp "MuiTouchRipple" props
+        let inline MuiTypography props = pascalCaseProp "MuiTypography" props
 
     type ThemeProp =
         | Direction of Themes.TextDirection
@@ -1960,10 +2061,11 @@ module Props =
         let inline Typography (props : ThemeTypographyProp list) = customThemeProp "typography" props
         let inline ZIndex (props : ZIndexProp list) = customThemeProp "zIndex" props
         let inline Overrides (props : IOverridesProp list) = customThemeProp "overrides" props
+        let inline Props (props : IThemePropsProp list) = customThemeProp "props" props
 
     type [<Erase>] ProviderTheme =
         | Theme of Themes.ITheme
-        | Func of (Themes.ITheme->ThemeProp list)
+        | Func of (Themes.ITheme->Themes.ITheme)
 
     type MuiThemeProviderProp =
         | Theme of ProviderTheme
@@ -1972,7 +2074,7 @@ module Props =
 
     type [<StringEnum; RequireQualifiedAccess>] Breakpoint = Xs | Sm | Md | Lg | Xl
     type [<AllowNullLiteral>] IWithWidthProps =
-        abstract member width: Breakpoint
+        abstract width: Breakpoint
 
     type WithWidthOption =
         | WithTheme of bool

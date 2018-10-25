@@ -899,7 +899,8 @@ module Props =
     type StyleOption =
         | WithTheme of bool
         | Name of string
-        | Flip of bool
+        | Flip of bool option
+        | [<Erase>] Custom of string*obj
 
     type TransitionDurationProp =
         | Enter of float

@@ -1,12 +1,11 @@
 module Customization.Overrides.ShortlandClasses
 
-open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.MaterialUI
 open Fable.Helpers
+open Fable.Helpers.React
 open Fable.Helpers.React.Props
+open Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Themes
-open Fable
 
 let styles : IStyles list = [
     Styles.Root [

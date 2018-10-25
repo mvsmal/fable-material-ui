@@ -1,13 +1,13 @@
 module Customization.CssInJs.Example
 
+open Fable.Core
 open Fable.Core.JsInterop
+open Fable.Import.React
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
-open Fable.Core
-open Fable.Import.React
 
 // 1. We define the styles
 let styles (theme : ITheme) : IStyles list = [

@@ -37,7 +37,7 @@ You can always add new plugins if needed with the [`JssProvider`](https://github
 If you wish to build your own instance of `jss` **and** support *rtl* make sure you also include the [jss-rtl](https://github.com/alitaheri/jss-rtl) plugin.
 Check the jss-rtl [readme](https://github.com/alitaheri/jss-rtl#simple-usage) to learn how.
 
-*There are no helpers of JssProvider in this library since it's not part of Material-UI. You would need to import it manually with* `Fable.Core.JsInterop Helpers`
+⚠️*There are no helpers of JssProvider in this library since it's not part of Material-UI. You would need to import it manually with* `Fable.Core.JsInterop` *helpers*
 """
 
 let classNamesText = """

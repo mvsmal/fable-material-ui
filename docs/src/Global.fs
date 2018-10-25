@@ -15,6 +15,7 @@ type Page =
     | Overrides
     | Themes
     | CssInJs
+    | DefaultTheme
     // TODO Add other demos
 
 type NavItem = {
@@ -37,6 +38,7 @@ let toHash page =
     | Overrides -> "#/customization/overrides"
     | Themes -> "#/customization/themes"
     | CssInJs -> "#/customization/css-in-js"
+    | DefaultTheme -> "#/customization/default-theme"
 
 let toTitle = function
     | Home -> ""
@@ -51,3 +53,4 @@ let toTitle = function
     | Overrides -> "Overrides"
     | Themes -> "Themes"
     | CssInJs -> "Css in JS (F#)"
+    | DefaultTheme -> "Default Theme"

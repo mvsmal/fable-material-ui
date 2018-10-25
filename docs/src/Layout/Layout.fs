@@ -91,6 +91,7 @@ let layout (props : AppProps) =
         | Page.Overrides -> Customization.Overrides.View.view ()
         | Page.Themes -> Customization.Themes.View.view ()
         | Page.CssInJs -> Customization.CssInJs.View.view ()
+        | Page.DefaultTheme -> Customization.DefaultTheme.View.view ()
 
     let classes : LayoutClasses = !!props.classes
     let mainClasses =

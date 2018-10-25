@@ -1,9 +1,9 @@
 module Customization.Overrides.ClassNesting
 
-open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.MaterialUI
+open Fable.Helpers.React
 open Fable.Helpers.React.Props
+open Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 

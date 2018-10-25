@@ -24,19 +24,18 @@
     <Compile Include="Demos/TextFields/*.fs" />
     <Compile Include="Demos/TextFields.fs" />
     <Compile Include="Demos/Avatars.fs" />
-
+    <Content Include="Demos/**/*.fs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Customization/Overrides/*.fs" />
     <Compile Include="Customization/Overrides.fs" />
     <Compile Include="Customization/Themes/*.fs" />
     <Compile Include="Customization/Themes.fs" />
     <Compile Include="Customization/CssInJs/*.fs" />
     <Compile Include="Customization/CssInJs.fs" />
-
+    <Compile Include="Customization/DefaultTheme.fs" />
     <Compile Include="PageLayoutDemos/SignIn.fs" />
     <Content Include="**/*.md">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Demos/**/*.fs" Exclude="Demos/*.fs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Compile Include="Home/Home.fs" />

@@ -2,7 +2,6 @@ module Customization.Themes.View
 
 open Fable.Core.JsInterop
 open Fable.Helpers.React
-open Fable.Helpers.React.Props
 
 open Components
 
@@ -117,6 +116,15 @@ html {
 *You need to apply the above CSS on the html element of this page to see the below demo rendered correctly*
 """
 
+let customVariablesText = """
+### Custom variables
+
+When using Material-UI's [styling solution](#/customization/css-in-js) with your own components,
+you can also take advantage of the theme.
+It can be convenient to add additional variables to the theme so you can use them everywhere.
+For instance:
+"""
+
 let otherVariablesText = """
 ### Other variables
 
@@ -178,6 +186,15 @@ let nestedText = """
 
 The theming solution is very flexible, as you can nest multiple theme providers.
 This can be really useful when dealing with different area of your application that have distinct appearance from each other.
+"""
+
+let performanceNote = """
+#### A note on performance
+
+The performance implications of nesting the `MuiThemeProvider` component are linked to JSS's work behind the scenes.
+The main point to understand is that we cache the injected CSS with the following tuple `(styles, theme)`.
+- `theme`: If you provide a new theme at each render, a new CSS object will be computed and injected. Both for UI consistency and performance, it's better to render a limited number of theme objects.
+- `styles`: The larger the styles object is, the more work is needed.
 """
 
 let apiText = """
@@ -312,11 +329,13 @@ let view () =
         Markdown.view typographyFontFamilyText
         Markdown.view typographyFontSizeText
         Demo.view htmlFontSizeText "./Customization/Themes/FontSizeTheme.fs" FontSizeTheme.view
+        Demo.view customVariablesText "./Customization/Themes/CustomStyles.fs" CustomStyles.view
         Markdown.view otherVariablesText
         Demo.view overrideCSSText "./Customization/Themes/OverrideCss.fs" OverrideCss.view
         Demo.view overridesPropertiesText "./Customization/Themes/OverrideProperties.fs" OverrideProperties.view
         Demo.view withThemeText "./Customization/Themes/WithTheme.fs" WithTheme.view
-        // Demo.view nestedText "./Customization/Themes/Nested.fs" Nested.view
+        Demo.view nestedText "./Customization/Themes/Nested.fs" Nested.view
+        Markdown.view performanceNote
         Markdown.view apiText
 
     ]

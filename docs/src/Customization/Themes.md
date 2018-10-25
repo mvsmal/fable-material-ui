@@ -62,7 +62,7 @@ type PaletteIntentionProp =
 
 The simplest way to customize an intention is to import one or more of the provided colors
 and apply them to a palette intention. Unlike in JS version of Material-UI, you can only define a specific
-PaletteIntentionProps, however if you define just `Main`, other colors will be calculated automaticaly.
+`PaletteIntentionProp`, however if you define just `Main`, other colors will be calculated automaticaly.
 
 These code samples are identical:
 

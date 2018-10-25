@@ -6,7 +6,6 @@ open Fable.Helpers.React.Props
 open Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
-open Fable.MaterialUI
 
 let styles : IStyles list = [
     Styles.Root [

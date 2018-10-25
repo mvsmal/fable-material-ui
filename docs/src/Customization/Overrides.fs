@@ -3,7 +3,6 @@ module Customization.Overrides.View
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 
-open Customization.Overrides
 open Components
 
 let text = importDefault "./Overrides.md"

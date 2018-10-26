@@ -1,3 +1,6 @@
+## New in 2.2.1
+* [Theme] Added missing typography props for `ITheme.typography` obj
+
 ## New in 2.2.0
 * **BREAKING CHANGE** [WithStyles] `StyleOption.Flip` is now `bool option`
 * **BREAKING CHANGE** [ProviderTheme.Func] is now `ITheme->ITheme`. `unbox` can be used

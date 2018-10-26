@@ -24,6 +24,7 @@ let pageParser: Parser<Page->Page,Page> =
         map Themes (s "customization" </> s "themes")
         map CssInJs (s "customization" </> s "css-in-js")
         map DefaultTheme (s "customization" </> s "default-theme")
+        map Api (s "api" </> str)
     ]
 
 let urlUpdate (result: Option<Page>) model =

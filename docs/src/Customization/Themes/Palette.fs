@@ -6,6 +6,9 @@ open Fable.MaterialUI.Props
 open Fable.MaterialUI
 
 let theme = createMuiTheme [
+                ThemeProp.Typography [
+                    ThemeTypographyProp.UseNextVariants true
+                ]
                 ThemeProp.Palette [
                     PaletteProp.Primary [
                         PaletteIntentionProp.Main Colors.purple.``500``

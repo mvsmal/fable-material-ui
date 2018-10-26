@@ -16,6 +16,7 @@ type Page =
     | Themes
     | CssInJs
     | DefaultTheme
+    | Api of string
     // TODO Add other demos
 
 type NavItem = {
@@ -39,6 +40,13 @@ let toHash page =
     | Themes -> "#/customization/themes"
     | CssInJs -> "#/customization/css-in-js"
     | DefaultTheme -> "#/customization/default-theme"
+    | Api comp -> "#/api/" + comp
+
+let toCamelCase (s : string) =
+    s |> String.mapi (fun i c ->
+        if i = 0 || s.[i - 1] = '-' then System.Char.ToUpper c
+        else c)
+
 
 let toTitle = function
     | Home -> ""
@@ -54,3 +62,4 @@ let toTitle = function
     | Themes -> "Themes"
     | CssInJs -> "Css in JS (F#)"
     | DefaultTheme -> "Default Theme"
+    | Api comp -> (toCamelCase comp).Replace("-","")

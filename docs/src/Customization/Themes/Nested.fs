@@ -32,12 +32,18 @@ let nestedCheckBox (props : IClassesProps) =
 let nestedWithStyles = withStyles<IClassesProps> (StyleType.Func styles) [] nestedCheckBox
 
 let theme1 = createMuiTheme [
+                ThemeProp.Typography [
+                    ThemeTypographyProp.UseNextVariants true
+                ]
                 ThemeProp.Custom ("status", [
                     CSSProp.Color Colors.orange.``500``
                 ] |> keyValueList CaseRules.LowerFirst)
             ]
 
 let theme2 = createMuiTheme [
+                ThemeProp.Typography [
+                    ThemeTypographyProp.UseNextVariants true
+                ]
                 ThemeProp.Custom ("status", [
                     CSSProp.Color Colors.green.``500``
                 ] |> keyValueList CaseRules.LowerFirst)

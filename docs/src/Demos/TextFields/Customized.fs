@@ -66,6 +66,9 @@ let styles (theme : ITheme) : IStyles list =
     ]
 
 let theme = createMuiTheme([
+                ThemeProp.Typography [
+                    ThemeTypographyProp.UseNextVariants true
+                ]
                 ThemeProp.Palette [
                     PaletteProp.Primary [
                         PaletteIntentionProp.Main Colors.green.``500``

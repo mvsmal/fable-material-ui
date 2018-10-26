@@ -35,6 +35,8 @@
     <Compile Include="Customization/CssInJs.fs" />
     <Compile Include="Customization/DefaultTheme.fs" />
     <Compile Include="PageLayoutDemos/SignIn.fs" />
+    <Compile Include="Api/Api.fs" />
+
     <Content Include="**/*.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

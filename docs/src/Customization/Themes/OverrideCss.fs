@@ -7,6 +7,9 @@ open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
 let theme = createMuiTheme [
+                ThemeProp.Typography [
+                    ThemeTypographyProp.UseNextVariants true
+                ]
                 ThemeProp.Overrides [
                     OverridesProp.MuiButton [
                         Styles.Root [

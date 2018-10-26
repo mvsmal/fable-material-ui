@@ -5,6 +5,9 @@ open Fable.Helpers.MaterialUI
 open Fable.MaterialUI.Props
 
 let theme = createMuiTheme [
+                ThemeProp.Typography [
+                    ThemeTypographyProp.UseNextVariants true
+                ]
                 ThemeProp.Props [
                     // Name of the component ⚛️
                     ThemePropsProp.MuiButtonBase [

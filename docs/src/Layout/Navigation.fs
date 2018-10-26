@@ -39,6 +39,16 @@ let navItems = [
             ]
     }
     {
+        Title = "Components API"
+        Href = None
+        Children =
+            [
+                { Title = "AppBar"; Href = Some (Page.Api "app-bar"); Children = [] }
+                { Title = "Avatar"; Href = Some (Page.Api "avatar"); Children = [] }
+                { Title = "Backdrop"; Href = Some (Page.Api "backdrop"); Children = [] }
+            ]
+    }
+    {
         Title = "Page layout demos"
         Href = None
         Children =

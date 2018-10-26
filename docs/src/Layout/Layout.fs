@@ -53,7 +53,7 @@ let layoutStyles (theme : ITheme) : IStyles list=
             CSSProp.PaddingRight (theme.spacing.unit * 2)
             CSSProp.FontFamily theme.typography.fontFamily
             CSSProp.FontSize 16
-            CSSProp.Color theme.palette.text.primary
+            // CSSProp.Color theme.palette.text.primary
             customCss smBreakpoint [
                 PaddingLeft (theme.spacing.unit * 4)
                 PaddingRight (theme.spacing.unit * 4)
@@ -92,6 +92,7 @@ let layout (props : AppProps) =
         | Page.Themes -> Customization.Themes.View.view ()
         | Page.CssInJs -> Customization.CssInJs.View.view ()
         | Page.DefaultTheme -> Customization.DefaultTheme.View.view ()
+        | Page.Api comp -> Api.View.view comp
 
     let classes : LayoutClasses = !!props.classes
     let mainClasses =

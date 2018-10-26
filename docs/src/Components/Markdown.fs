@@ -46,51 +46,51 @@ let markdownStyles (theme : ITheme) : IStyles list =
                 LineHeight 1.6
             ]
             customCss "& h1" [
-                FontFamily theme.typography.display2.fontFamily
-                FontSize theme.typography.display2.fontSize
-                FontWeight theme.typography.display2.fontWeight
-                LineHeight theme.typography.display2.lineHeight
-                LetterSpacing theme.typography.display2.letterSpacing
-                TextTransform theme.typography.display2.textTransform
-                CSSProp.Color theme.palette.text.secondary
+                FontFamily theme.typography.h2.fontFamily
+                FontSize theme.typography.h2.fontSize
+                FontWeight theme.typography.h2.fontWeight
+                LineHeight theme.typography.h2.lineHeight
+                LetterSpacing theme.typography.h2.letterSpacing
+                TextTransform theme.typography.h2.textTransform
+                // CSSProp.Color theme.palette.text.secondary
                 CSSProp.Margin "32px 0 16px"
             ]
             customCss "& .description" [
-                FontFamily theme.typography.headline.fontFamily
-                FontSize theme.typography.headline.fontSize
-                FontWeight theme.typography.headline.fontWeight
-                LineHeight theme.typography.headline.lineHeight
-                LetterSpacing theme.typography.headline.letterSpacing
-                TextTransform theme.typography.headline.textTransform
+                FontFamily theme.typography.h5.fontFamily
+                FontSize theme.typography.h5.fontSize
+                FontWeight theme.typography.h5.fontWeight
+                LineHeight theme.typography.h5.lineHeight
+                LetterSpacing theme.typography.h5.letterSpacing
+                TextTransform theme.typography.h5.textTransform
                 CSSProp.Margin "0 0 40px"
             ]
             customCss "& h2" [
-                FontFamily theme.typography.display1.fontFamily
-                FontSize theme.typography.display1.fontSize
-                FontWeight theme.typography.display1.fontWeight
-                LineHeight theme.typography.display1.lineHeight
-                LetterSpacing theme.typography.display1.letterSpacing
-                TextTransform theme.typography.display1.textTransform
+                FontFamily theme.typography.h4.fontFamily
+                FontSize theme.typography.h4.fontSize
+                FontWeight theme.typography.h4.fontWeight
+                LineHeight theme.typography.h4.lineHeight
+                LetterSpacing theme.typography.h4.letterSpacing
+                TextTransform theme.typography.h4.textTransform
                 CSSProp.Color theme.palette.text.secondary
                 CSSProp.Margin "32px 0 24px"
             ]
             customCss "& h3" [
-                FontFamily theme.typography.headline.fontFamily
-                FontSize theme.typography.headline.fontSize
-                FontWeight theme.typography.headline.fontWeight
-                LineHeight theme.typography.headline.lineHeight
-                LetterSpacing theme.typography.headline.letterSpacing
-                TextTransform theme.typography.headline.textTransform
+                FontFamily theme.typography.h5.fontFamily
+                FontSize theme.typography.h5.fontSize
+                FontWeight theme.typography.h5.fontWeight
+                LineHeight theme.typography.h5.lineHeight
+                LetterSpacing theme.typography.h5.letterSpacing
+                TextTransform theme.typography.h5.textTransform
                 CSSProp.Color theme.palette.text.secondary
                 CSSProp.Margin "32px 0 24px"
             ]
             customCss "& h4" [
-                FontFamily theme.typography.title.fontFamily
-                FontSize theme.typography.title.fontSize
-                FontWeight theme.typography.title.fontWeight
-                LineHeight theme.typography.title.lineHeight
-                LetterSpacing theme.typography.title.letterSpacing
-                TextTransform theme.typography.title.textTransform
+                FontFamily theme.typography.h6.fontFamily
+                FontSize theme.typography.h6.fontSize
+                FontWeight theme.typography.h6.fontWeight
+                LineHeight theme.typography.h6.lineHeight
+                LetterSpacing theme.typography.h6.letterSpacing
+                TextTransform theme.typography.h6.textTransform
                 CSSProp.Color theme.palette.text.secondary
                 CSSProp.Margin "24px 0 16px"
             ]
@@ -121,6 +121,73 @@ let markdownStyles (theme : ITheme) : IStyles list =
                         Fill "currentColor"
                     ]
                 ]
+            ]
+            customCss "& table" [
+                CSSProp.Width "100%"
+                CSSProp.Display "block"
+                CSSProp.OverflowX "auto"
+                CSSProp.Custom ("WebkitOverflowScrolling", "touch")
+                CSSProp.BorderCollapse "collapse"
+                CSSProp.BorderSpacing 0
+                CSSProp.Overflow "hidden"
+                customCss "& .prop-name" [
+                    CSSProp.FontSize 13
+                    CSSProp.FontFamily "Conolas, \"Liberation Mono\", Menlo, monospace"
+                ]
+                customCss "& .required" [
+                    CSSProp.Color "#006500"
+                ]
+                customCss "& .prop-type" [
+                    CSSProp.FontSize 13
+                    CSSProp.FontFamily "Conolas, \"Liberation Mono\", Menlo, monospace"
+                    CSSProp.Color "#932981"
+                ]
+                customCss "& .prop-default" [
+                    CSSProp.FontSize 13
+                    CSSProp.FontFamily "Conolas, \"Liberation Mono\", Menlo, monospace"
+                    CSSProp.BorderBottom ("1px dotted " + theme.palette.text.hint)
+                ]
+            ]
+            customCss "& thead" [
+                CSSProp.FontSize 14
+                CSSProp.FontWeight theme.typography.fontWeightMedium
+                CSSProp.Color theme.palette.text.secondary
+            ]
+            customCss "& tbody" [
+                CSSProp.FontSize 14
+                CSSProp.LineHeight 1.5
+                CSSProp.Color theme.palette.text.primary
+            ]
+            customCss "& td" [
+                CSSProp.BorderBottom ("1px solid " + theme.palette.divider)
+                CSSProp.Padding "8px 16px 8px 8px"
+                CSSProp.TextAlign "left"
+            ]
+            customCss "& td:last-child" [
+                CSSProp.PaddingRight 24
+            ]
+            customCss "& td compact" [
+                CSSProp.PaddingRight 24
+            ]
+            customCss "& td code" [
+                CSSProp.FontSize 13
+                CSSProp.LineHeight 1.6
+            ]
+            customCss "& th" [
+                CSSProp.WhiteSpace "pre"
+                CSSProp.BorderBottom ("1px solid " + theme.palette.divider)
+                CSSProp.FontWeight theme.typography.fontWeightMedium
+                CSSProp.Padding "0 16px 0 8px"
+                CSSProp.TextAlign "left"
+            ]
+            customCss "& th:last-child" [
+                CSSProp.PaddingRight 24
+            ]
+            customCss "& tr" [
+                CSSProp.Height 48
+            ]
+            customCss "& thead tr" [
+                CSSProp.Height 64
             ]
             customCss "& strong" [
                 FontWeight theme.typography.fontWeightMedium

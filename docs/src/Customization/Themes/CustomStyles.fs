@@ -32,6 +32,9 @@ let customCheckbox (props : IClassesProps) =
 let customCheckboxWithStyles = withStyles<IClassesProps> (StyleType.Func styles) [] customCheckbox
 
 let theme = createMuiTheme [
+                ThemeProp.Typography [
+                    ThemeTypographyProp.UseNextVariants true
+                ]
                 ThemeProp.Custom ("status", [
                     ("danger", Colors.orange.``500``)
                 ] |> keyValueList CaseRules.LowerFirst)

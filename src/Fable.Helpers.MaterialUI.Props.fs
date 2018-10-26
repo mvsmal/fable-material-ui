@@ -105,17 +105,35 @@ module Themes =
         abstract fontWeightLight: int with get,set
         abstract fontWeightRegular: int with get,set
         abstract fontWeightMedium: int with get,set
-        abstract display4: ITypography with get,set
-        abstract dispaly3: ITypography with get,set
-        abstract display2: ITypography with get,set
-        abstract display1: ITypography with get,set
-        abstract headline: ITypography with get,set
-        abstract title: ITypography with get,set
-        abstract subheading: ITypography with get,set
+        abstract h1: ITypography with get,set
+        abstract h2: ITypography with get,set
+        abstract h3: ITypography with get,set
+        abstract h4: ITypography with get,set
+        abstract h5: ITypography with get,set
+        abstract h6: ITypography with get,set
+        abstract subtitle1: ITypography with get,set
+        abstract subtitle2: ITypography with get,set
+        abstract overline: ITypography with get,set
+        abstract srOnly: ITypography with get,set
         abstract body2: ITypography with get,set
         abstract body1: ITypography with get,set
         abstract caption: ITypography with get,set
         abstract button: ITypography with get,set
+        // Deprecated
+        [<Obsolete("Material-UI@3.2.0: Typography type `display1` is deprecated. Please use `h4` instead")>]
+        abstract display1: ITypography with get,set
+        [<Obsolete("Material-UI@3.2.0: Typography type `display2` is deprecated. Please use `h3` instead")>]
+        abstract display2: ITypography with get,set
+        [<Obsolete("Material-UI@3.2.0: Typography type `display3` is deprecated. Please use `h2` instead")>]
+        abstract dispaly3: ITypography with get,set
+        [<Obsolete("Material-UI@3.2.0: Typography type `display4` is deprecated. Please use `h1` instead")>]
+        abstract display4: ITypography with get,set
+        [<Obsolete("Material-UI@3.2.0: Typography type `headline` is deprecated. Please use `h5` instead")>]
+        abstract headline: ITypography with get,set
+        [<Obsolete("Material-UI@3.2.0: Typography type `title` is deprecated. Please use `h6` instead")>]
+        abstract title: ITypography with get,set
+        [<Obsolete("Material-UI@3.2.0: Typography type `subheading` is deprecated. Please use `subtitle1` instead")>]
+        abstract subheading: ITypography with get,set
 
     type IBreakpointValues =
         abstract xs: int with get,set

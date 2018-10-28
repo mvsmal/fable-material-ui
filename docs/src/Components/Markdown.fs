@@ -141,6 +141,7 @@ let markdownStyles (theme : ITheme) : IStyles list =
                     CSSProp.FontSize 13
                     CSSProp.FontFamily "Conolas, \"Liberation Mono\", Menlo, monospace"
                     CSSProp.Color "#932981"
+                    CSSProp.WhiteSpace "nowrap"
                 ]
                 customCss "& .prop-default" [
                     CSSProp.FontSize 13

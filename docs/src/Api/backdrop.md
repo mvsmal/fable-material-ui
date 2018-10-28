@@ -2,8 +2,8 @@
 
 <p class="description">The API documentation of the Backdrop React component. Learn more about the properties and the CSS customization points.</p>
 
-```js
-import Backdrop from '@material-ui/core/Backdrop';
+```fsharp
+Fable.Helpers.MaterialUI.backdrop (props : IHTMLProp list) : ReactElement
 ```
 
 
@@ -12,10 +12,10 @@ import Backdrop from '@material-ui/core/Backdrop';
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">classes</span> | <span class="prop-type">object |   | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
-| <span class="prop-name">invisible</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the backdrop is invisible. It can be used when rendering a popover or a custom select component. |
-| <span class="prop-name required">open *</span> | <span class="prop-type">bool |   | If `true`, the backdrop is open. |
-| <span class="prop-name">transitionDuration</span> | <span class="prop-type">union:&nbsp;number&nbsp;&#124;<br>&nbsp;{ enter?: number, exit?: number }<br> |   | The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object. |
+| <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span>  |   | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
+| <span class="prop-name required">MaterialProp.Open *</span> | <span class="prop-type">bool</span>  |   | If `true`, the backdrop is open. |
+| <span class="prop-name">MaterialProp.TransitionDuration</span> | <span class="prop-type">U2&lt;float,&nbsp;TransitionDurationProp&nbsp;list&gt;<br><br>type&nbsp;TransitionDurationProp&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Enter&nbsp;of&nbsp;float<br>&nbsp;&nbsp;&#124;&nbsp;Exit&nbsp;of&nbsp;float<br></span>  |   | The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an list of `TransitionDurationProp`. |
+| <span class="prop-name">BackdropProp.Invisible</span> | <span class="prop-type">bool</span>  | <span class="prop-default">false</span> | If `true`, the backdrop is invisible. It can be used when rendering a popover or a custom select component. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -27,8 +27,8 @@ This property accepts the following keys:
 
 | Name | Description |
 |:-----|:------------|
-| <span class="prop-name">root</span> | Styles applied to the root element.
-| <span class="prop-name">invisible</span> | Styles applied to the root element if `invisible={true}`.
+| <span class="prop-name">ClassNames.Root</span> | Styles applied to the root element.
+| <span class="prop-name">ClassNames.Invisible</span> | Styles applied to the root element if `Invisible = true`.
 
 Have a look at [overriding with classes](/customization/overrides/#overriding-with-classes) section
 and the [implementation of the component](https://github.com/mui-org/material-ui/tree/master/packages/material-ui/src/Backdrop/Backdrop.js)

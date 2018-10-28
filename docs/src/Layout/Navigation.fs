@@ -70,14 +70,14 @@ let navItems = [
                 { Title = "DialogTitle"; Href = Some (Page.Api "dialog-title"); Children = [] }
                 { Title = "Divider"; Href = Some (Page.Api "divider"); Children = [] }
                 { Title = "Drawer"; Href = Some (Page.Api "drawer"); Children = [] }
+                { Title = "ExpansionPanel"; Href = Some (Page.Api "expansion-panel"); Children = [] }
                 { Title = "ExpansionPanelActions"; Href = Some (Page.Api "expansion-panel-actions"); Children = [] }
                 { Title = "ExpansionPanelDetails"; Href = Some (Page.Api "expansion-panel-details"); Children = [] }
                 { Title = "ExpansionPanelSummary"; Href = Some (Page.Api "expansion-panel-summary"); Children = [] }
-                { Title = "ExpansionPanel"; Href = Some (Page.Api "expansion-panel"); Children = [] }
                 { Title = "Fade"; Href = Some (Page.Api "fade"); Children = [] }
                 { Title = "FilledInput"; Href = Some (Page.Api "filled-input"); Children = [] }
-                { Title = "FormControlLabel"; Href = Some (Page.Api "form-control-label"); Children = [] }
                 { Title = "FormControl"; Href = Some (Page.Api "form-control"); Children = [] }
+                { Title = "FormControlLabel"; Href = Some (Page.Api "form-control-label"); Children = [] }
                 { Title = "FormGroup"; Href = Some (Page.Api "form-group"); Children = [] }
                 { Title = "FormHelperText"; Href = Some (Page.Api "form-helper-text"); Children = [] }
                 { Title = "FormLabel"; Href = Some (Page.Api "form-label"); Children = [] }

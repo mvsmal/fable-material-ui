@@ -14,7 +14,7 @@ Fable.Helpers.MaterialUI.expansionPanelSummary (props : IHTMLProp list) (childre
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the expansion panel summary. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">expandIcon</span> | <span class="prop-type">node</span> |   | The icon to display as the expand indicator. |
+| <span class="prop-name">ExpansionPanelSummaryProp.ExpandIcon</span> | <span class="prop-type">ReactNode</span> |   | The icon to display as the expand indicator. |
 | <span class="prop-name">ChildrenProp.IconButtonProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the `TouchRipple` element wrapping the expand icon. |
 
 Any other properties supplied will be spread to the root element ([ButtonBase](#/api/button-base)).
@@ -47,7 +47,7 @@ you need to use the following style sheet name: `OverridesProp.MuiExpansionPanel
 The properties of the [ButtonBase](#/api/button-base) component are also available.
 <!-- You can take advantage of this behavior to [target nested components](/guides/api/#spread). -->
 
-## Demos
+<!--## Demos-->
 
-- [Expansion Panels](/demos/expansion-panels/)
+<!--- [Expansion Panels](/demos/expansion-panels/)-->
 

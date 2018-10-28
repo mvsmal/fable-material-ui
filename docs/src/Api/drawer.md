@@ -7,23 +7,23 @@ Fable.Helpers.MaterialUI.drawer (props : IHTMLProp list) (children : ReactElemen
 ```
 
 The properties of the [Modal](#/api/modal) component are available
-when `variant="temporary"` is set.
+when `DrawerProp.Variant = Temporary` is set.
 
 ## Props
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">anchor</span> | <span class="prop-type">enum:&nbsp;"left"&nbsp;&#124;<br>&nbsp;"top"&nbsp;&#124;<br>&nbsp;"right"&nbsp;&#124;<br>&nbsp;"bottom"<br></span> | <span class="prop-default">"left"</span> | Side from which the drawer will appear. |
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The contents of the drawer. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">elevation</span> | <span class="prop-type">number</span> | <span class="prop-default">16</span> | The elevation of the drawer. |
-| <span class="prop-name">ChildrenProp.ModalProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`Modal`](#/api/modal) element. |
-| <span class="prop-name">onClose</span> | <span class="prop-type">func</span> |   | Callback fired when the component requests to be closed.<br><br>**Signature:**<br>`(event : obj) -> unit`<br>*event:* The event source of the callback |
+| <span class="prop-name">MaterialProp.Elevation</span> | <span class="prop-type">int</span> | <span class="prop-default">16</span> | The elevation of the drawer. |
 | <span class="prop-name">MaterialProp.Open</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the drawer is open. |
+| <span class="prop-name">MaterialProp.OnClose</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the component requests to be closed.<br><br>**Signature:**<br>`(event : obj) -> unit`<br>*event:* The event source of the callback |
+| <span class="prop-name">MaterialProp.TransitionDuration</span> | <span class="prop-type">U2&lt;float,&nbsp;TransitionDurationProp&nbsp;list&gt;<br><br>type&nbsp;TransitionDurationProp&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Enter&nbsp;of&nbsp;float<br>&nbsp;&nbsp;&#124;&nbsp;Exit&nbsp;of&nbsp;float<br></span> | <span class="prop-default">{ enter: duration.enteringScreen, exit: duration.leavingScreen }</span> | The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object. |
+| <span class="prop-name">ChildrenProp.ModalProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`Modal`](#/api/modal) element. |
 | <span class="prop-name">ChildrenProp.PaperProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`Paper`](#/api/paper) element. |
 | <span class="prop-name">ChildrenProp.SlideProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`Slide`](#/api/slide) element. |
-| <span class="prop-name">MaterialProp.TransitionDuration</span> | <span class="prop-type">U2&lt;float,&nbsp;TransitionDurationProp&nbsp;list&gt;<br><br>type&nbsp;TransitionDurationProp&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Enter&nbsp;of&nbsp;float<br>&nbsp;&nbsp;&#124;&nbsp;Exit&nbsp;of&nbsp;float<br></span> | <span class="prop-default">{ enter: duration.enteringScreen, exit: duration.leavingScreen }</span> | The duration for the transition, in milliseconds. You may specify a single timeout for all transitions, or individually with an object. |
-| <span class="prop-name">variant</span> | <span class="prop-type">enum:&nbsp;"permanent"&nbsp;&#124;<br>&nbsp;"persistent"&nbsp;&#124;<br>&nbsp;"temporary"<br></span> | <span class="prop-default">"temporary"</span> | The variant to use. |
+| <span class="prop-name">DrawerProp.Anchor</span> | <span class="prop-type">type&nbsp;Anchor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Left<br>&nbsp;&nbsp;&#124;&nbsp;Top<br>&nbsp;&nbsp;&#124;&nbsp;Right<br>&nbsp;&nbsp;&#124;&nbsp;Bottom<br></span> | <span class="prop-default">Left</span> | Side from which the drawer will appear. |
+| <span class="prop-name">DrawerProp.Variant</span> | <span class="prop-type">type&nbsp;DrawerVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Permanent<br>&nbsp;&nbsp;&#124;&nbsp;Persistent<br>&nbsp;&nbsp;&#124;&nbsp;Temporary<br></span> | <span class="prop-default">Temporary</span> | The variant to use. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -55,7 +55,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiDrawer`.
 
-## Demos
+<!--## Demos-->
 
-- [Drawers](/demos/drawers/)
+<!--- [Drawers](/demos/drawers/)-->
 

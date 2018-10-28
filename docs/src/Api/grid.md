@@ -12,9 +12,9 @@ Fable.Helpers.MaterialUI.grid (props : IHTMLProp list) (children : ReactElement 
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
+| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the component. |
 | <span class="prop-name">alignContent</span> | <span class="prop-type">enum:&nbsp;"stretch", "center", "flex-start", "flex-end", "space-between", "space-around"<br></span> | <span class="prop-default">"stretch"</span> | Defines the `align-content` style property. It's applied for all screen sizes. |
 | <span class="prop-name">alignItems</span> | <span class="prop-type">enum:&nbsp;"flex-start", "center", "flex-end", "stretch", "baseline"<br></span> | <span class="prop-default">"stretch"</span> | Defines the `align-items` style property. It's applied for all screen sizes. |
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the component. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">container</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the component will have the flex *container* behavior. You should be wrapping *items* with a *container*. |

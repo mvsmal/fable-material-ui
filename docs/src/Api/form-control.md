@@ -24,12 +24,12 @@ This context is used by the following components:
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The contents of the form control. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the label should be displayed in an error state. |
+| <span class="prop-name">MaterialProp.FullWidth</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the component will take up the full width of its container. |
+| <span class="prop-name">MaterialProp.Margin</span> | <span class="prop-type">type&nbsp;FormControlMargin&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;None<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br>&nbsp;&nbsp;&#124;&nbsp;Normal<br></span> | <span class="prop-default">None</span> | If `dense` or `normal`, will adjust vertical spacing of this and contained components. |
 | <span class="prop-name">HTMLAttr.Disabled</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the label, input and helper text should be displayed in a disabled state. |
-| <span class="prop-name">error</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the label should be displayed in an error state. |
-| <span class="prop-name">fullWidth</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the component will take up the full width of its container. |
-| <span class="prop-name">margin</span> | <span class="prop-type">enum:&nbsp;"none"&nbsp;&#124;<br>&nbsp;"dense"&nbsp;&#124;<br>&nbsp;"normal"<br></span> | <span class="prop-default">"none"</span> | If `dense` or `normal`, will adjust vertical spacing of this and contained components. |
-| <span class="prop-name">required</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the label will indicate that the input is required. |
-| <span class="prop-name">variant</span> | <span class="prop-type">enum:&nbsp;"standard"&nbsp;&#124;<br>&nbsp;"outlined"&nbsp;&#124;<br>&nbsp;"filled"<br></span> | <span class="prop-default">"standard"</span> | The variant to use. |
+| <span class="prop-name">HTMLAttr.Required</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the label will indicate that the input is required. |
+| <span class="prop-name">FormControlProp.Variant</span> | <span class="prop-type">type&nbsp;FormControlVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Standard<br>&nbsp;&nbsp;&#124;&nbsp;Outlined<br>&nbsp;&nbsp;&#124;&nbsp;Filled<br></span> | <span class="prop-default">Standard</span> | The variant to use. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -56,6 +56,6 @@ you need to use the following style sheet name: `OverridesProp.MuiFormControl`.
 
 ## Demos
 
-- [Selection Controls](/demos/selection-controls/)
-- [Text Fields](/demos/text-fields/)
+<!--- [Selection Controls](/demos/selection-controls/)-->
+- [Text Fields](#/demos/text-fields/)
 

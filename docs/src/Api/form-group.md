@@ -16,7 +16,7 @@ For the `Radio`, you should be using the `RadioGroup` component instead of this 
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the component. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">row</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Display group of elements in a compact row. |
+| <span class="prop-name">FormGroupProp.Row</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Display group of elements in a compact row. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -39,7 +39,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiFormGroup`.
 
-## Demos
+<!--## Demos-->
 
-- [Selection Controls](/demos/selection-controls/)
+<!--- [Selection Controls](/demos/selection-controls/)-->
 

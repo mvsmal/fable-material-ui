@@ -18,6 +18,9 @@ let drawerStyles : IStyles list =
         Styles.Root [
             Width 250
         ]
+        Styles.Paper [
+            Width 250
+        ]
     ]
 
 
@@ -53,6 +56,9 @@ let drawer (props : AppDrawerProps) =
                     DrawerProp.Variant DrawerVariant.Permanent
                     MaterialProp.Open true
                     Class !!props.classes?root
+                    Classes [
+                        ClassNames.Paper !!props.classes?paper
+                    ]
                 ] [
                     lazyView2 Layout.Menu.view props.currentPage props.dispatch ]
             ]

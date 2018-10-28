@@ -1,7 +1,7 @@
 # Migration to version 2
 
 ## Required dependency
-Fable.MaterialUI v2 works only with **dotnet-fable** > [2.0.6](https://www.nuget.org/packages/dotnet-fable/2.0.6)
+Fable.MaterialUI v2 works only with **dotnet-fable** >= [2.0.6](https://www.nuget.org/packages/dotnet-fable/2.0.6)
 
 Make sure to use the correct version
 

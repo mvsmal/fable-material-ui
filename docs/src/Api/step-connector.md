@@ -43,7 +43,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiStepConnector`.
 
-## Demos
+<!--## Demos-->
 
-- [Steppers](/demos/steppers/)
+<!--- [Steppers](/demos/steppers/)-->
 

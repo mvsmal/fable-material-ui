@@ -14,11 +14,11 @@ Fable.Helpers.MaterialUI.listSubheader (props : IHTMLProp list) (children : Reac
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the component. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">color</span> | <span class="prop-type">enum:&nbsp;"default"&nbsp;&#124;<br>&nbsp;"primary"&nbsp;&#124;<br>&nbsp;"inherit"<br></span> | <span class="prop-default">"default"</span> | The color of the component. It supports those theme colors that make sense for this component. |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"li"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
-| <span class="prop-name">disableGutters</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the List Subheader will not have gutters. |
-| <span class="prop-name">disableSticky</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the List Subheader will not stick to the top during scroll. |
-| <span class="prop-name">inset</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the List Subheader will be indented. |
+| <span class="prop-name">MaterialProp.DisableGutters</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the List Subheader will not have gutters. |
+| <span class="prop-name">MaterialProp.Inset</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the List Subheader will be indented. |
+| <span class="prop-name">ListSubheaderProp.Color</span> | <span class="prop-type">type&nbsp;ListSubheaderColor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Default<br>&nbsp;&nbsp;&#124;&nbsp;Primary<br>&nbsp;&nbsp;&#124;&nbsp;Inherit<br></span> | <span class="prop-default">ListSubheaderColor.Default</span> | The color of the component. It supports those theme colors that make sense for this component. |
+| <span class="prop-name">ListSubheaderProp.DisableSticky</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the List Subheader will not stick to the top during scroll. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -45,8 +45,8 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiListSubheader`.
 
-## Demos
+<!--## Demos-->
 
-- [Grid List](/demos/grid-list/)
-- [Lists](/demos/lists/)
+<!--- [Grid List](/demos/grid-list/)-->
+<!--- [Lists](/demos/lists/)-->
 

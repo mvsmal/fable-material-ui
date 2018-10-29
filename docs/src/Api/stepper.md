@@ -12,13 +12,13 @@ Fable.Helpers.MaterialUI.stepper (props : IHTMLProp list) (children : ReactEleme
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">activeStep</span> | <span class="prop-type">number</span> | <span class="prop-default">0</span> | Set the active step (zero based index). |
-| <span class="prop-name">alternativeLabel</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If set to "true" and orientation is horizontal, then the step label will be positioned under the icon. |
 | <span class="prop-name required">children *</span> | <span class="prop-type">node</span> |   | Two or more `<Step />` components. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">connector</span> | <span class="prop-type">element</span> | <span class="prop-default">&lt;StepConnector /></span> | A component to be placed between each step. |
-| <span class="prop-name">nonLinear</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If set the `Stepper` will not assist in controlling steps for linear flow. |
-| <span class="prop-name">orientation</span> | <span class="prop-type">enum:&nbsp;"horizontal"&nbsp;&#124;<br>&nbsp;"vertical"<br></span> | <span class="prop-default">"horizontal"</span> | The stepper orientation (layout flow direction). |
+| <span class="prop-name">StepperProp.ActiveStep</span> | <span class="prop-type">int</span> | <span class="prop-default">0</span> | Set the active step (zero based index). |
+| <span class="prop-name">StepperProp.AlternativeLabel</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If set to "true" and orientation is horizontal, then the step label will be positioned under the icon. |
+| <span class="prop-name">StepperProp.Connector</span> | <span class="prop-type">ReactElement</span> | <span class="prop-default">&lt;StepConnector /></span> | A component to be placed between each step. |
+| <span class="prop-name">StepperProp.NonLinear</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If set the `Stepper` will not assist in controlling steps for linear flow. |
+| <span class="prop-name">StepperProp.Orientation</span> | <span class="prop-type">type&nbsp;StepperOrientation&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Vertical<br>&nbsp;&nbsp;&#124;&nbsp;Horizontal<br></span> | <span class="prop-default">Horizontal</span> | The stepper orientation (layout flow direction). |
 
 Any other properties supplied will be spread to the root element ([Paper](#/api/paper)).
 
@@ -48,7 +48,7 @@ you need to use the following style sheet name: `OverridesProp.MuiStepper`.
 The properties of the [Paper](#/api/paper) component are also available.
 <!-- You can take advantage of this behavior to [target nested components](/guides/api/#spread). -->
 
-## Demos
+<!--## Demos-->
 
-- [Steppers](/demos/steppers/)
+<!--- [Steppers](/demos/steppers/)-->
 

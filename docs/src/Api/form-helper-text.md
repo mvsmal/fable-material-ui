@@ -16,12 +16,12 @@ Fable.Helpers.MaterialUI.formHelperText (props : IHTMLProp list) (children : Rea
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"p"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> |   | If `true`, helper text should be displayed in an error state. |
-| <span class="prop-name">MaterialProp.Margin</span> | <span class="prop-type">type&nbsp;FormControlMargin&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br></span> |   | If `dense`, will adjust vertical spacing. This is normally obtained via context from FormControl. |
+| <span class="prop-name">MaterialProp.Margin</span> | <span class="prop-type">type&nbsp;FormControlMargin&nbsp;=&nbsp;Dense<br></span> |   | If `Dense`, will adjust vertical spacing. This is normally obtained via context from FormControl. |
 | <span class="prop-name">HTMLAttr.Disabled</span> | <span class="prop-type">bool</span> |   | If `true`, the helper text should be displayed in a disabled state. |
 | <span class="prop-name">HTMLAttr.Required</span> | <span class="prop-type">bool</span> |   | If `true`, the helper text should use required classes key. |
-| <span class="prop-name">HTMLAttr.Custom("filled", bool)</span> | <span class="prop-type">bool</span> |   | If `true`, the helper text should use filled classes key. |
-| <span class="prop-name">HTMLAttr.Custom("variant", string)</span> | <span class="prop-type">enum:&nbsp;"standard"&nbsp;&#124;<br>&nbsp;"outlined"&nbsp;&#124;<br>&nbsp;"filled"<br></span> |   | The variant to use. |
-| <span class="prop-name">HTMLAttr.Custom("focused", bool)</span> | <span class="prop-type">bool</span> |   | If `true`, the helper text should use focused classes key. |
+| <span class="prop-name">FormHelperTextProp.Filled</span> | <span class="prop-type">bool</span> |   | If `true`, the helper text should use filled classes key. |
+| <span class="prop-name">FormHelperTextProp.Variant</span> | <span class="prop-type">type&nbsp;FormHelperTextVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Standard<br>&nbsp;&nbsp;&#124;&nbsp;Outlined<br>&nbsp;&nbsp;&#124;&nbsp;Filled<br></span> |   | The variant to use. |
+| <span class="prop-name">FormHelperTextProp.Focused</span> | <span class="prop-type">bool</span> |   | If `true`, the helper text should use focused classes key. |
 
 Any other properties supplied will be spread to the root element (native element).
 

@@ -15,11 +15,11 @@ Fable.Helpers.MaterialUI.tableCell (props : IHTMLProp list) (children : ReactEle
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The table cell contents. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> |   | The component used for the root node. Either a string to use a DOM element or a component. |
-| <span class="prop-name">numeric</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, content will align to the right. |
-| <span class="prop-name">padding</span> | <span class="prop-type">enum:&nbsp;"default"&nbsp;&#124;<br>&nbsp;"checkbox"&nbsp;&#124;<br>&nbsp;"dense"&nbsp;&#124;<br>&nbsp;"none"<br></span> |   | Sets the padding applied to the cell. By default, the Table parent component set the value. |
-| <span class="prop-name">scope</span> | <span class="prop-type">string</span> |   | Set scope attribute. |
-| <span class="prop-name">sortDirection</span> | <span class="prop-type">enum:&nbsp;"asc"&nbsp;&#124;<br>&nbsp;"desc"&nbsp;&#124;<br>&nbsp;false<br></span> |   | Set aria-sort direction. |
-| <span class="prop-name">variant</span> | <span class="prop-type">enum:&nbsp;"head"&nbsp;&#124;<br>&nbsp;"body"&nbsp;&#124;<br>&nbsp;"footer"<br></span> |   | Specify the cell type. By default, the TableHead, TableBody or TableFooter parent component set the value. |
+| <span class="prop-name">TableCellProp.Numeric</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, content will align to the right. |
+| <span class="prop-name">TableCellProp.Padding</span> | <span class="prop-type">type&nbsp;TableCellPadding&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Default<br>&nbsp;&nbsp;&#124;&nbsp;Checkbox<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br>&nbsp;&nbsp;&#124;&nbsp;None<br></span> |   | Sets the padding applied to the cell. By default, the Table parent component set the value. |
+| <span class="prop-name">TableCellProp.Scope</span> | <span class="prop-type">string</span> |   | Set scope attribute. |
+| <span class="prop-name">TableCellProp.SortDirection</span> | <span class="prop-type">type&nbsp;TableCellSortDirection&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Asc<br>&nbsp;&nbsp;&#124;&nbsp;Desc<br>&nbsp;&nbsp;&#124;&nbsp;[&lt;CompiledName("")&gt;]&nbsp;False<br></span> |   | Set aria-sort direction. |
+| <span class="prop-name">TableCellProp.Variant</span> | <span class="prop-type">type&nbsp;TableCellVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Head<br>&nbsp;&nbsp;&#124;&nbsp;Body<br>&nbsp;&nbsp;&#124;&nbsp;Footer<br></span> |   | Specify the cell type. By default, the TableHead, TableBody or TableFooter parent component set the value. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -48,7 +48,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiTableCell`.
 
-## Demos
+<!--## Demos-->
 
-- [Tables](/demos/tables/)
+<!--- [Tables](/demos/tables/)-->
 

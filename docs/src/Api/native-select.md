@@ -14,12 +14,12 @@ An alternative to `<Select native />` with a much smaller bundle size footprint.
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The option elements to populate the select with. Can be some `<option>` elements. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">IconComponent</span> | <span class="prop-type">union:&nbsp;string&nbsp;&#124;<br>&nbsp;func&nbsp;&#124;<br>&nbsp;object<br></span> | <span class="prop-default">ArrowDropDownIcon</span> | The icon that displays the arrow. |
-| <span class="prop-name">input</span> | <span class="prop-type">element</span> | <span class="prop-default">&lt;Input /></span> | An `Input` element; does not have to be a material-ui specific `Input`. |
-| <span class="prop-name">inputProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Attributes applied to the `select` element. |
-| <span class="prop-name">onChange</span> | <span class="prop-type">func</span> |   | Callback function fired when a menu item is selected.<br><br>**Signature:**<br>`(event : obj) -> unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.value`. |
-| <span class="prop-name">value</span> | <span class="prop-type">union:&nbsp;string&nbsp;&#124;<br>&nbsp;number&nbsp;&#124;<br>&nbsp;bool<br></span> |   | The input value. |
-| <span class="prop-name">variant</span> | <span class="prop-type">enum:&nbsp;"standard"&nbsp;&#124;<br>&nbsp;"outlined"&nbsp;&#124;<br>&nbsp;"filled"<br></span> |   | The variant to use. |
+| <span class="prop-name">MaterialProp.InputProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Attributes applied to the `select` element. |
+| <span class="prop-name">MaterialProp.Value</span> | <span class="prop-type">obj</span> |   | The input value. |
+| <span class="prop-name">DOMAttr.OnChange</span> | <span class="prop-type">FormEvent->unit</span> |   | Callback function fired when a menu item is selected.<br><br>**Signature:**<br>`(event : FormEvent) -> unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.value`. |
+| <span class="prop-name">NativeSelectProp.Input</span> | <span class="prop-type">ReactNode</span> | <span class="prop-default">&lt;Input /></span> | An `Input` element; does not have to be a material-ui specific `Input`. |
+| <span class="prop-name">NativeSelectProp.Variant</span> | <span class="prop-type">type&nbsp;SelectVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Standard<br>&nbsp;&nbsp;&#124;&nbsp;Outlined<br>&nbsp;&nbsp;&#124;&nbsp;Filled<br></span> |   | The variant to use. |
+| <span class="prop-name">ChildrenProp.IconComponent</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">ArrowDropDownIcon</span> | The icon that displays the arrow. |
 
 Any other properties supplied will be spread to the root element ([Input](#/api/input)).
 
@@ -52,7 +52,7 @@ you need to use the following style sheet name: `OverridesProp.MuiNativeSelect`.
 The properties of the [Input](#/api/input) component are also available.
 <!-- You can take advantage of this behavior to [target nested components](/guides/api/#spread). -->
 
-## Demos
+<!--## Demos-->
 
-- [Selects](/demos/selects/)
+<!--- [Selects](/demos/selects/)-->
 

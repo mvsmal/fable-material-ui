@@ -14,8 +14,8 @@ Fable.Helpers.MaterialUI.stepButton (props : IHTMLProp list) (children : ReactEl
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | Can be a `StepLabel` or a node to place inside `StepLabel` as children. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">icon</span> | <span class="prop-type">node</span> |   | The icon displayed by the step label. |
-| <span class="prop-name">optional</span> | <span class="prop-type">node</span> |   | The optional node to display. |
+| <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactNode</span> |   | The icon displayed by the step label. |
+| <span class="prop-name">MaterialProp.Optional</span> | <span class="prop-type">ReactNode</span> |   | The optional node to display. |
 
 Any other properties supplied will be spread to the root element ([ButtonBase](#/api/button-base)).
 
@@ -45,7 +45,7 @@ you need to use the following style sheet name: `OverridesProp.MuiStepButton`.
 The properties of the [ButtonBase](#/api/button-base) component are also available.
 <!-- You can take advantage of this behavior to [target nested components](/guides/api/#spread). -->
 
-## Demos
+<!--## Demos-->
 
-- [Steppers](/demos/steppers/)
+<!--- [Steppers](/demos/steppers/)-->
 

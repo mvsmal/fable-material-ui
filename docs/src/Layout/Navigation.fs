@@ -81,29 +81,29 @@ let navItems = [
                 { Title = "FormGroup"; Href = Some (Page.Api "form-group"); Children = [] }
                 { Title = "FormHelperText"; Href = Some (Page.Api "form-helper-text"); Children = [] }
                 { Title = "FormLabel"; Href = Some (Page.Api "form-label"); Children = [] }
-                { Title = "GridListTileBar"; Href = Some (Page.Api "grid-list-tile-bar"); Children = [] }
-                { Title = "GridListTile"; Href = Some (Page.Api "grid-list-tile"); Children = [] }
-                { Title = "GridList"; Href = Some (Page.Api "grid-list"); Children = [] }
                 { Title = "Grid"; Href = Some (Page.Api "grid"); Children = [] }
+                { Title = "GridList"; Href = Some (Page.Api "grid-list"); Children = [] }
+                { Title = "GridListTile"; Href = Some (Page.Api "grid-list-tile"); Children = [] }
+                { Title = "GridListTileBar"; Href = Some (Page.Api "grid-list-tile-bar"); Children = [] }
                 { Title = "Grow"; Href = Some (Page.Api "grow"); Children = [] }
                 { Title = "Hidden"; Href = Some (Page.Api "hidden"); Children = [] }
-                { Title = "IconButton"; Href = Some (Page.Api "icon-button"); Children = [] }
                 { Title = "Icon"; Href = Some (Page.Api "icon"); Children = [] }
+                { Title = "IconButton"; Href = Some (Page.Api "icon-button"); Children = [] }
+                { Title = "Input"; Href = Some (Page.Api "input"); Children = [] }
                 { Title = "InputAdornment"; Href = Some (Page.Api "input-adornment"); Children = [] }
                 { Title = "InputBase"; Href = Some (Page.Api "input-base"); Children = [] }
                 { Title = "InputLabel"; Href = Some (Page.Api "input-label"); Children = [] }
-                { Title = "Input"; Href = Some (Page.Api "input"); Children = [] }
                 { Title = "LinearProgress"; Href = Some (Page.Api "linear-progress"); Children = [] }
+                { Title = "List"; Href = Some (Page.Api "list"); Children = [] }
+                { Title = "ListItem"; Href = Some (Page.Api "list-item"); Children = [] }
                 { Title = "ListItemAvatar"; Href = Some (Page.Api "list-item-avatar"); Children = [] }
                 { Title = "ListItemIcon"; Href = Some (Page.Api "list-item-icon"); Children = [] }
                 { Title = "ListItemSecondaryAction"; Href = Some (Page.Api "list-item-secondary-action"); Children = [] }
                 { Title = "ListItemText"; Href = Some (Page.Api "list-item-text"); Children = [] }
-                { Title = "ListItem"; Href = Some (Page.Api "list-item"); Children = [] }
                 { Title = "ListSubheader"; Href = Some (Page.Api "list-subheader"); Children = [] }
-                { Title = "List"; Href = Some (Page.Api "list"); Children = [] }
+                { Title = "Menu"; Href = Some (Page.Api "menu"); Children = [] }
                 { Title = "MenuItem"; Href = Some (Page.Api "menu-item"); Children = [] }
                 { Title = "MenuList"; Href = Some (Page.Api "menu-list"); Children = [] }
-                { Title = "Menu"; Href = Some (Page.Api "menu"); Children = [] }
                 { Title = "MobileStepper"; Href = Some (Page.Api "mobile-stepper"); Children = [] }
                 { Title = "Modal"; Href = Some (Page.Api "modal"); Children = [] }
                 { Title = "MuiThemeProvider"; Href = Some (Page.Api "mui-theme-provider"); Children = [] }
@@ -115,22 +115,23 @@ let navItems = [
                 { Title = "Portal"; Href = Some (Page.Api "portal"); Children = [] }
                 { Title = "RadioGroup"; Href = Some (Page.Api "radio-group"); Children = [] }
                 { Title = "Radio"; Href = Some (Page.Api "radio"); Children = [] }
-                { Title = "RootRef"; Href = Some (Page.Api "root-ref"); Children = [] }
+                // { Title = "RootRef"; Href = Some (Page.Api "root-ref"); Children = [] }
                 { Title = "Select"; Href = Some (Page.Api "select"); Children = [] }
                 { Title = "Slide"; Href = Some (Page.Api "slide"); Children = [] }
                 { Title = "SnackbarContent"; Href = Some (Page.Api "snackbar-content"); Children = [] }
                 { Title = "Snackbar"; Href = Some (Page.Api "snackbar"); Children = [] }
+                { Title = "Step"; Href = Some (Page.Api "step"); Children = [] }
                 { Title = "StepButton"; Href = Some (Page.Api "step-button"); Children = [] }
                 { Title = "StepConnector"; Href = Some (Page.Api "step-connector"); Children = [] }
                 { Title = "StepContent"; Href = Some (Page.Api "step-content"); Children = [] }
                 { Title = "StepIcon"; Href = Some (Page.Api "step-icon"); Children = [] }
                 { Title = "StepLabel"; Href = Some (Page.Api "step-label"); Children = [] }
-                { Title = "Step"; Href = Some (Page.Api "step"); Children = [] }
                 { Title = "Stepper"; Href = Some (Page.Api "stepper"); Children = [] }
                 { Title = "SvgIcon"; Href = Some (Page.Api "svg-icon"); Children = [] }
                 { Title = "SwipeableDrawer"; Href = Some (Page.Api "swipeable-drawer"); Children = [] }
                 { Title = "Switch"; Href = Some (Page.Api "switch"); Children = [] }
                 { Title = "Tab"; Href = Some (Page.Api "tab"); Children = [] }
+                { Title = "Table"; Href = Some (Page.Api "table"); Children = [] }
                 { Title = "TableBody"; Href = Some (Page.Api "table-body"); Children = [] }
                 { Title = "TableCell"; Href = Some (Page.Api "table-cell"); Children = [] }
                 { Title = "TableFooter"; Href = Some (Page.Api "table-footer"); Children = [] }
@@ -138,7 +139,6 @@ let navItems = [
                 { Title = "TablePagination"; Href = Some (Page.Api "table-pagination"); Children = [] }
                 { Title = "TableRow"; Href = Some (Page.Api "table-row"); Children = [] }
                 { Title = "TableSortLabel"; Href = Some (Page.Api "table-sort-label"); Children = [] }
-                { Title = "Table"; Href = Some (Page.Api "table"); Children = [] }
                 { Title = "Tabs"; Href = Some (Page.Api "tabs"); Children = [] }
                 { Title = "TextField"; Href = Some (Page.Api "text-field"); Children = [] }
                 { Title = "Toolbar"; Href = Some (Page.Api "toolbar"); Children = [] }

@@ -14,15 +14,15 @@ Fable.Helpers.MaterialUI.inputLabel (props : IHTMLProp list) (children : ReactEl
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The contents of the `InputLabel`. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">disableAnimation</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the transition animation is disabled. |
+| <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> |   | If `true`, the label will be displayed in an error state. |
 | <span class="prop-name">HTMLAttr.Disabled</span> | <span class="prop-type">bool</span> |   | If `true`, apply disabled class. |
-| <span class="prop-name">error</span> | <span class="prop-type">bool</span> |   | If `true`, the label will be displayed in an error state. |
-| <span class="prop-name">focused</span> | <span class="prop-type">bool</span> |   | If `true`, the input of this label is focused. |
-| <span class="prop-name">FormLabelClasses</span> | <span class="prop-type">IHTMLProp list</span> |   | `classes` property applied to the [`FormLabel`](#/api/form-label) element. |
-| <span class="prop-name">margin</span> | <span class="prop-type">enum:&nbsp;"dense"<br></span> |   | If `dense`, will adjust vertical spacing. This is normally obtained via context from FormControl. |
-| <span class="prop-name">required</span> | <span class="prop-type">bool</span> |   | if `true`, the label will indicate that the input is required. |
-| <span class="prop-name">shrink</span> | <span class="prop-type">bool</span> |   | If `true`, the label is shrunk. |
-| <span class="prop-name">variant</span> | <span class="prop-type">enum:&nbsp;"standard"&nbsp;&#124;<br>&nbsp;"outlined"&nbsp;&#124;<br>&nbsp;"filled"<br></span> |   | The variant to use. |
+| <span class="prop-name">HTMLAttr.Required</span> | <span class="prop-type">bool</span> |   | if `true`, the label will indicate that the input is required. |
+| <span class="prop-name">InputLabelProp.Focused</span> | <span class="prop-type">bool</span> |   | If `true`, the input of this label is focused. |
+| <span class="prop-name">InputLabelProp.DisableAnimation</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the transition animation is disabled. |
+| <span class="prop-name">InputLabelProp.Margin</span> | <span class="prop-type">type&nbsp;InputLabelMargin&nbsp;=&nbsp;Dense<br></span> |   | If `Dense`, will adjust vertical spacing. This is normally obtained via context from FormControl. |
+| <span class="prop-name">InputLabelProp.Shrink</span> | <span class="prop-type">bool</span> |   | If `true`, the label is shrunk. |
+| <span class="prop-name">InputLabelProp.Variant</span> | <span class="prop-type">type&nbsp;InputLabelVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Standard<br>&nbsp;&nbsp;&#124;&nbsp;Outlined<br>&nbsp;&nbsp;&#124;&nbsp;Filled<br></span> |   | The variant to use. |
+| <span class="prop-name">ChildrenProp.FormLabelClasses</span> | <span class="prop-type">ClassNames list</span> |   | `classes` property applied to the [`FormLabel`](#/api/form-label) element. |
 
 Any other properties supplied will be spread to the root element ([FormLabel](#/api/form-label)).
 

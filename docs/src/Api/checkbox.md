@@ -13,7 +13,7 @@ Fable.Helpers.MaterialUI.checkbox (props : IHTMLProp list) : ReactElement
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Color</span> | <span class="prop-type">type&nbsp;ComponentColor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Default<br>&nbsp;&nbsp;&#124;&nbsp;Primary<br>&nbsp;&nbsp;&#124;&nbsp;Secondary<br></span> | <span class="prop-default">Secondary</span> | The color of the component. It supports those theme colors that make sense for this component. |
+| <span class="prop-name">MaterialProp.Color</span> | <span class="prop-type">type&nbsp;ComponentColor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Default<br>&nbsp;&nbsp;&#124;&nbsp;Primary<br>&nbsp;&nbsp;&#124;&nbsp;Secondary<br></span> | <span class="prop-default">ComponentColor.Secondary</span> | The color of the component. It supports those theme colors that make sense for this component. |
 | <span class="prop-name">MaterialProp.CheckedIcon</span> | <span class="prop-type">ReactNode</span> | <span class="prop-default">&lt;CheckBoxIcon /></span> | The icon to display when the component is checked. |
 | <span class="prop-name">MaterialProp.DisableRipple</span> | <span class="prop-type">bool</span> |   | If `true`, the ripple effect will be disabled. |
 | <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactNode</span> | <span class="prop-default">&lt;CheckBoxOutlineBlankIcon /></span> | The icon to display when the component is unchecked. |

@@ -14,10 +14,10 @@ Fable.Helpers.MaterialUI.tab (props : IHTMLProp list) (children : ReactElement l
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">unsupportedProp</span> |   | This property isn't supported. Use the `component` property if you need to change the children structure. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">HTMLAttr.Disabled</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the tab will be disabled. |
-| <span class="prop-name">icon</span> | <span class="prop-type">node</span> |   | The icon element. |
+| <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactNode</span> |   | The icon element. |
 | <span class="prop-name">MaterialProp.Label</span> | <span class="prop-type">ReactNode</span> |   | The label element. |
-| <span class="prop-name">value</span> | <span class="prop-type">any</span> |   | You can provide your own value. Otherwise, we fallback to the child position index. |
+| <span class="prop-name">HTMLAttr.Disabled</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the tab will be disabled. |
+| <span class="prop-name">MaterialProp.Value</span> | <span class="prop-type">obj</span> |   | You can provide your own value. Otherwise, we fallback to the child position index. |
 
 Any other properties supplied will be spread to the root element ([ButtonBase](#/api/button-base)).
 
@@ -55,7 +55,7 @@ you need to use the following style sheet name: `OverridesProp.MuiTab`.
 The properties of the [ButtonBase](#/api/button-base) component are also available.
 <!-- You can take advantage of this behavior to [target nested components](/guides/api/#spread). -->
 
-## Demos
+<!--## Demos-->
 
-- [Tabs](/demos/tabs/)
+<!--- [Tabs](/demos/tabs/)-->
 

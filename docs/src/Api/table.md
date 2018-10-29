@@ -15,7 +15,7 @@ Fable.Helpers.MaterialUI.table (props : IHTMLProp list) (children : ReactElement
 | <span class="prop-name required">children *</span> | <span class="prop-type">node</span> |   | The content of the table, normally `TableHead` and `TableBody`. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"table"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
-| <span class="prop-name">padding</span> | <span class="prop-type">enum:&nbsp;"default"&nbsp;&#124;<br>&nbsp;"checkbox"&nbsp;&#124;<br>&nbsp;"dense"&nbsp;&#124;<br>&nbsp;"none"<br></span> | <span class="prop-default">"default"</span> | Allows TableCells to inherit padding of the Table. |
+| <span class="prop-name">TableCellProp.Padding</span> | <span class="prop-type">type&nbsp;TableCellPadding&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Default<br>&nbsp;&nbsp;&#124;&nbsp;Checkbox<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br>&nbsp;&nbsp;&#124;&nbsp;None<br></span> | <span class="prop-default">Default</span> | Allows TableCells to inherit padding of the Table. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -37,7 +37,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiTable`.
 
-## Demos
+<!--## Demos-->
 
-- [Tables](/demos/tables/)
+<!--- [Tables](/demos/tables/)-->
 

@@ -15,9 +15,9 @@ Fable.Helpers.MaterialUI.list (props : IHTMLProp list) (children : ReactElement 
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the component. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"ul"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
-| <span class="prop-name">dense</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, compact vertical padding designed for keyboard and mouse input will be used for the list and list items. The property is available to descendant components as the `dense` context. |
-| <span class="prop-name">disablePadding</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, vertical padding will be removed from the list. |
-| <span class="prop-name">subheader</span> | <span class="prop-type">node</span> |   | The content of the subheader, normally `ListSubheader`. |
+| <span class="prop-name">MaterialProp.Dense</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, compact vertical padding designed for keyboard and mouse input will be used for the list and list items. The property is available to descendant components as the `dense` context. |
+| <span class="prop-name">ListProp.DisablePadding</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, vertical padding will be removed from the list. |
+| <span class="prop-name">ListProp.Subheader</span> | <span class="prop-type">ReactElement</span> |   | The content of the subheader, normally `ListSubheader`. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -42,7 +42,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiList`.
 
-## Demos
+<!--## Demos-->
 
-- [Lists](/demos/lists/)
+<!--- [Lists](/demos/lists/)-->
 

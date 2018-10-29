@@ -36,7 +36,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiListItemAvatar`.
 
-## Demos
+<!--## Demos-->
 
-- [Lists](/demos/lists/)
+<!--- [Lists](/demos/lists/)-->
 

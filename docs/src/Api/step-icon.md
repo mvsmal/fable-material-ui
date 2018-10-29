@@ -12,11 +12,11 @@ Fable.Helpers.MaterialUI.stepIcon (props : IHTMLProp list) (children : ReactElem
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">active</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Whether this step is active. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">completed</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Mark the step as completed. Is passed to child components. |
-| <span class="prop-name">error</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Mark the step as failed. |
-| <span class="prop-name required">icon *</span> | <span class="prop-type">node</span> |   | The icon displayed by the step label. |
+| <span class="prop-name">MaterialProp.Active</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Whether this step is active. |
+| <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Mark the step as failed. |
+| <span class="prop-name required">MaterialProp.Icon *</span> | <span class="prop-type">ReactNode</span> |   | The icon displayed by the step label. |
+| <span class="prop-name">StepProp.Completed</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Mark the step as completed. Is passed to child components. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -42,7 +42,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiStepIcon`.
 
-## Demos
+<!--## Demos-->
 
-- [Steppers](/demos/steppers/)
+<!--- [Steppers](/demos/steppers/)-->
 

@@ -18,7 +18,7 @@ Fable.Helpers.MaterialUI.formLabel (props : IHTMLProp list) (children : ReactEle
 | <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> |   | If `true`, the label should be displayed in an error state. |
 | <span class="prop-name">HTMLAttr.Disabled</span> | <span class="prop-type">bool</span> |   | If `true`, the label should be displayed in a disabled state. |
 | <span class="prop-name">HTMLAttr.Required</span> | <span class="prop-type">bool</span> |   | If `true`, the label will indicate that the input is required. |
-| <span class="prop-name">HTMLAttr.Custom("filled", bool)</span> | <span class="prop-type">bool</span> |   | If `true`, the label should use filled classes key. |
+| <span class="prop-name">FormLabelProp.Filled</span> | <span class="prop-type">bool</span> |   | If `true`, the label should use filled classes key. |
 | <span class="prop-name">FormLabelProp.Focused</span> | <span class="prop-type">bool</span> |   | If `true`, the input of this label is focused (used by `FormGroup` components). |
 
 Any other properties supplied will be spread to the root element (native element).

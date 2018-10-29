@@ -12,12 +12,12 @@ A button based label for placing inside `TableCell` for column sorting.
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">active</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the label will have the active styling (should be true for the sorted column). |
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | Label contents, the arrow will be appended automatically. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">direction</span> | <span class="prop-type">enum:&nbsp;"asc"&nbsp;&#124;<br>&nbsp;"desc"<br></span> | <span class="prop-default">"desc"</span> | The current sort direction. |
-| <span class="prop-name">hideSortIcon</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Hide sort icon when active is false. |
-| <span class="prop-name">IconComponent</span> | <span class="prop-type">func</span> | <span class="prop-default">ArrowDownwardIcon</span> | Sort icon to use. |
+| <span class="prop-name">MaterialProp.Active</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the label will have the active styling (should be true for the sorted column). |
+| <span class="prop-name">TableSortLabelProp.Direction</span> | <span class="prop-type">type&nbsp;TableSortDirection&nbsp;=&nbsp;Asc&nbsp;&#124;&nbsp;Desc<br></span> | <span class="prop-default">Desc</span> | The current sort direction. |
+| <span class="prop-name">TableSortLabelProp.HideSortIcon</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Hide sort icon when active is false. |
+| <span class="prop-name">ChildrenProp.IconComponent</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">ArrowDownwardIcon</span> | Sort icon to use. |
 
 Any other properties supplied will be spread to the root element ([ButtonBase](#/api/button-base)).
 
@@ -48,7 +48,7 @@ you need to use the following style sheet name: `OverridesProp.MuiTableSortLabel
 The properties of the [ButtonBase](#/api/button-base) component are also available.
 <!-- You can take advantage of this behavior to [target nested components](/guides/api/#spread). -->
 
-## Demos
+<!--## Demos-->
 
-- [Tables](/demos/tables/)
+<!--- [Tables](/demos/tables/)-->
 

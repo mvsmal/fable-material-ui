@@ -14,9 +14,9 @@ Fable.Helpers.MaterialUI.icon (props : IHTMLProp list) (children : ReactElement 
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The name of the icon font ligature. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">color</span> | <span class="prop-type">enum:&nbsp;"inherit", "primary", "secondary", "action", "error", "disabled"<br></span> | <span class="prop-default">"inherit"</span> | The color of the component. It supports those theme colors that make sense for this component. |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"span"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
-| <span class="prop-name">fontSize</span> | <span class="prop-type">enum:&nbsp;"inherit"&nbsp;&#124;<br>&nbsp;"default"&nbsp;&#124;<br>&nbsp;"small"&nbsp;&#124;<br>&nbsp;"large"<br></span> | <span class="prop-default">"default"</span> | The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size. |
+| <span class="prop-name">IconProp.Color</span> | <span class="prop-type">type&nbsp;IconColor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Inherit<br>&nbsp;&nbsp;&#124;&nbsp;Primary<br>&nbsp;&nbsp;&#124;&nbsp;Secondary<br>&nbsp;&nbsp;&#124;&nbsp;Action<br>&nbsp;&nbsp;&#124;&nbsp;Error<br>&nbsp;&nbsp;&#124;&nbsp;Disabled<br></span> | <span class="prop-default">IconColor.Inherit</span> | The color of the component. It supports those theme colors that make sense for this component. |
+| <span class="prop-name">IconProp.FontSize</span> | <span class="prop-type">type&nbsp;IconFontSize&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Inherit<br>&nbsp;&nbsp;&#124;&nbsp;Default<br>&nbsp;&nbsp;&#124;&nbsp;Small<br>&nbsp;&nbsp;&#124;&nbsp;Large<br></span> | <span class="prop-default">IconFontSize.Default</span> | The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -34,7 +34,7 @@ This property accepts the following keys:
 | <span class="prop-name">ClassNames.ColorAction</span> | Styles applied to the root element if `color="action"`.
 | <span class="prop-name">ClassNames.ColorError</span> | Styles applied to the root element if `color="error"`.
 | <span class="prop-name">ClassNames.ColorDisabled</span> | Styles applied to the root element if `color="disabled"`.
-| <span class="prop-name">ClassNames.&#96;&#96;FontSizeInherit&#96;&#96;</span> | 
+| <span class="prop-name">ClassNames.FontSizeInherit</span> | Styles applied to the root element if `fontSize="inherit"`.
 | <span class="prop-name">ClassNames.FontSizeSmall</span> | Styles applied to the root element if `fontSize="small"`.
 | <span class="prop-name">ClassNames.FontSizeLarge</span> | Styles applied to the root element if `fontSize="large"`.
 
@@ -46,7 +46,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiIcon`.
 
-## Demos
+<!--## Demos-->
 
-- [Icons](/style/icons/)
+<!--- [Icons](/style/icons/)-->
 

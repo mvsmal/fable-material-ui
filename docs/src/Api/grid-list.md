@@ -12,12 +12,12 @@ Fable.Helpers.MaterialUI.gridList (props : IHTMLProp list) (children : ReactElem
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">cellHeight</span> | <span class="prop-type">union:&nbsp;number&nbsp;&#124;<br>&nbsp;enum:&nbsp;"auto"<br><br></span> | <span class="prop-default">180</span> | Number of px for one cell height. You can set `"auto"` if you want to let the children determine the height. |
 | <span class="prop-name required">children *</span> | <span class="prop-type">node</span> |   | Grid Tiles that will be in Grid List. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">cols</span> | <span class="prop-type">number</span> | <span class="prop-default">2</span> | Number of columns. |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"ul"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
-| <span class="prop-name">spacing</span> | <span class="prop-type">number</span> | <span class="prop-default">4</span> | Number of px for the spacing between tiles. |
+| <span class="prop-name">HTMLAttr.Cols</span> | <span class="prop-type">float</span> | <span class="prop-default">2</span> | Number of columns. |
+| <span class="prop-name">GridListProp.CellHeight</span> | <span class="prop-type">U2&lt;int,&nbsp;AutoEnum&gt;<br>type&nbsp;AutoEnum&nbsp;=&nbsp;Auto<br></span> | <span class="prop-default">180</span> | Number of px for one cell height. You can set `AutoEnum.Auto` if you want to let the children determine the height. |
+| <span class="prop-name">GridListProp.Spacing</span> | <span class="prop-type">int</span> | <span class="prop-default">4</span> | Number of px for the spacing between tiles. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -39,7 +39,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiGridList`.
 
-## Demos
+<!--## Demos-->
 
-- [Grid List](/demos/grid-list/)
+<!--- [Grid List](/demos/grid-list/)-->
 

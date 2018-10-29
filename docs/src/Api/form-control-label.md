@@ -21,8 +21,8 @@ Use this component if you want to display an extra label.
 | <span class="prop-name">HTMLAttr.Name</span> | <span class="prop-type">string</span> |   |  |
 | <span class="prop-name">HTMLAttr.Value</span> | <span class="prop-type">string</span> |   | The value of the component. |
 | <span class="prop-name">FormControlLabelProp.Control</span> | <span class="prop-type">ReactElement</span> |   | A control element. For instance, it can be be a `Radio`, a `Switch` or a `Checkbox`. |
-| <span class="prop-name">FormControlLabelProp.LabelPlacement</span> | <span class="prop-type">type&nbsp;FormControlLabelPlacement&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;End<br>&nbsp;&nbsp;&#124;&nbsp;Start<br></span> | <span class="prop-default">End</span> | The position of the label. |
-| <span class="prop-name">FormControlLabelProp.OnChange</span> | <span class="prop-type">obj->bool->unit</span> |   | Callback fired when the state is changed.<br><br>**Signature:**<br>`(event: object)->(checked: boolean)->unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.checked`.<br>*checked:* The `checked` value of the switch |
+| <span class="prop-name">FormControlLabelProp.LabelPlacement</span> | <span class="prop-type">type&nbsp;FormControlLabelPlacement&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;End<br>&nbsp;&nbsp;&#124;&nbsp;Start<br></span> | <span class="prop-default">FormControlLabelPlacement.End</span> | The position of the label. |
+| <span class="prop-name">FormControlLabelProp.OnChange</span> | <span class="prop-type">obj->bool->unit</span> |   | Callback fired when the state is changed.<br><br>**Signature:**<br>`(event: obj)->(checked: bool)->unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.checked`.<br>*checked:* The `checked` value of the switch |
 
 Any other properties supplied will be spread to the root element (native element).
 

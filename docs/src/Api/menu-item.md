@@ -15,7 +15,7 @@ Fable.Helpers.MaterialUI.menuItem (props : IHTMLProp list) (children : ReactElem
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | Menu item contents. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"li"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
-| <span class="prop-name">disableGutters</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the left and right padding is removed. |
+| <span class="prop-name">MaterialProp.DisableGutters</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the left and right padding is removed. |
 
 Any other properties supplied will be spread to the root element ([ListItem](#/api/list-item)).
 
@@ -44,8 +44,8 @@ you need to use the following style sheet name: `OverridesProp.MuiMenuItem`.
 The properties of the [ListItem](#/api/list-item) component are also available.
 <!-- You can take advantage of this behavior to [target nested components](/guides/api/#spread). -->
 
-## Demos
+<!--## Demos-->
 
-- [Autocomplete](/demos/autocomplete/)
-- [Menus](/demos/menus/)
+<!--- [Autocomplete](/demos/autocomplete/)-->
+<!--- [Menus](/demos/menus/)-->
 

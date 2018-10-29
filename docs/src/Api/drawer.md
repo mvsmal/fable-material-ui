@@ -22,8 +22,8 @@ when `DrawerProp.Variant = Temporary` is set.
 | <span class="prop-name">ChildrenProp.ModalProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`Modal`](#/api/modal) element. |
 | <span class="prop-name">ChildrenProp.PaperProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`Paper`](#/api/paper) element. |
 | <span class="prop-name">ChildrenProp.SlideProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`Slide`](#/api/slide) element. |
-| <span class="prop-name">DrawerProp.Anchor</span> | <span class="prop-type">type&nbsp;Anchor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Left<br>&nbsp;&nbsp;&#124;&nbsp;Top<br>&nbsp;&nbsp;&#124;&nbsp;Right<br>&nbsp;&nbsp;&#124;&nbsp;Bottom<br></span> | <span class="prop-default">Left</span> | Side from which the drawer will appear. |
-| <span class="prop-name">DrawerProp.Variant</span> | <span class="prop-type">type&nbsp;DrawerVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Permanent<br>&nbsp;&nbsp;&#124;&nbsp;Persistent<br>&nbsp;&nbsp;&#124;&nbsp;Temporary<br></span> | <span class="prop-default">Temporary</span> | The variant to use. |
+| <span class="prop-name">DrawerProp.Anchor</span> | <span class="prop-type">type&nbsp;Anchor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Left<br>&nbsp;&nbsp;&#124;&nbsp;Top<br>&nbsp;&nbsp;&#124;&nbsp;Right<br>&nbsp;&nbsp;&#124;&nbsp;Bottom<br></span> | <span class="prop-default">Anchor.Left</span> | Side from which the drawer will appear. |
+| <span class="prop-name">DrawerProp.Variant</span> | <span class="prop-type">type&nbsp;DrawerVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Permanent<br>&nbsp;&nbsp;&#124;&nbsp;Persistent<br>&nbsp;&nbsp;&#124;&nbsp;Temporary<br></span> | <span class="prop-default">DrawerVariant.Temporary</span> | The variant to use. |
 
 Any other properties supplied will be spread to the root element (native element).
 

@@ -76,7 +76,6 @@ let homeStyles (theme : ITheme) : IStyles list =
         ])
     ]
 
-
 type HomeProps =
     abstract member dispatch : (Msg->unit) with get,set
     inherit Mui.IClassesProps

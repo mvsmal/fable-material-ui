@@ -17,13 +17,13 @@ Fable.Helpers.MaterialUI.filledInput (props : IHTMLProp list) (children : ReactE
 | <span class="prop-name">MaterialProp.InputRef</span> | <span class="prop-type">RefProp<br><br>type&nbsp;RefProp&nbsp;=&nbsp;U2&lt;obj,(ReactInstance&#8209;>unit)></span> |   | Use that property to pass a ref callback to the native input component. |
 | <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> |   | If `true`, the input will indicate an error. This is normally obtained via context from FormControl. |
 | <span class="prop-name">MaterialProp.FullWidth</span> | <span class="prop-type">bool</span> |   | If `true`, the input will take up the full width of its container. |
-| <span class="prop-name">MaterialProp.Margin</span> | <span class="prop-type">type&nbsp;FormControlMargin&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;None<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br>&nbsp;&nbsp;&#124;&nbsp;Normal<br></span> |   | If `dense`, will adjust vertical spacing. This is normally obtained via context from FormControl. |
+| <span class="prop-name">MaterialProp.Margin</span> | <span class="prop-type">type&nbsp;FormControlMargin&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;None<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br>&nbsp;&nbsp;&#124;&nbsp;Normal<br></span> |   | If `Dense`, will adjust vertical spacing. This is normally obtained via context from FormControl. |
 | <span class="prop-name">MaterialProp.RowsMax</span> | <span class="prop-type">int</span> |   | Maximum number of rows to display when multiline option is set to true. |
 | <span class="prop-name">MaterialProp.Value</span> | <span class="prop-type">obj</span> |   | The input value, required for a controlled component. |
+| <span class="prop-name">MaterialProp.DefaultValue</span> | <span class="prop-type">obj</span> |   | The default input value, useful when not controlling the component. |
 | <span class="prop-name">HTMLAttr.AutoComplete</span> | <span class="prop-type">string</span> |   | This property helps users to fill forms faster, especially on mobile devices. The name can be confusing, as it's more like an autofill. You can learn more about it here: https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill |
 | <span class="prop-name">HTMLAttr.AutoFocus</span> | <span class="prop-type">bool</span> |   | If `true`, the input will be focused during the first mount. |
 | <span class="prop-name">HTMLAttr.ClassName</span> | <span class="prop-type">string</span> |   | The CSS class name of the wrapper element. |
-| <span class="prop-name">HTMLAttr.DefaultValue</span> | <span class="prop-type">obj</span> |   | The default input value, useful when not controlling the component. |
 | <span class="prop-name">HTMLAttr.Disabled</span> | <span class="prop-type">bool</span> |   | If `true`, the input will be disabled. |
 | <span class="prop-name">HTMLAttr.Id</span> | <span class="prop-type">string</span> |   | The id of the `input` element. |
 | <span class="prop-name">HTMLAttr.Multiline</span> | <span class="prop-type">bool</span> |   | If `true`, a textarea element will be rendered. |
@@ -33,7 +33,7 @@ Fable.Helpers.MaterialUI.filledInput (props : IHTMLProp list) (children : ReactE
 | <span class="prop-name">HTMLAttr.Required</span> | <span class="prop-type">bool</span> |   | If `true`, the input will be required. |
 | <span class="prop-name">HTMLAttr.Rows</span> | <span class="prop-type">float</span> |   | Number of rows to display when multiline option is set to true. |
 | <span class="prop-name">HTMLAttr.Type</span> | <span class="prop-type">string</span> |   | Type of the input element. It should be a valid HTML5 input type. |
-| <span class="prop-name">DOMAttr.OnChange</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the value is changed.<br><br>**Signature:**<br>`(event : obj) -> unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.value`. |
+| <span class="prop-name">DOMAttr.OnChange</span> | <span class="prop-type">FormEvent->unit</span> |   | Callback fired when the value is changed.<br><br>**Signature:**<br>`(event : FormEvent) -> unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.value`. |
 | <span class="prop-name">InputProp.EndAdornment</span> | <span class="prop-type">ReactNode</span> |   | End `InputAdornment` for this component. |
 | <span class="prop-name">InputProp.InputComponent</span> | <span class="prop-type">ReactType</span> |   | The component used for the native input. Either a string to use a DOM element or a component. |
 | <span class="prop-name">InputProp.StartAdornment</span> | <span class="prop-type">ReactNode</span> |   | Start `InputAdornment` for this component. |

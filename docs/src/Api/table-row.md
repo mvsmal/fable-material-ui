@@ -16,8 +16,8 @@ based on the material table element parent (head, body, etc).
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | Should be valid &lt;tr> children such as `TableCell`. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"tr"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
-| <span class="prop-name">hover</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the table row will shade on hover. |
-| <span class="prop-name">selected</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the table row will have the selected shading. |
+| <span class="prop-name">HTMLAttr.Selected</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the table row will have the selected shading. |
+| <span class="prop-name">TableRowProp.Hover</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the table row will shade on hover. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -43,7 +43,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiTableRow`.
 
-## Demos
+<!--## Demos-->
 
-- [Tables](/demos/tables/)
+<!--- [Tables](/demos/tables/)-->
 

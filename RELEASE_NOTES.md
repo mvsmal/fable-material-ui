@@ -1,3 +1,18 @@
+## New in 2.3.0
+* [Avatar] `AvatarProp.Sizes` marked as deprecated. Use `HTMLAttr.Sizes` instead
+* [BottomNavigation] `BottomNavigationProp.Value` and `BottomNavigationActionProp.Value` are marked as deprecated. Use `MaterialProp.Value` instead
+* [FormHelperText] Add `Filled`, `Focused` and `Variant` props
+* [FormLabel] Add `Filled` prop
+* [LinearProgress] Add `Value`(of int) prop
+* [MuiThemeProvider] Add `SheetsManager` prop
+* [NativeSelect] Add `NativeSelectProp`: `Variant` and `Input`
+* [TableSortlabel] Add `HideSortIcon` prop
+* [InputBase] Add `InputBaseProp`
+* [InputLabel] Add `Focused` prop
+* [OutlinedInput] Add `LabelWidth`, `InputComponent`, `StartAdornment` and `EndAdornment` props
+* [Typography] Add `HeadlineMapping` and `InternalDeprecationVariant` props
+* Add `MaterialProp.DefaultValue` (of obj) prop
+
 ## New in 2.2.1
 * [Theme] Added missing typography props for `ITheme.typography` obj
 

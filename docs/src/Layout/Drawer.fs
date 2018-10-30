@@ -44,6 +44,9 @@ let drawer (props : AppDrawerProps) =
                 MaterialProp.OnOpen (fun _ -> OpenMenu true |> props.dispatch)
                 MaterialProp.OnClose (fun _ -> OpenMenu false |> props.dispatch)
                 ModalProps [ KeepMounted true ]
+                Classes [
+                    ClassNames.Paper !!props.classes?paper
+                ]
             ] [
                 lazyView2 Layout.Menu.view props.currentPage props.dispatch ]
         ]

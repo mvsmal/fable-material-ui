@@ -948,6 +948,7 @@ module Props =
         | Color of ComponentColor
         | Component of Fable.Import.React.ReactType
         | Container of Fable.Import.React.ReactInstance
+        | DefaultValue of obj
         | Dense of bool
         | DisableGutters of bool
         | DisablePortal of bool
@@ -968,7 +969,7 @@ module Props =
         | Optional of Fable.Import.React.ReactNode
         | Placement of PlacementType
         | RowsMax of int
-        | Value of obj // ? Should it be strongly typed? Like U{N}<string, int, float, decimal, arrays...>
+        | Value of obj
 
         | OnClose of (obj->unit)
         | OnEnter of (obj->unit)
@@ -1224,12 +1225,24 @@ module Props =
         | OnChange of (obj->bool->unit)
         interface IHTMLProp
 
+    type [<StringEnum; RequireQualifiedAccess>] FormHelperTextVariant =
+        | Standard
+        | Outlined
+        | Filled
+
+    type FormHelperTextProp =
+        | Filled of bool
+        | Focused of bool
+        | Variant of FormHelperTextVariant
+        interface IHTMLProp
+
     type FormGroupProp =
         | Row of bool
         interface IHTMLProp
 
     type FormLabelProp =
         | Focused of bool
+        | Filled of bool
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] GridAlignContent =
@@ -1374,6 +1387,12 @@ module Props =
         | InputComponent of Fable.Import.React.ReactType
         | StartAdornment of Fable.Import.React.ReactNode
         interface IHTMLProp
+    
+    type InputBaseProp =
+        | EndAdornment of Fable.Import.React.ReactNode
+        | InputComponent of Fable.Import.React.ReactType
+        | StartAdornment of Fable.Import.React.ReactNode
+        interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] InputAdornmentPosition = Start | End
     type [<StringEnum; RequireQualifiedAccess>] InputAdornmentVariant = Standard | Outlined | Filled
@@ -1388,6 +1407,7 @@ module Props =
 
     type InputLabelProp =
         | DisableAnimation of bool
+        | Focused of bool
         | Margin of InputLabelMargin
         | Shrink of bool
         | Variant of InputLabelVariant
@@ -1404,6 +1424,7 @@ module Props =
         | Color of LinearProgressColor
         | ValueBuffer of int
         | Variant of LinearProgressVariant
+        | Value of int
         interface IHTMLProp
 
     type ListProp =
@@ -1465,9 +1486,23 @@ module Props =
         | OnEscapeKeyDown of (obj->unit)
         | OnClose of (obj->ModalCloseReason->unit)
         interface IHTMLProp
+    
+    type [<StringEnum; RequireQualifiedAccess>] NativeSelectVariant =
+        | Standard
+        | Filled
+        | Outlined
+    
+    type NativeSelectProp =
+        | Input of Fable.Import.React.ReactNode
+        | Variant of NativeSelectVariant
+        interface IHTMLProp
 
     type OutlinedInputProp =
+        | LabelWidth of int
         | Notched of bool
+        | EndAdornment of Fable.Import.React.ReactNode
+        | InputComponent of Fable.Import.React.ReactType
+        | StartAdornment of Fable.Import.React.ReactNode
         interface IHTMLProp
 
     type PaperProp =
@@ -1643,6 +1678,7 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] TableSortDirection = Asc | Desc
     type TableSortLabelProp =
         | Direction of TableSortDirection
+        | HideSortIcon of bool
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] TextFieldVariant =
@@ -1717,11 +1753,32 @@ module Props =
         | [<Obsolete("Material-UI@3.2.0: Typography type `Title` is deprecated. Please use `H6` instead")>] Title
         | [<Obsolete("Material-UI@3.2.0: Typography type `Subheading` is deprecated. Please use `Subtitle1` instead")>] Subheading
 
+    type TypographyHeadlineMapping = {
+        h1 : string
+        h2 : string
+        h3 : string
+        h4 : string
+        h5 : string
+        h6 : string
+        subtitle1 : string
+        subtitle2 : string
+        body1 : string
+        body2 : string
+        display4 : string
+        display3 : string
+        display2 : string
+        display1 : string
+        headline : string
+        title : string
+        subheading : string
+    }
+
     type TypographyProp =
         | Align of TypographyAlign
         | Color of TypographyColor
         | GutterBottom of bool
-        | HeadlineMapping of obj // TODO strong type
+        | HeadlineMapping of TypographyHeadlineMapping
+        | InternalDeprecatedVariant of bool
         | NoWrap of bool
         | Paragraph of bool
         | Variant of TypographyVariant
@@ -2088,6 +2145,7 @@ module Props =
     type MuiThemeProviderProp =
         | Theme of ProviderTheme
         | DisableStylesGeneration of bool
+        | SheetsManager of obj
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] Breakpoint = Xs | Sm | Md | Lg | Xl

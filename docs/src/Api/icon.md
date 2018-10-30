@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.icon (props : IHTMLProp list) (children : ReactElement 
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The name of the icon font ligature. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"span"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">IconProp.Color</span> | <span class="prop-type">type&nbsp;IconColor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Inherit<br>&nbsp;&nbsp;&#124;&nbsp;Primary<br>&nbsp;&nbsp;&#124;&nbsp;Secondary<br>&nbsp;&nbsp;&#124;&nbsp;Action<br>&nbsp;&nbsp;&#124;&nbsp;Error<br>&nbsp;&nbsp;&#124;&nbsp;Disabled<br></span> | <span class="prop-default">IconColor.Inherit</span> | The color of the component. It supports those theme colors that make sense for this component. |

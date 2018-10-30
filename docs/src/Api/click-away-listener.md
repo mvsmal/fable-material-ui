@@ -13,7 +13,6 @@ For instance, if you need to hide a menu when people click anywhere else on your
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">element</span> |   | The wrapped element. |
 | <span class="prop-name">ClickAwayListenerProp.MouseEvent</span> | <span class="prop-type">type&nbsp;[&lt;Erase&gt;]&nbsp;ClickAwayListenerMouseEvent&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Event&nbsp;of&nbsp;MouseEvent<br>&nbsp;&nbsp;&#124;&nbsp;False<br><br>type&nbsp;MouseEvent&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;OnClick<br>&nbsp;&nbsp;&#124;&nbsp;OnMouseDown<br>&nbsp;&nbsp;&#124;&nbsp;OnMouseUp<br></span> | <span class="prop-default">MouseEvent.OnMouseUp</span> | The mouse event to listen to. You can disable the listener by providing `false`. |
 | <span class="prop-name required">ClickAwayListenerProp.OnClickAway *</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when a "click away" event is detected. |
 | <span class="prop-name">ClickAwayListenerProp.TouchEvent</span> | <span class="prop-type">type&nbsp;[&lt;Erase&gt;]&nbsp;ClickAwayListenerTouchEvent&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Event&nbsp;of&nbsp;TouchEvent<br>&nbsp;&nbsp;&#124;&nbsp;False<br><br>type&nbsp;TouchEvent&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;OnTouchStart<br>&nbsp;&nbsp;&#124;&nbsp;OnTouchEnd<br></span> | <span class="prop-default">TouchEvent.OnTouchEnd</span> | The touch event to listen to. You can disable the listener by providing `false`. |

@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.menuList (props : IHTMLProp list) (children : ReactElem
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | MenuList contents, normally `MenuItem`s. |
 
 Any other properties supplied will be spread to the root element ([List](#/api/list)).
 

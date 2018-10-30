@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.listItem (props : IHTMLProp list) (children : ReactElem
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the component. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> |   | The component used for the root node. Either a string to use a DOM element or a component. By default, it's a `li` when `Button` is `false` and a `div` when `Button` is `true`. |
 | <span class="prop-name">MaterialProp.Dense</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, compact vertical padding designed for keyboard and mouse input will be used. |

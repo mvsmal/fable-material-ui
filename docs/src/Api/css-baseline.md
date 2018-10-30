@@ -8,13 +8,7 @@ Fable.Helpers.MaterialUI.cssBaseline (props : IHTMLProp list) : ReactElement
 
 Kickstart an elegant, consistent, and simple baseline to build upon.
 
-## Props
-
-| Name | Type | Default | Description |
-|:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">unsupportedProp</span> | <span class="prop-default">null</span> | Not yet supported in Fable.MaterialUI |
-
-Any other properties supplied will be spread to the root element (native element).
+Any properties supplied will be spread to the root element (native element).
 
 <!--## Demos-->
 

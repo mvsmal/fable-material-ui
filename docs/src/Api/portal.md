@@ -13,7 +13,6 @@ that exists outside the DOM hierarchy of the parent component.
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">node</span> |   | The children to render into the `container`. |
 | <span class="prop-name">MaterialProp.Container</span> | <span class="prop-type">ReactInstance</span> |   | A node, component instance, or function that returns either. The `container` will have the portal children appended to it. By default, it uses the body of the top-level document object, so it's simply `document.body` most of the time. |
 | <span class="prop-name">MaterialProp.DisablePortal</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Disable the portal behavior. The children stay within it's parent DOM hierarchy. |
 | <span class="prop-name">MaterialProp.OnRendered</span> | <span class="prop-type">obj->unit</span> |   | Callback fired once the children has been mounted into the `container`. |

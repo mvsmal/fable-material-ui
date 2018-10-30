@@ -12,7 +12,6 @@ Poppers rely on the 3rd party library [Popper.js](https://github.com/FezVrasta/p
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">union:&nbsp;node&nbsp;&#124;<br>&nbsp;func<br></span> |   | Popper render function or node. |
 | <span class="prop-name">MaterialProp.AnchorEl</span> | <span class="prop-type">ReactInstance</span> |   | This is the DOM element, or a function that returns the DOM element, that may be used to set the position of the popover. The return value will passed as the reference object of the Popper instance. |
 | <span class="prop-name">MaterialProp.Container</span> | <span class="prop-type">ReactType</span> |   | A node, component instance, or function that returns either. The `container` will passed to the Modal component. By default, it uses the body of the anchorEl's top-level document object, so it's simply `document.body` most of the time. |
 | <span class="prop-name required">MaterialProp.Open *</span> | <span class="prop-type">bool</span> |   | If `true`, the popper is visible. |

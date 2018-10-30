@@ -13,7 +13,6 @@ when `DrawerProp.Variant = Temporary` is set.
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The contents of the drawer. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Elevation</span> | <span class="prop-type">int</span> | <span class="prop-default">16</span> | The elevation of the drawer. |
 | <span class="prop-name">MaterialProp.Open</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the drawer is open. |

@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.appBar (props : IHTMLProp list) (children : ReactElemen
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">node |   | The content of the component. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list |   | Override or extend the styles applied to the component. <!--See [CSS API](#css-api) below for more details.--> |
 | <span class="prop-name">MaterialProp.Color</span> | <span class="prop-type">type&nbsp;ComponentColor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Default<br>&nbsp;&nbsp;&#124;&nbsp;Inherit<br>&nbsp;&nbsp;&#124;&nbsp;Primary<br>&nbsp;&nbsp;&#124;&nbsp;Secondary<br></span> | <span class="prop-default">ComponentColor.Primary</span> | The color of the component. It supports those theme colors that make sense for this component. |
 | <span class="prop-name">AppBarProp.Position</span> | <span class="prop-type">type&nbsp;AppBarPosition&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Fixed<br>&nbsp;&nbsp;&#124;&nbsp;Absolute<br>&nbsp;&nbsp;&#124;&nbsp;Sticky<br>&nbsp;&nbsp;&#124;&nbsp;Static<br>&nbsp;&nbsp;&#124;&nbsp;Relative<br></span> | <span class="prop-default">AppBarPosition.Fixed</span> | The positioning type. The behavior of the different options is described [here](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning). Note: `Sticky` is not universally supported and will fall back to `Static` when unavailable. |

@@ -35,8 +35,7 @@ type MyComponent() =
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">element</span> |   | The wrapped element. |
-| <span class="prop-name required">RootRefProp.RootRef *</span> | <span class="prop-type">RefProp<br><br>type&nbsp;RefProp&nbsp;=&nbsp;U2&lt;obj,(ReactInstance&#8209;>unit)></span> |   | Provide a way to access the DOM node of the wrapped element. You can provide a callback ref or a `React.createRef()` ref. |
+| <span class="prop-name required">RootRefProp.RootRef *</span> | <span class="prop-type">type&nbsp;RefProp&nbsp;=&nbsp;U2&lt;obj,(ReactInstance&#8209;>unit)></span> |   | Provide a way to access the DOM node of the wrapped element. You can provide a callback ref or a `React.createRef()` ref. |
 
 Any other properties supplied will be spread to the root element (native element).
 

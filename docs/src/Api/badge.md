@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.badge (props : IHTMLProp list) (children : ReactElement
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">node</span> |   | The badge will be added relative to this node. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"span"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name required">BadgeProp.BadgeContent *</span> | <span class="prop-type">ReactNode</span> |   | The content rendered within the badge. |

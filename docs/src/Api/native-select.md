@@ -12,7 +12,6 @@ An alternative to `<Select native />` with a much smaller bundle size footprint.
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The option elements to populate the select with. Can be some `<option>` elements. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.InputProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Attributes applied to the `select` element. |
 | <span class="prop-name">MaterialProp.Value</span> | <span class="prop-type">obj</span> |   | The input value. |

@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.dialogContentText (props : IHTMLProp list) (children : 
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the component. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 
 Any other properties supplied will be spread to the root element ([Typography](#/api/typography)).

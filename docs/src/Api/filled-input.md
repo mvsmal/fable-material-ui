@@ -34,9 +34,9 @@ Fable.Helpers.MaterialUI.filledInput (props : IHTMLProp list) (children : ReactE
 | <span class="prop-name">HTMLAttr.Rows</span> | <span class="prop-type">float</span> |   | Number of rows to display when multiline option is set to true. |
 | <span class="prop-name">HTMLAttr.Type</span> | <span class="prop-type">string</span> |   | Type of the input element. It should be a valid HTML5 input type. |
 | <span class="prop-name">DOMAttr.OnChange</span> | <span class="prop-type">FormEvent->unit</span> |   | Callback fired when the value is changed.<br><br>**Signature:**<br>`(event : FormEvent) -> unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.value`. |
-| <span class="prop-name">InputProp.EndAdornment</span> | <span class="prop-type">ReactNode</span> |   | End `InputAdornment` for this component. |
-| <span class="prop-name">InputProp.InputComponent</span> | <span class="prop-type">ReactType</span> |   | The component used for the native input. Either a string to use a DOM element or a component. |
-| <span class="prop-name">InputProp.StartAdornment</span> | <span class="prop-type">ReactNode</span> |   | Start `InputAdornment` for this component. |
+| <span class="prop-name">FilledInputProp.EndAdornment</span> | <span class="prop-type">ReactNode</span> |   | End `InputAdornment` for this component. |
+| <span class="prop-name">FilledInputProp.InputComponent</span> | <span class="prop-type">ReactType</span> |   | The component used for the native input. Either a string to use a DOM element or a component. |
+| <span class="prop-name">FilledInputProp.StartAdornment</span> | <span class="prop-type">ReactNode</span> |   | Start `InputAdornment` for this component. |
 
 Any other properties supplied will be spread to the root element ([InputBase](#/api/input-base)).
 

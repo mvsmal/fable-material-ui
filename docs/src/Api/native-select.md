@@ -17,7 +17,7 @@ An alternative to `<Select native />` with a much smaller bundle size footprint.
 | <span class="prop-name">MaterialProp.Value</span> | <span class="prop-type">obj</span> |   | The input value. |
 | <span class="prop-name">DOMAttr.OnChange</span> | <span class="prop-type">FormEvent->unit</span> |   | Callback function fired when a menu item is selected.<br><br>**Signature:**<br>`(event : FormEvent) -> unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.value`. |
 | <span class="prop-name">NativeSelectProp.Input</span> | <span class="prop-type">ReactNode</span> | <span class="prop-default">&lt;Input /></span> | An `Input` element; does not have to be a material-ui specific `Input`. |
-| <span class="prop-name">NativeSelectProp.Variant</span> | <span class="prop-type">type&nbsp;SelectVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Standard<br>&nbsp;&nbsp;&#124;&nbsp;Outlined<br>&nbsp;&nbsp;&#124;&nbsp;Filled<br></span> |   | The variant to use. |
+| <span class="prop-name">NativeSelectProp.Variant</span> | <span class="prop-type">type&nbsp;NativeSelectVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Standard<br>&nbsp;&nbsp;&#124;&nbsp;Outlined<br>&nbsp;&nbsp;&#124;&nbsp;Filled<br></span> |   | The variant to use. |
 | <span class="prop-name">ChildrenProp.IconComponent</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">ArrowDropDownIcon</span> | The icon that displays the arrow. |
 
 Any other properties supplied will be spread to the root element ([Input](#/api/input)).

@@ -1208,6 +1208,12 @@ module Props =
         | ExpandIcon of Fable.Import.React.ReactNode
         interface IHTMLProp
     
+    type FilledInputProp =
+        | EndAdornment of Fable.Import.React.ReactNode
+        | InputComponent of Fable.Import.React.ReactType
+        | StartAdornment of Fable.Import.React.ReactNode
+        interface IHTMLProp
+    
     type [<StringEnum; RequireQualifiedAccess>] FormControlVariant =
         | Standard
         | Outlined

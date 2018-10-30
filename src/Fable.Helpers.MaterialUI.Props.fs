@@ -1518,14 +1518,14 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] PopoverHorizontalPosition = Left | Center | Right
     type [<StringEnum; RequireQualifiedAccess>] PopoverVerticalPosition = Top | Center | Bottom
     type [<StringEnum; RequireQualifiedAccess>] AnchorReference = AnchorEl | AnchorPosition | None
-    and  AnchorPosition = {
+    and AnchorPosition = {
         left: int
         top: int
     }
 
     type PopoverHorizontalOrigin = U2<int,PopoverHorizontalPosition>
     type PopoverVerticalOrigin = U2<int,PopoverVerticalPosition>
-    type  PopoverOrigin = {
+    type PopoverOrigin = {
         horizontal: PopoverHorizontalOrigin
         vertical: PopoverVerticalOrigin
     }
@@ -1578,7 +1578,7 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] SnackbarVerticalOrigin = Top | Center | Bottom
     type [<StringEnum; RequireQualifiedAccess>] SnackbarCloseReason = Timeout | Clickaway
 
-    type  SnackbarOrigin = {
+    type SnackbarOrigin = {
         vertical: SnackbarVerticalOrigin
         horizontal: SnackbarHorizontalOrigin
     }

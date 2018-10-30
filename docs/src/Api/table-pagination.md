@@ -13,7 +13,7 @@ A `TableCell` based component for placing inside `TableFooter` for pagination.
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">TableCell</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Component</spa | <span class="prop-type">ReactType</span> | <span class="prop-default">TableCell</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">TablePaginationProp.BackIconButtonProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the back arrow [`IconButton`](#/api/icon-button) component. |
 | <span class="prop-name required">TablePaginationProp.Count *</span> | <span class="prop-type">int</span> |   | The total number of rows. |
 | <span class="prop-name">TablePaginationProp.LabelDisplayedRows</span> | <span class="prop-type">ILabelDisplayedRowsArgs->ReactNode<br><br>type&nbsp;ILabelDisplayedRowsArgs&nbsp;=<br>&nbsp;&nbsp;abstract&nbsp;from:&nbsp;int<br>&nbsp;&nbsp;abstract&nbsp;&#96;&#96;to&#96;&#96;:&nbsp;int<br>&nbsp;&nbsp;abstract&nbsp;count:&nbsp;int<br>&nbsp;&nbsp;abstract&nbsp;page:&nbsp;int<br></span> | <span class="prop-default">({ from, to, count }) => `${from}-${to} of ${count}`</span> | Customize the displayed rows label. |

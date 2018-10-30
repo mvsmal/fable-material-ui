@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Tab React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.tab (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.Helpers.MaterialUI.tab (props : IHTMLProp list) : ReactElement
 ```
 
 

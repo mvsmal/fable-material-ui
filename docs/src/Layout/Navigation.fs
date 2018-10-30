@@ -113,13 +113,13 @@ let navItems = [
                 { Title = "Popover"; Href = Some (Page.Api "popover"); Children = [] }
                 { Title = "Popper"; Href = Some (Page.Api "popper"); Children = [] }
                 { Title = "Portal"; Href = Some (Page.Api "portal"); Children = [] }
-                { Title = "RadioGroup"; Href = Some (Page.Api "radio-group"); Children = [] }
                 { Title = "Radio"; Href = Some (Page.Api "radio"); Children = [] }
+                { Title = "RadioGroup"; Href = Some (Page.Api "radio-group"); Children = [] }
                 // { Title = "RootRef"; Href = Some (Page.Api "root-ref"); Children = [] }
                 { Title = "Select"; Href = Some (Page.Api "select"); Children = [] }
                 { Title = "Slide"; Href = Some (Page.Api "slide"); Children = [] }
-                { Title = "SnackbarContent"; Href = Some (Page.Api "snackbar-content"); Children = [] }
                 { Title = "Snackbar"; Href = Some (Page.Api "snackbar"); Children = [] }
+                { Title = "SnackbarContent"; Href = Some (Page.Api "snackbar-content"); Children = [] }
                 { Title = "Step"; Href = Some (Page.Api "step"); Children = [] }
                 { Title = "StepButton"; Href = Some (Page.Api "step-button"); Children = [] }
                 { Title = "StepConnector"; Href = Some (Page.Api "step-connector"); Children = [] }

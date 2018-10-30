@@ -25,9 +25,9 @@ Poppers rely on the 3rd party library [Popper.js](https://github.com/FezVrasta/p
 
 Any other properties supplied will be spread to the root element (native element).
 
-## Demos
+<!--## Demos-->
 
-- [Autocomplete](/demos/autocomplete/)
-- [Menus](/demos/menus/)
-- [Popper](/utils/popper/)
+<!--- [Autocomplete](/demos/autocomplete/)-->
+<!--- [Menus](/demos/menus/)-->
+<!--- [Popper](/utils/popper/)-->
 

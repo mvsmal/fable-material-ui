@@ -30,10 +30,9 @@ let pageParser: Parser<Page->Page,Page> =
 let urlUpdate (result: Option<Page>) model =
     match result with
     | None ->
-        console.error("Error parsing url")
         model,Navigation.modifyUrl (toHash model.currentPage)
     | Some page ->
-        { model with currentPage = page; isLanding = (page = Home) }, []
+        { model with currentPage = page; isLanding = (page = Home) }, [fun _ -> Browser.window.scroll(0.,0.) ]
 
 let init result =
     let (model, cmd) =

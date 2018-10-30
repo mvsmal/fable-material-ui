@@ -1023,7 +1023,7 @@ module Props =
         interface IHTMLProp
 
     type AvatarProp =
-        | Sizes of string
+        | [<Obsolete("AvatarProp.Sizes is deprecated and will be removed in next major version. Use HTMLAttr.Sizes instead")>] Sizes of string
         interface IHTMLProp
 
     [<AutoOpen>]
@@ -1044,12 +1044,12 @@ module Props =
     type BottomNavigationProp =
         | OnChange of (obj->obj->unit)
         | ShowLabels of bool
-        | Value of obj
+        | [<Obsolete("BottomNavigationProp.Value is deprecated and will be removed in next major version. Use MaterialProp.Value instead")>] Value of obj
         interface IHTMLProp
 
     type BottomNavigationActionProp =
         | ShowLabel of bool
-        | Value of obj
+        | [<Obsolete("BottomNavigationActionProp.Value is deprecated and will be removed in next major version. Use MaterialProp.Value instead")>] Value of obj
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] ButtonSize =

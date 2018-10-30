@@ -12,7 +12,6 @@ This is a simple wrapper to apply the `dense` mode styles to `Avatar`.
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">element</span> |   | The content of the component – normally `Avatar`. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 
 Any other properties supplied will be spread to the root element (native element).

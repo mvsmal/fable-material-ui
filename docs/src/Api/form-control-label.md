@@ -14,7 +14,7 @@ Use this component if you want to display an extra label.
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.InputRef</span> | <span class="prop-type">RefProp<br><br>type&nbsp;RefProp&nbsp;=&nbsp;U2&lt;obj,(ReactInstance&#8209;>unit)></span> |   | Use that property to pass a ref callback to the native input component. |
+| <span class="prop-name">MaterialProp.InputRef</span> | <span class="prop-type">type&nbsp;RefProp&nbsp;=&nbsp;U2&lt;obj,(ReactInstance&#8209;>unit)></span> |   | Use that property to pass a ref callback to the native input component. |
 | <span class="prop-name">MaterialProp.Label</span> | <span class="prop-type">ReactNode</span> |   | The text to be used in an enclosing label element. |
 | <span class="prop-name">HTMLAttr.Checked</span> | <span class="prop-type">bool</span> |   | If `true`, the component appears selected. |
 | <span class="prop-name">HTMLAttr.Disabled</span> | <span class="prop-type">bool</span> |   | If `true`, the control will be disabled. |

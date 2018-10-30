@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.expansionPanelDetails (props : IHTMLProp list) (childre
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">node</span> |   | The content of the expansion panel details. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 
 Any other properties supplied will be spread to the root element (native element).

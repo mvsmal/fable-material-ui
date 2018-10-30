@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.grid (props : IHTMLProp list) (children : ReactElement 
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the component. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">GridProp.AlignContent</span> | <span class="prop-type">type&nbsp;GridAlignContent&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Stretch<br>&nbsp;&nbsp;&#124;&nbsp;Center<br>&nbsp;&nbsp;&#124;&nbsp;FlexStart<br>&nbsp;&nbsp;&#124;&nbsp;FlexEnd<br>&nbsp;&nbsp;&#124;&nbsp;SpaceBetween<br>&nbsp;&nbsp;&#124;&nbsp;SpaceAround<br></span> | <span class="prop-default">GridAlignContent.Stretch</span> | Defines the `align-content` style property. It's applied for all screen sizes. |

@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.bottomNavigationAction (props : IHTMLProp list) : React
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">unsupportedProp</span> |   | This property isn't supported. Use the `MaterialProp.Component` property if you need to change the children structure. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactNode</span> |   | The icon element. |
 | <span class="prop-name">MaterialProp.Label</span> | <span class="prop-type">ReactNode</span> |   | The label element. |

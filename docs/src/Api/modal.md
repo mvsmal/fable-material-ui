@@ -12,7 +12,6 @@ This component shares many concepts with [react-overlays](https://react-bootstra
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">element</span> |   | A single child content element. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Container</span> | <span class="prop-type">ReactInstance</span> |   | A node, component instance, or function that returns either. The `container` will have the portal children appended to it. |
 | <span class="prop-name">MaterialProp.KeepMounted</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Always keep the children in the DOM. This property can be useful in SEO situation or when you want to maximize the responsiveness of the Modal. |

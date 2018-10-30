@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.stepper (props : IHTMLProp list) (children : ReactEleme
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">node</span> |   | Two or more `<Step />` components. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">StepperProp.ActiveStep</span> | <span class="prop-type">int</span> | <span class="prop-default">0</span> | Set the active step (zero based index). |
 | <span class="prop-name">StepperProp.AlternativeLabel</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If set to "true" and orientation is horizontal, then the step label will be positioned under the icon. |

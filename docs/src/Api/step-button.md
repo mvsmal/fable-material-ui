@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.stepButton (props : IHTMLProp list) (children : ReactEl
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | Can be a `StepLabel` or a node to place inside `StepLabel` as children. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactNode</span> |   | The icon displayed by the step label. |
 | <span class="prop-name">MaterialProp.Optional</span> | <span class="prop-type">ReactNode</span> |   | The optional node to display. |

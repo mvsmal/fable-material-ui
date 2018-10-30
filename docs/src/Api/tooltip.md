@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.tooltip (props : IHTMLProp list) (children : ReactEleme
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name required">children *</span> | <span class="prop-type">element</span> |   | Tooltip reference element. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.OnClose</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the tooltip requests to be closed.<br><br>**Signature:**<br>`(event : obj) -> unit`<br>*event:* The event source of the callback |
 | <span class="prop-name">MaterialProp.OnOpen</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the tooltip requests to be open.<br><br>**Signature:**<br>`(event : obj) -> unit`<br>*event:* The event source of the callback |

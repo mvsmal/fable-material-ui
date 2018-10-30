@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.dialogActions (props : IHTMLProp list) (children : Reac
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | The content of the component. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">DialogActionsProp.DisableActionSpacing</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the dialog actions do not have additional margin. |
 

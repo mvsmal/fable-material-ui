@@ -27,7 +27,7 @@ on top of the following components:
 | <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> |   | If `true`, the label will be displayed in an error state. |
 | <span class="prop-name">MaterialProp.FullWidth</span> | <span class="prop-type">bool</span> |   | If `true`, the input will take up the full width of its container. |
 | <span class="prop-name">MaterialProp.InputProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Attributes applied to the native `input` element. |
-| <span class="prop-name">MaterialProp.InputRef</span> | <span class="prop-type">RefProp<br><br>type&nbsp;RefProp&nbsp;=&nbsp;U2&lt;obj,(ReactInstance&#8209;>unit)></span> |   | Use that property to pass a ref callback to the native input component. |
+| <span class="prop-name">MaterialProp.InputRef</span> | <span class="prop-type">type&nbsp;RefProp&nbsp;=&nbsp;U2&lt;obj,(ReactInstance&#8209;>unit)></span> |   | Use that property to pass a ref callback to the native input component. |
 | <span class="prop-name">MaterialProp.Label</span> | <span class="prop-type">ReactNode</span> |   | The label content. |
 | <span class="prop-name">MaterialProp.Margin</span> | <span class="prop-type">type&nbsp;FormControlMargin&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;None<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br>&nbsp;&nbsp;&#124;&nbsp;Normal<br></span> |   | If `dense` or `normal`, will adjust vertical spacing of this and contained components. |
 | <span class="prop-name">MaterialProp.RowsMax</span> | <span class="prop-type">int</span> |   | Maximum number of rows to display when multiline option is set to true. |

@@ -12,9 +12,9 @@ Fable.Helpers.MaterialUI.snackbarContent (props : IHTMLProp list) (children : Re
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">action</span> | <span class="prop-type">node</span> |   | The action to display. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">SnackbarProp.Message</span> | <span class="prop-type">ReactNode</span> |   | The message to display. |
+| <span class="prop-name">SnackbarProp.Action</span> | <span class="prop-type">ReactElement</span> |   | The action to display. |
+| <span class="prop-name">SnackbarProp.Message</span> | <span class="prop-type">ReactElement</span> |   | The message to display. |
 
 Any other properties supplied will be spread to the root element ([Paper](#/api/paper)).
 

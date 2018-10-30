@@ -12,7 +12,6 @@ Fable.Helpers.MaterialUI.stepLabel (props : IHTMLProp list) (children : ReactEle
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | In most cases will simply be a string containing a title for the label. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Mark the step as failed. |
 | <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactNode</span> |   | Override the default icon. |

@@ -14,12 +14,12 @@ Fable.Helpers.MaterialUI.svgIcon (props : IHTMLProp list) (children : ReactEleme
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name required">children *</span> | <span class="prop-type">node</span> |   | Node passed into the SVG element. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">color</span> | <span class="prop-type">enum:&nbsp;"inherit", "primary", "secondary", "action", "error", "disabled"<br></span> | <span class="prop-default">"inherit"</span> | The color of the component. It supports those theme colors that make sense for this component. You can use the `nativeColor` property to apply a color attribute to the SVG element. |
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"svg"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
-| <span class="prop-name">fontSize</span> | <span class="prop-type">enum:&nbsp;"inherit"&nbsp;&#124;<br>&nbsp;"default"&nbsp;&#124;<br>&nbsp;"small"&nbsp;&#124;<br>&nbsp;"large"<br></span> | <span class="prop-default">"default"</span> | The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size. |
-| <span class="prop-name">nativeColor</span> | <span class="prop-type">string</span> |   | Applies a color attribute to the SVG element. |
-| <span class="prop-name">titleAccess</span> | <span class="prop-type">string</span> |   | Provides a human-readable title for the element that contains it. https://www.w3.org/TR/SVG-access/#Equivalent |
-| <span class="prop-name">viewBox</span> | <span class="prop-type">string</span> | <span class="prop-default">'0 0 24 24'</span> | Allows you to redefine what the coordinates without units mean inside an SVG element. For example, if the SVG element is 500 (width) by 200 (height), and you pass viewBox="0 0 50 20", this means that the coordinates inside the SVG will go from the top left corner (0,0) to bottom right (50,20) and each unit will be worth 10px. |
+| <span class="prop-name">IconProp.Color</span> | <span class="prop-type">type&nbsp;IconColor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Inherit<br>&nbsp;&nbsp;&#124;&nbsp;Primary<br>&nbsp;&nbsp;&#124;&nbsp;Secondary<br>&nbsp;&nbsp;&#124;&nbsp;Action<br>&nbsp;&nbsp;&#124;&nbsp;Error<br>&nbsp;&nbsp;&#124;&nbsp;Disabled<br></span> | <span class="prop-default">IconColor.Inherit</span> | The color of the component. It supports those theme colors that make sense for this component. You can use the `nativeColor` property to apply a color attribute to the SVG element. |
+| <span class="prop-name">IconProp.FontSize</span> | <span class="prop-type">type&nbsp;IconFontSize&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Inherit<br>&nbsp;&nbsp;&#124;&nbsp;Default<br>&nbsp;&nbsp;&#124;&nbsp;Small<br>&nbsp;&nbsp;&#124;&nbsp;Large<br></span> | <span class="prop-default">IconProp.Default</span> | The fontSize applied to the icon. Defaults to 24px, but can be configure to inherit font size. |
+| <span class="prop-name">SvgIconProp.NativeColor</span> | <span class="prop-type">string</span> |   | Applies a color attribute to the SVG element. |
+| <span class="prop-name">SvgIconProp.TitleAccess</span> | <span class="prop-type">string</span> |   | Provides a human-readable title for the element that contains it. https://www.w3.org/TR/SVG-access/#Equivalent |
+| <span class="prop-name">SvgIconProp.ViewBox</span> | <span class="prop-type">string</span> | <span class="prop-default">"0 0 24 24"</span> | Allows you to redefine what the coordinates without units mean inside an SVG element. For example, if the SVG element is 500 (width) by 200 (height), and you pass viewBox="0 0 50 20", this means that the coordinates inside the SVG will go from the top left corner (0,0) to bottom right (50,20) and each unit will be worth 10px. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -49,7 +49,7 @@ If using the `overrides` key of the theme as documented
 [here](#/customization/themes),
 you need to use the following style sheet name: `OverridesProp.MuiSvgIcon`.
 
-## Demos
+<!--## Demos-->
 
-- [Icons](/style/icons/)
+<!--- [Icons](/style/icons/)-->
 

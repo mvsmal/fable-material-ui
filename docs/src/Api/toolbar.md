@@ -15,7 +15,7 @@ Fable.Helpers.MaterialUI.toolbar (props : IHTMLProp list) (children : ReactEleme
 | <span class="prop-name">children</span> | <span class="prop-type">node</span> |   | Toolbar children, usually a mixture of `IconButton`, `Button` and `Typography`. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.DisableGutters</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, disables gutter padding. |
-| <span class="prop-name">ToolbarProp.Variant</span> | <span class="prop-type">type&nbsp;ToolbarVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Regular<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br></span> | <span class="prop-default">Regular</span> | The variant to use. |
+| <span class="prop-name">ToolbarProp.Variant</span> | <span class="prop-type">type&nbsp;ToolbarVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Regular<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br></span> | <span class="prop-default">ToolbarVariant.Regular</span> | The variant to use. |
 
 Any other properties supplied will be spread to the root element (native element).
 

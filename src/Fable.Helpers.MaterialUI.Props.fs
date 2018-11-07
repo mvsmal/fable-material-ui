@@ -1147,6 +1147,7 @@ module Props =
         | Thickness of float
         | Value of int // TODO validate for 0 to 100
         | Variant of CircularProgressVariant
+        | DisableShrink of bool
         interface IHTMLProp
 
     type [<Erase>] ClickAwayListenerMouseEvent =
@@ -1223,7 +1224,11 @@ module Props =
         | Variant of FormControlVariant
         interface IHTMLProp
 
-    type [<StringEnum; RequireQualifiedAccess>] FormControlLabelPlacement = End | Start
+    type [<StringEnum; RequireQualifiedAccess>] FormControlLabelPlacement =
+        | End
+        | Start
+        | Top
+        | Bottom
 
     type FormControlLabelProp =
         | Control of Fable.Import.React.ReactElement
@@ -1610,6 +1615,8 @@ module Props =
     type SvgIconProp =
         | NativeColor of string
         | TitleAccess of string
+        | ViewBox of string
+        | ShapeRendering of string
         interface IHTMLProp
 
     type SwipeableDrawerProp =

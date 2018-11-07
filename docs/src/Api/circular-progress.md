@@ -22,6 +22,7 @@ attribute to `true` on that region until it has finished loading.
 | <span class="prop-name">CircularProgresProp.Thickness</span> | <span class="prop-type">float</span> | <span class="prop-default">3.6</span> | The thickness of the circle. |
 | <span class="prop-name">CircularProgresProp.Value</span> | <span class="prop-type">int</span> | <span class="prop-default">0</span> | The value of the progress indicator for the determinate and static variants. Value between 0 and 100. |
 | <span class="prop-name">CircularProgresProp.Variant</span> | <span class="prop-type">type&nbsp;CircularProgressVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Determinate<br>&nbsp;&nbsp;&#124;&nbsp;Indeterminate<br>&nbsp;&nbsp;&#124;&nbsp;Static<br></span> | <span class="prop-default">CircularProgressVariant.Indeterminate</span> | The variant to use. Use indeterminate when there is no progress value. |
+| <span class="prop-name">CircularProgresProp.DisableShrink</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the shrink animation is disabled. This only works if variant is `indeterminate`. |
 
 Any other properties supplied will be spread to the root element (native element).
 

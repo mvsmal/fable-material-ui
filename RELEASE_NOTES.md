@@ -1,3 +1,9 @@
+## New in 2.4.0
+* [SvgIcon] Add `ShapeRendering` prop
+* [SvgIcon] Add missing `ViewBox` prop
+* [FormControlLabel] Add `Top` and `Bottom` `LabelPlacement` property variants
+* [CircularProgress] Add `DisableShrink` prop
+
 ## New in 2.3.0
 * [Avatar] `AvatarProp.Sizes` marked as deprecated. Use `HTMLAttr.Sizes` instead
 * [BottomNavigation] `BottomNavigationProp.Value` and `BottomNavigationActionProp.Value` are marked as deprecated. Use `MaterialProp.Value` instead

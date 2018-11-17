@@ -24,6 +24,12 @@ or
 ```sh
 yarn add @material-ui/core
 ```
+If you use yarn, you need to make sure the reference is added to your client project file. 
+```sh
+    <ItemGroup>
+      <PackageReference Include="Fable.MaterialUI" Version="2.4.0" />
+    </ItemGroup>
+```
 
 # Usage
 <p class="description">How to use the bindings</p>

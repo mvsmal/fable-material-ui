@@ -1,3 +1,6 @@
+## New in 2.4.1
+* [Badge] Add `Invisible` prop
+
 ## New in 2.4.0
 * [SvgIcon] Add `ShapeRendering` prop
 * [SvgIcon] Add missing `ViewBox` prop

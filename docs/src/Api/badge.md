@@ -16,6 +16,7 @@ Fable.Helpers.MaterialUI.badge (props : IHTMLProp list) (children : ReactElement
 | <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"span"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name required">BadgeProp.BadgeContent *</span> | <span class="prop-type">ReactNode</span> |   | The content rendered within the badge. |
 | <span class="prop-name">BadgeProp.Color</span> | <span class="prop-type">type&nbsp;BadgeColor&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Default<br>&nbsp;&nbsp;&#124;&nbsp;Primary<br>&nbsp;&nbsp;&#124;&nbsp;Secondary<br>&nbsp;&nbsp;&#124;&nbsp;Error<br></span> | <span class="prop-default">BadgeColor.Default</span> | The color of the component. It supports those theme colors that make sense for this component. |
+| <span class="prop-name">BadgeProp.Invisible</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the badge will be invisible. |
 
 Any other properties supplied will be spread to the root element (native element).
 
@@ -32,6 +33,7 @@ This property accepts the following keys:
 | <span class="prop-name">ClassNames.ColorPrimary</span> | Styles applied to the root element if `color="primary"`.
 | <span class="prop-name">ClassNames.ColorSecondary</span> | Styles applied to the root element if `color="secondary"`.
 | <span class="prop-name">ClassNames.ColorError</span> | Styles applied to the root element if `color="error"`.
+| <span class="prop-name">ClassNames.Invisible</span> | Styles applied to the badge `span` element if `invisible={true}`.
 
 Have a look at [overriding with classes](#/customization/overrides) section
 and the [implementation of the component](https://github.com/mui-org/material-ui/tree/master/packages/material-ui/src/Badge/Badge.js)

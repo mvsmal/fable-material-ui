@@ -1039,6 +1039,7 @@ module Props =
     type BadgeProp =
         | Color of BadgeColor
         | BadgeContent of Fable.Import.React.ReactNode
+        | Invisible of bool
         interface IHTMLProp
 
     type BottomNavigationProp =

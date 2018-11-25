@@ -34,6 +34,7 @@ This property accepts the following keys:
 
 | Name | Description |
 |:-----|:------------|
+| <span class="prop-name">ClassNames.Root</span> | Styles applied to the root element.
 | <span class="prop-name">ClassNames.Docked</span> | Styles applied to the root element if `variant="permanent or persistent"`.
 | <span class="prop-name">ClassNames.Paper</span> | Styles applied to the `Paper` component.
 | <span class="prop-name">ClassNames.PaperAnchorLeft</span> | Styles applied to the `Paper` component if `anchor="left"`.

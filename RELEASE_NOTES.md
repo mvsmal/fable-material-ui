@@ -1,3 +1,6 @@
+## New in 2.4.2
+* Fix quoted styles #44
+
 ## New in 2.4.1
 * [Badge] Add `Invisible` prop
 

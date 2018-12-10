@@ -17,6 +17,7 @@ Fable.Helpers.MaterialUI.divider (props : IHTMLProp list) : ReactElement
 | <span class="prop-name">MaterialProp.Inset</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the divider will be indented. |
 | <span class="prop-name">DividerProp.Absolute</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> |  |
 | <span class="prop-name">DividerProp.Light</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the divider will have a lighter color. |
+| <span class="prop-name">DividerProp.Variant</span> | <span class="prop-type">type&nbsp;DividerVariant&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;FullWidth<br>&nbsp;&nbsp;&#124;&nbsp;Inset<br>&nbsp;&nbsp;&#124;&nbsp;Middle<br> | <span class="prop-default">DividerProp.FullWidth</span> | The variant to use. 
 
 Any other properties supplied will be spread to the root element (native element).
 

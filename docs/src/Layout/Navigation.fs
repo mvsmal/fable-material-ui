@@ -74,6 +74,7 @@ let navItems = [
                 { Title = "ExpansionPanelActions"; Href = Some (Page.Api "expansion-panel-actions"); Children = [] }
                 { Title = "ExpansionPanelDetails"; Href = Some (Page.Api "expansion-panel-details"); Children = [] }
                 { Title = "ExpansionPanelSummary"; Href = Some (Page.Api "expansion-panel-summary"); Children = [] }
+                { Title = "Fab"; Href = Some (Page.Api "fab"); Children = [] }
                 { Title = "Fade"; Href = Some (Page.Api "fade"); Children = [] }
                 { Title = "FilledInput"; Href = Some (Page.Api "filled-input"); Children = [] }
                 { Title = "FormControl"; Href = Some (Page.Api "form-control"); Children = [] }

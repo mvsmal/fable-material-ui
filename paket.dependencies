@@ -12,8 +12,6 @@ nuget Fable.Elmish.Browser >= 2.0.0
 nuget Fable.Elmish.Debugger >= 2.0.0
 nuget Fable.PowerPack
 
-clitool dotnet-fable >= 2.0.6
-
 // [ FAKE GROUP ]
 group Build
     source https://api.nuget.org/v3/index.json
@@ -21,8 +19,6 @@ group Build
     framework: netstandard2.0
 
     storage: none
-    clitool dotnet-fable
-
     nuget Fake.DotNet.Cli
     nuget Fake.IO.FileSystem
     nuget Fake.Core.Target

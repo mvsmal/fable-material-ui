@@ -1,3 +1,10 @@
+## New in 2.5.0
+* Change Fable.MaterialUI to be a namespace, not module
+* [Fab] Add `Fab` component
+* [Button] Deprecate variants `Fab` and `ExtendedFab`
+* [Divider] Add `DividerVariant` prop
+* [Dialog] Add `MaxWidth.Xl`
+
 ## New in 2.4.2
 * Fix quoted styles #44
 

@@ -1191,9 +1191,15 @@ module Props =
         | DisableActionSpacing of bool
         interface IHTMLProp
 
+    type [<StringEnum; RequireQualifiedAccess>] DividerVariant = 
+        | FullWidth
+        | Inset
+        | Middle
+
     type DividerProp =
         | Absolute of bool
         | Light of bool
+        | Variant of DividerVariant
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] DrawerVariant = Permanent | Persistent | Temporary

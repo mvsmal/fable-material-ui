@@ -10,7 +10,7 @@ open Fake.Api
 open Fake.JavaScript
 open Fake.Tools.Git
 
-let paketToolpath = if Environment.isWindows then ".\paket.cmd" else ".\paket.sh"
+let paketToolpath = if Environment.isWindows then ".\paket.cmd" else "./paket.sh"
 let outputDir = "nuget"
 let release =  ReleaseNotes.load "RELEASE_NOTES.md"
 let gitOwner = "mvsmal"

@@ -1,5 +1,4 @@
-[<AutoOpen>]
-module rec Fable.MaterialUI
+namespace rec Fable.MaterialUI
 open System
 open Fable.Core
 

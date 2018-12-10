@@ -1,4 +1,4 @@
 language: csharp
-dotnet: 2.1.500
+dotnet: 2.2.100
 script:
   - ./fake.sh build

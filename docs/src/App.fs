@@ -23,7 +23,6 @@ Program.mkProgram init update root
 |> Program.toNavigable (parseHash pageParser) urlUpdate
 #if DEBUG
 |> Program.withDebugger
-|> Program.withHMR
 #endif
 |> Program.withReact "app"
 |> Program.run

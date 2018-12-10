@@ -1,15 +1,16 @@
+open Fake.SystemHelper
+open Fake.JavaScript
 #load ".fake/build.fsx/intellisense.fsx"
 open Fake.IO
-open System.IO
 open Fake.Core
 open Fake.DotNet
-open Fake.IO
 open Fake.IO.Globbing.Operators
 open Fake.Core.TargetOperators
 open Fake.Api
 open Fake.JavaScript
 open Fake.Tools.Git
 
+let paketToolpath = if Environment.isWindows then ".\paket.cmd" else ".\paket.sh"
 let outputDir = "nuget"
 let release =  ReleaseNotes.load "RELEASE_NOTES.md"
 let gitOwner = "mvsmal"
@@ -29,11 +30,16 @@ let build root _ =
 
 Target.create "Clean" (cleanDirs "" outputDir)
 
+Target.create "Restore" (fun _ ->
+    Paket.restore (fun p -> { p with ToolPath = paketToolpath })
+)
+
 Target.create "Build" (build "")
 
 Target.create "NuGet" (fun _ ->
     Paket.pack(fun p ->
         { p with
+            ToolPath = paketToolpath
             OutputPath = outputDir
             Version = release.NugetVersion
             ReleaseNotes = toLines release.Notes})
@@ -42,6 +48,7 @@ Target.create "NuGet" (fun _ ->
 Target.create "PublishNuGet" (fun _ ->
     Paket.push(fun p ->
         { p with
+            ToolPath = paketToolpath
             PublishUrl = "https://www.nuget.org"
             WorkingDir = outputDir })
 )
@@ -61,21 +68,14 @@ Target.create "GitHubRelease" (fun _ ->
     |> GitHub.publishDraft
     |> Async.RunSynchronously)
 
+let inline withDocsWorkDir (p : Yarn.YarnParams) =
+    { p with WorkingDirectory = "docs/" }
+
 Target.create "DocsClean" (cleanDirs "docs/" "docs/dist")
 Target.create "DocsBuild" (build "docs/")
-Target.create "DocsYarnInstall" (fun _ -> 
-    Yarn.install (fun o -> { o with WorkingDirectory = "docs/" }))
-let inline withWorkDir wd =
-    DotNet.Options.withWorkingDirectory wd
-
-Target.create "DocsRun" (fun _ -> DotNet.exec (withWorkDir "./docs/src") "fable" "yarn-run start" |> ignore)
-
-Target.create "DocsPackage" (fun _ ->
-    DotNet.exec
-        (withWorkDir "./docs/src")
-        "fable"
-        "yarn-run build"
-        |> ignore)
+Target.create "DocsYarnInstall" (fun _ -> Yarn.install withDocsWorkDir)
+Target.create "DocsRun" (fun _ -> Yarn.exec "start" withDocsWorkDir)
+Target.create "DocsPackage" (fun _ -> Yarn.exec "build" withDocsWorkDir)
 
 // Where to push generated documentation
 let githubLink = "https://github.com/mvsmal/fable-material-ui.git"
@@ -103,6 +103,7 @@ Target.create "BuildSamples" ignore
 Target.create "Release" ignore
 
 "Clean"
+    ==> "Restore"
     ==> "DocsClean"
     ==> "DocsBuild"
     ==> "DocsYarnInstall"
@@ -115,6 +116,7 @@ Target.create "Release" ignore
     ==> "DocsPublish"
 
 "Clean"
+    ==> "Restore"
     ==> "Build"
     ==> "Nuget"
     ==> "BuildPackage"

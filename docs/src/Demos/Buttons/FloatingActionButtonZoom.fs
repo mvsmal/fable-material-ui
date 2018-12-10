@@ -119,8 +119,7 @@ type FloatingActionButtonZoom (props) =
                     ]
                     TransitionProp.UnmountOnExit true
                 ] [
-                    button [
-                        ButtonProp.Variant ButtonVariant.Fab
+                    fab [
                         HTMLAttr.Class f.className
                         MaterialProp.Color f.color
                     ] [ f.icon ]

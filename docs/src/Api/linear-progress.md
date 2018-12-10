@@ -35,6 +35,8 @@ This property accepts the following keys:
 | <span class="prop-name">ClassNames.Root</span> | Styles applied to the root element.
 | <span class="prop-name">ClassNames.ColorPrimary</span> | Styles applied to the root & bar2 element if `color="primary"`; bar2 if `variant-"buffer"`.
 | <span class="prop-name">ClassNames.ColorSecondary</span> | Styles applied to the root & bar2 elements if `color="secondary"`; bar2 if `variant="buffer"`.
+| <span class="prop-name">ClassNames.Determinate</span> | Styles applied to the root elements if `variant="determinate"`.
+| <span class="prop-name">ClassNames.Indeterminate</span> | Styles applied to the root elements if `variant="determinate"`.
 | <span class="prop-name">ClassNames.Buffer</span> | Styles applied to the root element if `variant="buffer"`.
 | <span class="prop-name">ClassNames.Query</span> | Styles applied to the root element if `variant="query"`.
 | <span class="prop-name">ClassNames.Dashed</span> | Styles applied to the additional bar element if `variant="buffer"`.

@@ -271,6 +271,7 @@ module Themes =
         let inline Delete props = Custom ("deletable", props)
         let inline DeleteIcon props = Custom ("deleteIcon", props)
         let inline Dense props = Custom ("dense", props)
+        let inline Determinate props = Custom ("determinate", props)
         let inline Disabled props = Custom ("disabled", props)
         let inline Display1 props = Custom ("display1", props)
         let inline Display2 props = Custom ("display2", props)
@@ -597,6 +598,7 @@ module Themes =
         | Deletable of string
         | DeleteIcon of string
         | Dense of string
+        | Determinate of string
         | Disabled of string
         | Display1 of string
         | Display2 of string
@@ -1179,6 +1181,7 @@ module Props =
         | Sm
         | Md
         | Lg
+        | Xl
         | [<CompiledName("")>] False
 
     type DialogProp =
@@ -2230,6 +2233,7 @@ module Props =
         let inline MenuListProps props = htmlAttrPascalCaseProp "MenuListProps" props
         let inline ContainerProps props = htmlAttrPascalCaseProp "ContainerProps" props
         let inline IconButtonProps props = htmlAttrPascalCaseProp "IconButtonProps" props
+        let inline SwipeAreaProps props = htmlAttrPascalCaseProp "SwipeAreaProps" props
         let inline ClickAwayListenerProps props = htmlAttrPascalCaseProp "ClickAwayListenerProps" props
         let inline PopoverClasses classes = pascalCaseProp<Themes.IClassNames> "PopoverClasses" classes
         let inline FormLabelClasses classes = pascalCaseProp<Themes.IClassNames> "FormLabelClasses" classes

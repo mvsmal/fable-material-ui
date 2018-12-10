@@ -68,15 +68,20 @@ let buttons props =
             ] [ R.str "Large" ]
         ]
         R.div [] [
-            button [
-                ButtonProp.Variant ButtonVariant.Fab
-                ButtonProp.Mini true
+            fab [
+                FabProp.Size FabSize.Small
                 MaterialProp.Color ComponentColor.Secondary
                 HTMLAttr.Class !!classes?button
                 HTMLAttr.Custom ("aria-label", "Add")
             ] [ icon [] [ R.str "add_icon" ]]
-            button [
-                ButtonProp.Variant ButtonVariant.Fab
+            fab [
+                FabProp.Size FabSize.Medium
+                MaterialProp.Color ComponentColor.Secondary
+                HTMLAttr.Class !!classes?button
+                HTMLAttr.Custom ("aria-label", "Add")
+            ] [ icon [] [ R.str "add_icon" ]]
+            fab [
+                FabProp.Size FabSize.Large
                 MaterialProp.Color ComponentColor.Secondary
                 HTMLAttr.Class !!classes?button
                 HTMLAttr.Custom ("aria-label", "Add")

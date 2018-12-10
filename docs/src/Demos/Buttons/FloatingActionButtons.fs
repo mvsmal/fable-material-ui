@@ -13,34 +13,31 @@ let styles (theme : ITheme) : IStyles list =
         Styles.Custom ("extendedIcon", [ CSSProp.MarginRight theme.spacing.unit ])
     ]
 
-let buttons (props : IClassesProps) =
+let fabs (props : IClassesProps) =
     let classes = props?classes
     R.div [] [
-        button [
-            ButtonProp.Variant ButtonVariant.Fab
+        fab [
             MaterialProp.Color ComponentColor.Primary
             HTMLAttr.Class !!classes?button
         ] [ icon [] [ R.str "add_icon" ]]
-        button [
-            ButtonProp.Variant ButtonVariant.Fab
+        fab [
             MaterialProp.Color ComponentColor.Secondary
             HTMLAttr.Class !!classes?button
         ] [ icon [] [ R.str "edit_icon" ]]
-        button [
-            ButtonProp.Variant ButtonVariant.ExtendedFab
+        fab [
+            FabProp.Variant FabVariant.Extended
             HTMLAttr.Class !!classes?button
         ] [ 
             icon [] [ R.str "navigation_icon" ]
             R.str "Extended"
         ]
-        button [
-            ButtonProp.Variant ButtonVariant.Fab
+        fab [
             HTMLAttr.Disabled true
             HTMLAttr.Class !!classes?button
         ] [ icon [] [ R.str "delete_icon" ]]
     ]
 
-let buttonsWithStyles = withStyles<IClassesProps> (StyleType.Func styles) [] buttons
+let fabsWithStyles = withStyles<IClassesProps> (StyleType.Func styles) [] fabs
 
 let view () =
-    R.from buttonsWithStyles createEmpty []
+    R.from fabsWithStyles createEmpty []

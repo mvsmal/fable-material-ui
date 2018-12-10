@@ -441,6 +441,7 @@ module Themes =
         let inline Selected props = Custom ("selected", props)
         let inline Shrink props = Custom ("shrink", props)
         let inline SizeLarge props = Custom ("sizeLarge", props)
+        let inline SizeMedium props = Custom ("sizeMedium", props)
         let inline SizeSmall props = Custom ("sizeSmall", props)
         let inline Spacer props = Custom ("spacer", props)
         let inline SrOnly props = Custom ("srOnly", props)
@@ -769,6 +770,7 @@ module Themes =
         | Selected of string
         | Shrink of string
         | SizeLarge of string
+        | SizeMedium of string
         | SizeSmall of string
         | Spacer of string
         | SrOnly of string
@@ -1209,6 +1211,21 @@ module Props =
         | ExpandIcon of Fable.Import.React.ReactNode
         interface IHTMLProp
     
+    type [<StringEnum; RequireQualifiedAccess>] FabSize =
+        | Small
+        | Medium
+        | Large
+    
+    type [<StringEnum; RequireQualifiedAccess>] FabVariant =
+        | Round
+        | Extended
+
+    type FabProp =
+        | Size of FabSize
+        | Variant of FabVariant
+        | DisableFocusRipple of bool
+        interface IHTMLProp
+
     type FilledInputProp =
         | EndAdornment of Fable.Import.React.ReactNode
         | InputComponent of Fable.Import.React.ReactType
@@ -1977,6 +1994,7 @@ module Props =
         let inline MuiExpansionPanelActions styles = pascalCaseProp "MuiExpansionPanelActions" styles
         let inline MuiExpansionPanelDetails styles = pascalCaseProp "MuiExpansionPanelDetails" styles
         let inline MuiExpansionPanelSummary styles = pascalCaseProp "MuiExpansionPanelSummary" styles
+        let inline MuiFab styles = pascalCaseProp "MuiFab" styles
         let inline MuiFilledInput styles = pascalCaseProp "MuiFilledInput" styles
         let inline MuiFormControl styles = pascalCaseProp "MuiFormControl" styles
         let inline MuiFormControlLabel styles = pascalCaseProp "MuiFormControlLabel" styles

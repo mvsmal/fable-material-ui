@@ -110,6 +110,9 @@ let ExpansionPanelSummary =
     importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/ExpansionPanelSummary"
 let inline expansionPanelSummary b c = materialEl ExpansionPanelSummary b c
 
+let Fab = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/Fab"
+let inline fab b c = materialEl Fab b c
+
 let Fade = importDefault<Fable.Import.React.ComponentClass<IHTMLProp>> "@material-ui/core/Fade"
 let inline fade b c = materialEl Fade b c
 

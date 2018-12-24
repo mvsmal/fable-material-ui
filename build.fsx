@@ -47,7 +47,6 @@ Target.create "NuGet" (fun _ ->
 Target.create "PublishNuGet" (fun _ ->
     Paket.push(fun p ->
         { p with
-            ApiKey = "oy2h5izsdsh3wk73hrwqz6mvenqyizjeto3xhpt5rcfohe"
             PublishUrl = "https://www.nuget.org"
             WorkingDir = outputDir })
 )

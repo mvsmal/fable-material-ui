@@ -1675,13 +1675,21 @@ module Props =
 
     type [<StringEnum; RequireQualifiedAccess>] TableCellPadding = Default | Checkbox | Dense | None
     type [<StringEnum; RequireQualifiedAccess>] TableCellVariant = Head | Body | Footer
+    type [<StringEnum; RequireQualifiedAccess>] TableCellAlign =
+        | Inherit
+        | Left
+        | Center
+        | Right
+        | Justify
     type [<StringEnum; RequireQualifiedAccess>] TableCellSortDirection =
         | Asc
         | Desc
         | [<CompiledName("")>] False
 
     type TableCellProp =
-        | Numeric of bool
+        | Align of TableCellAlign
+        | [<Obsolete("Material-UI@3.7.0: TableCell `Numeric` is deprecated. Please use `Align` instead")>]
+            Numeric of bool
         | Padding of TableCellPadding
         | Scope of string
         | SortDirection of TableCellSortDirection

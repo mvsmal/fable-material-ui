@@ -2265,3 +2265,5 @@ module Props =
             HTMLAttr.Custom("ContainerComponent", comp)
         let inline TransitionComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("TransitionComponent", comp)
+        let inline PaperComponent (comp : Fable.Import.React.ReactType) =
+            HTMLAttr.Custom("PaperComponent", comp)

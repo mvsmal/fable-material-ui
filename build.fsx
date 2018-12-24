@@ -1,13 +1,12 @@
+#load ".fake/build.fsx/intellisense.fsx"
 open Fake.SystemHelper
 open Fake.JavaScript
-#load ".fake/build.fsx/intellisense.fsx"
 open Fake.IO
 open Fake.Core
 open Fake.DotNet
 open Fake.IO.Globbing.Operators
 open Fake.Core.TargetOperators
 open Fake.Api
-open Fake.JavaScript
 open Fake.Tools.Git
 
 let paketToolpath = if Environment.isWindows then ".\paket.cmd" else "./paket.sh"
@@ -48,7 +47,7 @@ Target.create "NuGet" (fun _ ->
 Target.create "PublishNuGet" (fun _ ->
     Paket.push(fun p ->
         { p with
-            ToolPath = paketToolpath
+            ApiKey = "oy2h5izsdsh3wk73hrwqz6mvenqyizjeto3xhpt5rcfohe"
             PublishUrl = "https://www.nuget.org"
             WorkingDir = outputDir })
 )

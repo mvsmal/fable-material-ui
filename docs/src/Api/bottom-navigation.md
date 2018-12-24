@@ -13,6 +13,7 @@ Fable.Helpers.MaterialUI.bottomNavigation (props : IHTMLProp list) (children : R
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">BottomNavigationProp.OnChange</span> | <span class="prop-type">obj->obj->unit</span> |   | Callback fired when the value changes.<br><br>**Signature:**<br>`(event:obj)->(value:obj)->unit`<br>*event:* The event source of the callback<br>*value:* We default to the index of the child |
 | <span class="prop-name">BottomNavigationProp.ShowLabels</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, all `BottomNavigationAction`s will show their labels. By default, only the selected `BottomNavigationAction` will show its label. |
 | <span class="prop-name">BottomNavigationProp.Value</span> | <span class="prop-type">obj</span> |   | The value of the currently selected `BottomNavigationAction`. |

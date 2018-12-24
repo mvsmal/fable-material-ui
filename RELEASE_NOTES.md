@@ -1,3 +1,8 @@
+## New in 2.6.0
+* [Dialog] Add `ChildrenProp.PaperComponent` prop
+* [Menu] Add `MenuProp.OnClose` prop with `MenuCloseReason`
+* [TableCell] Add `TableCell.Align` prop and deprecate `TableCell.Numeric`
+
 ## New in 2.5.0
 * Change Fable.MaterialUI to be a namespace, not module
 * [Fab] Add `Fab` component

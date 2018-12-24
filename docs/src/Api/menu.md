@@ -14,7 +14,6 @@ Fable.Helpers.MaterialUI.menu (props : IHTMLProp list) (children : ReactElement 
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.AnchorEl</span> | <span class="prop-type">ReactInstance</span> |   | The DOM element used to set the position of the menu. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.OnClose</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the component requests to be closed.<br><br>**Signature:**<br>`(event : obj) -> unit`<br>*event:* The event source of the callback |
 | <span class="prop-name">MaterialProp.OnEnter</span> | <span class="prop-type">obj->unit</span> |   | Callback fired before the Menu enters. |
 | <span class="prop-name">MaterialProp.OnEntered</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the Menu has entered. |
 | <span class="prop-name">MaterialProp.OnEntering</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the Menu is entering. |
@@ -23,6 +22,7 @@ Fable.Helpers.MaterialUI.menu (props : IHTMLProp list) (children : ReactElement 
 | <span class="prop-name">MaterialProp.OnExiting</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the Menu is exiting. |
 | <span class="prop-name required">MaterialProp.Open *</span> | <span class="prop-type">bool</span> |   | If `true`, the menu is visible. |
 | <span class="prop-name">MaterialProp.TransitionDuration</span> | <span class="prop-type">U3&lt;float,&nbsp;TransitionDuration&nbsp;list,&nbsp;AutoEnum&gt;<br><br>type&nbsp;TransitionDurationProp&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Enter&nbsp;of&nbsp;float<br>&nbsp;&nbsp;&#124;&nbsp;Exit&nbsp;of&nbsp;float<br><br>type&nbsp;AutoEnum&nbsp;=&nbsp;Auto<br></span> | <span class="prop-default">AutoEnum.Auto</span> | The length of the transition in `ms`, or `Auto` |
+| <span class="prop-name">MenuProp.OnClose</span> | <span class="prop-type">obj->MenuCloseReason->unit<br><br> type&nbsp;MenuCloseReason&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;EscapeKeyDown<br>&nbsp;&nbsp;&#124;&nbsp;BackdropClick<br>&nbsp;&nbsp;&#124;&nbsp;TabKeyDown<br></span> |   | Callback fired when the component requests to be closed.<br><br>**Signature:**<br>`(event : obj) -> (reason : MenuCloseReason) -> unit`<br>*event:* The event source of the callback<br> |
 | <span class="prop-name">MenuProp.DisableAutoFocusItem</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the selected / first menu item will not be auto focused. |
 | <span class="prop-name">ChildrenProp.MenuListProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`MenuList`](#/api/menu-list) element. |
 | <span class="prop-name">ChildrenProp.PopoverClasses</span> | <span class="prop-type">ClassNames list</span> |   | `classes` property applied to the [`Popover`](#/api/popover) element. |

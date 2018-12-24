@@ -1495,8 +1495,14 @@ module Props =
         | DisableSticky of bool
         interface IHTMLProp
 
+    type [<StringEnum; RequireQualifiedAccess>] MenuCloseReason =
+        | EscapeKeyDown
+        | BackdropClick
+        | TabKeyDown
+
     type MenuProp =
         | DisableAutoFocusItem of bool
+        | OnClose of (obj->MenuCloseReason->unit)
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] MobileStepperPosition = Bottom | Top | Static

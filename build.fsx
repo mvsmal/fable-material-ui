@@ -9,7 +9,6 @@ open Fake.Core.TargetOperators
 open Fake.Api
 open Fake.Tools.Git
 
-let paketToolpath = if Environment.isWindows then ".\paket.cmd" else "./paket.sh"
 let outputDir = "nuget"
 let release =  ReleaseNotes.load "RELEASE_NOTES.md"
 let gitOwner = "mvsmal"
@@ -30,7 +29,7 @@ let build root _ =
 Target.create "Clean" (cleanDirs "" outputDir)
 
 Target.create "Restore" (fun _ ->
-    Paket.restore (fun p -> { p with ToolPath = paketToolpath })
+    Paket.restore id
 )
 
 Target.create "Build" (build "")
@@ -38,7 +37,6 @@ Target.create "Build" (build "")
 Target.create "NuGet" (fun _ ->
     Paket.pack(fun p ->
         { p with
-            ToolPath = paketToolpath
             OutputPath = outputDir
             Version = release.NugetVersion
             ReleaseNotes = toLines release.Notes})

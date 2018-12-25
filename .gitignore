@@ -2,7 +2,6 @@ public/bundle.js*
 docs/demos/
 dist
 .ionide
-.paket/
 out
 # Node
 node_modules/

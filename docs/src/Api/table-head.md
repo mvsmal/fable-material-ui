@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the TableHead React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.tableHead (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.tableHead (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Popper React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.Popper (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.Popper (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 Poppers rely on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.

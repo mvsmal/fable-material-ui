@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the ButtonBase React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.buttonBase (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.buttonBase (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 `ButtonBase` contains as few styles as possible.

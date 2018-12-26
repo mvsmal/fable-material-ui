@@ -3,7 +3,7 @@ module Demos.AppBar.SimpleAppBar
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 

@@ -2,8 +2,8 @@ module Demos.Buttons.TextButtons
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.MaterialUI
 open Fable.Helpers.React.Props
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 module R = Fable.Helpers.React

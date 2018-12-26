@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the ListItemIcon React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.listItemIcon (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.listItemIcon (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 A simple wrapper to apply `List` styles to an `Icon` or `SvgIcon`.

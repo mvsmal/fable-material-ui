@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the ListItem React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.listItem (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.listItem (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

@@ -5,6 +5,7 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
@@ -12,21 +13,18 @@ open App.Types
 open Global
 open Utils
 
-module Mui = Fable.Helpers.MaterialUI
-
-
 type MenuClasses =
     abstract member root: string
     abstract member toolbar: string
     abstract member headerLink: string
     abstract member title: string
-    inherit Mui.IClasses
+    inherit IClasses
 
 
 type MenuProps =
     abstract member currentPage : Page with get, set
     abstract member dispatch : (Msg->unit) with get,set
-    inherit Mui.IClassesProps
+    inherit IClassesProps
 
 let menuStyles (theme : ITheme) : IStyles list =
     [
@@ -34,7 +32,6 @@ let menuStyles (theme : ITheme) : IStyles list =
             CSSProp.Color theme.palette.text.secondary
             CSSProp.MarginBottom (theme.spacing.unit / 2)
         ]
-        Styles.Root [ Width 250 ]
         Styles.Custom ("toolbar", [
             Display "flex"
             FlexDirection "column"
@@ -51,14 +48,14 @@ let menuStyles (theme : ITheme) : IStyles list =
     ]
 let menu (props : MenuProps) =
     let classes : MenuClasses = !!props.classes
-    div [ Class classes.root ] [
-        Mui.toolbar [ Class classes.toolbar ] [
+    div [] [
+        toolbar [ Class classes.toolbar ] [
             a [
                 Class classes.title
                 Href (toHash Home)
                 OnClick (fun _ -> OpenMenu false |> props.dispatch)
             ] [
-                Mui.typography
+                typography
                     [ TypographyProp.Variant TypographyVariant.H6
                       Class classes.headerLink
                       TypographyProp.Color TypographyColor.Inherit ]
@@ -69,17 +66,17 @@ let menu (props : MenuProps) =
                 Rel "noopener noreferrer"
                 Href "https://github.com/mvsmal/fable-material-ui/releases"
             ] [
-                Mui.typography
+                typography
                     [ TypographyProp.Variant TypographyVariant.Caption
                       Class classes.headerLink ]
                     [ str libVersion ]
             ]
         ]
-        Mui.divider []
+        divider []
         lazyView2 Layout.Navigation.view props.currentPage props.dispatch
     ]
 
-let menuWithStyles<'a> = Mui.withStyles (StyleType.Func menuStyles) [] menu
+let menuWithStyles<'a> = withStyles (StyleType.Func menuStyles) [] menu
 
 let view currentPage dispatch =
     let props = createEmpty<MenuProps>

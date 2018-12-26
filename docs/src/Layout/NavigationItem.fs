@@ -5,14 +5,13 @@ open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 open Fable.Import.React
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
 
 open App.Types
 open Global
 open Utils
-
-module Mui = Fable.Helpers.MaterialUI
 
 let subNavStyles (theme: ITheme) : IStyles list =
     [
@@ -35,7 +34,7 @@ type SubNavProps =
     abstract member title: string with get, set
     abstract member opened: bool with get, set
     abstract member childItems: ReactElement list with get, set
-    inherit Mui.IClassesProps
+    inherit IClassesProps
 
 
 type SubNavState = {
@@ -52,21 +51,21 @@ type SubNav (p) =
     override this.render() =
         let classes = this.props.classes
         fragment [] [
-            Mui.button [
+            button [
                 OnClick this.Toggle
                 MaterialProp.Classes [ ClassNames.Root !!classes?button ]
             ] [ str this.props.title ]
-            Mui.collapse [
+            collapse [
                 In this.state.opened
                 UnmountOnExit true
                 Class !!classes?collapse
             ] [
-                Mui.list [] this.props.childItems ]
+                list [] this.props.childItems ]
         ]
 
 let subNav props =
     ofType<SubNav, SubNavProps, SubNavState> props []
-let subNavWithStyles<'a> = Mui.withStyles (StyleType.Func subNavStyles) [] subNav
+let subNavWithStyles<'a> = withStyles (StyleType.Func subNavStyles) [] subNav
 
 let navItemStyles (theme: ITheme) : IStyles list =
     [
@@ -100,7 +99,7 @@ type NavItemProps =
     abstract member opened : bool with get,set
     abstract member childItems : ReactElement list with get,set
     abstract member dispatch : (Msg->unit) with get,set
-    inherit Mui.IClassesProps
+    inherit IClassesProps
 
 let navItem (props : NavItemProps) =
     let style = [ CSSProp.PaddingLeft (8 * (3 + 2 * props.depth)) ]
@@ -108,11 +107,11 @@ let navItem (props : NavItemProps) =
     | Some page ->
         let buttonClasses =
             [ (!!props.classes?selected, props.currentPage = page) ] |> classNames
-        Mui.listItem [
+        listItem [
             DisableGutters true
             Class !!props.classes?listItem
         ] [
-            Mui.button [
+            button [
                 DisableRipple true
                 MaterialProp.Component ("a" |> U3.Case1)
                 Style style
@@ -127,12 +126,12 @@ let navItem (props : NavItemProps) =
         subNavProps.opened <- props.opened
         subNavProps.title <- props.title
         subNavProps.childItems <- props.childItems
-        Mui.listItem [
+        listItem [
             DisableGutters true
             Class !!props.classes?listItem
         ] [ from subNavWithStyles subNavProps [] ]
 
-let navItemWithStyles = Mui.withStyles (StyleType.Func navItemStyles) [] navItem
+let navItemWithStyles = withStyles (StyleType.Func navItemStyles) [] navItem
 
 let view item depth opened currentPage childItems dispatch =
     let props = createEmpty<NavItemProps>

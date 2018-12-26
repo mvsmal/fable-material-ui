@@ -5,6 +5,7 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
 open Fable.MaterialUI
@@ -13,10 +14,8 @@ open App.Types
 open Global
 open Utils
 
-module Mui = Fable.Helpers.MaterialUI
-
 let theme =
-    Mui.createMuiTheme [
+    createMuiTheme [
         Typography [
             UseNextVariants true
         ]
@@ -27,7 +26,7 @@ let theme =
             ]
             PaletteProp.Secondary [
                 PaletteIntentionProp.Main
-                    (Mui.ColorManipulator.darken (Colors.pink.A400, 0.08))
+                    (ColorManipulator.darken (Colors.pink.A400, 0.08))
             ]
         ]
     ]
@@ -75,7 +74,7 @@ type LayoutClasses =
     abstract member main : string
     abstract member landingMain : string
     abstract member root : string
-    inherit Mui.IClasses
+    inherit IClasses
 
 let layout (props : AppProps) =
     let content = function
@@ -100,7 +99,7 @@ let layout (props : AppProps) =
             (classes.main, true)
             (classes.landingMain, props.model.isLanding)
         ] |> classNames
-    Mui.muiThemeProvider [MuiThemeProviderProp.Theme (ProviderTheme.Theme theme) ] [
+    muiThemeProvider [MuiThemeProviderProp.Theme (ProviderTheme.Theme theme) ] [
         div [ Class classes.root ] [
             lazyView2 Layout.AppBar.view props.model props.dispatch
             lazyView2 Layout.Drawer.view props.model props.dispatch
@@ -108,7 +107,7 @@ let layout (props : AppProps) =
         ]
     ]
 
-let layoutWithStyles = Mui.withStyles (StyleType.Func layoutStyles) [] layout
+let layoutWithStyles = withStyles (StyleType.Func layoutStyles) [] layout
 
 let view model dispatch =
     let props = createEmpty<AppProps>

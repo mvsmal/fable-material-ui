@@ -4,10 +4,9 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
-module Mui = Fable.Helpers.MaterialUI
 
 let toObj = keyValueList CaseRules.LowerFirst
 
@@ -52,10 +51,10 @@ let styles (theme : ITheme) : IStyles list =
         )
     ]
 
-let withStyles<'a> = Mui.withStyles (StyleType.Func styles) []
+let withStyles<'a> = withStyles (StyleType.Func styles) []
 
 let lockIcon =
-    Mui.svgIcon [] [
+    svgIcon [] [
         path [
             SVGAttr.D "M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"
         ] []

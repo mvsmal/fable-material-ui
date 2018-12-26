@@ -2,7 +2,7 @@ module Customization.Themes.OverrideCss
 
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 

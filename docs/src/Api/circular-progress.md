@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the CircularProgress React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.circularProgress (props : IHTMLProp list) : ReactElement
+Fable.MaterialUI.Core.circularProgress (props : IHTMLProp list) : ReactElement
 ```
 
 ## ARIA

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Menu React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.menu (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.menu (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the TableRow React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.tableRow (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.tableRow (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 Will automatically set dynamic row height

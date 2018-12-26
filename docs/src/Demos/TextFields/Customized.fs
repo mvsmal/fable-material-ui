@@ -3,8 +3,8 @@ module Demos.TextFields.Customized
 open Fable.Core
 open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.MaterialUI
 open Fable.Helpers.React.Props
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI
@@ -43,7 +43,7 @@ let styles (theme : ITheme) : IStyles list =
             CSSProp.Border "1px solid #ced4da"
             CSSProp.FontSize 16
             CSSProp.Padding "10px 12px"
-            CSSProp.Transition (theme.transitions.create(["border-color"; "box-shadow"] |> U2.Case2))
+            CSSProp.Transition (theme.transitions.create([|"border-color"; "box-shadow"|] |> U2.Case2))
             CSSProp.FontFamily (
                 [ "-apple-system"
                   "BlinkMacSystemFont"

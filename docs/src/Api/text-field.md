@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the TextField React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.textField (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.textField (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 The `TextField` is a convenience wrapper for the most common cases (80%).

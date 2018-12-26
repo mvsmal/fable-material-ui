@@ -1,17 +1,15 @@
 module Layout.Drawer
 
-open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
 open App.Types
 open Global
 open Elmish.React.Common
-
-module Mui = Fable.Helpers.MaterialUI
 
 let drawerStyles : IStyles list =
     [
@@ -29,16 +27,16 @@ type AppDrawerProps =
     abstract member currentPage: Page with get,set
     abstract member menuOpen: bool with get,set
     abstract member dispatch: (Msg->unit) with get,set
-    inherit Mui.IClassesProps
+    inherit IClassesProps
 
 
 let drawer (props : AppDrawerProps) =
     nav [] [
-        yield Mui.hidden [
+        yield hidden [
             LgUp (not props.isLanding)
             Implementation HiddenImplementation.Js
         ] [
-            Mui.swipeableDrawer [
+            swipeableDrawer [
                 DrawerProp.Variant DrawerVariant.Temporary
                 MaterialProp.Open props.menuOpen
                 MaterialProp.OnOpen (fun _ -> OpenMenu true |> props.dispatch)
@@ -51,11 +49,11 @@ let drawer (props : AppDrawerProps) =
                 lazyView2 Layout.Menu.view props.currentPage props.dispatch ]
         ]
         if not props.isLanding then
-            yield Mui.hidden [
+            yield hidden [
                 MdDown true
                 Implementation HiddenImplementation.Js
             ] [
-                Mui.drawer [
+                drawer [
                     DrawerProp.Variant DrawerVariant.Permanent
                     MaterialProp.Open true
                     Class !!props.classes?root
@@ -67,7 +65,7 @@ let drawer (props : AppDrawerProps) =
             ]
     ]
 
-let drawerWithStyles = Mui.withStyles (StyleType.Styles drawerStyles) [] drawer
+let drawerWithStyles = withStyles (StyleType.Styles drawerStyles) [] drawer
 
 let view (model : Model) dispatch =
     let props = createEmpty<AppDrawerProps>

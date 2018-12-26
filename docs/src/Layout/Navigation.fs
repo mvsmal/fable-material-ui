@@ -1,9 +1,7 @@
 module Layout.Navigation
 
 open Global
-
-module Mui = Fable.Helpers.MaterialUI
-module MColors = Fable.MaterialUI.Colors
+open Fable.MaterialUI.Core
 
 let navItems = [
     {
@@ -168,5 +166,5 @@ let rec mapNavigation currentPage dispatch (depth: int) =
         Layout.NavigationItem.view item depth opened currentPage childItems dispatch
 
 let view currentPage dispatch =
-    Mui.list [] (navItems |> List.map (mapNavigation currentPage dispatch 0))
+    list [] (navItems |> List.map (mapNavigation currentPage dispatch 0))
 

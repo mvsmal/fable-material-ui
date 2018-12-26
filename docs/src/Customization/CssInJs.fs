@@ -121,7 +121,7 @@ type IClassesProps =
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 
 let styles : IStyles list = [

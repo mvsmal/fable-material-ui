@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Drawer React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.drawer (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.drawer (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 The properties of the [Modal](#/api/modal) component are available

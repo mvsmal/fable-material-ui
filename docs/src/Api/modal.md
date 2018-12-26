@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Modal React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.modal (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.modal (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 This component shares many concepts with [react-overlays](https://react-bootstrap.github.io/react-overlays/#modals).

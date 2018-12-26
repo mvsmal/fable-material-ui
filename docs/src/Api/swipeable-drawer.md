@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the SwipeableDrawer React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.swipeableDrawer (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.swipeableDrawer (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

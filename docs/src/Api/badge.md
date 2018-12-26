@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Badge React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.badge (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.badge (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

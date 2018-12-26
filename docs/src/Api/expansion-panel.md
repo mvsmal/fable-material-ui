@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the ExpansionPanel React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.expansionPanel (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.expansionPanel (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

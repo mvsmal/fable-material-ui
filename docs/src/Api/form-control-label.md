@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the FormControlLabel React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.formControlLabel (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.formControlLabel (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 Drop in replacement of the `Radio`, `Switch` and `Checkbox` component.

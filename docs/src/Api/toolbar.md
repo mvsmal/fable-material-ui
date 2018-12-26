@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Toolbar React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.toolbar (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.toolbar (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

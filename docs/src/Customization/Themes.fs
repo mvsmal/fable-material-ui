@@ -210,7 +210,7 @@ It should preferably be used at **the root of your component tree**.
 #### Examples
 
 ```fsharp
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 
 let theme = createMuiTheme []
 
@@ -242,7 +242,7 @@ ThemeProp.ZIndex (props : ZIndexProp list) : ThemeProp
 ThemeProp.Overrides (props : IOverridesProp list) : ThemeProp
 ```
 
-You can find full list of `Theme` options and subprops [here](https://github.com/mvsmal/fable-material-ui/blob/master/src/Fable.Helpers.MaterialUI.Props.fs#L1711-L1962)
+You can find full list of `Theme` options and subprops [here](https://github.com/mvsmal/fable-material-ui/blob/master/src/Fable.MaterialUI.Props.fs#L1711-L1962)
 
 #### Returns
 
@@ -251,7 +251,7 @@ You can find full list of `Theme` options and subprops [here](https://github.com
 #### Examples
 
 ```fsharp
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI
 
@@ -285,7 +285,7 @@ in the render method.
 #### Examples
 
 ```fsharp
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 
 let myFun (props : IThemeProps) =
     div [] [ str props.theme.palette.primary.main ]
@@ -298,7 +298,7 @@ let myComponent () =
 ```
 
 ```fsharp
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 
 type MyFunProps =
     abstract foo : string with get,set

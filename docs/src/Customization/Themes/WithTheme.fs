@@ -3,7 +3,7 @@ module Customization.Themes.WithTheme
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 
 let darkThemeView (props : IThemeProps) =
     let theme = props.theme

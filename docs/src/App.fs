@@ -14,6 +14,7 @@ importAll "../sass/main.sass"
 let root (model: Model) dispatch : ReactElement =
     Layout.Layout.view model dispatch
 
+
 open Elmish.React
 open Elmish.Debug
 open Elmish.HMR

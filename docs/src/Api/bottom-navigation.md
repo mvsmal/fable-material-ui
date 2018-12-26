@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the BottomNavigation React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.bottomNavigation (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.bottomNavigation (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

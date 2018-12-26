@@ -3,8 +3,8 @@ module Demos.TextFields.Layout
 open Fable.Core
 open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.MaterialUI
 open Fable.Helpers.React.Props
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 

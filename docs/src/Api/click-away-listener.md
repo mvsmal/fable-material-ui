@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the ClickAwayListener React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.clickAwayListener (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.clickAwayListener (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 Listen for click events that occur somewhere in the document, outside of the element itself.

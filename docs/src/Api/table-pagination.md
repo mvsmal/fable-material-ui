@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the TablePagination React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.tablePagination (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.tablePagination (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 A `TableCell` based component for placing inside `TableFooter` for pagination.

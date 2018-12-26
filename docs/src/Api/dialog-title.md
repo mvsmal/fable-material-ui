@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the DialogTitle React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.dialogTitle (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.dialogTitle (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

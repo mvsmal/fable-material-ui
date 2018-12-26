@@ -2,9 +2,9 @@ module Demos.Buttons.FloatingActionButtonZoom
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.MaterialUI
 open Fable.Helpers.React.Props
 open Fable.Import.React
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
 open Fable.MaterialUI

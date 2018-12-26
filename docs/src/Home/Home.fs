@@ -4,7 +4,7 @@ open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
@@ -14,7 +14,6 @@ open Global
 open Utils
 open Fable.Import
 
-module Mui = Fable.Helpers.MaterialUI
 
 let homeStyles (theme : ITheme) : IStyles list =
     let xsBreakpoint = theme.breakpoints.only MaterialSize.Xs
@@ -78,7 +77,7 @@ let homeStyles (theme : ITheme) : IStyles list =
 
 type HomeProps =
     abstract member dispatch : (Msg->unit) with get,set
-    inherit Mui.IClassesProps
+    inherit IClassesProps
 
 
 type HomeClasses =
@@ -90,7 +89,7 @@ type HomeClasses =
     abstract member headline : string
     abstract member button : string
     abstract member support: string
-    inherit Mui.IClasses
+    inherit IClasses
 
 let supportText = importDefault "./Support.md"
 let logo = importDefault "../../public/img/fable-material-ui-logo.svg"
@@ -121,7 +120,7 @@ let home (props : HomeProps) =
                         TypographyProp.GutterBottom true
                         Class classes.headline
                     ] [ str "Fable bindings for Material-UI React components"]
-                    Mui.button [
+                    button [
                         MaterialProp.Component ("a" |> U3.Case1)
                         Href ("/" + toHash Installation)
                         Class classes.button
@@ -136,7 +135,7 @@ let home (props : HomeProps) =
         ]
     ]
 
-let homeWithStyles = Mui.withStyles (StyleType.Func homeStyles) [] home
+let homeWithStyles = withStyles (StyleType.Func homeStyles) [] home
 
 let root dispatch =
     let props = createEmpty<HomeProps>

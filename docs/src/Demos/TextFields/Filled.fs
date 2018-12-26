@@ -4,8 +4,8 @@ open Fable.Core
 open Fable.Helpers.React
 open Fable.Core.JsInterop
 open Fable.Import
-open Fable.Helpers.MaterialUI
 open Fable.Helpers.React.Props
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 open Fable.Import.React

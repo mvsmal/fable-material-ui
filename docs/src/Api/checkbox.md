@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Checkbox React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.checkbox (props : IHTMLProp list) : ReactElement
+Fable.MaterialUI.Core.checkbox (props : IHTMLProp list) : ReactElement
 ```
 
 

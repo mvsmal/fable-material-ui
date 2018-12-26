@@ -1,10 +1,9 @@
 module Customization.Overrides.ShortlandClasses
 
 open Fable.Core.JsInterop
-open Fable.Helpers
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 
 let styles : IStyles list = [
@@ -22,7 +21,8 @@ let styles : IStyles list = [
     ]
 ]
 
-let styledButton = withStyles (StyleType.Styles styles) [] !!MaterialUI.Button
+let Button : obj = importDefault "@material-ui/core/Button"
+let styledButton = withStyles (StyleType.Styles styles) [] !!Button
 
 let view () =
     from styledButton createEmpty<IClassesProps> [ str "Classes Shortland" ]

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the DialogContent React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.dialogContent (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.dialogContent (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

@@ -1,7 +1,6 @@
 module App.Types
 
-open Fable.Core
-open Fable.Helpers.MaterialUI
+open Fable.MaterialUI.Core
 open Global
 
 type Msg =

@@ -192,4 +192,4 @@ type ITheme =
     abstract transitions: ITransitions with get,set
 ```
 
-You can the definions on [GitHub](https://github.com/mvsmal/fable-material-ui/blob/master/src/Fable.Helpers.MaterialUI.Props.fs#L1711-L1962)
+You can find the definions on [GitHub](https://github.com/mvsmal/fable-material-ui/blob/master/src/Fable.MaterialUI.Props.fs#L1711-L1962)

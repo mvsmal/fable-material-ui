@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the FormControl React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.formControl (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.formControl (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 Provides context such as filled/focused/error/required for form inputs.

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the InputAdornment React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.Helpers.MaterialUI.inputAdornment (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.inputAdornment (props : IHTMLProp list) (children : ReactElement list) : ReactElement
 ```
 
 

@@ -4,7 +4,6 @@ open Fable.Core
 
 [<AutoOpen>]
 module Themes =
-    open Fable.Core
     open Fable.Import.React
     open Fable.Helpers.React.Props
 
@@ -177,7 +176,7 @@ module Themes =
     type ITransitions =
         abstract easing: IEasing with get,set
         abstract duration: IDuration with get,set
-        abstract create: props : U2<string, string list> * ?options: ITransitionOptions -> string
+        abstract create: props : U2<string, string[]> * ?options: ITransitionOptions -> string
         abstract getAutoHeightDuration: height : int -> int
 
     type ITheme =
@@ -2085,7 +2084,6 @@ module Props =
 
     [<AutoOpen>]
     module ThemePropsProp =
-        open Fable.Core.JsInterop
         let inline private pascalCaseProp (name : string) (props : IHTMLProp list) =
             ThemePropsProp.Custom (name, props |> keyValueList CaseRules.LowerFirst)
 
@@ -2184,7 +2182,6 @@ module Props =
 
     [<AutoOpen>]
     module ThemeProp =
-        open Fable.Core.JsInterop
         let inline customThemeProp key props = ThemeProp.Custom (key, props |> keyValueList CaseRules.LowerFirst)
         let inline Palette (props : PaletteProp list) = customThemeProp "palette" props
         let inline Shape (props : ShapeProp list) = customThemeProp "shape" props
@@ -2215,8 +2212,6 @@ module Props =
 
     [<AutoOpen>]
     module ChildrenProp =
-        open Fable.Core.JsInterop
-
         let inline private pascalCaseProp<'a> (name : string) (props : 'a list) =
             HTMLAttr.Custom (name, props |> keyValueList CaseRules.LowerFirst)
         let inline private htmlAttrPascalCaseProp (name : string) (props : IHTMLProp list) =

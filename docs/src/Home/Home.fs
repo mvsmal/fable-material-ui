@@ -122,7 +122,7 @@ let home (props : HomeProps) =
                     ] [ str "Fable bindings for Material-UI React components"]
                     button [
                         MaterialProp.Component ("a" |> U3.Case1)
-                        Href ("/" + toHash Installation)
+                        Href (toHash Installation)
                         Class classes.button
                         ButtonProp.Variant ButtonVariant.Outlined
                         MaterialProp.Color ComponentColor.Primary

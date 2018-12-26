@@ -1,3 +1,8 @@
+## New in 3.0.0
+* [BREAKING CHANGE] Move `Fable.Helpers.MaterialUI` module to `Fable.MaterialUI.Core`
+* [BREAKING CHANGE] Remove all imported _PascalCased_ `ComponentClass<'P>` components, keep only `reactElement (props : IHTMLProp list) (children : ReactElement list)` elements
+* [BREAKING CHANGE] Change signature of `ITransitions.create` method to `create: props : U2<string, string[]> * ?options: ITransitionOptions -> string`
+
 ## New in 2.6.0
 * [Dialog] Add `ChildrenProp.PaperComponent` prop
 * [Menu] Add `MenuProp.OnClose` prop with `MenuCloseReason`

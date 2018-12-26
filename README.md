@@ -1,3 +1,5 @@
+[![](https://img.shields.io/nuget/v/Fable.MaterialUI.svg)](https://www.nuget.org/packages/Fable.MaterialUI/) [![](https://img.shields.io/travis/com/mvsmal/fable-material-ui.svg)](https://travis-ci.com/mvsmal/fable-material-ui)
+
 # Fable.MaterialUI
 
 Fable bindings for [Material-UI](https://material-ui.com)

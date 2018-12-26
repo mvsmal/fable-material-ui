@@ -17,6 +17,7 @@
     <Compile Include="GettingStarted/Installation.fs" />
     <Compile Include="GettingStarted/Usage.fs" />
     <Compile Include="GettingStarted/MigrationToV2.fs" />
+    <Compile Include="GettingStarted/MigrationToV3.fs" />
     <Compile Include="Demos/AppBar/*.fs" />
     <Compile Include="Demos/AppBar.fs" />
     <Compile Include="Demos/Buttons/*.fs" />

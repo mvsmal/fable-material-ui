@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Chip React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.chip (props : IHTMLProp list) : ReactElement
+Fable.MaterialUI.Core.chip (props : seq<IHTMLProp>) : ReactElement
 ```
 
 Chips represent complex entities in small blocks, such as a contact.

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the MenuList React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.menuList (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.menuList (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 
@@ -12,6 +12,7 @@ Fable.MaterialUI.Core.menuList (props : IHTMLProp list) (children : ReactElement
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
+| <span class="prop-name">MenuListProp.DisableListWrap</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the menu items will not wrap focus. |
 
 Any other properties supplied will be spread to the root element ([List](#/api/list)).
 

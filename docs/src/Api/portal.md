@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Portal React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.Portal (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.Portal (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 Portals provide a first-class way to render children into a DOM node

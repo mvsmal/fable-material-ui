@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Hidden React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.hidden (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.hidden (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 Responsively hides children based on the selected implementation.

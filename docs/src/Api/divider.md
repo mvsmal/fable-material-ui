@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Divider React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.divider (props : IHTMLProp list) : ReactElement
+Fable.MaterialUI.Core.divider (props : seq<IHTMLProp>) : ReactElement
 ```
 
 

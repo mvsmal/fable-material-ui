@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the RootRef React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.rootRef (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.rootRef (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 Helper component to allow attaching a ref to a

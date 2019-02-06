@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Dialog React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.dialog (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.dialog (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 Dialogs are overlaid modal paper based components with a backdrop.

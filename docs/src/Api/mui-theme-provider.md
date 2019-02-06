@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the MuiThemeProvider React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.muiThemeProvider (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.muiThemeProvider (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 This component takes a `MuiThemeProviderProp.Theme` property.

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the StepIcon React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.stepIcon (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.stepIcon (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 

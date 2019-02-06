@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Fade React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.fade (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.fade (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 The Fade transition is used by the [Modal](/utils/modal/) component.

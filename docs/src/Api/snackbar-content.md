@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the SnackbarContent React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.snackbarContent (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.snackbarContent (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the IconButton React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.iconButton (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.iconButton (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 Refer to the [Icons](/style/icons/) section of the documentation

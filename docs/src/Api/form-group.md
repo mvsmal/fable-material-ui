@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the FormGroup React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.formGroup (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.formGroup (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 `FormGroup` wraps controls such as `Checkbox` and `Switch`.

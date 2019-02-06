@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Slide React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.slide (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.slide (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 The Slide transition is used by the [Snackbar](#/api/snackbars/) component.

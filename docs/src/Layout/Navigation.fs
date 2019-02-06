@@ -94,6 +94,7 @@ let navItems = [
                 { Title = "InputBase"; Href = Some (Page.Api "input-base"); Children = [] }
                 { Title = "InputLabel"; Href = Some (Page.Api "input-label"); Children = [] }
                 { Title = "LinearProgress"; Href = Some (Page.Api "linear-progress"); Children = [] }
+                { Title = "Link"; Href = Some (Page.Api "link"); Children = [] }
                 { Title = "List"; Href = Some (Page.Api "list"); Children = [] }
                 { Title = "ListItem"; Href = Some (Page.Api "list-item"); Children = [] }
                 { Title = "ListItemAvatar"; Href = Some (Page.Api "list-item-avatar"); Children = [] }

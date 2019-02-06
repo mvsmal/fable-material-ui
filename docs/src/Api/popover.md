@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Popover React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.Popover (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.Popover (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 

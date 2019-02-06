@@ -51,18 +51,18 @@ let toCamelCase (s : string) =
 
 
 let toTitle = function
-    | Home -> ""
-    | Installation -> "Installation"
-    | Usage -> "Usage"
-    | MigrationToV2 -> "Migration to version 2"
-    | MigrationToV3 -> "Migration to version 3"
-    | AppBar -> "App Bar"
-    | Avatars -> "Avatars"
-    | Buttons -> "Buttons"
-    | TextFields -> "Text Fields"
-    | SignIn -> "Sign-in"
-    | Overrides -> "Overrides"
-    | Themes -> "Themes"
-    | CssInJs -> "Css in JS (F#)"
-    | DefaultTheme -> "Default Theme"
-    | Api comp -> (toCamelCase comp).Replace("-","")
+            | Home -> ""
+            | Installation -> "Installation"
+            | Usage -> "Usage"
+            | MigrationToV2 -> "Migration to version 2"
+            | MigrationToV3 -> "Migration to version 3"
+            | AppBar -> "App Bar"
+            | Avatars -> "Avatars"
+            | Buttons -> "Buttons"
+            | TextFields -> "Text Fields"
+            | SignIn -> "Sign-in"
+            | Overrides -> "Overrides"
+            | Themes -> "Themes"
+            | CssInJs -> "Css in JS (F#)"
+            | DefaultTheme -> "Default Theme"
+            | Api comp -> (toCamelCase comp).Replace("-", "")

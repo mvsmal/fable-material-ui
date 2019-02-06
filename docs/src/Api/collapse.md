@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Collapse React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.collapse (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.collapse (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 The Collapse transition is used by the

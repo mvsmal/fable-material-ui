@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the FormHelperText React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.formHelperText (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.formHelperText (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 

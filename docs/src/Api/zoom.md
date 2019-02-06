@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Zoom React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.zoom (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.zoom (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 The Zoom transition can be used for the floating variant of the

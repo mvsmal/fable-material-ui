@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the StepContent React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.stepContent (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.stepContent (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the LinearProgress React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.linearProgress (props : IHTMLProp list) : ReactElement
+Fable.MaterialUI.Core.linearProgress (props : seq<IHTMLProp>) : ReactElement
 ```
 
 ## ARIA

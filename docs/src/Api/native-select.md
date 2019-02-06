@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the NativeSelect React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.nativeSelect (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.nativeSelect (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 An alternative to `<Select native />` with a much smaller bundle size footprint.

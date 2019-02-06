@@ -272,6 +272,7 @@ module Themes =
         let inline Dense props = Custom ("dense", props)
         let inline Determinate props = Custom ("determinate", props)
         let inline Disabled props = Custom ("disabled", props)
+        let inline DisablePointerEvents props = Custom ("disableDisablePointerEvents", props)
         let inline Display1 props = Custom ("display1", props)
         let inline Display2 props = Custom ("display2", props)
         let inline Display3 props = Custom ("display3", props)
@@ -478,6 +479,9 @@ module Themes =
         let inline TouchRipple props = Custom ("touchRipple", props)
         let inline Transition props = Custom ("transition", props)
         let inline Underline props = Custom ("underline", props)
+        let inline UnderlineNone props = Custom ("underlineNone", props)
+        let inline UnderlineAlways props = Custom ("underlineAlways", props)
+        let inline UnderlineHover props = Custom ("underlineHover", props)
         let inline Vertical props = Custom ("vertical", props)
         let inline Wrapper props = Custom ("wrapper", props)
         let inline WrapperInner props = Custom ("wrapperInner", props)
@@ -599,6 +603,7 @@ module Themes =
         | Dense of string
         | Determinate of string
         | Disabled of string
+        | DisablePointerEvents of string
         | Display1 of string
         | Display2 of string
         | Display3 of string
@@ -808,6 +813,9 @@ module Themes =
         | TouchRipple of string
         | Transition of string
         | Underline of string
+        | UnderlineNone of string
+        | UnderlineAlways of string
+        | UnderlineHover of string
         | Vertical of string
         | Wrapper of string
         | WrapperInner of string
@@ -1037,11 +1045,15 @@ module Props =
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] BadgeColor = Default | Primary | Secondary | Error
+    type [<StringEnum; RequireQualifiedAccess>] BadgeVariant = Standard | Dot
 
     type BadgeProp =
         | Color of BadgeColor
         | BadgeContent of Fable.Import.React.ReactNode
         | Invisible of bool
+        | Max of int
+        | ShowZero of bool
+        | Variant of BadgeVariant
         interface IHTMLProp
 
     type BottomNavigationProp =
@@ -1438,6 +1450,7 @@ module Props =
     type InputAdornmentProp =
         | Position of InputAdornmentPosition
         | Variant of InputAdornmentVariant
+        | DisablePointerEvents of bool
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] InputLabelMargin = Dense
@@ -1464,6 +1477,23 @@ module Props =
         | Variant of LinearProgressVariant
         | Value of int
         interface IHTMLProp
+    
+    type [<StringEnum; RequireQualifiedAccess>] LinkColor =
+        | Error
+        | Inherit
+        | Primary
+        | Secondary
+        | TextPrimary
+        | TextSecondary
+    
+    type [<StringEnum; RequireQualifiedAccess>] LinkUnderline = None | Hover | Always
+
+    type LinkProp =
+        | Block of bool
+        | Color of LinkColor
+        | Underline of LinkUnderline
+        interface IHTMLProp
+
 
     type ListProp =
         | DisablePadding of bool
@@ -1502,6 +1532,10 @@ module Props =
     type MenuProp =
         | DisableAutoFocusItem of bool
         | OnClose of (obj->MenuCloseReason->unit)
+        interface IHTMLProp
+
+    type MenuListProp = 
+        | DisableListWrap of bool
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] MobileStepperPosition = Bottom | Top | Static
@@ -1664,6 +1698,7 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] TabsIndicatorColor = Primary | Secondary
     type [<StringEnum; RequireQualifiedAccess>] TabsTextColor = Primary | Secondary | Inherit
     type [<StringEnum; RequireQualifiedAccess>] ScrollButtonsType = Auto | On | Off
+    type [<StringEnum; RequireQualifiedAccess>] TabsVariant = Standard | Scrollable | FullWidth
 
     type ITabsActions =
         abstract updateIndicator: unit -> unit
@@ -1673,9 +1708,11 @@ module Props =
         | Centered of bool
         | IndicatorColor of TabsIndicatorColor
         | OnChange of (obj->int->unit)
-        | Scrollable of bool
+        | [<Obsolete("Material-UI@3.8.0: TabsProp `Scrollable` is deprecated. Please use `Variant TabsVariant.Scrollable` instead")>]
+          Scrollable of bool
         | ScrollButtons of ScrollButtonsType
         | TextColor of TabsTextColor
+        | Variant of TabsVariant
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] TableCellPadding = Default | Checkbox | Dense | None
@@ -1689,12 +1726,13 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] TableCellSortDirection =
         | Asc
         | Desc
-        | [<CompiledName("")>] False
+        | [<CompiledName("")>]
+          False
 
     type TableCellProp =
         | Align of TableCellAlign
         | [<Obsolete("Material-UI@3.7.0: TableCell `Numeric` is deprecated. Please use `Align` instead")>]
-            Numeric of bool
+          Numeric of bool
         | Padding of TableCellPadding
         | Scope of string
         | SortDirection of TableCellSortDirection
@@ -2035,6 +2073,7 @@ module Props =
         let inline MuiInputAdornment styles = pascalCaseProp "MuiInputAdornment" styles
         let inline MuiInputLabel styles = pascalCaseProp "MuiInputLabel" styles
         let inline MuiLinearProgress styles = pascalCaseProp "MuiLinearProgress" styles
+        let inline MuiLink styles = pascalCaseProp "MuiLink" styles
         let inline MuiList styles = pascalCaseProp "MuiList" styles
         let inline MuiListItem styles = pascalCaseProp "MuiListItem" styles
         let inline MuiListItemAvatar styles = pascalCaseProp "MuiListItemAvatar" styles
@@ -2246,6 +2285,7 @@ module Props =
         let inline ClickAwayListenerProps props = htmlAttrPascalCaseProp "ClickAwayListenerProps" props
         let inline PopoverClasses classes = pascalCaseProp<Themes.IClassNames> "PopoverClasses" classes
         let inline FormLabelClasses classes = pascalCaseProp<Themes.IClassNames> "FormLabelClasses" classes
+        let inline TypographyClasses classes = pascalCaseProp<Themes.IClassNames> "TypographyClasses" classes
         let inline ActionsComponent (comp : Fable.Import.React.ReactType) =
             HTMLAttr.Custom("ActionsComponent", comp)
         let inline ScrollButtonComponent (comp : Fable.Import.React.ReactType) =

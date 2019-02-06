@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the Radio React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.radio (props : IHTMLProp list) : ReactElement
+Fable.MaterialUI.Core.radio (props : seq<IHTMLProp>) : ReactElement
 ```
 
 

@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the CssBaseline React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.cssBaseline (props : IHTMLProp list) : ReactElement
+Fable.MaterialUI.Core.cssBaseline (props : seq<IHTMLProp>) : ReactElement
 ```
 
 Kickstart an elegant, consistent, and simple baseline to build upon.

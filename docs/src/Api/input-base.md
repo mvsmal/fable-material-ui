@@ -3,7 +3,7 @@
 <p class="description">The API documentation of the InputBase React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.inputBase (props : IHTMLProp list) (children : ReactElement list) : ReactElement
+Fable.MaterialUI.Core.inputBase (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
 ```
 
 `InputBase` contains as few styles as possible.

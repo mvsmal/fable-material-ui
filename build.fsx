@@ -13,8 +13,10 @@ let outputDir = "nuget"
 let release =  ReleaseNotes.load "RELEASE_NOTES.md"
 let gitOwner = "mvsmal"
 let gitRepo = "fable-material-ui"
+let paketToolPath = "paket"
 
-let toLines (strs: string list) = String.concat "\n" strs
+let toLines = String.concat "\n"
+let removeBackTicks = String.replace "`" ""
 
 let cleanDirs root output _ =
     !! (root + "src/**/bin")
@@ -29,7 +31,7 @@ let build root _ =
 Target.create "Clean" (cleanDirs "" outputDir)
 
 Target.create "Restore" (fun _ ->
-    Paket.restore id
+    Paket.restore (fun p -> { p with ToolPath = paketToolPath }) 
 )
 
 Target.create "Build" (build "")
@@ -37,14 +39,16 @@ Target.create "Build" (build "")
 Target.create "NuGet" (fun _ ->
     Paket.pack(fun p ->
         { p with
+            ToolPath = paketToolPath
             OutputPath = outputDir
             Version = release.NugetVersion
-            ReleaseNotes = toLines release.Notes})
+            ReleaseNotes = release.Notes |> toLines |> removeBackTicks })
 )
 
 Target.create "PublishNuGet" (fun _ ->
     Paket.push(fun p ->
         { p with
+            ToolPath = paketToolPath
             PublishUrl = "https://www.nuget.org"
             WorkingDir = outputDir })
 )

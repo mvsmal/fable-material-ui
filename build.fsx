@@ -13,7 +13,7 @@ let outputDir = "nuget"
 let release =  ReleaseNotes.load "RELEASE_NOTES.md"
 let gitOwner = "mvsmal"
 let gitRepo = "fable-material-ui"
-let paketToolPath = if Environment.isWindows then "paket" else "./paket"
+let paketToolPath = "paket"
 
 let toLines = String.concat "\n"
 let removeBackTicks = String.replace "`" ""

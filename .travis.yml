@@ -4,5 +4,5 @@ mono: none
 dotnet: 2.2.103
 script:
   - dotnet tool install paket -g
-  - export PATH="$PATH:/root/.dotnet/tools"
+  - export PATH="$PATH:~/.dotnet/tools"
   - ./fake.sh build

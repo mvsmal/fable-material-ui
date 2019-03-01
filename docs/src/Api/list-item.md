@@ -18,6 +18,7 @@ Fable.MaterialUI.Core.listItem (props : seq<IHTMLProp>) (children : seq<ReactEle
 | <span class="prop-name">MaterialProp.DisableGutters</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the left and right padding is removed. |
 | <span class="prop-name">HTMLAttr.Selected</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Use to apply selected styling. |
 | <span class="prop-name">HTMLAttr.Disabled</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the list item will be disabled. |
+| <span class="prop-name">ListItemProp.AlignItems</span> | <span class="prop-type">type&nbsp;ListItemAlignItems&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;FlexStart<br>&nbsp;&nbsp;&#124;&nbsp;Center<br></span> | <span class="prop-default">ListItemAlignItems.Center</span> | Defines the `align-items` style property. |
 | <span class="prop-name">ListItemProp.Button</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the list item will be a button (using `ButtonBase`). |
 | <span class="prop-name">ListItemProp.Divider</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, a 1px light border is added to the bottom of the list item. |
 | <span class="prop-name">ChildrenProp.ContainerComponent</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"li"</span> | The container component used when a `ListItemSecondaryAction` is rendered. |

@@ -1500,7 +1500,12 @@ module Props =
         | Subheader of Fable.Import.React.ReactElement
         interface IHTMLProp
 
+    type [<StringEnum; RequireQualifiedAccess>] ListItemAlignItems =
+        | [<CompiledName("flex-start")>] FlexStart
+        | Center
+
     type ListItemProp =
+        | AlignItems of ListItemAlignItems
         | Button of bool
         | Divider of bool
         interface IHTMLProp

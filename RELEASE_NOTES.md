@@ -1,3 +1,13 @@
+## New in 3.1.0
+* Change argument types of all components to `seq` instead of `list`.
+* [Link] Add `link` component
+* [Badge] Add `Max`, `ShowZero`, `Variant` props
+* [InputAdornment] Add `DisablePointerEvents` prop
+* [MenuList] Add `DisableListWrap` prop
+* [Tabs] Add `Variant` prop
+* [Tabs] Deprecate `Scrollable` prop
+* [TableCell] Add `Numeric` prop
+
 ## New in 3.0.0
 * [BREAKING CHANGE] Move `Fable.Helpers.MaterialUI` module to `Fable.MaterialUI.Core`
 * [BREAKING CHANGE] Remove all imported _PascalCased_ `ComponentClass<'P>` components, keep only `reactElement (props : seq<IHTMLProp>) (children : seq<ReactElement>)` elements

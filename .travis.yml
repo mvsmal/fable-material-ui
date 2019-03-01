@@ -3,6 +3,5 @@ dist: xenial
 mono: none
 dotnet: 2.2.103
 script:
-  - dotnet tool install paket -g
-  - export PATH="$PATH:~/.dotnet/tools"
+  - dotnet tool install paket --tool-path ./
   - ./fake.sh build

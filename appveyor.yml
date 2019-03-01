@@ -7,8 +7,7 @@ branches:
 skip_tags: true
 image: Ubuntu
 build_script:
-- sh: dotnet tool install paket -g
-- sh: export PATH="$PATH:~/.dotnet/tools"
+- sh: dotnet tool install paket --tool-path ./
 - sh: ./fake.sh build -t Release
 test: off
 deploy: off

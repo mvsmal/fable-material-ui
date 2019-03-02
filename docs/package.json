@@ -45,5 +45,9 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1"
+  },
+  "resolutions": {
+    "lodash": "^4.17.11",
+    "debug": "^4.1.1"
   }
 }

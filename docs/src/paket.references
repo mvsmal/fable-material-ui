@@ -1,6 +1,7 @@
-FSharp.Core
-Fable.Core
-Fable.Elmish.React
-Fable.Elmish.Browser
-Fable.Elmish.Debugger
-Fable.Elmish.HMR
+group Docs
+    FSharp.Core
+    Fable.Core
+    Fable.Elmish.React
+    Fable.Elmish.Browser
+    Fable.Elmish.Debugger
+    Fable.Elmish.HMR

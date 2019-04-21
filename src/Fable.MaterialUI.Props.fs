@@ -1,11 +1,13 @@
 namespace rec Fable.MaterialUI
 open System
 open Fable.Core
+open Fable.Import
+open Fable.Import
 
 [<AutoOpen>]
 module Themes =
-    open Fable.Import.React
-    open Fable.Helpers.React.Props
+    open Fable.React
+    open Fable.React.Props
 
     type IPaletteIntention =
         abstract light: string with get,set
@@ -889,7 +891,7 @@ module Colors =
 module Props =
     open Fable.Core
     open Fable.Core.JsInterop
-    open Fable.Helpers.React.Props
+    open Fable.React.Props
 
     let inline private customHtmlAttr key props =
         HTMLAttr.Custom(key, props |> keyValueList CaseRules.LowerFirst)
@@ -949,15 +951,15 @@ module Props =
                    | U3.Case3 auto -> auto |> unbox
         HTMLAttr.Custom (key, prop)
 
-    type RefProp = U2<obj,(Fable.Import.React.ReactInstance->unit)>
+    type RefProp = U2<obj,(Fable.React.ReactInstance->unit)>
 
     type MaterialProp =
         | Active of bool
-        | AnchorEl of Fable.Import.React.ReactInstance
-        | CheckedIcon of Fable.Import.React.ReactNode
+        | AnchorEl of Fable.React.ReactInstance
+        | CheckedIcon of Fable.React.ReactElement
         | Color of ComponentColor
-        | Component of Fable.Import.React.ReactType
-        | Container of Fable.Import.React.ReactInstance
+        | Component of Fable.React.ReactElementType
+        | Container of Fable.React.ReactInstance
         | DefaultValue of obj
         | Dense of bool
         | DisableGutters of bool
@@ -967,16 +969,16 @@ module Props =
         | Elevation of int
         | Error of bool
         | FullWidth of bool
-        | Icon of Fable.Import.React.ReactNode
+        | Icon of Fable.React.ReactElement
         | In of bool
         | InputRef of RefProp
         | Inset of bool
         | KeepMounted of bool
-        | Label of Fable.Import.React.ReactNode
+        | Label of Fable.React.ReactElement
         | Margin of FormControlMargin
         | Multiline of bool
         | Open of bool
-        | Optional of Fable.Import.React.ReactNode
+        | Optional of Fable.React.ReactElement
         | Placement of PlacementType
         | RowsMax of int
         | Value of obj
@@ -1018,7 +1020,7 @@ module Props =
 
     type SelectionControlProp =
         | Color of SelectionControlColor
-        | OnChange of (Fable.Import.React.FormEvent->bool->unit)
+        | OnChange of (Browser.Types.Event->bool->unit)
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] AppBarPosition =
@@ -1049,7 +1051,7 @@ module Props =
 
     type BadgeProp =
         | Color of BadgeColor
-        | BadgeContent of Fable.Import.React.ReactNode
+        | BadgeContent of Fable.React.ReactElement
         | Invisible of bool
         | Max of int
         | ShowZero of bool
@@ -1108,7 +1110,7 @@ module Props =
         | DisableTouchRipple of bool
         | FocusRipple of bool
         | FocusVisibleClassName of string
-        | OnFocusVisible of (Fable.Import.React.FocusEvent->unit)
+        | OnFocusVisible of (Browser.Types.FocusEvent->unit)
         | Type of ButtonBaseType
         interface IHTMLProp
 
@@ -1121,10 +1123,10 @@ module Props =
         interface IHTMLProp
 
     type CardHeaderProp =
-        | Action of Fable.Import.React.ReactNode
-        | Avatar of Fable.Import.React.ReactNode
-        | Subheader of Fable.Import.React.ReactNode
-        | Title of Fable.Import.React.ReactNode
+        | Action of Fable.React.ReactElement
+        | Avatar of Fable.React.ReactElement
+        | Subheader of Fable.React.ReactElement
+        | Title of Fable.React.ReactElement
         interface IHTMLProp
 
     [<AutoOpen>]
@@ -1140,15 +1142,15 @@ module Props =
 
     type CheckboxProp =
         | Indeterminate of bool
-        | IndeterminateIcon of Fable.Import.React.ReactNode
+        | IndeterminateIcon of Fable.React.ReactElement
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] ChipVariant = Default | Outlined
     type ChipProp =
-        | Avatar of Fable.Import.React.ReactElement
+        | Avatar of Fable.React.ReactElement
         | Clickable of bool
-        | DeleteIcon of Fable.Import.React.ReactElement
-        | OnDelete of (Fable.Import.React.FormEvent->unit)
+        | DeleteIcon of Fable.React.ReactElement
+        | OnDelete of (Browser.Types.Event ->unit)
         | Variant of ChipVariant
         interface IHTMLProp
 
@@ -1230,7 +1232,7 @@ module Props =
         interface IHTMLProp
 
     type ExpansionPanelSummaryProp =
-        | ExpandIcon of Fable.Import.React.ReactNode
+        | ExpandIcon of Fable.React.ReactElement
         interface IHTMLProp
     
     type [<StringEnum; RequireQualifiedAccess>] FabSize =
@@ -1249,9 +1251,9 @@ module Props =
         interface IHTMLProp
 
     type FilledInputProp =
-        | EndAdornment of Fable.Import.React.ReactNode
-        | InputComponent of Fable.Import.React.ReactType
-        | StartAdornment of Fable.Import.React.ReactNode
+        | EndAdornment of Fable.React.ReactElement
+        | InputComponent of Fable.React.ReactElementType
+        | StartAdornment of Fable.React.ReactElement
         interface IHTMLProp
     
     type [<StringEnum; RequireQualifiedAccess>] FormControlVariant =
@@ -1270,7 +1272,7 @@ module Props =
         | Bottom
 
     type FormControlLabelProp =
-        | Control of Fable.Import.React.ReactElement
+        | Control of Fable.React.ReactElement
         | LabelPlacement of FormControlLabelPlacement
         | OnChange of (obj->bool->unit)
         interface IHTMLProp
@@ -1380,10 +1382,10 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] TitlePosition = Top | Bottom
 
     type GridListTileBarProp =
-        | ActionIcon of Fable.Import.React.ReactNode
+        | ActionIcon of Fable.React.ReactElement
         | ActionPosition of ActionPosition
-        | Subtitle of Fable.Import.React.ReactNode
-        | Title of Fable.Import.React.ReactNode
+        | Subtitle of Fable.React.ReactElement
+        | Title of Fable.React.ReactElement
         | TitlePosition of TitlePosition
         interface IHTMLProp
 
@@ -1433,15 +1435,15 @@ module Props =
 
     type InputProp =
         | DisableUnderline of bool
-        | EndAdornment of Fable.Import.React.ReactNode
-        | InputComponent of Fable.Import.React.ReactType
-        | StartAdornment of Fable.Import.React.ReactNode
+        | EndAdornment of Fable.React.ReactElement
+        | InputComponent of Fable.React.ReactElementType
+        | StartAdornment of Fable.React.ReactElement
         interface IHTMLProp
     
     type InputBaseProp =
-        | EndAdornment of Fable.Import.React.ReactNode
-        | InputComponent of Fable.Import.React.ReactType
-        | StartAdornment of Fable.Import.React.ReactNode
+        | EndAdornment of Fable.React.ReactElement
+        | InputComponent of Fable.React.ReactElementType
+        | StartAdornment of Fable.React.ReactElement
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] InputAdornmentPosition = Start | End
@@ -1497,7 +1499,7 @@ module Props =
 
     type ListProp =
         | DisablePadding of bool
-        | Subheader of Fable.Import.React.ReactElement
+        | Subheader of Fable.React.ReactElement
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] ListItemAlignItems =
@@ -1511,8 +1513,8 @@ module Props =
         interface IHTMLProp
 
     type ListItemTextProp =
-        | Primary of Fable.Import.React.ReactNode
-        | Secondary of Fable.Import.React.ReactNode
+        | Primary of Fable.React.ReactElement
+        | Secondary of Fable.React.ReactElement
         interface IHTMLProp
 
     [<AutoOpen>]
@@ -1548,8 +1550,8 @@ module Props =
 
     type MobileStepperProp =
         | ActiveStep of int
-        | BackButton of Fable.Import.React.ReactElement
-        | NextButton of Fable.Import.React.ReactElement
+        | BackButton of Fable.React.ReactElement
+        | NextButton of Fable.React.ReactElement
         | Position of MobileStepperPosition
         | Steps of int
         | Variant of MobileStepperVariant
@@ -1576,16 +1578,16 @@ module Props =
         | Outlined
     
     type NativeSelectProp =
-        | Input of Fable.Import.React.ReactNode
+        | Input of Fable.React.ReactElement
         | Variant of NativeSelectVariant
         interface IHTMLProp
 
     type OutlinedInputProp =
         | LabelWidth of int
         | Notched of bool
-        | EndAdornment of Fable.Import.React.ReactNode
-        | InputComponent of Fable.Import.React.ReactType
-        | StartAdornment of Fable.Import.React.ReactNode
+        | EndAdornment of Fable.React.ReactElement
+        | InputComponent of Fable.React.ReactElementType
+        | StartAdornment of Fable.React.ReactElement
         interface IHTMLProp
 
     type PaperProp =
@@ -1638,10 +1640,10 @@ module Props =
     type SelectProp =
         | AutoWidth of bool
         | DisplayEmpty of bool
-        | Input of Fable.Import.React.ReactNode
+        | Input of Fable.React.ReactElement
         | Native of bool
         | OnChange of (obj->obj->unit)
-        | RenderValue of (obj->Fable.Import.React.ReactNode)
+        | RenderValue of (obj->Fable.React.ReactElement)
         | Variant of SelectVariant
         interface IHTMLProp
 
@@ -1661,11 +1663,11 @@ module Props =
     }
 
     type SnackbarProp =
-        | Action of Fable.Import.React.ReactElement
+        | Action of Fable.React.ReactElement
         | AnchorOrigin of SnackbarOrigin
         | AutoHideDuration of int
         | DisableWidnowBlurListener of bool
-        | Message of Fable.Import.React.ReactElement
+        | Message of Fable.React.ReactElement
         | OnClose of (obj->SnackbarCloseReason->unit)
         | ResumeHideDuration of int
         interface IHTMLProp
@@ -1679,7 +1681,7 @@ module Props =
     type StepperProp =
         | ActiveStep of int
         | AlternativeLabel of bool
-        | Connector of Fable.Import.React.ReactElement
+        | Connector of Fable.React.ReactElement
         | NonLinear of bool
         | Orientation of StepperOrientation
         interface IHTMLProp
@@ -1752,8 +1754,8 @@ module Props =
 
     type TablePaginationProp =
         | Count of int
-        | LabelDisplayedRows of (ILabelDisplayedRowsArgs->Fable.Import.React.ReactNode)
-        | LabelRowsPerPage of Fable.Import.React.ReactNode
+        | LabelDisplayedRows of (ILabelDisplayedRowsArgs->Fable.React.ReactElement)
+        | LabelRowsPerPage of Fable.React.ReactElement
         | OnChangePage of (obj->int->unit)
         | OnChangeRowsPerPage of (obj->unit)
         | Page of int
@@ -1784,7 +1786,7 @@ module Props =
         | Filled
 
     type TextFieldProp =
-        | HelperText of Fable.Import.React.ReactNode
+        | HelperText of Fable.React.ReactElement
         | Select of bool
         | Variant of TextFieldVariant
         interface IHTMLProp
@@ -1802,7 +1804,7 @@ module Props =
         | EnterTouchDelay of int
         | LeaveDelay of int
         | LeaveTouchDelay of int
-        | Title of Fable.Import.React.ReactNode
+        | Title of Fable.React.ReactElement
         interface IHTMLProp
 
     type TouchRippleProp =
@@ -2291,19 +2293,19 @@ module Props =
         let inline PopoverClasses classes = pascalCaseProp<Themes.IClassNames> "PopoverClasses" classes
         let inline FormLabelClasses classes = pascalCaseProp<Themes.IClassNames> "FormLabelClasses" classes
         let inline TypographyClasses classes = pascalCaseProp<Themes.IClassNames> "TypographyClasses" classes
-        let inline ActionsComponent (comp : Fable.Import.React.ReactType) =
+        let inline ActionsComponent (comp : Fable.React.ReactElementType) =
             HTMLAttr.Custom("ActionsComponent", comp)
-        let inline ScrollButtonComponent (comp : Fable.Import.React.ReactType) =
+        let inline ScrollButtonComponent (comp : Fable.React.ReactElementType) =
             HTMLAttr.Custom("ScrollButtonComponent", comp)
-        let inline StepIconComponent (comp : Fable.Import.React.ReactType) =
+        let inline StepIconComponent (comp : Fable.React.ReactElementType) =
             HTMLAttr.Custom("StepIconComponent", comp)
-        let inline IconComponent (comp : Fable.Import.React.ReactType) =
+        let inline IconComponent (comp : Fable.React.ReactElementType) =
             HTMLAttr.Custom("IconComponent", comp)
-        let inline BackdropComponent (comp : Fable.Import.React.ReactType) =
+        let inline BackdropComponent (comp : Fable.React.ReactElementType) =
             HTMLAttr.Custom("BackdropComponent", comp)
-        let inline ContainerComponent (comp : Fable.Import.React.ReactType) =
+        let inline ContainerComponent (comp : Fable.React.ReactElementType) =
             HTMLAttr.Custom("ContainerComponent", comp)
-        let inline TransitionComponent (comp : Fable.Import.React.ReactType) =
+        let inline TransitionComponent (comp : Fable.React.ReactElementType) =
             HTMLAttr.Custom("TransitionComponent", comp)
-        let inline PaperComponent (comp : Fable.Import.React.ReactType) =
+        let inline PaperComponent (comp : Fable.React.ReactElementType) =
             HTMLAttr.Custom("PaperComponent", comp)

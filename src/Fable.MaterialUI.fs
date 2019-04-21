@@ -3,11 +3,10 @@ open Fable.Core
 open Fable.Core.JsInterop
 
 module Core =
-    open Fable.Helpers.React
-    open Fable.Helpers.React.Props
+    open Fable.React
+    open Fable.React.Props
     open Fable.MaterialUI.Props
     open Fable.MaterialUI.Themes
-    open Fable.Import.React
 
     let toObj p = keyValueList CaseRules.LowerFirst p
 
@@ -121,13 +120,13 @@ module Core =
         abstract member classes: IClasses
 
     let withStyles'<'P, 'O when 'P :> IClassesProps>
-        styles (options: 'O) (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
+        styles (options: 'O) (fn : 'P->Fable.React.ReactElement) : Fable.React.ReactElementType<'P> =
         !!((import "withStyles" "@material-ui/core/styles") $ (styles, options) $ fn)
 
     let withStyles<'P when 'P :> IClassesProps>
         (styles : StyleType)
         (options: StyleOption list)
-        (fn : 'P -> Fable.Import.React.ReactElement) =
+        (fn : 'P -> Fable.React.ReactElement) =
         let styles' =
             match styles with
             | StyleType.Styles styles -> (keyValueList CaseRules.LowerFirst styles |> unbox)
@@ -152,17 +151,17 @@ module Core =
     let withTheme' : obj = jsNative
 
     let withTheme<'P when 'P :> IThemeProps>
-        (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
+        (fn : 'P->Fable.React.ReactElement) : Fable.React.ReactElementType<'P> =
         !!(withTheme' $ () $ fn)
 
     let withWidth'<'O, 'P>
         (options: 'O)
-        (fn : 'P->Fable.Import.React.ReactElement) : Fable.Import.React.ComponentClass<'P> =
+        (fn : 'P->Fable.React.ReactElement) : Fable.React.ReactElementType<'P> =
         !!((importDefault "@material-ui/core/withWidth") $ options $ fn)
 
     let withWidth<'P>
         (options: WithWidthOption list)
-        (fn: ('P -> Fable.Import.React.ReactElement)) =
+        (fn: ('P -> Fable.React.ReactElement)) =
         withWidth' (keyValueList CaseRules.LowerFirst options |> unbox) fn
 
     type IWidthProps =

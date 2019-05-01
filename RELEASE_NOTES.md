@@ -1,3 +1,10 @@
+## New in 4.0.0
+* Fable Core 3 & Fable.React 5 support!
+* [BREAKING CHANGE] Functions in `IMixins` use `obj` instead of `CSSProperties`
+* [BREAKING CHANGE] All `ReactNode` and `ReactInstance` types became `ReactElement`
+* [BREAKING CHANGE] All `ReactType` and `ComponentClass` types became `ReactElementType`
+* [BREAKING CHANGE] `RefProp` became of type `U2<IRefValue<'T>,(ReactElement->unit)>`
+
 ## New in 3.1.0
 * Change argument types of all components to `seq` instead of `list`.
 * [Link] Add `link` component

@@ -1,9 +1,9 @@
 module Demos.TextFields.WithIcon
 
 open Fable.Core
-open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -28,7 +28,7 @@ let inputWithIcon (props : IClassesProps) =
                 InputProp.StartAdornment (
                     inputAdornment [ InputAdornmentProp.Position InputAdornmentPosition.Start ] [
                         icon [] [ str "account_circle" ]
-                    ] |> U2.Case1 |> U3.Case1
+                    ]
                 )
             ]
         ]
@@ -40,7 +40,7 @@ let inputWithIcon (props : IClassesProps) =
                 InputProp.StartAdornment (
                     inputAdornment [ InputAdornmentProp.Position InputAdornmentPosition.Start ] [
                         icon [] [ str "account_circle" ]
-                    ] |> U2.Case1 |> U3.Case1
+                    ]
                 )
             ]
         ] []
@@ -66,4 +66,4 @@ let inputWithIcon (props : IClassesProps) =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] inputWithIcon
 
 let view () =
-    from textFieldsWithStyles createEmpty<IClassesProps> []
+    ReactElementType.create textFieldsWithStyles createEmpty<IClassesProps> []

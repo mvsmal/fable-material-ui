@@ -1,6 +1,6 @@
 module Customization.Themes.OverrideProperties
 
-open Fable.Helpers.React
+open Fable.React
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 

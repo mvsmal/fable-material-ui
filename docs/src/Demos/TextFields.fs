@@ -1,7 +1,7 @@
 module Demos.TextFields.View
 
 open Fable.Core.JsInterop
-open Fable.Helpers.React
+open Fable.React
 
 open Demos.TextFields
 open Components

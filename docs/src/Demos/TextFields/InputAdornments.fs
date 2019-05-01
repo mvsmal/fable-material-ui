@@ -1,18 +1,17 @@
 module Demos.TextFields.InputAdornments
 
-open Fable.Core
-open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
-open Fable.Import.React
+open Browser.Types
 
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Root [
-            CSSProp.Display "flex"
+            CSSProp.Display DisplayOptions.Flex
             CSSProp.FlexWrap "wrap"
         ]
         Styles.Custom ("margin", [
@@ -50,16 +49,16 @@ type InputAdornments(p) =
             weightRange = ""
             showPassword = false
         }
-    member private this.handleWeightChange (e : FormEvent) =
+    member private this.handleWeightChange (e : Event) =
         let value = e.Value
         this.setState (fun s _ -> { s with weight = value })
-    member private this.handleWeightRangeChange (e : FormEvent) =
+    member private this.handleWeightRangeChange (e : Event) =
         let value = e.Value
         this.setState (fun s _ -> { s with weightRange = value })
-    member private this.handleAmountChange (e : FormEvent) =
+    member private this.handleAmountChange (e : Event) =
         let value = e.Value
         this.setState (fun s _ -> { s with amount = value })
-    member private this.handlePasswordChange (e : FormEvent) =
+    member private this.handlePasswordChange (e : Event) =
         let value = e.Value
         this.setState (fun s _ -> { s with password = value })
     
@@ -80,8 +79,7 @@ type InputAdornments(p) =
                     InputProp.StartAdornment (
                         inputAdornment
                             [ InputAdornmentProp.Position InputAdornmentPosition.Start ]
-                            [ str "Kg" ]
-                        |> U2.Case1 |> U3.Case1)
+                            [ str "Kg" ])
                 ]
             ] []
             textField [
@@ -97,8 +95,7 @@ type InputAdornments(p) =
                     InputProp.StartAdornment (
                         inputAdornment
                             [ InputAdornmentProp.Position InputAdornmentPosition.Start ]
-                            [ str "Kg" ]
-                        |> U2.Case1 |> U3.Case1)
+                            [ str "Kg" ])
                 ]
             ] (ranges |> List.map (fun (k,l) -> menuItem [ Prop.Key k; HTMLAttr.Value k] [ str l ]))
             formControl [
@@ -113,8 +110,7 @@ type InputAdornments(p) =
                     InputProp.StartAdornment (
                         inputAdornment
                             [ InputAdornmentProp.Position InputAdornmentPosition.Start ]
-                            [ str "$" ]
-                    |> U2.Case1 |> U3.Case1)
+                            [ str "$" ])
                 ]
             ]
             formControl [
@@ -132,8 +128,7 @@ type InputAdornments(p) =
                     InputProp.EndAdornment (
                         inputAdornment
                             [ InputAdornmentProp.Position InputAdornmentPosition.End ]
-                            [ str "Kg" ]
-                    |> U2.Case1 |> U3.Case1)
+                            [ str "Kg" ])
                     MaterialProp.InputProps [ HTMLAttr.Custom ("aria-label", "Weight") ]
                 ]
                 formHelperText [ HTMLAttr.Id "weight-helper-text" ] [ str "Weight" ]
@@ -163,8 +158,7 @@ type InputAdornments(p) =
                                              else "visibility")
                                     ]
                                 ]
-                             ]
-                    |> U2.Case1 |> U3.Case1)
+                             ])
                 ]
             ]
         ]
@@ -175,4 +169,4 @@ let textFields props =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] textFields
 
 let view () =
-    from textFieldsWithStyles createEmpty<IClassesProps> []
+    ReactElementType.create textFieldsWithStyles createEmpty<IClassesProps> []

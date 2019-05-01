@@ -1,8 +1,8 @@
 module Customization.Themes.WithTheme
 
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 
 let darkThemeView (props : IThemeProps) =
@@ -34,4 +34,4 @@ let withTheme = withTheme darkThemeView
 
 
 let view () =
-    from withTheme createEmpty<IThemeProps> []
+    ReactElementType.create withTheme createEmpty<IThemeProps> []

@@ -1,9 +1,8 @@
 module Demos.TextFields.Layout
 
-open Fable.Core
-open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -11,7 +10,7 @@ open Fable.MaterialUI.Themes
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Container [
-            CSSProp.Display "flex"
+            CSSProp.Display DisplayOptions.Flex
             CSSProp.FlexWrap "wrap"
         ]
         Styles.Custom ("textField", [
@@ -30,14 +29,14 @@ let layoutTextFields (props : IClassesProps) =
             HTMLAttr.Id "margin-none"
             HTMLAttr.DefaultValue "Default value"
             HTMLAttr.Class !!classes?textField
-            TextFieldProp.HelperText ("Some important text" |> str |> U2.Case1 |> U3.Case1)
+            TextFieldProp.HelperText ("Some important text" |> str)
         ] []
         textField [
             HTMLAttr.Label "Dense"
             HTMLAttr.Id "margin-dense"
             HTMLAttr.DefaultValue "Default value"
             HTMLAttr.Class !!classes?textField
-            TextFieldProp.HelperText ("Some important text" |> str |> U2.Case1 |> U3.Case1)
+            TextFieldProp.HelperText ("Some important text" |> str)
             MaterialProp.Margin FormControlMargin.Dense
         ] []
         textField [
@@ -45,7 +44,7 @@ let layoutTextFields (props : IClassesProps) =
             HTMLAttr.Id "margin-normal"
             HTMLAttr.DefaultValue "Default value"
             HTMLAttr.Class !!classes?textField
-            TextFieldProp.HelperText ("Some important text" |> str |> U2.Case1 |> U3.Case1)
+            TextFieldProp.HelperText ("Some important text" |> str)
             MaterialProp.Margin FormControlMargin.Normal
         ] []
     ]
@@ -53,4 +52,4 @@ let layoutTextFields (props : IClassesProps) =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] layoutTextFields
 
 let view () =
-    from textFieldsWithStyles createEmpty<IClassesProps> []
+    ReactElementType.create textFieldsWithStyles createEmpty<IClassesProps> []

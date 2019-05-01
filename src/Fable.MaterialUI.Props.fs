@@ -2,7 +2,6 @@ namespace rec Fable.MaterialUI
 open System
 open Fable.Core
 open Fable.Import
-open Fable.Import
 
 [<AutoOpen>]
 module Themes =
@@ -152,8 +151,8 @@ module Themes =
         abstract width: key: Props.MaterialSize -> int
 
     type IMixins =
-        abstract gutters: ?styles : CSSProperties -> CSSProperties
-        abstract toolbar: CSSProperties with get,set
+        abstract gutters: ?styles : obj -> obj
+        abstract toolbar: obj with get,set
 
     type IEasing =
         abstract easeInOut: string with get,set
@@ -204,7 +203,7 @@ module Themes =
     module Styles =
         open Fable.Core.JsInterop
 
-        let Custom (key, (props : CSSProp list)) =
+        let Custom (key, (props : CSSProp seq)) =
             Styles.Custom' (key, props |> keyValueList CaseRules.LowerFirst)
 
         let inline Absolute props = Custom ("absolute", props)
@@ -528,7 +527,7 @@ module Themes =
         let inline ``Wrap-xs-wrap-reverse`` props = Custom ("wrap-xs-wrap-reverse", props)
 
     type [<Erase; RequireQualifiedAccess>] StyleType =
-        | Styles of IStyles list
+        | Styles of IStyles seq
         | Func of (ITheme->IStyles list)
 
     type IClassNames = interface end
@@ -889,8 +888,8 @@ module Colors =
 
 [<AutoOpen>]
 module Props =
-    open Fable.Core
     open Fable.Core.JsInterop
+    open Fable.React
     open Fable.React.Props
 
     let inline private customHtmlAttr key props =
@@ -951,15 +950,15 @@ module Props =
                    | U3.Case3 auto -> auto |> unbox
         HTMLAttr.Custom (key, prop)
 
-    type RefProp = U2<obj,(Fable.React.ReactInstance->unit)>
+    type RefProp<'T> = U2<IRefValue<'T>,(ReactElement->unit)>
 
-    type MaterialProp =
+    type MaterialProp<'RefType> =
         | Active of bool
-        | AnchorEl of Fable.React.ReactInstance
-        | CheckedIcon of Fable.React.ReactElement
+        | AnchorEl of ReactElement
+        | CheckedIcon of ReactElement
         | Color of ComponentColor
-        | Component of Fable.React.ReactElementType
-        | Container of Fable.React.ReactInstance
+        | Component of ReactElementType
+        | Container of ReactElement
         | DefaultValue of obj
         | Dense of bool
         | DisableGutters of bool
@@ -969,16 +968,16 @@ module Props =
         | Elevation of int
         | Error of bool
         | FullWidth of bool
-        | Icon of Fable.React.ReactElement
+        | Icon of ReactElement
         | In of bool
-        | InputRef of RefProp
+        | InputRef of RefProp<'RefType>
         | Inset of bool
         | KeepMounted of bool
-        | Label of Fable.React.ReactElement
+        | Label of ReactElement
         | Margin of FormControlMargin
         | Multiline of bool
         | Open of bool
-        | Optional of Fable.React.ReactElement
+        | Optional of ReactElement
         | Placement of PlacementType
         | RowsMax of int
         | Value of obj
@@ -996,14 +995,13 @@ module Props =
 
     [<AutoOpen>]
     module MaterialProp =
-        open Fable.Core.JsInterop
-        let inline Classes (classNames : IClassNames list) =
+        let inline Classes (classNames : IClassNames seq) =
             customHtmlAttr "classes" classNames
 
         /// Compiles to `inputProps`.
         ///
         /// For `InputProps` use `MaterialProp.InputProps`
-        let inline InputProps (props : IHTMLProp list) =
+        let inline InputProps (props : IHTMLProp seq) =
             customHtmlAttr "inputProps" props
         let Timeout = transitionDurationToHtmlAttr "timeout"
         let TransitionDuration = transitionDurationToHtmlAttr "transitionDuration"
@@ -1040,7 +1038,7 @@ module Props =
 
     [<AutoOpen>]
     module AvatarProp =
-        let inline ImgProps (props : IHTMLProp list) = customHtmlAttr "imgProps" props
+        let inline ImgProps (props : IHTMLProp seq) = customHtmlAttr "imgProps" props
 
     type BackdropProp =
         | Invisible of bool
@@ -1051,7 +1049,7 @@ module Props =
 
     type BadgeProp =
         | Color of BadgeColor
-        | BadgeContent of Fable.React.ReactElement
+        | BadgeContent of ReactElement
         | Invisible of bool
         | Max of int
         | ShowZero of bool
@@ -1103,9 +1101,9 @@ module Props =
         | Submit
         | Reset
 
-    type ButtonBaseProp =
+    type ButtonBaseProp<'RefType> =
         | Action of (IButtonBaseActions->unit)
-        | ButtonRef of RefProp
+        | ButtonRef of RefProp<'RefType>
         | CenterRipple of bool
         | DisableTouchRipple of bool
         | FocusRipple of bool
@@ -1123,17 +1121,17 @@ module Props =
         interface IHTMLProp
 
     type CardHeaderProp =
-        | Action of Fable.React.ReactElement
-        | Avatar of Fable.React.ReactElement
-        | Subheader of Fable.React.ReactElement
-        | Title of Fable.React.ReactElement
+        | Action of ReactElement
+        | Avatar of ReactElement
+        | Subheader of ReactElement
+        | Title of ReactElement
         interface IHTMLProp
 
     [<AutoOpen>]
     module CardHeaderProp =
-        let inline SubheaderTypographyProps (props : IHTMLProp list) =
+        let inline SubheaderTypographyProps (props : IHTMLProp seq) =
             customHtmlAttr "subheaderTypographyProps" props
-        let inline TitleTypographyProps (props : IHTMLProp list) =
+        let inline TitleTypographyProps (props : IHTMLProp seq) =
             customHtmlAttr "titleTypographyProps" props
 
     type CardMediaProp =
@@ -1142,14 +1140,14 @@ module Props =
 
     type CheckboxProp =
         | Indeterminate of bool
-        | IndeterminateIcon of Fable.React.ReactElement
+        | IndeterminateIcon of ReactElement
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] ChipVariant = Default | Outlined
     type ChipProp =
-        | Avatar of Fable.React.ReactElement
+        | Avatar of ReactElement
         | Clickable of bool
-        | DeleteIcon of Fable.React.ReactElement
+        | DeleteIcon of ReactElement
         | OnDelete of (Browser.Types.Event ->unit)
         | Variant of ChipVariant
         interface IHTMLProp
@@ -1232,7 +1230,7 @@ module Props =
         interface IHTMLProp
 
     type ExpansionPanelSummaryProp =
-        | ExpandIcon of Fable.React.ReactElement
+        | ExpandIcon of ReactElement
         interface IHTMLProp
     
     type [<StringEnum; RequireQualifiedAccess>] FabSize =
@@ -1251,9 +1249,9 @@ module Props =
         interface IHTMLProp
 
     type FilledInputProp =
-        | EndAdornment of Fable.React.ReactElement
-        | InputComponent of Fable.React.ReactElementType
-        | StartAdornment of Fable.React.ReactElement
+        | EndAdornment of ReactElement
+        | InputComponent of ReactElementType
+        | StartAdornment of ReactElement
         interface IHTMLProp
     
     type [<StringEnum; RequireQualifiedAccess>] FormControlVariant =
@@ -1272,7 +1270,7 @@ module Props =
         | Bottom
 
     type FormControlLabelProp =
-        | Control of Fable.React.ReactElement
+        | Control of ReactElement
         | LabelPlacement of FormControlLabelPlacement
         | OnChange of (obj->bool->unit)
         interface IHTMLProp
@@ -1382,10 +1380,10 @@ module Props =
     type [<StringEnum; RequireQualifiedAccess>] TitlePosition = Top | Bottom
 
     type GridListTileBarProp =
-        | ActionIcon of Fable.React.ReactElement
+        | ActionIcon of ReactElement
         | ActionPosition of ActionPosition
-        | Subtitle of Fable.React.ReactElement
-        | Title of Fable.React.ReactElement
+        | Subtitle of ReactElement
+        | Title of ReactElement
         | TitlePosition of TitlePosition
         interface IHTMLProp
 
@@ -1435,15 +1433,15 @@ module Props =
 
     type InputProp =
         | DisableUnderline of bool
-        | EndAdornment of Fable.React.ReactElement
-        | InputComponent of Fable.React.ReactElementType
-        | StartAdornment of Fable.React.ReactElement
+        | EndAdornment of ReactElement
+        | InputComponent of ReactElementType
+        | StartAdornment of ReactElement
         interface IHTMLProp
     
     type InputBaseProp =
-        | EndAdornment of Fable.React.ReactElement
-        | InputComponent of Fable.React.ReactElementType
-        | StartAdornment of Fable.React.ReactElement
+        | EndAdornment of ReactElement
+        | InputComponent of ReactElementType
+        | StartAdornment of ReactElement
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] InputAdornmentPosition = Start | End
@@ -1499,7 +1497,7 @@ module Props =
 
     type ListProp =
         | DisablePadding of bool
-        | Subheader of Fable.React.ReactElement
+        | Subheader of ReactElement
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] ListItemAlignItems =
@@ -1513,15 +1511,15 @@ module Props =
         interface IHTMLProp
 
     type ListItemTextProp =
-        | Primary of Fable.React.ReactElement
-        | Secondary of Fable.React.ReactElement
+        | Primary of ReactElement
+        | Secondary of ReactElement
         interface IHTMLProp
 
     [<AutoOpen>]
     module ListItemTextProp =
-        let inline PrimaryTypographyProps (props : IHTMLProp list) =
+        let inline PrimaryTypographyProps (props : IHTMLProp seq) =
             customHtmlAttr "primaryTypographyProps" props
-        let inline SecondaryTypographyProps (props : IHTMLProp list) =
+        let inline SecondaryTypographyProps (props : IHTMLProp seq) =
             customHtmlAttr "secondaryTypographyProps" props
 
     type [<StringEnum; RequireQualifiedAccess>] ListSubheaderColor = Default | Primary | Inherit
@@ -1550,8 +1548,8 @@ module Props =
 
     type MobileStepperProp =
         | ActiveStep of int
-        | BackButton of Fable.React.ReactElement
-        | NextButton of Fable.React.ReactElement
+        | BackButton of ReactElement
+        | NextButton of ReactElement
         | Position of MobileStepperPosition
         | Steps of int
         | Variant of MobileStepperVariant
@@ -1578,16 +1576,16 @@ module Props =
         | Outlined
     
     type NativeSelectProp =
-        | Input of Fable.React.ReactElement
+        | Input of ReactElement
         | Variant of NativeSelectVariant
         interface IHTMLProp
 
     type OutlinedInputProp =
         | LabelWidth of int
         | Notched of bool
-        | EndAdornment of Fable.React.ReactElement
-        | InputComponent of Fable.React.ReactElementType
-        | StartAdornment of Fable.React.ReactElement
+        | EndAdornment of ReactElement
+        | InputComponent of ReactElementType
+        | StartAdornment of ReactElement
         interface IHTMLProp
 
     type PaperProp =
@@ -1632,18 +1630,18 @@ module Props =
         | OnChange of (obj->string->unit)
         interface IHTMLProp
 
-    type RootRefProp =
-        | RootRef of RefProp
+    type RootRefProp<'RefType> =
+        | RootRef of RefProp<'RefType>
         interface IHTMLProp
 
     type [<StringEnum; RequireQualifiedAccess>] SelectVariant = Standard | Outlined | Filled
     type SelectProp =
         | AutoWidth of bool
         | DisplayEmpty of bool
-        | Input of Fable.React.ReactElement
+        | Input of ReactElement
         | Native of bool
         | OnChange of (obj->obj->unit)
-        | RenderValue of (obj->Fable.React.ReactElement)
+        | RenderValue of (obj->ReactElement)
         | Variant of SelectVariant
         interface IHTMLProp
 
@@ -1663,11 +1661,11 @@ module Props =
     }
 
     type SnackbarProp =
-        | Action of Fable.React.ReactElement
+        | Action of ReactElement
         | AnchorOrigin of SnackbarOrigin
         | AutoHideDuration of int
         | DisableWidnowBlurListener of bool
-        | Message of Fable.React.ReactElement
+        | Message of ReactElement
         | OnClose of (obj->SnackbarCloseReason->unit)
         | ResumeHideDuration of int
         interface IHTMLProp
@@ -1681,7 +1679,7 @@ module Props =
     type StepperProp =
         | ActiveStep of int
         | AlternativeLabel of bool
-        | Connector of Fable.React.ReactElement
+        | Connector of ReactElement
         | NonLinear of bool
         | Orientation of StepperOrientation
         interface IHTMLProp
@@ -1754,20 +1752,20 @@ module Props =
 
     type TablePaginationProp =
         | Count of int
-        | LabelDisplayedRows of (ILabelDisplayedRowsArgs->Fable.React.ReactElement)
-        | LabelRowsPerPage of Fable.React.ReactElement
+        | LabelDisplayedRows of (ILabelDisplayedRowsArgs->ReactElement)
+        | LabelRowsPerPage of ReactElement
         | OnChangePage of (obj->int->unit)
         | OnChangeRowsPerPage of (obj->unit)
         | Page of int
         | RowsPerPage of int
-        | RowsPerPageOptions of int list
+        | RowsPerPageOptions of int seq
         interface IHTMLProp
 
     [<AutoOpen>]
     module TablePaginationProp =
-        let inline BackIconButtonProps (props : IHTMLProp list) =
+        let inline BackIconButtonProps (props : IHTMLProp seq) =
             customHtmlAttr "backIconButtonProps" props
-        let inline NextIconButtonProps (props : IHTMLProp list) =
+        let inline NextIconButtonProps (props : IHTMLProp seq) =
             customHtmlAttr "nextIconButtonProps" props
 
     type TableRowProp =
@@ -1786,7 +1784,7 @@ module Props =
         | Filled
 
     type TextFieldProp =
-        | HelperText of Fable.React.ReactElement
+        | HelperText of ReactElement
         | Select of bool
         | Variant of TextFieldVariant
         interface IHTMLProp
@@ -1804,7 +1802,7 @@ module Props =
         | EnterTouchDelay of int
         | LeaveDelay of int
         | LeaveTouchDelay of int
-        | Title of Fable.React.ReactElement
+        | Title of ReactElement
         interface IHTMLProp
 
     type TouchRippleProp =
@@ -1936,17 +1934,16 @@ module Props =
 
     [<AutoOpen>]
     module PaletteProp =
-        open Fable.Core.JsInterop
         let inline customPaletteProp key props = PaletteProp.Custom(key, props |> keyValueList CaseRules.LowerFirst)
 
-        let inline Common (props : PaletteCommonProp list) = customPaletteProp "common" props
-        let inline Primary (props : PaletteIntentionProp list) = customPaletteProp "primary" props
-        let inline Secondary (props : PaletteIntentionProp list) = customPaletteProp "secondary" props
-        let inline Error (props : PaletteIntentionProp list) = customPaletteProp "error" props
-        let inline Grey (props : (string * obj) list) = customPaletteProp "grey" props
-        let inline Text (props : PaletteTextProp list) = customPaletteProp "text" props
-        let inline Background (props : PaletteBackgroundProp list) = customPaletteProp "background" props
-        let inline Action (props : PaletteActionProp list) = customPaletteProp "action" props
+        let inline Common (props : PaletteCommonProp seq) = customPaletteProp "common" props
+        let inline Primary (props : PaletteIntentionProp seq) = customPaletteProp "primary" props
+        let inline Secondary (props : PaletteIntentionProp seq) = customPaletteProp "secondary" props
+        let inline Error (props : PaletteIntentionProp seq) = customPaletteProp "error" props
+        let inline Grey (props : (string * obj) seq) = customPaletteProp "grey" props
+        let inline Text (props : PaletteTextProp seq) = customPaletteProp "text" props
+        let inline Background (props : PaletteBackgroundProp seq) = customPaletteProp "background" props
+        let inline Action (props : PaletteActionProp seq) = customPaletteProp "action" props
 
 
     type TextStyleProp =
@@ -1971,41 +1968,38 @@ module Props =
 
     [<AutoOpen>]
     module ThemeTypographyProp =
-        open Fable.Core.JsInterop
         let inline customThemeTypographyProp key props =
             ThemeTypographyProp.Custom (key, props |> keyValueList CaseRules.LowerFirst)
-        let inline textStyleProps key (props : TextStyleProp list) =
-            customThemeTypographyProp key props
 
-        let inline AllVariants (props : CSSProp list) = customThemeTypographyProp "allVariants" props
-        let H1 = textStyleProps "h1"
-        let H2 = textStyleProps "h2"
-        let H3 = textStyleProps "h3"
-        let H4 = textStyleProps "h4"
-        let H5 = textStyleProps "h5"
-        let H6 = textStyleProps "h6"
-        let Subtitle1 = textStyleProps "subtitle1"
-        let Subtitle2 = textStyleProps "subtitle2"
-        let Overline = textStyleProps "overline"
-        let Body1 = textStyleProps "body1"
-        let Body2 = textStyleProps "body2"
-        let Caption = textStyleProps "caption"
-        let Button = textStyleProps "button"
+        let inline AllVariants (props : CSSProp seq) = customThemeTypographyProp "allVariants" props
+        let H1 (props : TextStyleProp seq) = customThemeTypographyProp "h1" props
+        let H2 (props : TextStyleProp seq) = customThemeTypographyProp "h2" props
+        let H3 (props : TextStyleProp seq) = customThemeTypographyProp "h3" props
+        let H4 (props : TextStyleProp seq) = customThemeTypographyProp "h4" props
+        let H5 (props : TextStyleProp seq) = customThemeTypographyProp "h5" props
+        let H6 (props : TextStyleProp seq) = customThemeTypographyProp "h6" props
+        let Subtitle1 (props : TextStyleProp seq) = customThemeTypographyProp "subtitle1" props
+        let Subtitle2 (props : TextStyleProp seq) = customThemeTypographyProp "subtitle2" props
+        let Overline (props : TextStyleProp seq) = customThemeTypographyProp "overline" props
+        let Body1 (props : TextStyleProp seq) = customThemeTypographyProp "body1" props
+        let Body2 (props : TextStyleProp seq) = customThemeTypographyProp "body2" props
+        let Caption (props : TextStyleProp seq) = customThemeTypographyProp "caption" props
+        let Button (props : TextStyleProp seq) = customThemeTypographyProp "button" props
 
         [<Obsolete("Material-UI@3.2.0: Typography type `Display1` is deprecated. Please use `H4` instead")>]
-        let Display1 = textStyleProps "display1"
+        let Display1 (props : TextStyleProp seq) = customThemeTypographyProp "display1" props
         [<Obsolete("Material-UI@3.2.0: Typography type `Display2` is deprecated. Please use `H3` instead")>]
-        let Display2 = textStyleProps "display2"
+        let Display2 (props : TextStyleProp seq) = customThemeTypographyProp "display2" props
         [<Obsolete("Material-UI@3.2.0: Typography type `Display3` is deprecated. Please use `H2` instead")>]
-        let Display3 = textStyleProps "display3"
+        let Display3 (props : TextStyleProp seq) = customThemeTypographyProp "display3" props
         [<Obsolete("Material-UI@3.2.0: Typography type `Display4` is deprecated. Please use `H1` instead")>]
-        let Display4 = textStyleProps "display4"
+        let Display4 (props : TextStyleProp seq) = customThemeTypographyProp "display4" props
         [<Obsolete("Material-UI@3.2.0: Typography type `Headline` is deprecated. Please use `H5` instead")>]
-        let Headline = textStyleProps "headline"
+        let Headline (props : TextStyleProp seq) = customThemeTypographyProp "headline" props
         [<Obsolete("Material-UI@3.2.0: Typography type `Title` is deprecated. Please use `H6` instead")>]
-        let Title = textStyleProps "title"
+        let Title (props : TextStyleProp seq) = customThemeTypographyProp "title" props
         [<Obsolete("Material-UI@3.2.0: Typography type `Subheading` is deprecated. Please use `Subtitle1` instead")>]
-        let Subheading = textStyleProps "subheading"
+        let Subheading (props : TextStyleProp seq) = customThemeTypographyProp "subheading" props
 
 
     type ShapeProp =
@@ -2029,8 +2023,7 @@ module Props =
 
     [<AutoOpen>]
     module OverridesProp =
-        open Fable.Core.JsInterop
-        let inline private pascalCaseProp (name : string) (props : Themes.IStyles list) =
+        let inline private pascalCaseProp (name : string) (props : Themes.IStyles seq) =
             OverridesProp.Custom (name, props |> keyValueList CaseRules.LowerFirst)
 
         let inline MuiAppBar styles = pascalCaseProp "MuiAppBar" styles
@@ -2130,7 +2123,7 @@ module Props =
 
     [<AutoOpen>]
     module ThemePropsProp =
-        let inline private pascalCaseProp (name : string) (props : IHTMLProp list) =
+        let inline private pascalCaseProp (name : string) (props : IHTMLProp seq) =
             ThemePropsProp.Custom (name, props |> keyValueList CaseRules.LowerFirst)
 
         let inline MuiAppBar props = pascalCaseProp "MuiAppBar" props
@@ -2223,19 +2216,19 @@ module Props =
 
     type ThemeProp =
         | Direction of Themes.TextDirection
-        | Shadows of string list
+        | Shadows of string seq
         | [<Erase>] Custom of string*obj
 
     [<AutoOpen>]
     module ThemeProp =
         let inline customThemeProp key props = ThemeProp.Custom (key, props |> keyValueList CaseRules.LowerFirst)
-        let inline Palette (props : PaletteProp list) = customThemeProp "palette" props
-        let inline Shape (props : ShapeProp list) = customThemeProp "shape" props
-        let inline Spacing (props : SpacingProp list) = customThemeProp "spacing" props
-        let inline Typography (props : ThemeTypographyProp list) = customThemeProp "typography" props
-        let inline ZIndex (props : ZIndexProp list) = customThemeProp "zIndex" props
-        let inline Overrides (props : IOverridesProp list) = customThemeProp "overrides" props
-        let inline Props (props : IThemePropsProp list) = customThemeProp "props" props
+        let inline Palette (props : PaletteProp seq) = customThemeProp "palette" props
+        let inline Shape (props : ShapeProp seq) = customThemeProp "shape" props
+        let inline Spacing (props : SpacingProp seq) = customThemeProp "spacing" props
+        let inline Typography (props : ThemeTypographyProp seq) = customThemeProp "typography" props
+        let inline ZIndex (props : ZIndexProp seq) = customThemeProp "zIndex" props
+        let inline Overrides (props : IOverridesProp seq) = customThemeProp "overrides" props
+        let inline Props (props : IThemePropsProp seq) = customThemeProp "props" props
 
     type [<Erase>] ProviderTheme =
         | Theme of Themes.ITheme
@@ -2258,9 +2251,9 @@ module Props =
 
     [<AutoOpen>]
     module ChildrenProp =
-        let inline private pascalCaseProp<'a> (name : string) (props : 'a list) =
+        let inline private pascalCaseProp<'a> (name : string) (props : 'a seq) =
             HTMLAttr.Custom (name, props |> keyValueList CaseRules.LowerFirst)
-        let inline private htmlAttrPascalCaseProp (name : string) (props : IHTMLProp list) =
+        let inline private htmlAttrPascalCaseProp (name : string) (props : IHTMLProp seq) =
             pascalCaseProp<IHTMLProp> name props
 
         let inline PaperProps props = htmlAttrPascalCaseProp "PaperProps" props
@@ -2293,19 +2286,19 @@ module Props =
         let inline PopoverClasses classes = pascalCaseProp<Themes.IClassNames> "PopoverClasses" classes
         let inline FormLabelClasses classes = pascalCaseProp<Themes.IClassNames> "FormLabelClasses" classes
         let inline TypographyClasses classes = pascalCaseProp<Themes.IClassNames> "TypographyClasses" classes
-        let inline ActionsComponent (comp : Fable.React.ReactElementType) =
+        let inline ActionsComponent (comp : ReactElementType) =
             HTMLAttr.Custom("ActionsComponent", comp)
-        let inline ScrollButtonComponent (comp : Fable.React.ReactElementType) =
+        let inline ScrollButtonComponent (comp : ReactElementType) =
             HTMLAttr.Custom("ScrollButtonComponent", comp)
-        let inline StepIconComponent (comp : Fable.React.ReactElementType) =
+        let inline StepIconComponent (comp : ReactElementType) =
             HTMLAttr.Custom("StepIconComponent", comp)
-        let inline IconComponent (comp : Fable.React.ReactElementType) =
+        let inline IconComponent (comp : ReactElementType) =
             HTMLAttr.Custom("IconComponent", comp)
-        let inline BackdropComponent (comp : Fable.React.ReactElementType) =
+        let inline BackdropComponent (comp : ReactElementType) =
             HTMLAttr.Custom("BackdropComponent", comp)
-        let inline ContainerComponent (comp : Fable.React.ReactElementType) =
+        let inline ContainerComponent (comp : ReactElementType) =
             HTMLAttr.Custom("ContainerComponent", comp)
-        let inline TransitionComponent (comp : Fable.React.ReactElementType) =
+        let inline TransitionComponent (comp : ReactElementType) =
             HTMLAttr.Custom("TransitionComponent", comp)
-        let inline PaperComponent (comp : Fable.React.ReactElementType) =
+        let inline PaperComponent (comp : ReactElementType) =
             HTMLAttr.Custom("PaperComponent", comp)

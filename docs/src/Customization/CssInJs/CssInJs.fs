@@ -2,9 +2,8 @@ module Customization.CssInJs.Example
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Import.React
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -51,7 +50,7 @@ let view () =
     props2.variant <- MyLinkVariant.Primary
 
     typography [ TypographyProp.Variant TypographyVariant.Subtitle1 ] [
-        from myLinkStyled props1 [ str "MyLink" ]
+        ReactElementType.create myLinkStyled props1 [ str "MyLink" ]
         str " - "
-        from myLinkStyled props2 [ str "primary" ]
+        ReactElementType.create myLinkStyled props2 [ str "primary" ]
     ]

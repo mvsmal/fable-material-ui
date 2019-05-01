@@ -1,6 +1,6 @@
 module Customization.Themes.Palette
 
-open Fable.Helpers.React
+open Fable.React
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI

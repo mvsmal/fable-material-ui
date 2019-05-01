@@ -2,8 +2,8 @@ module Customization.Overrides.InternalState
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -42,5 +42,5 @@ let classNesting (props : IClassesProps) =
 let withStyles = withStyles (StyleType.Styles styles) [] classNesting
 
 let view () =
-    from withStyles createEmpty<IClassesProps> []
+    ReactElementType.create withStyles createEmpty<IClassesProps> []
 

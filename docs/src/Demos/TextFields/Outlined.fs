@@ -1,19 +1,17 @@
 module Demos.TextFields.Outlined
 
-open Fable.Core
-open Fable.Helpers.React
+open Fable.React
 open Fable.Core.JsInterop
-open Fable.Import
-open Fable.Helpers.React.Props
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
-open Fable.Import.React
+open Browser.Types
 
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Container [
-            CSSProp.Display "flex"
+            CSSProp.Display DisplayOptions.Flex
             CSSProp.FlexWrap "wrap"
         ]
         Styles.Custom ("textField", [
@@ -44,7 +42,7 @@ type TextFieldState = {
 }
 
 type TextFields (p) =
-    inherit React.Component<IClassesProps,TextFieldState>(p)
+    inherit Component<IClassesProps,TextFieldState>(p)
     do
         base.setInitState {
             name = "Cat in the Hat"
@@ -53,19 +51,19 @@ type TextFields (p) =
             currency = "EUR"
         }
     
-    member private this.handleNameChange (event : FormEvent) =
+    member private this.handleNameChange (event : Event) =
         let value = event.Value
         this.setState (fun s _ -> { s with name = value })
     
-    member private this.handleMultilineChange (event : FormEvent) =
+    member private this.handleMultilineChange (event : Event) =
         let value = event.Value
         this.setState (fun s _ -> { s with multiline = value })
 
-    member private this.handleAgeChange (event : FormEvent) =
+    member private this.handleAgeChange (event : Event) =
         let value = event.Value
         this.setState (fun s _ -> { s with age = value })
     
-    member private this.handleCurrencyChange (event : FormEvent) =
+    member private this.handleCurrencyChange (event : Event) =
         let value = event.Value
         this.setState (fun s _ -> { s with currency = value })
     
@@ -184,7 +182,7 @@ type TextFields (p) =
                 HTMLAttr.Label "Helper text"
                 HTMLAttr.Class !!this.props.classes?textField
                 HTMLAttr.DefaultValue "Default Value"
-                TextFieldProp.HelperText ("Some important text" |> str |> U2.Case1 |> U3.Case1)
+                TextFieldProp.HelperText ("Some important text" |> str)
                 TextFieldProp.Variant TextFieldVariant.Outlined
                 MaterialProp.Margin FormControlMargin.Normal
             ] []
@@ -234,7 +232,7 @@ type TextFields (p) =
                 HTMLAttr.Value this.state.currency
                 DOMAttr.OnChange this.handleCurrencyChange
                 TextFieldProp.Variant TextFieldVariant.Outlined
-                TextFieldProp.HelperText ("Please select your currency" |> str |> U2.Case1 |> U3.Case1)
+                TextFieldProp.HelperText ("Please select your currency" |> str)
                 TextFieldProp.Select true
                 MaterialProp.Margin FormControlMargin.Normal
                 ChildrenProp.SelectProps [
@@ -250,7 +248,7 @@ type TextFields (p) =
                 HTMLAttr.Type "search"
                 HTMLAttr.Value this.state.currency
                 DOMAttr.OnChange this.handleCurrencyChange
-                TextFieldProp.HelperText ("Please select your currency" |> str |> U2.Case1 |> U3.Case1)
+                TextFieldProp.HelperText ("Please select your currency" |> str)
                 TextFieldProp.Select true
                 TextFieldProp.Variant TextFieldVariant.Outlined
                 MaterialProp.Margin FormControlMargin.Normal
@@ -267,7 +265,7 @@ type TextFields (p) =
                 Style [ CSSProp.Margin 8 ]
                 HTMLAttr.Placeholder "Placeholder"
                 MaterialProp.FullWidth true
-                TextFieldProp.HelperText ("Full width!" |> str |> U2.Case1 |> U3.Case1)
+                TextFieldProp.HelperText ("Full width!" |> str)
                 TextFieldProp.Variant TextFieldVariant.Outlined
                 ChildrenProp.InputLabelProps [
                     InputLabelProp.Shrink true
@@ -290,4 +288,4 @@ let textFields props =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] textFields
 
 let view () =
-    from textFieldsWithStyles createEmpty<IClassesProps> []
+    ReactElementType.create textFieldsWithStyles createEmpty<IClassesProps> []

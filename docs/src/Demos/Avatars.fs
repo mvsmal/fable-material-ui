@@ -1,5 +1,5 @@
 module Demos.Avatars.View
-open Fable.Helpers.React
+open Fable.React
 
 let root () =
     div [] [ str "avatars" ]

@@ -1,7 +1,7 @@
 module Demos.Buttons.View
 
 open Fable.Core.JsInterop
-open Fable.Helpers.React
+open Fable.React
 
 open Demos.Buttons
 open Components

@@ -11,4 +11,4 @@ dependencies
   framework: netstandard2.0
     FSharp.Core >= 4.5.2
     Fable.Core >= 3.0.0
-    Fable.React >= 5.1.0
+    Fable.React >= 5.2.1

@@ -3,8 +3,8 @@ module Layout.AppBar
 open Elmish.React
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -67,12 +67,12 @@ let appBar (props : AppProps) =
             ] [ props.model.currentPage |> toTitle |> str ]
             div [ Class "flex" ] []
             tooltip [
-                TooltipProp.Title ((str "Github") |> U2.Case1 |> U3.Case1)
+                TooltipProp.Title (str "Github")
                 TooltipProp.EnterDelay 300
             ] [
                 iconButton [
                     IconProp.Color IconColor.Inherit
-                    MaterialProp.Component ("a" |> U3.Case1)
+                    MaterialProp.Component ("a" |> ReactElementType.ofHtmlElement)
                     Target "_blank"
                     Href "https://github.com/mvsmal/fable-material-ui"
                 ] [ githubIcon ]
@@ -86,4 +86,4 @@ let view model dispatch =
     let props = createEmpty<AppProps>
     props.model <- model
     props.dispatch <- dispatch
-    from appBarWithStyles props []
+    ReactElementType.create appBarWithStyles props []

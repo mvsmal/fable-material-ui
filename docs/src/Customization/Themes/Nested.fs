@@ -2,8 +2,8 @@ module Customization.Themes.Nested
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -56,11 +56,11 @@ let theme3 (theme : ITheme) =
 
 let view () =
     muiThemeProvider [ MuiThemeProviderProp.Theme (ProviderTheme.Theme theme1) ] [
-        from nestedWithStyles createEmpty []
+        ReactElementType.create nestedWithStyles createEmpty []
         muiThemeProvider [ MuiThemeProviderProp.Theme (ProviderTheme.Theme theme2) ] [
-            from nestedWithStyles createEmpty []
+            ReactElementType.create nestedWithStyles createEmpty []
         ]
         muiThemeProvider [ MuiThemeProviderProp.Theme (ProviderTheme.Func theme3) ] [
-            from nestedWithStyles createEmpty []
+            ReactElementType.create nestedWithStyles createEmpty []
         ]
     ]

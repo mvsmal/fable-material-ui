@@ -1,9 +1,8 @@
 module Customization.Overrides.ClassNames
 
 open Fable.Core.JsInterop
-open Fable.Import.React
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 
@@ -34,4 +33,4 @@ let classNames (props : ClassNamesProps) =
 let withStyles = withStyles<ClassNamesProps> (StyleType.Styles styles) [] classNames
 
 let view () =
-    from withStyles createEmpty [ str "class names" ]
+    ReactElementType.create withStyles createEmpty [ str "class names" ]

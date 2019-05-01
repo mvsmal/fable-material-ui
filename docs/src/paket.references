@@ -1,7 +1,9 @@
 group Docs
-    FSharp.Core
-    Fable.Core
-    Fable.Elmish.React
-    Fable.Elmish.Browser
-    Fable.Elmish.Debugger
-    Fable.Elmish.HMR
+FSharp.Core
+Fable.Core
+Fable.React
+Fable.Elmish.React
+Fable.Elmish.Browser
+Fable.Elmish.Debugger
+Fable.Elmish.HMR
+Fable.Browser.Dom

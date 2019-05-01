@@ -5,7 +5,7 @@ framework: netstandard2.0
 
 nuget FSharp.Core >= 4.5.2
 nuget Fable.Core >= 3.0.0
-nuget Fable.React >= 5.1.0
+nuget Fable.React >= 5.2.1
 
 // [ DOCS GROUP ]
 group Docs
@@ -13,14 +13,13 @@ group Docs
 
     framework: netstandard2.0
 
-    nuget Fable.Elmish.HMR
-    nuget FSharp.Core >= 4.3.4
-    nuget Fable.Core >= 2.0.0
-    nuget Fable.React >= 4.0.1
-    nuget Fable.Elmish.React >= 2.0.0
-    nuget Fable.Elmish.Browser >= 2.0.0
-    nuget Fable.Elmish.Debugger >= 2.0.0
-    nuget Fable.PowerPack
+    nuget FSharp.Core >= 4.5.2
+    nuget Fable.Core >= 3.0.0
+    nuget Fable.React >= 5.2.1
+    nuget Fable.Elmish.HMR >= 4.0.0
+    nuget Fable.Elmish.React >= 3.0.0
+    nuget Fable.Elmish.Browser >= 3.0.0
+    nuget Fable.Elmish.Debugger >= 3.0.0
 
 // [ FAKE GROUP ]
 group Build

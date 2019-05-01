@@ -1,18 +1,17 @@
 module Demos.TextFields.OutlinedInputAdornments
 
-open Fable.Core
-open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
-open Fable.Import.React
+open Browser.Types
 
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Root [
-            CSSProp.Display "flex"
+            CSSProp.Display DisplayOptions.Flex
             CSSProp.FlexWrap "wrap"
         ]
         Styles.Custom ("margin", [
@@ -47,16 +46,16 @@ type InputAdornments(p) =
             weightRange = ""
             showPassword = false
         }
-    member private this.handleWeightChange (e : FormEvent) =
+    member private this.handleWeightChange (e : Event) =
         let value = e.Value
         this.setState (fun s _ -> { s with weight = value })
-    member private this.handleWeightRangeChange (e : FormEvent) =
+    member private this.handleWeightRangeChange (e : Event) =
         let value = e.Value
         this.setState (fun s _ -> { s with weightRange = value })
-    member private this.handleAmountChange (e : FormEvent) =
+    member private this.handleAmountChange (e : Event) =
         let value = e.Value
         this.setState (fun s _ -> { s with amount = value })
-    member private this.handlePasswordChange (e : FormEvent) =
+    member private this.handlePasswordChange (e : Event) =
         let value = e.Value
         this.setState (fun s _ -> { s with password = value })
     
@@ -79,8 +78,7 @@ type InputAdornments(p) =
                         inputAdornment [ 
                             InputAdornmentProp.Position InputAdornmentPosition.Start
                             InputAdornmentProp.Variant InputAdornmentVariant.Outlined
-                        ] [ str "Kg" ]
-                        |> U2.Case1 |> U3.Case1)
+                        ] [ str "Kg" ])
                 ]
             ] []
             textField [
@@ -98,8 +96,7 @@ type InputAdornments(p) =
                         inputAdornment [
                             InputAdornmentProp.Position InputAdornmentPosition.Start
                             InputAdornmentProp.Variant InputAdornmentVariant.Outlined
-                        ] [ str "Kg" ]
-                        |> U2.Case1 |> U3.Case1)
+                        ] [ str "Kg" ])
                 ]
             ] (ranges |> List.map (fun (k,l) -> menuItem [ Prop.Key k; HTMLAttr.Value k] [ str l ]))
             textField [
@@ -117,8 +114,7 @@ type InputAdornments(p) =
                         inputAdornment [
                             InputAdornmentProp.Position InputAdornmentPosition.Start
                             InputAdornmentProp.Variant InputAdornmentVariant.Outlined
-                        ] [ str "$" ]
-                        |> U2.Case1 |> U3.Case1)
+                        ] [ str "$" ])
                 ]
             ] []
             textField [
@@ -126,7 +122,7 @@ type InputAdornments(p) =
                 HTMLAttr.Value this.state.weight
                 HTMLAttr.Label "Weight"
                 TextFieldProp.Variant TextFieldVariant.Outlined
-                TextFieldProp.HelperText ("Weight" |> str |> U2.Case1 |> U3.Case1)
+                TextFieldProp.HelperText ("Weight" |> str)
                 DOMAttr.OnChange this.handleWeightChange
                 classList [
                     !!classes?margin, true
@@ -137,8 +133,7 @@ type InputAdornments(p) =
                         inputAdornment [
                             InputAdornmentProp.Position InputAdornmentPosition.End
                             InputAdornmentProp.Variant InputAdornmentVariant.Outlined
-                        ] [ str "Kg" ]
-                        |> U2.Case1 |> U3.Case1)
+                        ] [ str "Kg" ])
                 ]
             ] []
             textField [
@@ -167,8 +162,7 @@ type InputAdornments(p) =
                                          else "visibility")
                                 ]
                             ]
-                        ]
-                    |> U2.Case1 |> U3.Case1)
+                        ])
                 ]
             ] []
         ]
@@ -179,5 +173,5 @@ let textFields props =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] textFields
 
 let view () =
-    from textFieldsWithStyles createEmpty<IClassesProps> []
+    ReactElementType.create textFieldsWithStyles createEmpty<IClassesProps> []
 

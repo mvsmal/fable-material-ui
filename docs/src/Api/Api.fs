@@ -2,7 +2,7 @@ module Api.View
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
+open Fable.React
 open Components
 
 [<Emit("require.context($0, true, /\\.md$/);")>]

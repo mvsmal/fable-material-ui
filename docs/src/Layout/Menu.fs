@@ -1,10 +1,9 @@
 module Layout.Menu
 
 open Elmish.React.Common
-open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -33,10 +32,10 @@ let menuStyles (theme : ITheme) : IStyles list =
             CSSProp.MarginBottom (theme.spacing.unit / 2)
         ]
         Styles.Custom ("toolbar", [
-            Display "flex"
+            Display DisplayOptions.Flex
             FlexDirection "column"
             JustifyContent "center"
-            CSSProp.AlignItems "flex-start"
+            CSSProp.AlignItems AlignItemsOptions.FlexStart
         ])
         Styles.Custom ("headerLink", [
             CSSProp.Transition "color .2s ease-in-out"
@@ -82,4 +81,4 @@ let view currentPage dispatch =
     let props = createEmpty<MenuProps>
     props.currentPage <- currentPage
     props.dispatch <- dispatch
-    from menuWithStyles props []
+    ReactElementType.create menuWithStyles props []

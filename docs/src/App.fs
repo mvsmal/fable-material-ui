@@ -1,17 +1,17 @@
 module App.View
 
 open Elmish
-open Elmish.Browser.Navigation
-open Elmish.Browser.UrlParser
+open Elmish.Navigation
+open Elmish.UrlParser
 open Fable.Core.JsInterop
-open Fable.Import.React
+open Fable.React
 
 open App.State
 open Types
 
 importAll "../sass/main.sass"
 
-let root (model: Model) dispatch : ReactElement =
+let root (model: Model) dispatch =
     Layout.Layout.view model dispatch
 
 
@@ -25,5 +25,5 @@ Program.mkProgram init update root
 #if DEBUG
 |> Program.withDebugger
 #endif
-|> Program.withReact "app"
+|> Program.withReactBatched "app"
 |> Program.run

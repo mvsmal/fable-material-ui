@@ -1,7 +1,7 @@
 module Customization.Overrides.InlineStyle
 
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 
 // We can use inline style

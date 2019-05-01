@@ -2,8 +2,8 @@ module Components.Markdown
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 
@@ -22,7 +22,7 @@ let markdownStyles (theme : ITheme) : IStyles list =
 
             customCss "& .anchor-link" [
                 MarginTop -96
-                Position "absolute"
+                Position PositionOptions.Absolute
             ]
             customCss """& pre, & pre[class*="language-"]""" [
                 Margin "24px 0"
@@ -33,7 +33,7 @@ let markdownStyles (theme : ITheme) : IStyles list =
                 CSSProp.Custom ("WebkitOverflowScrolling", "touch")
             ]
             customCss "& code" [
-                Display "inline-block"
+                Display DisplayOptions.InlineBlock
                 LineHeight 1.6
                 FontFamily """Consolas, "Liberation Mono", Menlo, Courier, monospace"""
                 CSSProp.Padding "3px 6px"
@@ -105,10 +105,10 @@ let markdownStyles (theme : ITheme) : IStyles list =
                 ]
                 customCss "& .anchor-link-style" [
                     Opacity 0
-                    Display "none"
+                    Display DisplayOptions.None
                 ]
                 customCss "&:hover .anchor-link-style" [
-                    Display "inline-block"
+                    Display DisplayOptions.InlineBlock
                     Opacity 1
                     CSSProp.Padding "0 8px"
                     CSSProp.Color theme.palette.text.hint
@@ -124,7 +124,7 @@ let markdownStyles (theme : ITheme) : IStyles list =
             ]
             customCss "& table" [
                 CSSProp.Width "100%"
-                CSSProp.Display "block"
+                CSSProp.Display DisplayOptions.Block
                 CSSProp.OverflowX "auto"
                 CSSProp.Custom ("WebkitOverflowScrolling", "touch")
                 CSSProp.BorderCollapse "collapse"
@@ -162,7 +162,7 @@ let markdownStyles (theme : ITheme) : IStyles list =
             customCss "& td" [
                 CSSProp.BorderBottom ("1px solid " + theme.palette.divider)
                 CSSProp.Padding "8px 16px 8px 8px"
-                CSSProp.TextAlign "left"
+                CSSProp.TextAlign TextAlignOptions.Left
             ]
             customCss "& td:last-child" [
                 CSSProp.PaddingRight 24
@@ -179,7 +179,7 @@ let markdownStyles (theme : ITheme) : IStyles list =
                 CSSProp.BorderBottom ("1px solid " + theme.palette.divider)
                 CSSProp.FontWeight theme.typography.fontWeightMedium
                 CSSProp.Padding "0 16px 0 8px"
-                CSSProp.TextAlign "left"
+                CSSProp.TextAlign TextAlignOptions.Left
             ]
             customCss "& th:last-child" [
                 CSSProp.PaddingRight 24
@@ -284,4 +284,4 @@ let markdownWithStyles = withStyles (StyleType.Func markdownStyles) [ MProps.Fli
 let view text =
     let props = createEmpty<MarkdownProps>
     props.text <- text
-    from markdownWithStyles props []
+    ReactElementType.create markdownWithStyles props []

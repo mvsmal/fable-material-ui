@@ -1,11 +1,11 @@
 module Demos.Buttons.IconLabelButtons
 
 open Fable.Core.JsInterop
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
-module R = Fable.Helpers.React
 
 let styles (theme : ITheme) : IStyles list =
     [
@@ -17,30 +17,30 @@ let styles (theme : ITheme) : IStyles list =
 
 let buttons (props : IClassesProps) =
     let classes = props.classes
-    R.div [] [
+    div [] [
         button [
             ButtonProp.Variant ButtonVariant.Contained
             MaterialProp.Color ComponentColor.Secondary
             HTMLAttr.Class !!classes?button
         ] [
-            R.str "Delete"
-            icon [ HTMLAttr.Class !!classes?rightIcon ] [ R.str "delete_icon" ]
+            str "Delete"
+            icon [ HTMLAttr.Class !!classes?rightIcon ] [ str "delete_icon" ]
         ]
         button [
             ButtonProp.Variant ButtonVariant.Contained
             MaterialProp.Color ComponentColor.Primary
             HTMLAttr.Class !!classes?button
         ] [
-            R.str "Send"
-            icon [ HTMLAttr.Class !!classes?rightIcon ] [ R.str "send" ]
+            str "Send"
+            icon [ HTMLAttr.Class !!classes?rightIcon ] [ str "send" ]
         ]
         button [
             ButtonProp.Variant ButtonVariant.Contained
             MaterialProp.Color ComponentColor.Default
             HTMLAttr.Class !!classes?button
         ] [
-            R.str "Upload"
-            icon [ HTMLAttr.Class !!classes?rightIcon ] [ R.str "cloud_up" ]
+            str "Upload"
+            icon [ HTMLAttr.Class !!classes?rightIcon ] [ str "cloud_up" ]
         ]
         button [
             ButtonProp.Variant ButtonVariant.Contained
@@ -48,8 +48,8 @@ let buttons (props : IClassesProps) =
             HTMLAttr.Disabled true
             HTMLAttr.Class !!classes?button
         ] [
-            icon [ HTMLAttr.Class !!classes?leftIcon ] [ R.str "keyboard_voice" ]
-            R.str "Talk"
+            icon [ HTMLAttr.Class !!classes?leftIcon ] [ str "keyboard_voice" ]
+            str "Talk"
         ]
         button [
             ButtonProp.Variant ButtonVariant.Contained
@@ -58,12 +58,12 @@ let buttons (props : IClassesProps) =
         ] [
             icon [
                 HTMLAttr.Class (!!classes?leftIcon + " " + !!classes?iconSmall)
-            ] [ R.str "save" ]
-            R.str "Save"
+            ] [ str "save" ]
+            str "Save"
         ]
     ]
 
 let buttonsWithStyles = withStyles<IClassesProps> (StyleType.Func styles) [] buttons
 
 let view () =
-    R.from buttonsWithStyles createEmpty []
+    ReactElementType.create buttonsWithStyles createEmpty []

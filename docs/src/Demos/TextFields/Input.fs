@@ -1,8 +1,8 @@
 module Demos.TextFields.Input
 
-open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -10,7 +10,7 @@ open Fable.MaterialUI.Themes
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Container [
-            CSSProp.Display "flex"
+            CSSProp.Display DisplayOptions.Flex
             CSSProp.FlexWrap "wrap"
         ]
         Styles.Input [
@@ -57,4 +57,4 @@ let inputTextFields (props : IClassesProps) =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] inputTextFields
 
 let view () =
-    from textFieldsWithStyles createEmpty<IClassesProps> []
+    ReactElementType.create textFieldsWithStyles createEmpty<IClassesProps> []

@@ -1,9 +1,8 @@
 module Home.View
 
-open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -12,7 +11,6 @@ open App.Types
 open Components
 open Global
 open Utils
-open Fable.Import
 
 
 let homeStyles (theme : ITheme) : IStyles list =
@@ -22,17 +20,17 @@ let homeStyles (theme : ITheme) : IStyles list =
         Styles.Custom ("hero", [
             MinHeight "80vh"
             Flex "0 0 auto"
-            Display "flex"
+            Display DisplayOptions.Flex
             JustifyContent "center"
-            CSSProp.AlignItems "center"
+            CSSProp.AlignItems AlignItemsOptions.Center
             BackgroundColor theme.palette.background.paper
             CSSProp.Color theme.palette.primary.dark
         ])
         Styles.Text [
-            Display "flex"
+            Display DisplayOptions.Flex
             FlexDirection "column"
             JustifyContent "center"
-            CSSProp.AlignItems "center"
+            CSSProp.AlignItems AlignItemsOptions.Center
         ]
         Styles.Title [
             CSSProp.LetterSpacing ".2rem"
@@ -48,7 +46,7 @@ let homeStyles (theme : ITheme) : IStyles list =
             PaddingRight (theme.spacing.unit * 4)
             MarginTop theme.spacing.unit
             CSSProp.MaxWidth 500
-            TextAlign "center"
+            TextAlign TextAlignOptions.Center
         ]
         Styles.Content [
             PaddingBottom (theme.spacing.unit * 8)
@@ -70,7 +68,7 @@ let homeStyles (theme : ITheme) : IStyles list =
             MaxHeight 200
         ])
         Styles.Custom ("support", [
-            CSSProp.TextAlign "center"
+            CSSProp.TextAlign TextAlignOptions.Center
             CSSProp.MarginBottom 30
         ])
     ]
@@ -108,20 +106,20 @@ let home (props : HomeProps) =
                     typography [
                         TypographyProp.Variant TypographyVariant.H3
                         TypographyProp.Align TypographyAlign.Center
-                        MaterialProp.Component ("h1" |> U3.Case1)
+                        MaterialProp.Component ("h1" |> ReactElementType.ofHtmlElement)
                         TypographyProp.Color TypographyColor.Inherit
                         TypographyProp.GutterBottom true
                         Class classes.title
                     ] [ str "FABLE MATERIAL-UI" ]
                     typography [
                         TypographyProp.Variant TypographyVariant.H5
-                        MaterialProp.Component ("h2" |> U3.Case1)
+                        MaterialProp.Component ("h2" |> ReactElementType.ofHtmlElement)
                         TypographyProp.Color TypographyColor.Inherit
                         TypographyProp.GutterBottom true
                         Class classes.headline
                     ] [ str "Fable bindings for Material-UI React components"]
                     button [
-                        MaterialProp.Component ("a" |> U3.Case1)
+                        MaterialProp.Component ("a" |> ReactElementType.ofHtmlElement)
                         Href (toHash Installation)
                         Class classes.button
                         ButtonProp.Variant ButtonVariant.Outlined
@@ -140,4 +138,4 @@ let homeWithStyles = withStyles (StyleType.Func homeStyles) [] home
 let root dispatch =
     let props = createEmpty<HomeProps>
     props.dispatch <- dispatch
-    from homeWithStyles props []
+    ReactElementType.create homeWithStyles props []

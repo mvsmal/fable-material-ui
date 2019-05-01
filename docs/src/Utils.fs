@@ -3,7 +3,7 @@ module Utils
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.MaterialUI.Themes
-open Fable.Helpers.React.Props
+open Fable.React.Props
 
 let toObj list =
     keyValueList CaseRules.LowerFirst list

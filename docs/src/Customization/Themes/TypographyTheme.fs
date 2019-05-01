@@ -1,15 +1,15 @@
 module Customization.Themes.TypographyTheme
 
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
 
 let styles : IStyles list = [
     Styles.Root [
-        CSSProp.Display "flex"
+        CSSProp.Display DisplayOptions.Flex
     ]
 ]
 
@@ -58,4 +58,4 @@ let typographyTheme (props : IClassesProps) =
 let withStyles = withStyles (StyleType.Styles styles) [] typographyTheme
 
 let view () =
-    from withStyles createEmpty<IClassesProps> []
+    ReactElementType.create withStyles createEmpty<IClassesProps> []

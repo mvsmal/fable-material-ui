@@ -2,9 +2,8 @@ module Components.Demo
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Fable.Import.React
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -24,7 +23,7 @@ let demoStyles (theme : ITheme) : IStyles list =
                 !!([
                         CSSProp.BorderRadius theme.shape.borderRadius
                         CSSProp.BackgroundColor theme.palette.grey.``200``
-                        CSSProp.Display "flex"
+                        CSSProp.Display DisplayOptions.Flex
                         CSSProp.JustifyContent "center"
                         CSSProp.PaddingTop (theme.spacing.unit * 2)
                         CSSProp.PaddingBottom (theme.spacing.unit * 2)
@@ -37,7 +36,7 @@ let demoStyles (theme : ITheme) : IStyles list =
                     ] |> toObj))
     [
         Styles.Root [
-            CSSProp.Position "relative"
+            CSSProp.Position PositionOptions.Relative
             CSSProp.MarginBottom 40
             CSSProp.MarginLeft (-theme.spacing.unit * 2)
             CSSProp.MarginRight (-theme.spacing.unit * 2)
@@ -49,21 +48,21 @@ let demoStyles (theme : ITheme) : IStyles list =
         ]
         Styles.Custom' ("demo", demoStyle)
         Styles.Custom ("header", [
-            CSSProp.Display "none"
+            CSSProp.Display DisplayOptions.None
             customCss smBreakpoint [
-                CSSProp.Display "flex"
+                CSSProp.Display DisplayOptions.Flex
                 CSSProp.Custom ("flip", false)
-                CSSProp.Position "absolute"
+                CSSProp.Position PositionOptions.Absolute
                 CSSProp.Top 0
                 CSSProp.Right theme.spacing.unit
             ]
         ])
         Styles.Custom ("code", [
-            CSSProp.Display "none"
+            CSSProp.Display DisplayOptions.None
             CSSProp.Padding 0
             CSSProp.Margin 0
             customCss smBreakpoint [
-                CSSProp.Display "block"
+                CSSProp.Display DisplayOptions.Block
             ]
             customCss "& pre" [
                 CSSProp.Overflow "auto"
@@ -120,9 +119,7 @@ type DemoComponent(p) =
                         tooltip [
                             Placement PlacementType.Top
                             TooltipProp.Title
-                                (if this.state.expanded
-                                 then (str "Hide source" |> U2.Case1 |> U3.Case1)
-                                 else (str "Show source" |> U2.Case1 |> U3.Case1))
+                                (str (if this.state.expanded then "Hide source" else "Show source"))
                         ] [
                             iconButton [
                                 HTMLAttr.Custom ("aria-label", "Source of demo")
@@ -154,4 +151,4 @@ let view title demoPath demoElement =
     props.title <- title
     props.demoElement <- demoElement
 
-    from demoWithStyles props []
+    ReactElementType.create demoWithStyles props []

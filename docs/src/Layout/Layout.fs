@@ -3,8 +3,8 @@ module Layout.Layout
 open Elmish.React
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
@@ -36,7 +36,7 @@ let layoutStyles (theme : ITheme) : IStyles list=
     let smBreakpoint = theme.breakpoints.up(MaterialSize.Sm |> U2.Case1)
     [
         Styles.Root [
-            Display "flex"
+            Display DisplayOptions.Flex
             PaddingBottom 40
         ]
         Styles.Custom ("menuButton", [
@@ -114,4 +114,4 @@ let view model dispatch =
     let props = createEmpty<AppProps>
     props.model <- model
     props.dispatch <- dispatch
-    from layoutWithStyles props []
+    ReactElementType.create layoutWithStyles props []

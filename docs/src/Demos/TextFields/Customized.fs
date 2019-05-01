@@ -1,9 +1,9 @@
 module Demos.TextFields.Customized
 
 open Fable.Core
-open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -14,7 +14,7 @@ let toObj props = keyValueList CaseRules.LowerFirst props
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Container [
-            CSSProp.Display "flex"
+            CSSProp.Display DisplayOptions.Flex
             CSSProp.FlexWrap "wrap"
         ]
         Styles.Custom ("margin", [
@@ -126,4 +126,4 @@ let customizedInputs (props : IClassesProps) =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] customizedInputs
 
 let view () =
-    from textFieldsWithStyles createEmpty<IClassesProps> []
+    ReactElementType.create textFieldsWithStyles createEmpty<IClassesProps> []

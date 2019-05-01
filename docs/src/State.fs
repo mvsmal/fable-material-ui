@@ -1,10 +1,9 @@
 module App.State
 
 open Elmish
-open Elmish.Browser.Navigation
-open Elmish.Browser.UrlParser
-open Fable.Import.Browser
-open Fable.Import
+open Elmish.Navigation
+open Elmish.UrlParser
+open Browser.Dom
 open Global
 open Types
 
@@ -33,7 +32,7 @@ let urlUpdate (result: Option<Page>) model =
     | None ->
         model,Navigation.modifyUrl (toHash model.currentPage)
     | Some page ->
-        { model with currentPage = page; isLanding = (page = Home) }, [fun _ -> Browser.window.scroll(0.,0.) ]
+        { model with currentPage = page; isLanding = (page = Home) }, [fun _ -> window.scroll(0.,0.) ]
 
 let init result =
     let (model, cmd) =

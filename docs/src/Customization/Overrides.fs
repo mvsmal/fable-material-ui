@@ -1,7 +1,7 @@
 module Customization.Overrides.View
 
 open Fable.Core.JsInterop
-open Fable.Helpers.React
+open Fable.React
 
 open Components
 

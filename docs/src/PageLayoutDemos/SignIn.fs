@@ -2,8 +2,8 @@ module PageLayoutDemos.SignIn
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
@@ -17,7 +17,7 @@ let styles (theme : ITheme) : IStyles list =
     [
         Styles.Layout [
             Width "auto"
-            Display "block"
+            Display DisplayOptions.Block
             MarginLeft (theme.spacing.unit * 3)
             MarginRight (theme.spacing.unit * 3)
             CSSProp.Custom(
@@ -29,9 +29,9 @@ let styles (theme : ITheme) : IStyles list =
         ]
         Styles.Paper [
             MarginTop (theme.spacing.unit * 8)
-            Display "Flex"
+            Display DisplayOptions.Flex
             FlexDirection "column"
-            CSSProp.AlignItems "center"
+            CSSProp.AlignItems AlignItemsOptions.Center
             CSSProp.Padding (sprintf "%ipx %ipx %ipx" (theme.spacing.unit * 2) (theme.spacing.unit * 3) (theme.spacing.unit * 3))            
         ]
 
@@ -104,4 +104,4 @@ let signIn props =
     ]
 
 let root () =
-    from (signIn |> withStyles) createEmpty []
+    ReactElementType.create (signIn |> withStyles) createEmpty []

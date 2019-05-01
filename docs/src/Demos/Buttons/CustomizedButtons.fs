@@ -3,18 +3,18 @@ module Demos.Buttons.CustomizedButtons
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.MaterialUI.Core
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
 open Fable.MaterialUI
-module R = Fable.Helpers.React
 
 let toObj = keyValueList CaseRules.LowerFirst
 
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Container [
-            CSSProp.Display "flex"
+            CSSProp.Display DisplayOptions.Flex
             CSSProp.FlexWrap "wrap"
         ]
         Styles.Custom ("margin", [ CSSProp.Margin theme.spacing.unit])
@@ -76,28 +76,28 @@ let theme = createMuiTheme [
 
 let buttons (props : IClassesProps) =
     let classes = props.classes
-    R.div [ HTMLAttr.Class !!classes?container ] [
+    div [ HTMLAttr.Class !!classes?container ] [
         button [
             ButtonProp.Variant ButtonVariant.Contained
             MaterialProp.Color ComponentColor.Primary
             HTMLAttr.Class ([!!classes?margin; !!classes?cssRoot] |> String.concat " ")
-        ] [ R.str "Custom CSS" ]
+        ] [ str "Custom CSS" ]
         muiThemeProvider [ MuiThemeProviderProp.Theme (ProviderTheme.Theme theme) ] [
             button [
                 ButtonProp.Variant ButtonVariant.Contained
                 MaterialProp.Color ComponentColor.Primary
                 HTMLAttr.Class !!classes?margin
-            ] [ R.str "MuiThemeProvider" ]
+            ] [ str "MuiThemeProvider" ]
         ]
         button [
             ButtonProp.Variant ButtonVariant.Contained
             MaterialProp.Color ComponentColor.Primary
             MaterialProp.DisableRipple true
             HTMLAttr.Class ([!!classes?margin; !!classes?bootstrapRoot] |> String.concat " ")
-        ] [ R.str "Bootstrap" ]
+        ] [ str "Bootstrap" ]
     ]
 
 let buttonsWithStyles = withStyles<IClassesProps> (StyleType.Func styles) [] buttons
 
 let view () =
-    R.from buttonsWithStyles createEmpty []
+    ReactElementType.create buttonsWithStyles createEmpty []

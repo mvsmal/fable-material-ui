@@ -1,17 +1,17 @@
 module Demos.TextFields.Composed
 
-open Fable.Helpers.React
 open Fable.Core.JsInterop
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 open Fable.MaterialUI.Themes
-open Fable.Import.React
+open Browser.Types
 
 let styles (theme : ITheme) : IStyles list =
     [
         Styles.Container [
-            CSSProp.Display "flex"
+            CSSProp.Display DisplayOptions.Flex
             CSSProp.FlexWrap "wrap"
         ]
         Styles.FormControl [
@@ -28,7 +28,7 @@ type ComposedTextField(p) =
     do
         base.setInitState { name = "Composed TextField" }
 
-    member private this.handleChange (e : FormEvent) =
+    member private this.handleChange (e : Event) =
         let value = e.Value
         this.setState (fun s _ -> { s with name = value })
     
@@ -101,6 +101,6 @@ let textFields props =
 let textFieldsWithStyles = withStyles (StyleType.Func styles) [] textFields
 
 let view () =
-    from textFieldsWithStyles createEmpty<IClassesProps> []
+    ReactElementType.create textFieldsWithStyles createEmpty<IClassesProps> []
 
 

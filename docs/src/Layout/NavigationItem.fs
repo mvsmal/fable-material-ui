@@ -1,10 +1,8 @@
 module Layout.NavigationItem
 
-open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
-open Fable.Import.React
+open Fable.React
+open Fable.React.Props
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
@@ -70,7 +68,7 @@ let subNavWithStyles<'a> = withStyles (StyleType.Func subNavStyles) [] subNav
 let navItemStyles (theme: ITheme) : IStyles list =
     [
         Styles.Custom ("listItem", [
-            CSSProp.Display "block"
+            CSSProp.Display DisplayOptions.Block
             CSSProp.PaddingTop 0
             CSSProp.PaddingBottom 0
         ])
@@ -113,7 +111,7 @@ let navItem (props : NavItemProps) =
         ] [
             button [
                 DisableRipple true
-                MaterialProp.Component ("a" |> U3.Case1)
+                MaterialProp.Component ("a" |> ReactElementType.ofHtmlElement)
                 Style style
                 Class buttonClasses
                 MaterialProp.Classes [ ClassNames.Root !!props.classes?button ]
@@ -129,7 +127,7 @@ let navItem (props : NavItemProps) =
         listItem [
             DisableGutters true
             Class !!props.classes?listItem
-        ] [ from subNavWithStyles subNavProps [] ]
+        ] [ ReactElementType.create subNavWithStyles subNavProps [] ]
 
 let navItemWithStyles = withStyles (StyleType.Func navItemStyles) [] navItem
 
@@ -142,4 +140,4 @@ let view item depth opened currentPage childItems dispatch =
     props.opened <- opened
     props.childItems <- childItems
     props.dispatch <- dispatch
-    from navItemWithStyles props []
+    ReactElementType.create navItemWithStyles props []

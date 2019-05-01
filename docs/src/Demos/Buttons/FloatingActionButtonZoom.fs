@@ -2,17 +2,16 @@ module Demos.Buttons.FloatingActionButtonZoom
 
 open Fable.Core
 open Fable.Core.JsInterop
-open Fable.Helpers.React.Props
-open Fable.Import.React
+open Fable.React.Props
+open Fable.React
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Themes
 open Fable.MaterialUI.Props
 open Fable.MaterialUI
-module R = Fable.Helpers.React
 
 let tabContainer children =
     typography [
-        MaterialProp.Component ("div" |> U3.Case1)
+        MaterialProp.Component ("div" |> ReactElementType.ofHtmlElement)
         Style [ CSSProp.Padding (8 * 3) ]
     ] children
 
@@ -21,11 +20,11 @@ let styles (theme : ITheme) : IStyles list =
         Styles.Root [
             CSSProp.BackgroundColor theme.palette.background.paper
             CSSProp.Width 500
-            CSSProp.Position "relative"
+            CSSProp.Position PositionOptions.Relative
             CSSProp.MinHeight 200
         ]
         Styles.Fab [
-            CSSProp.Position "absolute"
+            CSSProp.Position PositionOptions.Relative
             CSSProp.Bottom (theme.spacing.unit * 2)
             CSSProp.Right (theme.spacing.unit * 2)
         ]
@@ -37,7 +36,6 @@ let styles (theme : ITheme) : IStyles list =
             ]
         )
     ]
-
 
 type Fab = {
     color : ComponentColor
@@ -73,21 +71,21 @@ type FloatingActionButtonZoom (props) =
             {
                 color = ComponentColor.Primary
                 className = !!classes?fab
-                icon = icon [] [ R.str "add_icon" ]
+                icon = icon [] [ str "add_icon" ]
             }
             {
                 color = ComponentColor.Secondary
                 className = !!classes?fab
-                icon = icon [] [ R.str "edit_icon" ]
+                icon = icon [] [ str "edit_icon" ]
             }
             {
                 color = ComponentColor.Inherit
                 className = !!classes?fab + " " + !!classes?fabGreen
-                icon = icon [] [ R.str "keyboard_arrow_up_icon" ]
+                icon = icon [] [ str "keyboard_arrow_up_icon" ]
             }
         ]
 
-        R.div [ Class !!classes?root ] [
+        div [ Class !!classes?root ] [
             yield appBar [
                 AppBarProp.Position AppBarPosition.Static
                 MaterialProp.Color ComponentColor.Default
@@ -99,15 +97,15 @@ type FloatingActionButtonZoom (props) =
                     TabsProp.TextColor TabsTextColor.Primary
                     MaterialProp.FullWidth true
                 ] [
-                    tab [ MaterialProp.Label (R.str "Item One" |> U2.Case1 |> U3.Case1)]
-                    tab [ MaterialProp.Label (R.str "Item Two" |> U2.Case1 |> U3.Case1)]
-                    tab [ MaterialProp.Label (R.str "Item Three" |> U2.Case1 |> U3.Case1)]
+                    tab [ MaterialProp.Label (str "Item One")]
+                    tab [ MaterialProp.Label (str "Item Two")]
+                    tab [ MaterialProp.Label (str "Item Three")]
                 ]
             ]
             yield (match this.state.value with
-                   | 1 -> tabContainer [ R.str "Item Two"]
-                   | 2 -> tabContainer [ R.str "Item Three"]
-                   | _ -> tabContainer [ R.str "Item One" ] )
+                   | 1 -> tabContainer [ str "Item Two"]
+                   | 2 -> tabContainer [ str "Item Three"]
+                   | _ -> tabContainer [ str "Item One" ] )
             yield! fabs |> List.mapi (fun i f ->
                 zoom [
                     Key (f.color |> string)
@@ -127,10 +125,10 @@ type FloatingActionButtonZoom (props) =
         ]
 
 let floatingButtonsZoom props =
-    R.ofType<FloatingActionButtonZoom,_,_> props []
+    ofType<FloatingActionButtonZoom,_,_> props []
 
 let floatingButtonsZoomWithStyles =
     withStyles<ButtonsProps> (StyleType.Func styles) [ StyleOption.WithTheme true ] floatingButtonsZoom
 
 let view () =
-    R.from floatingButtonsZoomWithStyles createEmpty []
+    ReactElementType.create floatingButtonsZoomWithStyles createEmpty []

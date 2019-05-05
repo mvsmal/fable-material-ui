@@ -75,3 +75,19 @@ and moved to `MaterialProp.TransitionDurationAuto` (compiled to `transitionDurat
 
 ## Other
 Since `keyValueList` function is not recursive in Fable 2, there are several properties which have now been replaced with functions, converting a list of DU cases to an object. The usage of those props stays the same, except `Styles` (see above).
+
+# Build
+
+## Dependencies
+
+To build the project you need Paket and FAKE installed as dotnet global tool:
+```
+dotnet tool install paket -g
+dotnet tool install fake-cli -g
+```
+
+Then run:
+```
+paket restore
+fake build
+```

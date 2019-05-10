@@ -79,7 +79,10 @@ module Core =
     let inline outlinedInput (b : IHTMLProp seq) c : ReactElement = ofImport "default" "@material-ui/core/OutlinedInput" (toObj b) c
     let inline paper (b : IHTMLProp seq) c : ReactElement = ofImport "default" "@material-ui/core/Paper" (toObj b) c
     let inline popover (b : IHTMLProp seq) c : ReactElement = ofImport "default" "@material-ui/core/Popover" (toObj b) c
-    let inline popper (b : IHTMLProp seq) c : ReactElement = ofImport "default" "@material-ui/core/Popper" (toObj b) c
+    let inline popper (b : IHTMLProp seq) (c : U2<ReactElement list, (PopperProps->ReactElement)>) : ReactElement =
+        ofImport "default" "@material-ui/core/Popper" (toObj b) (match c with
+                                                                 | U2.Case1 elements -> elements
+                                                                 | U2.Case2 func -> !![func] )
     let inline portal (b : IHTMLProp seq) c : ReactElement = ofImport "default" "@material-ui/core/Portal" (toObj b) c
     let inline radio (b : IHTMLProp seq) : ReactElement = ofImport "default" "@material-ui/core/Radio" (toObj b) []
     let inline radioGroup (b : IHTMLProp seq) c : ReactElement = ofImport "default" "@material-ui/core/RadioGroup" (toObj b) c

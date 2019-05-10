@@ -11,6 +11,7 @@ type Page =
     | AppBar
     | Avatars
     | Buttons
+    | Popper
     | TextFields
     | SignIn
     | Overrides
@@ -36,6 +37,7 @@ let toHash page =
     | AppBar -> "#/demos/app-bar"
     | Avatars -> "#/demos/avatars"
     | Buttons -> "#/demos/buttons"
+    | Popper -> "#/demos/popper"
     | TextFields -> "#/demos/text-fields"
     | SignIn -> "#/pagelayout/signin"
     | Overrides -> "#/customization/overrides"
@@ -59,6 +61,7 @@ let toTitle = function
             | AppBar -> "App Bar"
             | Avatars -> "Avatars"
             | Buttons -> "Buttons"
+            | Popper -> "Popper"
             | TextFields -> "Text Fields"
             | SignIn -> "Sign-in"
             | Overrides -> "Overrides"

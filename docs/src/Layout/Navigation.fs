@@ -22,6 +22,7 @@ let navItems = [
             [
                 { Title = "App Bar"; Href = Some Page.AppBar; Children = [] }
                 { Title = "Buttons"; Href = Some Page.Buttons; Children = [] }
+                { Title = "Popper"; Href = Some Page.Popper; Children = [] }
                 { Title = "Text Fields"; Href = Some Page.TextFields; Children = [] }
                 // { Title = "Avatars"; Href = Some Page.Avatars; Children = [] }
             ]

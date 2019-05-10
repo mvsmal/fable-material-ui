@@ -891,6 +891,8 @@ module Props =
     open Fable.Core.JsInterop
     open Fable.React
     open Fable.React.Props
+    open Fable.Core
+    open Browser.Types
 
     let inline private customHtmlAttr key props =
         HTMLAttr.Custom(key, props |> keyValueList CaseRules.LowerFirst)
@@ -951,10 +953,11 @@ module Props =
         HTMLAttr.Custom (key, prop)
 
     type RefProp<'T> = U2<IRefValue<'T>,(ReactElement->unit)>
+    type AnchorElProp = U2<EventTarget,unit->EventTarget>
 
     type MaterialProp<'RefType> =
         | Active of bool
-        | AnchorEl of ReactElement
+        | AnchorEl of AnchorElProp
         | CheckedIcon of ReactElement
         | Color of ComponentColor
         | Component of ReactElementType
@@ -1013,7 +1016,14 @@ module Props =
         | Appear of bool
         | Enter of bool
         | Exit of bool
-        | AddEndListener of (obj->(obj->unit)->unit)
+        | AddEndListener of (HTMLElement->(unit->unit)->unit)
+        
+        | OnEnter of (HTMLElement->bool->unit)
+        | OnEntered of (HTMLElement->bool->unit)
+        | OnEntering of (HTMLElement->bool->unit)
+        | OnExit of (HTMLElement->unit)
+        | OnExited of (HTMLElement->unit)
+        | OnExiting of (HTMLElement->unit)
         interface IHTMLProp
 
     type SelectionControlProp =
@@ -1619,6 +1629,64 @@ module Props =
         | MarginThreshold of int
         | TransformOrigin of PopoverOrigin
         interface IHTMLProp
+
+    type [<AllowNullLiteral>] Timeout =
+        abstract enter: float with get, set
+        abstract exit: float with get, set
+
+    type [<AbstractClass>] TransitionProps =
+        abstract appear: bool with get, set
+        abstract enter: bool with get, set
+        abstract exit: bool with get, set
+        abstract ``in``: bool with get, set
+        abstract mountOnEnter: bool with get, set
+        abstract unmountOnExit: bool with get, set
+        abstract timeout: Timeout with get, set
+        abstract addEndListener: node: HTMLElement -> ``done``: (unit->unit) -> unit
+        abstract onEnter: node: HTMLElement -> isAppearing: bool -> unit
+        abstract onEntering: node: HTMLElement -> isAppearing: bool -> unit
+        abstract onEntered: node: HTMLElement -> isAppearing: bool -> unit
+        abstract onExit: node: HTMLElement -> unit
+        abstract onExiting: node: HTMLElement -> unit
+        abstract onExited: node: HTMLElement -> unit
+        abstract style: obj with get, set
+        member this.ToHTMLAttrList() : IHTMLProp list =
+            let t : JS.Object = !!this
+            [ if t.hasOwnProperty("appear") then
+                  yield TransitionProp.Appear this.appear
+              if t.hasOwnProperty("enter") then
+                  yield TransitionProp.Enter this.enter
+              if t.hasOwnProperty("exit") then
+                  yield TransitionProp.Exit this.exit
+              if t.hasOwnProperty("in") then
+                  yield MaterialProp.In this.``in``
+              if t.hasOwnProperty("mountOnEnter") then
+                  yield TransitionProp.MountOnEnter this.mountOnEnter
+              if t.hasOwnProperty("unmountOnExit") then
+                  yield TransitionProp.UnmountOnExit this.unmountOnExit
+              if t.hasOwnProperty("timeout") && (not (isNull this.timeout)) then
+                  yield MaterialProp.Timeout ([ TransitionDurationProp.Enter this.timeout.enter
+                                                TransitionDurationProp.Exit this.timeout.exit ] |> U2.Case2)
+              if t.hasOwnProperty("addEndListener") then
+                  yield TransitionProp.AddEndListener this.addEndListener
+              if t.hasOwnProperty("onEnter") then
+                  yield TransitionProp.OnEnter this.onEnter
+              if t.hasOwnProperty("onEntering") then
+                  yield TransitionProp.OnEntering this.onEntering
+              if t.hasOwnProperty("onEntered") then
+                  yield TransitionProp.OnEntered this.onEntered
+              if t.hasOwnProperty("onExit") then
+                  yield TransitionProp.OnExit this.onExit
+              if t.hasOwnProperty("onExiting") then
+                  yield TransitionProp.OnExiting this.onExiting
+              if t.hasOwnProperty("onExited") then
+                  yield TransitionProp.OnExited this.onExited
+              if t.hasOwnProperty("style") then
+                  yield HTMLAttr.Custom ("style", this.style) ]
+
+    type PopperProps =
+        abstract placement : PlacementType with get, set
+        abstract TransitionProps : TransitionProps with get, set
 
     type PopperProp =
         | Modifies of obj

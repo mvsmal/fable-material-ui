@@ -13,7 +13,7 @@ Fable.MaterialUI.Core.inputAdornment (props : seq<IHTMLProp>) (children : seq<Re
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">MaterialProp.DisableTypography</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If children is a string then disable wrapping in a Typography component. |
 | <span class="prop-name">InputAdornmentProp.DisablePointerEvents</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Disable pointer events on the root. This allows for the content of the adornment to focus the input on click. |
 | <span class="prop-name">InputAdornmentProp.Position</span> | <span class="prop-type">type&nbsp;InputAdornmentPosition&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;Start<br>&nbsp;&nbsp;&#124;&nbsp;End<br></span> |   | The position this adornment should appear relative to the `Input`. |

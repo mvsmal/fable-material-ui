@@ -14,7 +14,7 @@ Fable.MaterialUI.Core.filledInput (props : seq<IHTMLProp>) (children : seq<React
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.InputProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Attributes applied to the `input` element. |
-| <span class="prop-name">MaterialProp.InputRef</span> | <span class="prop-type">type&nbsp;RefProp&nbsp;=&nbsp;U2&lt;obj,(ReactInstance&#8209;>unit)></span> |   | Use that property to pass a ref callback to the native input component. |
+| <span class="prop-name">MaterialProp.InputRef</span> | <span class="prop-type">type&nbsp;RefProp&lt;'T>&nbsp;=&nbsp;U2&lt;IRefValue&lt;'T>,&nbsp;(ReactElement&#8209;>unit)></span> |   | Use that property to pass a ref callback to the native input component. |
 | <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> |   | If `true`, the input will indicate an error. This is normally obtained via context from FormControl. |
 | <span class="prop-name">MaterialProp.FullWidth</span> | <span class="prop-type">bool</span> |   | If `true`, the input will take up the full width of its container. |
 | <span class="prop-name">MaterialProp.Margin</span> | <span class="prop-type">type&nbsp;FormControlMargin&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;None<br>&nbsp;&nbsp;&#124;&nbsp;Dense<br>&nbsp;&nbsp;&#124;&nbsp;Normal<br></span> |   | If `Dense`, will adjust vertical spacing. This is normally obtained via context from FormControl. |
@@ -33,10 +33,10 @@ Fable.MaterialUI.Core.filledInput (props : seq<IHTMLProp>) (children : seq<React
 | <span class="prop-name">HTMLAttr.Required</span> | <span class="prop-type">bool</span> |   | If `true`, the input will be required. |
 | <span class="prop-name">HTMLAttr.Rows</span> | <span class="prop-type">float</span> |   | Number of rows to display when multiline option is set to true. |
 | <span class="prop-name">HTMLAttr.Type</span> | <span class="prop-type">string</span> |   | Type of the input element. It should be a valid HTML5 input type. |
-| <span class="prop-name">DOMAttr.OnChange</span> | <span class="prop-type">FormEvent->unit</span> |   | Callback fired when the value is changed.<br><br>**Signature:**<br>`(event : FormEvent) -> unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.value`. |
-| <span class="prop-name">FilledInputProp.EndAdornment</span> | <span class="prop-type">ReactNode</span> |   | End `InputAdornment` for this component. |
-| <span class="prop-name">FilledInputProp.InputComponent</span> | <span class="prop-type">ReactType</span> |   | The component used for the native input. Either a string to use a DOM element or a component. |
-| <span class="prop-name">FilledInputProp.StartAdornment</span> | <span class="prop-type">ReactNode</span> |   | Start `InputAdornment` for this component. |
+| <span class="prop-name">DOMAttr.OnChange</span> | <span class="prop-type">Event->unit</span> |   | Callback fired when the value is changed.<br><br>**Signature:**<br>`(event : Event) -> unit`<br>*event:* The event source of the callback. You can pull out the new value by accessing `event.target.value`. |
+| <span class="prop-name">FilledInputProp.EndAdornment</span> | <span class="prop-type">ReactElement</span> |   | End `InputAdornment` for this component. |
+| <span class="prop-name">FilledInputProp.InputComponent</span> | <span class="prop-type">ReactElementType</span> |   | The component used for the native input. Either a string to use a DOM element or a component. |
+| <span class="prop-name">FilledInputProp.StartAdornment</span> | <span class="prop-type">ReactElement</span> |   | Start `InputAdornment` for this component. |
 
 Any other properties supplied will be spread to the root element ([InputBase](#/api/input-base)).
 

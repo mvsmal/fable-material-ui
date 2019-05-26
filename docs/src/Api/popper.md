@@ -3,7 +3,33 @@
 <p class="description">The API documentation of the Popper React component. Learn more about the properties and the CSS customization points.</p>
 
 ```fsharp
-Fable.MaterialUI.Core.Popper (props : seq<IHTMLProp>) (children : seq<ReactElement>) : ReactElement
+Fable.MaterialUI.Core.Popper (props : seq<IHTMLProp>) (children : U2<ReactElement list, (PopperProps->ReactElement)>) : ReactElement
+
+type [<AllowNullLiteral>] Timeout =
+    abstract enter: float with get, set
+    abstract exit: float with get, set
+
+type [<AbstractClass>] TransitionProps =
+    abstract appear: bool with get, set
+    abstract enter: bool with get, set
+    abstract exit: bool with get, set
+    abstract ``in``: bool with get, set
+    abstract mountOnEnter: bool with get, set
+    abstract unmountOnExit: bool with get, set
+    abstract timeout: Timeout with get, set
+    abstract addEndListener: node: HTMLElement -> ``done``: (unit->unit) -> unit
+    abstract onEnter: node: HTMLElement -> isAppearing: bool -> unit
+    abstract onEntering: node: HTMLElement -> isAppearing: bool -> unit
+    abstract onEntered: node: HTMLElement -> isAppearing: bool -> unit
+    abstract onExit: node: HTMLElement -> unit
+    abstract onExiting: node: HTMLElement -> unit
+    abstract onExited: node: HTMLElement -> unit
+    abstract style: obj with get, set
+    member this.ToHTMLPropList() : IHTMLProp list
+
+type PopperProps =
+        abstract placement : PlacementType with get, set
+        abstract TransitionProps : TransitionProps with get, set
 ```
 
 Poppers rely on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
@@ -12,8 +38,8 @@ Poppers rely on the 3rd party library [Popper.js](https://github.com/FezVrasta/p
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">MaterialProp.AnchorEl</span> | <span class="prop-type">ReactInstance</span> |   | This is the DOM element, or a function that returns the DOM element, that may be used to set the position of the popover. The return value will passed as the reference object of the Popper instance. |
-| <span class="prop-name">MaterialProp.Container</span> | <span class="prop-type">ReactType</span> |   | A node, component instance, or function that returns either. The `container` will passed to the Modal component. By default, it uses the body of the anchorEl's top-level document object, so it's simply `document.body` most of the time. |
+| <span class="prop-name">MaterialProp.AnchorEl</span> | <span class="prop-type">type&nbsp;AnchorElProp&nbsp;=&nbsp;U2&lt;EventTarget,&nbsp;unit&#8209;>EventTarget></span> |   | This is the DOM element, or a function that returns the DOM element, that may be used to set the position of the popover. The return value will passed as the reference object of the Popper instance. |
+| <span class="prop-name">MaterialProp.Container</span> | <span class="prop-type">ReactElementType</span> |   | A node, component instance, or function that returns either. The `container` will passed to the Modal component. By default, it uses the body of the anchorEl's top-level document object, so it's simply `document.body` most of the time. |
 | <span class="prop-name required">MaterialProp.Open *</span> | <span class="prop-type">bool</span> |   | If `true`, the popper is visible. |
 | <span class="prop-name">MaterialProp.DisablePortal</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Disable the portal behavior. The children stay within it's parent DOM hierarchy. |
 | <span class="prop-name">MaterialProp.KeepMounted</span> | <span class="prop-type">bool</span> |   | Always keep the children in the DOM. This property can be useful in SEO situation or when you want to maximize the responsiveness of the Popper. |

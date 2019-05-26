@@ -13,7 +13,7 @@ Fable.MaterialUI.Core.gridListTile (props : seq<IHTMLProp>) (children : seq<Reac
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"li"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">"li"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">HTMLAttr.Cols</span> | <span class="prop-type">float</span> | <span class="prop-default">1</span> | Width of the tile in number of grid cells. |
 | <span class="prop-name">HTMLAttr.Rows</span> | <span class="prop-type">float</span> | <span class="prop-default">1</span> | Height of the tile in number of grid cells. |
 

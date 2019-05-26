@@ -13,7 +13,7 @@ Fable.MaterialUI.Core.listItem (props : seq<IHTMLProp>) (children : seq<ReactEle
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> |   | The component used for the root node. Either a string to use a DOM element or a component. By default, it's a `li` when `Button` is `false` and a `div` when `Button` is `true`. |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactElementType</span> |   | The component used for the root node. Either a string to use a DOM element or a component. By default, it's a `li` when `Button` is `false` and a `div` when `Button` is `true`. |
 | <span class="prop-name">MaterialProp.Dense</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, compact vertical padding designed for keyboard and mouse input will be used. |
 | <span class="prop-name">MaterialProp.DisableGutters</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the left and right padding is removed. |
 | <span class="prop-name">HTMLAttr.Selected</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Use to apply selected styling. |
@@ -21,7 +21,7 @@ Fable.MaterialUI.Core.listItem (props : seq<IHTMLProp>) (children : seq<ReactEle
 | <span class="prop-name">ListItemProp.AlignItems</span> | <span class="prop-type">type&nbsp;ListItemAlignItems&nbsp;=<br>&nbsp;&nbsp;&#124;&nbsp;FlexStart<br>&nbsp;&nbsp;&#124;&nbsp;Center<br></span> | <span class="prop-default">ListItemAlignItems.Center</span> | Defines the `align-items` style property. |
 | <span class="prop-name">ListItemProp.Button</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the list item will be a button (using `ButtonBase`). |
 | <span class="prop-name">ListItemProp.Divider</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, a 1px light border is added to the bottom of the list item. |
-| <span class="prop-name">ChildrenProp.ContainerComponent</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"li"</span> | The container component used when a `ListItemSecondaryAction` is rendered. |
+| <span class="prop-name">ChildrenProp.ContainerComponent</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">"li"</span> | The container component used when a `ListItemSecondaryAction` is rendered. |
 | <span class="prop-name">ChildrenProp.ContainerProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the container element when the component is used to display a `ListItemSecondaryAction`. |
 
 Any other properties supplied will be spread to the root element (native element).

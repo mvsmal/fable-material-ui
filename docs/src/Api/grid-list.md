@@ -13,7 +13,7 @@ Fable.MaterialUI.Core.gridList (props : seq<IHTMLProp>) (children : seq<ReactEle
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"ul"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">"ul"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">HTMLAttr.Cols</span> | <span class="prop-type">float</span> | <span class="prop-default">2</span> | Number of columns. |
 | <span class="prop-name">GridListProp.CellHeight</span> | <span class="prop-type">U2&lt;int,&nbsp;AutoEnum&gt;<br>type&nbsp;AutoEnum&nbsp;=&nbsp;Auto<br></span> | <span class="prop-default">180</span> | Number of px for one cell height. You can set `AutoEnum.Auto` if you want to let the children determine the height. |
 | <span class="prop-name">GridListProp.Spacing</span> | <span class="prop-type">int</span> | <span class="prop-default">4</span> | Number of px for the spacing between tiles. |

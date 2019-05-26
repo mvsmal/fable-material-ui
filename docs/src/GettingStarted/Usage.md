@@ -6,20 +6,20 @@ Simply open Fable.MaterialUI.Core and Props module
 open Fable.MaterialUI.Core
 open Fable.MaterialUI.Props
 ```
-There are several components, such as `button`, which are also present in `Fable.Helpers.React`. To avoid conflicts you can assign module names:
+There are several components, such as `button`, which are also present in `Fable.React.Standard`. To avoid conflicts you can assign module names:
 ```fsharp
-module R = Fable.Helpers.React
+module R = Fable.React.Standard
 module Mui = Fable.MaterialUI.Core
 ```
 
 ## Minimal example
 ```fsharp
-module R = Fable.Helpers.React
-module Mui = Fable.MaterialUI.Core
+open Fable.React
 open Fable.MaterialUI.Props
+module Mui = Fable.MaterialUI.Core
 
 let view =
     Mui.button [
         ButtonProp.Variant ButtonVariant.Contained
-    ] [ R.str "Hello world!" ]
+    ] [ str "Hello world!" ]
 ```

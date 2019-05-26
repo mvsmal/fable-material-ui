@@ -15,8 +15,8 @@ Fable.MaterialUI.Core.listItemText (props : seq<IHTMLProp>) (children : seq<Reac
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.DisableTypography</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the children won't be wrapped by a Typography component. This can be useful to render an alternative Typography variant by wrapping the `children` (or `primary`) text, and optional `secondary` text with the Typography component. |
 | <span class="prop-name">MaterialProp.Inset</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the children will be indented. This should be used if there is no left avatar or left icon. |
-| <span class="prop-name">ListItemTextProp.Primary</span> | <span class="prop-type">ReactNode</span> |   | The main content element. |
-| <span class="prop-name">ListItemTextProp.Secondary</span> | <span class="prop-type">ReactNode</span> |   | The secondary content element. |
+| <span class="prop-name">ListItemTextProp.Primary</span> | <span class="prop-type">ReactElement</span> |   | The main content element. |
+| <span class="prop-name">ListItemTextProp.Secondary</span> | <span class="prop-type">ReactElement</span> |   | The secondary content element. |
 | <span class="prop-name">ListItemTextProp.PrimaryTypographyProps</span> | <span class="prop-type">IHTMLProp list</span> |   | These props will be forwarded to the primary typography component (as long as disableTypography is not `true`). |
 | <span class="prop-name">ListItemTextProp.SecondaryTypographyProps</span> | <span class="prop-type">IHTMLProp list</span> |   | These props will be forwarded to the secondary typography component (as long as disableTypography is not `true`). |
 

@@ -12,7 +12,7 @@ Fable.MaterialUI.Core.menu (props : seq<IHTMLProp>) (children : seq<ReactElement
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| <span class="prop-name">MaterialProp.AnchorEl</span> | <span class="prop-type">ReactInstance</span> |   | The DOM element used to set the position of the menu. |
+| <span class="prop-name">MaterialProp.AnchorEl</span> | <span class="prop-type">type&nbsp;AnchorElProp&nbsp;=&nbsp;U2&lt;EventTarget,&nbsp;unit&#8209;>EventTarget></span> |   | The DOM element used to set the position of the menu. |
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.OnEnter</span> | <span class="prop-type">obj->unit</span> |   | Callback fired before the Menu enters. |
 | <span class="prop-name">MaterialProp.OnEntered</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the Menu has entered. |

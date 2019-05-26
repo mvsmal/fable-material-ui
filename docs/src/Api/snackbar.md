@@ -31,7 +31,7 @@ Fable.MaterialUI.Core.snackbar (props : seq<IHTMLProp>) (children : seq<ReactEle
 | <span class="prop-name">SnackbarProp.ResumeHideDuration</span> | <span class="prop-type">int</span> |   | The number of milliseconds to wait before dismissing after user interaction. If `autoHideDuration` property isn't specified, it does nothing. If `autoHideDuration` property is specified but `resumeHideDuration` isn't, we default to `autoHideDuration / 2` ms. |
 | <span class="prop-name">ChildrenProp.ClickAwayListenerProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the `ClickAwayListener` element. |
 | <span class="prop-name">ChildrenProp.ContentProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`SnackbarContent`](#/api/snackbar-content) element. |
-| <span class="prop-name">ChildrenProp.TransitionComponent</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">Slide</span> | Transition component. |
+| <span class="prop-name">ChildrenProp.TransitionComponent</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">Slide</span> | Transition component. |
 | <span class="prop-name">ChildrenProp.TransitionProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the `Transition` element. |
 
 Any other properties supplied will be spread to the root element (native element).

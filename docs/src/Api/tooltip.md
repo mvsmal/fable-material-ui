@@ -25,9 +25,9 @@ Fable.MaterialUI.Core.tooltip (props : seq<IHTMLProp>) (children : seq<ReactElem
 | <span class="prop-name">TooltipProp.EnterTouchDelay</span> | <span class="prop-type">int</span> | <span class="prop-default">1000</span> | The number of milliseconds a user must touch the element before showing the tooltip. |
 | <span class="prop-name">TooltipProp.LeaveDelay</span> | <span class="prop-type">int</span> | <span class="prop-default">0</span> | The number of milliseconds to wait before hiding the tooltip. This property won't impact the leave touch delay (`leaveTouchDelay`). |
 | <span class="prop-name">TooltipProp.LeaveTouchDelay</span> | <span class="prop-type">int</span> | <span class="prop-default">1500</span> | The number of milliseconds after the user stops touching an element before hiding the tooltip. |
-| <span class="prop-name required">TooltipProp.Title *</span> | <span class="prop-type">ReactNode</span> |   | Tooltip title. Zero-length titles string are never displayed. |
+| <span class="prop-name required">TooltipProp.Title *</span> | <span class="prop-type">ReactElement</span> |   | Tooltip title. Zero-length titles string are never displayed. |
 | <span class="prop-name">ChildrenProp.PopperProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`Popper`](#/api/popper) element. |
-| <span class="prop-name">ChildrenProp.TransitionComponent</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">Grow</span> | Transition component. |
+| <span class="prop-name">ChildrenProp.TransitionComponent</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">Grow</span> | Transition component. |
 | <span class="prop-name">ChildrenProp.TransitionProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the `Transition` element. |
 
 Any other properties supplied will be spread to the root element (native element).

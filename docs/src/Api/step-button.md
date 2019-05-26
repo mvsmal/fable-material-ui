@@ -13,8 +13,8 @@ Fable.MaterialUI.Core.stepButton (props : seq<IHTMLProp>) (children : seq<ReactE
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactNode</span> |   | The icon displayed by the step label. |
-| <span class="prop-name">MaterialProp.Optional</span> | <span class="prop-type">ReactNode</span> |   | The optional node to display. |
+| <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactElement</span> |   | The icon displayed by the step label. |
+| <span class="prop-name">MaterialProp.Optional</span> | <span class="prop-type">ReactElement</span> |   | The optional node to display. |
 
 Any other properties supplied will be spread to the root element ([ButtonBase](#/api/button-base)).
 

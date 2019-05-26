@@ -13,7 +13,7 @@ Fable.MaterialUI.Core.cardMedia (props : seq<IHTMLProp>) : ReactElement
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"div"</span> | Component for rendering image. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">"div"</span> | Component for rendering image. Either a string to use a DOM element or a component. |
 | <span class="prop-name">HTMLAttr.Src</span> | <span class="prop-type">string</span> |   | An alias for `image` property. Available only with media components. Media components: `video`, `audio`, `picture`, `iframe`, `img`. |
 | <span class="prop-name">CardMediaProp.Image</span> | <span class="prop-type">string</span> |   | Image to be displayed as a background image. Either `image` or `src` prop must be specified. Note that caller must specify height otherwise the image will not be visible. |
 

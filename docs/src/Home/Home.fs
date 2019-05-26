@@ -119,7 +119,7 @@ let home (props : HomeProps) =
                     ] [ str "Fable bindings for Material-UI React components"]
                     button [
                         MaterialProp.Component ("a" |> ReactElementType.ofHtmlElement)
-                        Href (toHash Installation)
+                        Href (Page.StaticPage Installation |> toHash)
                         Class classes.button
                         ButtonProp.Variant ButtonVariant.Outlined
                         MaterialProp.Color ComponentColor.Primary

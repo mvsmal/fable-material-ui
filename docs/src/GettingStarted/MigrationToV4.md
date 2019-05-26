@@ -5,7 +5,7 @@
 Version 4 requires 
 * `Fable.Core >= 3.0.0`
 * `Fable.React >= 5.2.1`
-* `fable-compiler >= 2.3.5`.
+* `fable-compiler >= 2.3.5`
 
 ## Breaking changes
 

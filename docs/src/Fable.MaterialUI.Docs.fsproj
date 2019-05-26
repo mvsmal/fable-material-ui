@@ -14,11 +14,7 @@
     <Compile Include="Import/Marked.fs" />
     <Compile Include="Components/Markdown.fs" />
     <Compile Include="Components/Demo.fs" />
-    <Compile Include="GettingStarted/Installation.fs" />
-    <Compile Include="GettingStarted/Usage.fs" />
-    <Compile Include="GettingStarted/MigrationToV2.fs" />
-    <Compile Include="GettingStarted/MigrationToV3.fs" />
-    <Compile Include="GettingStarted/MigrationToV4.fs" />
+    <Compile Include="Components/StaticPage.fs" />
     <Compile Include="Demos/AppBar/*.fs" />
     <Compile Include="Demos/Avatars/*.fs" />
     <Compile Include="Demos/Buttons/*.fs" />
@@ -38,7 +34,6 @@
     <Compile Include="Customization/Themes.fs" />
     <Compile Include="Customization/CssInJs/*.fs" />
     <Compile Include="Customization/CssInJs.fs" />
-    <Compile Include="Customization/DefaultTheme.fs" />
     <Compile Include="PageLayoutDemos/SignIn.fs" />
     <Compile Include="Api/Api.fs" />
 

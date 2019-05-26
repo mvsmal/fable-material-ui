@@ -79,11 +79,6 @@ type LayoutClasses =
 let layout (props : AppProps) =
     let content = function
         | Page.Home -> Home.View.root props.dispatch
-        | Page.Installation -> GettingStarted.Installation.View.root ()
-        | Page.MigrationToV2 -> GettingStarted.MigrationToV2.View.root ()
-        | Page.MigrationToV3 -> GettingStarted.MigrationToV3.View.root ()
-        | Page.MigrationToV4 -> GettingStarted.MigrationToV4.View.root ()
-        | Page.Usage -> GettingStarted.Usage.View.root ()
         | Page.AppBar -> Demos.AppBar.View.view ()
         | Page.Avatars -> Demos.Avatars.View.root ()
         | Page.Buttons -> Demos.Buttons.View.view ()
@@ -93,8 +88,8 @@ let layout (props : AppProps) =
         | Page.Overrides -> Customization.Overrides.View.view ()
         | Page.Themes -> Customization.Themes.View.view ()
         | Page.CssInJs -> Customization.CssInJs.View.view ()
-        | Page.DefaultTheme -> Customization.DefaultTheme.View.view ()
         | Page.Api comp -> Api.View.view comp
+        | Page.StaticPage page -> Components.StaticPage.View.root page
 
     let classes : LayoutClasses = !!props.classes
     let mainClasses =

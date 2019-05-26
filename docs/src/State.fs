@@ -11,11 +11,11 @@ let pageParser: Parser<Page->Page,Page> =
     oneOf [
         map Home (s "/")
         map Home (s "home")
-        map Installation (s "getting-started" </> s "installation")
-        map Usage (s "getting-started" </> s "usage")
-        map MigrationToV2 (s "getting-started" </> s "migration-to-v2")
-        map MigrationToV3 (s "getting-started" </> s "migration-to-v3")
-        map MigrationToV4 (s "getting-started" </> s "migration-to-v4")
+        map (StaticPage Installation) (s "getting-started" </> s "installation")
+        map (StaticPage Usage) (s "getting-started" </> s "usage")
+        map (StaticPage MigrationToV2) (s "getting-started" </> s "migration-to-v2")
+        map (StaticPage MigrationToV3) (s "getting-started" </> s "migration-to-v3")
+        map (StaticPage MigrationToV4) (s "getting-started" </> s "migration-to-v4")
         map AppBar (s "demos" </> s "app-bar")
         map Avatars (s "demos" </> s "avatars")
         map Buttons (s "demos" </> s "buttons")
@@ -25,7 +25,7 @@ let pageParser: Parser<Page->Page,Page> =
         map Overrides (s "customization" </> s "overrides")
         map Themes (s "customization" </> s "themes")
         map CssInJs (s "customization" </> s "css-in-js")
-        map DefaultTheme (s "customization" </> s "default-theme")
+        map (StaticPage DefaultTheme) (s "customization" </> s "default-theme")
         map Api (s "api" </> str)
     ]
 

@@ -9,11 +9,11 @@ let navItems = [
         Href = None
         Children =
             [
-                { Title = "Installation"; Href = Some Page.Installation; Children = [] }
-                { Title = "Usage"; Href = Some Page.Usage; Children = [] }
-                { Title = "Migration to version 2"; Href = Some Page.MigrationToV2; Children = [] }
-                { Title = "Migration to version 3"; Href = Some Page.MigrationToV3; Children = [] }
-                { Title = "Migration to version 4"; Href = Some Page.MigrationToV4; Children = [] }
+                { Title = "Installation"; Href = Some (Page.StaticPage Installation); Children = [] }
+                { Title = "Usage"; Href = Some (Page.StaticPage Usage); Children = [] }
+                { Title = "Migration to version 2"; Href = Some (Page.StaticPage MigrationToV2); Children = [] }
+                { Title = "Migration to version 3"; Href = Some (Page.StaticPage MigrationToV3); Children = [] }
+                { Title = "Migration to version 4"; Href = Some (Page.StaticPage MigrationToV4); Children = [] }
             ]
     }
     {
@@ -36,7 +36,7 @@ let navItems = [
                 { Title = "Themes"; Href = Some Page.Themes; Children = [] }
                 { Title = "Overrides"; Href = Some Page.Overrides; Children = [] }
                 { Title = "CSS in JS (F#)"; Href = Some Page.CssInJs; Children = [] }
-                { Title = "Default Theme"; Href = Some Page.DefaultTheme; Children = [] }
+                { Title = "Default Theme"; Href = Some (Page.StaticPage DefaultTheme); Children = [] }
             ]
     }
     {

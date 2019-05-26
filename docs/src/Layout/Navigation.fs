@@ -13,6 +13,7 @@ let navItems = [
                 { Title = "Usage"; Href = Some Page.Usage; Children = [] }
                 { Title = "Migration to version 2"; Href = Some Page.MigrationToV2; Children = [] }
                 { Title = "Migration to version 3"; Href = Some Page.MigrationToV3; Children = [] }
+                { Title = "Migration to version 4"; Href = Some Page.MigrationToV4; Children = [] }
             ]
     }
     {

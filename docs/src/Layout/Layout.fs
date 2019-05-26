@@ -82,6 +82,7 @@ let layout (props : AppProps) =
         | Page.Installation -> GettingStarted.Installation.View.root ()
         | Page.MigrationToV2 -> GettingStarted.MigrationToV2.View.root ()
         | Page.MigrationToV3 -> GettingStarted.MigrationToV3.View.root ()
+        | Page.MigrationToV4 -> GettingStarted.MigrationToV4.View.root ()
         | Page.Usage -> GettingStarted.Usage.View.root ()
         | Page.AppBar -> Demos.AppBar.View.view ()
         | Page.Avatars -> Demos.Avatars.View.root ()

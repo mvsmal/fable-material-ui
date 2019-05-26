@@ -8,6 +8,7 @@ type Page =
     | Usage
     | MigrationToV2
     | MigrationToV3
+    | MigrationToV4
     | AppBar
     | Avatars
     | Buttons
@@ -34,6 +35,7 @@ let toHash page =
     | Usage -> "#/getting-started/usage"
     | MigrationToV2 -> "#/getting-started/migration-to-v2"
     | MigrationToV3 -> "#/getting-started/migration-to-v3"
+    | MigrationToV4 -> "#/getting-started/migration-to-v4"
     | AppBar -> "#/demos/app-bar"
     | Avatars -> "#/demos/avatars"
     | Buttons -> "#/demos/buttons"
@@ -58,6 +60,7 @@ let toTitle = function
             | Usage -> "Usage"
             | MigrationToV2 -> "Migration to version 2"
             | MigrationToV3 -> "Migration to version 3"
+            | MigrationToV4 -> "Migration to version 4"
             | AppBar -> "App Bar"
             | Avatars -> "Avatars"
             | Buttons -> "Buttons"

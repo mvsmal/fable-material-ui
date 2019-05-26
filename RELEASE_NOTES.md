@@ -1,3 +1,10 @@
+## New in 4.1.0
+* [BREAKING CHANGE] Popper new signature: `seq<IHTMLProp> -> U2<ReactElement list, (PopperProps->ReactElement)> -> ReactElement`
+* [BREAKING CHANGE] `MaterialProp.AnchorEl` has new type: `type AnchorElProp = U2<EventTarget,unit->EventTarget>`
+* `MaterialProp.AddEndListener` became of type `(HTMLElement->(unit->unit)->unit)`
+* Added new props `MaterialProp.OnEnter`, `MaterialProp.OnEntering`, `MaterialProp.OnEntered`, `MaterialProp.OnExit`, `MaterialProp.OnExiting`, `MaterialProp.OnExited`
+* Added new types: `Timeout`, `TransitionProps`, `PopperProps`
+
 ## New in 4.0.0
 * Fable Core 3 & Fable.React 5 support!
 * [BREAKING CHANGE] Functions in `IMixins` use `obj` instead of `CSSProperties`

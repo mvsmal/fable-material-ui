@@ -13,7 +13,7 @@ Fable.MaterialUI.Core.divider (props : seq<IHTMLProp>) : ReactElement
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"hr"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">"hr"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">MaterialProp.Inset</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the divider will be indented. |
 | <span class="prop-name">DividerProp.Absolute</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> |  |
 | <span class="prop-name">DividerProp.Light</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the divider will have a lighter color. |

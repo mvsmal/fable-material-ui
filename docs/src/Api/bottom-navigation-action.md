@@ -13,8 +13,8 @@ Fable.MaterialUI.Core.bottomNavigationAction (props : seq<IHTMLProp>) : ReactEle
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactNode</span> |   | The icon element. |
-| <span class="prop-name">MaterialProp.Label</span> | <span class="prop-type">ReactNode</span> |   | The label element. |
+| <span class="prop-name">MaterialProp.Icon</span> | <span class="prop-type">ReactElement</span> |   | The icon element. |
+| <span class="prop-name">MaterialProp.Label</span> | <span class="prop-type">ReactElement</span> |   | The label element. |
 | <span class="prop-name">BottomNavigationActionProp.ShowLabel</span> | <span class="prop-type">bool</span> |   | If `true`, the `BottomNavigationAction` will show its label. By default, only the selected `BottomNavigationAction` inside `BottomNavigation` will show its label. |
 | <span class="prop-name">BottomNavigationActionProp.Value</span> | <span class="prop-type">obj</span> |   | You can provide your own value. Otherwise, we fallback to the child position index. |
 

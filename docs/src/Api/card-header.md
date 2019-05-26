@@ -13,13 +13,13 @@ Fable.MaterialUI.Core.cardHeader (props : seq<IHTMLProp>) (children : seq<ReactE
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">MaterialProp.DisableTypography</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the children won't be wrapped by a Typography component. This can be useful to render an alternative Typography variant by wrapping the `title` text, and optional `subheader` text with the Typography component. |
-| <span class="prop-name">CardHeaderProp.Action</span> | <span class="prop-type">ReactNode</span> |   | The action to display in the card header. |
-| <span class="prop-name">CardHeaderProp.Avatar</span> | <span class="prop-type">ReactNode</span> |   | The Avatar for the Card Header. |
-| <span class="prop-name">CardHeaderProp.Subheader</span> | <span class="prop-type">ReactNode</span> |   | The content of the component. |
+| <span class="prop-name">CardHeaderProp.Action</span> | <span class="prop-type">ReactElement</span> |   | The action to display in the card header. |
+| <span class="prop-name">CardHeaderProp.Avatar</span> | <span class="prop-type">ReactElement</span> |   | The Avatar for the Card Header. |
+| <span class="prop-name">CardHeaderProp.Subheader</span> | <span class="prop-type">ReactElement</span> |   | The content of the component. |
 | <span class="prop-name">CardHeaderProp.SubheaderTypographyProps</span> | <span class="prop-type">IHTMLProp list</span> |   | These props will be forwarded to the subheader (as long as disableTypography is not `true`). |
-| <span class="prop-name">CardHeaderProp.Title</span> | <span class="prop-type">ReactNode</span> |   | The content of the Card Title. |
+| <span class="prop-name">CardHeaderProp.Title</span> | <span class="prop-type">ReactElement</span> |   | The content of the Card Title. |
 | <span class="prop-name">CardHeaderProp.TitleTypographyProps</span> | <span class="prop-type">IHTMLProp list</span> |   | These props will be forwarded to the title (as long as disableTypography is not `true`). |
 
 Any other properties supplied will be spread to the root element (native element).

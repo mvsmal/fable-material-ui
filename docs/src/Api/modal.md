@@ -13,7 +13,7 @@ This component shares many concepts with [react-overlays](https://react-bootstra
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Container</span> | <span class="prop-type">ReactInstance</span> |   | A node, component instance, or function that returns either. The `container` will have the portal children appended to it. |
+| <span class="prop-name">MaterialProp.Container</span> | <span class="prop-type">type&nbsp;AnchorElProp&nbsp;=&nbsp;U2&lt;EventTarget,&nbsp;unit&#8209;>EventTarget></span> |   | A node, component instance, or function that returns either. The `container` will have the portal children appended to it. |
 | <span class="prop-name">MaterialProp.KeepMounted</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Always keep the children in the DOM. This property can be useful in SEO situation or when you want to maximize the responsiveness of the Modal. |
 | <span class="prop-name">MaterialProp.OnClose</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the component requests to be closed. The `reason` parameter can optionally be used to control the response to `onClose`.<br><br>**Signature:**<br>`(event: obj) -> (reason: ModalCloseReason) -> unit`<br>*event:* The event source of the callback<br>*reason:* `type ModalCloseReason = EscapeKeyDown \| BackdropClick` |
 | <span class="prop-name">MaterialProp.OnRendered</span> | <span class="prop-type">obj->unit</span> |   | Callback fired once the children has been mounted into the `container`. It signals that the `open={true}` property took effect. |
@@ -28,7 +28,7 @@ This component shares many concepts with [react-overlays](https://react-bootstra
 | <span class="prop-name">ModalProp.Manager</span> | <span class="prop-type">obj</span> | <span class="prop-default">new ModalManager()</span> | A modal manager used to track and manage the state of open Modals. This enables customizing how modals interact within a container. |
 | <span class="prop-name">ModalProp.OnBackdropClick</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the backdrop is clicked. |
 | <span class="prop-name">ModalProp.OnEscapeKeyDown</span> | <span class="prop-type">obj->unit</span> |   | Callback fired when the escape key is pressed, `disableEscapeKeyDown` is false and the modal is in focus. |
-| <span class="prop-name">ChildrenProp.BackdropComponent</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">Backdrop</span> | A backdrop component. This property enables custom backdrop rendering. |
+| <span class="prop-name">ChildrenProp.BackdropComponent</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">Backdrop</span> | A backdrop component. This property enables custom backdrop rendering. |
 | <span class="prop-name">ChildrenProp.BackdropProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the [`Backdrop`](#/api/backdrop) element. |
 
 Any other properties supplied will be spread to the root element (native element).

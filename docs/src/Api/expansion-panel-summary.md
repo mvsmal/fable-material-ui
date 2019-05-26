@@ -13,7 +13,7 @@ Fable.MaterialUI.Core.expansionPanelSummary (props : seq<IHTMLProp>) (children :
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">ExpansionPanelSummaryProp.ExpandIcon</span> | <span class="prop-type">ReactNode</span> |   | The icon to display as the expand indicator. |
+| <span class="prop-name">ExpansionPanelSummaryProp.ExpandIcon</span> | <span class="prop-type">ReactElement</span> |   | The icon to display as the expand indicator. |
 | <span class="prop-name">ChildrenProp.IconButtonProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Properties applied to the `TouchRipple` element wrapping the expand icon. |
 
 Any other properties supplied will be spread to the root element ([ButtonBase](#/api/button-base)).

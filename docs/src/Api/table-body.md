@@ -13,7 +13,7 @@ Fable.MaterialUI.Core.tableBody (props : seq<IHTMLProp>) (children : seq<ReactEl
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"tbody"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">"tbody"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 
 Any other properties supplied will be spread to the root element (native element).
 

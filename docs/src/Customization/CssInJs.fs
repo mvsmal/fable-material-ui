@@ -82,7 +82,7 @@ It's a subset of [jss-preset-default](http://cssinjs.org/jss-preset-default/).
 let withStylesApiText = """
 ## API
 
-### `withStyles<'P when 'P :> IClassesProps> (styles : StyleType) (options: StyleOption list) (fn : 'P -> ReactElement) : ComponentClass<'P>`
+### `withStyles<'P when 'P :> IClassesProps> (styles : StyleType) (options: StyleOption list) (fn : 'P -> ReactElement) : ReactElementType<'P>`
 
 Link a style sheet with a component.
 It does not modify the component passed to it; instead, it returns a new component with a `classes` property.

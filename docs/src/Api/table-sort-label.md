@@ -16,7 +16,7 @@ A button based label for placing inside `TableCell` for column sorting.
 | <span class="prop-name">MaterialProp.Active</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | If `true`, the label will have the active styling (should be true for the sorted column). |
 | <span class="prop-name">TableSortLabelProp.Direction</span> | <span class="prop-type">type&nbsp;TableSortDirection&nbsp;=&nbsp;Asc&nbsp;&#124;&nbsp;Desc<br></span> | <span class="prop-default">TableSortDirection.Desc</span> | The current sort direction. |
 | <span class="prop-name">TableSortLabelProp.HideSortIcon</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Hide sort icon when active is false. |
-| <span class="prop-name">ChildrenProp.IconComponent</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">ArrowDownwardIcon</span> | Sort icon to use. |
+| <span class="prop-name">ChildrenProp.IconComponent</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">ArrowDownwardIcon</span> | Sort icon to use. |
 
 Any other properties supplied will be spread to the root element ([ButtonBase](#/api/button-base)).
 

@@ -13,7 +13,7 @@ Fable.MaterialUI.Core.avatar (props : seq<IHTMLProp>) (children : seq<ReactEleme
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
-| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">MaterialProp.Component</span> | <span class="prop-type">ReactElementType</span> | <span class="prop-default">"div"</span> | The component used for the root node. Either a string to use a DOM element or a component. |
 | <span class="prop-name">AvatarProp.ImgProps</span> | <span class="prop-type">IHTMLProp list</span> |   | Attributes applied to the `img` element if the component is used to display an image. |
 | <span class="prop-name">HTMLAttr.Alt</span> | <span class="prop-type">string</span> |   | Used in combination with `src` or `srcSet` to provide an alt attribute for the rendered `img` element. |
 | <span class="prop-name">HTMLAttr.Sizes</span> | <span class="prop-type">string</span> |   | The `sizes` attribute for the `img` element. |

@@ -15,7 +15,7 @@ Fable.MaterialUI.Core.stepIcon (props : seq<IHTMLProp>) (children : seq<ReactEle
 | <span class="prop-name">MaterialProp.Classes</span> | <span class="prop-type">ClassNames list</span> |   | Override or extend the styles applied to the component.  See CSS API below for more details.  |
 | <span class="prop-name">MaterialProp.Active</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Whether this step is active. |
 | <span class="prop-name">MaterialProp.Error</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Mark the step as failed. |
-| <span class="prop-name required">MaterialProp.Icon *</span> | <span class="prop-type">ReactNode</span> |   | The icon displayed by the step label. |
+| <span class="prop-name required">MaterialProp.Icon *</span> | <span class="prop-type">ReactElement</span> |   | The icon displayed by the step label. |
 | <span class="prop-name">StepProp.Completed</span> | <span class="prop-type">bool</span> | <span class="prop-default">false</span> | Mark the step as completed. Is passed to child components. |
 
 Any other properties supplied will be spread to the root element (native element).

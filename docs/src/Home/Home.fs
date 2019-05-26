@@ -89,7 +89,6 @@ type HomeClasses =
     abstract member support: string
     inherit IClasses
 
-let supportText = importDefault "./Support.md"
 let logo = importDefault "../../public/img/fable-material-ui-logo.svg"
 
 let home (props : HomeProps) =
@@ -127,10 +126,7 @@ let home (props : HomeProps) =
                     ] [ str "Get Started" ]
                 ]
             ]
-        ]
-        div [ Class classes.support ] [
-            Markdown.view supportText
-        ]
+        ]        
     ]
 
 let homeWithStyles = withStyles (StyleType.Func homeStyles) [] home

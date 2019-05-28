@@ -3,6 +3,7 @@ description
   Fable bindings for MaterialUI https://material-ui.com/
 projectUrl https://github.com/mvsmal/fable-material-ui
 licenseUrl https://github.com/mvsmal/fable-material-ui/blob/master/LICENSE
+iconUrl https://github.com/mvsmal/fable-material-ui/raw/nuget_icon.png
 authors Mikhail Smal
 files
   *.fs ==> fable/

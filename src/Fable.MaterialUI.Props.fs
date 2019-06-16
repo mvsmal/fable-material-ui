@@ -1003,7 +1003,7 @@ module Props =
 
         /// Compiles to `inputProps`.
         ///
-        /// For `InputProps` use `MaterialProp.InputProps`
+        /// For `InputProps` use `ChildrenProp.InputProps`
         let inline InputProps (props : IHTMLProp seq) =
             customHtmlAttr "inputProps" props
         let Timeout = transitionDurationToHtmlAttr "timeout"

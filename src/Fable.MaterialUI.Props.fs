@@ -1003,7 +1003,7 @@ module Props =
 
         /// Compiles to `inputProps`.
         ///
-        /// For `InputProps` use `MaterialProp.InputProps`
+        /// For `InputProps` use `ChildrenProp.InputProps`
         let inline InputProps (props : IHTMLProp seq) =
             customHtmlAttr "inputProps" props
         let Timeout = transitionDurationToHtmlAttr "timeout"
@@ -1689,7 +1689,7 @@ module Props =
         abstract TransitionProps : TransitionProps with get, set
 
     type PopperProp =
-        | Modifies of obj
+        | Modifiers of obj
         | PopperOptions of obj
         | Transition of bool
         interface IHTMLProp

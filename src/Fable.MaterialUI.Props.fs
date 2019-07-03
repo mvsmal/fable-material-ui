@@ -1689,7 +1689,7 @@ module Props =
         abstract TransitionProps : TransitionProps with get, set
 
     type PopperProp =
-        | Modifies of obj
+        | Modifiers of obj
         | PopperOptions of obj
         | Transition of bool
         interface IHTMLProp

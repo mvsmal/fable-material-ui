@@ -155,7 +155,7 @@ module Core =
 
     let withTheme<'P when 'P :> IThemeProps>
         (fn : 'P->Fable.React.ReactElement) : Fable.React.ReactElementType<'P> =
-        !!(withTheme' $ () $ fn)
+        !!(withTheme' $ fn)
 
     let withWidth'<'O, 'P>
         (options: 'O)

@@ -136,7 +136,23 @@ module Core =
             | StyleType.Func func -> func >> keyValueList CaseRules.LowerFirst
         withStyles' styles' (keyValueList CaseRules.LowerFirst options) fn
 
+    let makeStyles'<'S, 'O, 'P> ( styles: 'S ) ( options: 'O ) 
+        : 'P -> IClassesProps =
+        !!((import "makeStyles" "@material-ui/core/styles") $ (styles, options))
+
+    let makeStyles ( styles : StyleType ) ( options: StyleOption seq ) =
+        let opt = keyValueList CaseRules.LowerFirst options
+        let styles' =
+            match styles with
+            | StyleType.Styles styles -> (keyValueList CaseRules.LowerFirst styles |> unbox)
+            | StyleType.Func func -> func >> keyValueList CaseRules.LowerFirst
+        makeStyles'<_, _, unit> styles' opt 
+
+    let useTheme<'T> () : 'T =
+        !!((import "useTheme" "@material-ui/core/styles") $ ())
+
     let inline muiThemeProvider (b : IHTMLProp seq) c = ofImport "MuiThemeProvider" "@material-ui/core/styles" (toObj b) c
+    let inline muiStylesProvider (b : IHTMLProp seq) c = ofImport "MuiStylesProvider" "@material-ui/styles" (toObj b) c
 
     [<Import("createMuiTheme", "@material-ui/core/styles")>]
     let private createMuiTheme'<'O> (options: 'O) : ITheme = jsNative
@@ -155,7 +171,7 @@ module Core =
 
     let withTheme<'P when 'P :> IThemeProps>
         (fn : 'P->Fable.React.ReactElement) : Fable.React.ReactElementType<'P> =
-        !!(withTheme' $ () $ fn)
+        !!(withTheme' $ fn)
 
     let withWidth'<'O, 'P>
         (options: 'O)

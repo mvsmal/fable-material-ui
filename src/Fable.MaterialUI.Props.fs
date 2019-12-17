@@ -1003,7 +1003,7 @@ module Props =
 
         /// Compiles to `inputProps`.
         ///
-        /// For `InputProps` use `MaterialProp.InputProps`
+        /// For `InputProps` use `ChildrenProp.InputProps`
         let inline InputProps (props : IHTMLProp seq) =
             customHtmlAttr "inputProps" props
         let Timeout = transitionDurationToHtmlAttr "timeout"
@@ -1689,7 +1689,7 @@ module Props =
         abstract TransitionProps : TransitionProps with get, set
 
     type PopperProp =
-        | Modifies of obj
+        | Modifiers of obj
         | PopperOptions of obj
         | Transition of bool
         interface IHTMLProp
@@ -2224,6 +2224,7 @@ module Props =
         let inline MuiExpansionPanelActions props = pascalCaseProp "MuiExpansionPanelActions" props
         let inline MuiExpansionPanelDetails props = pascalCaseProp "MuiExpansionPanelDetails" props
         let inline MuiExpansionPanelSummary props = pascalCaseProp "MuiExpansionPanelSummary" props
+        let inline MuiFab props = pascalCaseProp "MuiFab" props
         let inline MuiFilledInput props = pascalCaseProp "MuiFilledInput" props
         let inline MuiFormControl props = pascalCaseProp "MuiFormControl" props
         let inline MuiFormControlLabel props = pascalCaseProp "MuiFormControlLabel" props
@@ -2240,6 +2241,7 @@ module Props =
         let inline MuiInputAdornment props = pascalCaseProp "MuiInputAdornment" props
         let inline MuiInputLabel props = pascalCaseProp "MuiInputLabel" props
         let inline MuiLinearProgress props = pascalCaseProp "MuiLinearProgress" props
+        let inline MuiLink props = pascalCaseProp "MuiLink" props
         let inline MuiList props = pascalCaseProp "MuiList" props
         let inline MuiListItem props = pascalCaseProp "MuiListItem" props
         let inline MuiListItemAvatar props = pascalCaseProp "MuiListItemAvatar" props
@@ -2304,10 +2306,19 @@ module Props =
 
     type MuiThemeProviderProp =
         | Theme of ProviderTheme
-        | DisableStylesGeneration of bool
-        | SheetsManager of obj
         interface IHTMLProp
 
+    type MuiStylesProviderProp =
+        | DisableGeneration of bool
+        | GenerateClassName of (obj->(obj->string))
+        | InjectFirst of bool
+        | Jss of obj
+        | ServerGenerateClassName of (obj->(obj->string))
+        | SheetsCache of obj
+        | SheetsManager of obj
+        | SheetsRegistry of obj
+        interface IHTMLProp
+        
     type [<StringEnum; RequireQualifiedAccess>] Breakpoint = Xs | Sm | Md | Lg | Xl
     type [<AllowNullLiteral>] IWithWidthProps =
         abstract width: Breakpoint

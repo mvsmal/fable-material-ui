@@ -220,6 +220,29 @@ let view () =
     ]
 ```
 
+### `muiStylesProvider`
+
+This component takes a `MuiStylesProviderProp.Theme` property, it allows you to change the behavior of the styling solution, and makes the options available down the React tree thanks to the context.
+It should preferably be used at **the root of your component tree**.
+
+<!--You can see the full properties API in [this dedicated page](/api/mui-styles-provider/).-->
+
+#### Examples
+
+```fsharp
+open Fable.MaterialUI.Core
+
+let sheetsManager = Fable.Core.JsInterop.createEmpty
+let theme = createMuiTheme []
+
+let view () =
+    muiStylesProvider [ MuiStylesProviderProp.SheetsManager sheetsManager ] [
+        muiThemeProvider [ MuiThemeProviderProp.Theme (ProviderTheme.Theme theme) ] [
+            div [] [] // your application components
+        ]
+    ]
+```
+
 ### `createMuiTheme (options : ThemeProp list) : ITheme`
 
 Generate a theme base on the options received.
@@ -266,7 +289,6 @@ let theme = createMuiTheme [
                 ]
             ]
 ```
-
 
 ### `withTheme<'P when 'P :> IThemeProps> (fn : ('P -> ReactElement)) : ClassComponent<'P>`
 

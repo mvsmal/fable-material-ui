@@ -137,6 +137,7 @@ module Core =
         withStyles' styles' (keyValueList CaseRules.LowerFirst options) fn
 
     let inline muiThemeProvider (b : IHTMLProp seq) c = ofImport "MuiThemeProvider" "@material-ui/core/styles" (toObj b) c
+    let inline muiStylesProvider (b : IHTMLProp seq) c = ofImport "MuiStylesProvider" "@material-ui/core/styles" (toObj b) c
 
     [<Import("createMuiTheme", "@material-ui/core/styles")>]
     let private createMuiTheme'<'O> (options: 'O) : ITheme = jsNative

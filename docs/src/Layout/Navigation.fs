@@ -110,6 +110,7 @@ let navItems = [
                 { Title = "MobileStepper"; Href = Some (Page.Api "mobile-stepper"); Children = [] }
                 { Title = "Modal"; Href = Some (Page.Api "modal"); Children = [] }
                 { Title = "MuiThemeProvider"; Href = Some (Page.Api "mui-theme-provider"); Children = [] }
+                { Title = "MuiStylesProvider"; Href = Some (Page.Api "mui-styles-provider"); Children = [] }
                 { Title = "NativeSelect"; Href = Some (Page.Api "native-select"); Children = [] }
                 { Title = "OutlinedInput"; Href = Some (Page.Api "outlined-input"); Children = [] }
                 { Title = "Paper"; Href = Some (Page.Api "paper"); Children = [] }

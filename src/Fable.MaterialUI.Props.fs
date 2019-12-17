@@ -2306,10 +2306,19 @@ module Props =
 
     type MuiThemeProviderProp =
         | Theme of ProviderTheme
-        | DisableStylesGeneration of bool
-        | SheetsManager of obj
         interface IHTMLProp
 
+    type MuiStylesProviderProp =
+        | DisableGeneration of bool
+        | GenerateClassName of (obj->(obj->string))
+        | InjectFirst of bool
+        | Jss of obj
+        | ServerGenerateClassName of (obj->(obj->string))
+        | SheetsCache of obj
+        | SheetsManager of obj
+        | SheetsRegistry of obj
+        interface IHTMLProp
+        
     type [<StringEnum; RequireQualifiedAccess>] Breakpoint = Xs | Sm | Md | Lg | Xl
     type [<AllowNullLiteral>] IWithWidthProps =
         abstract width: Breakpoint

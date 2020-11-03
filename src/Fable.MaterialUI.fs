@@ -189,10 +189,10 @@ module ColorManipulator =
         import "recomposeColor" "@material-ui/core/styles/colorManipulator"
 
     let convertHexToRGB (hex: string): string =
-        import "convertHexToRGB" "@material-ui/core/styles/colorManipulator"
+        import "hexToRgb" "@material-ui/core/styles/colorManipulator"
 
     let rbgToHex (color: string): string =
-        import "rbgToHex" "@material-ui/core/styles/colorManipulator"
+        import "rgbToHex" "@material-ui/core/styles/colorManipulator"
 
     let decomposeColor (color: string): ColorObject =
         import "decomposeColor" "@material-ui/core/styles/colorManipulator"

@@ -1431,6 +1431,9 @@ module Props =
         | Primary
         | Secondary
         | Action
+        | Success
+        | Warning
+        | Info
         | Error
         | Disabled
 
